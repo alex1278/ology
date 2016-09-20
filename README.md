@@ -1,0 +1,2 @@
+# ology
+WP Theme Ology
