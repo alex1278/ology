@@ -195,19 +195,19 @@ and open the template in the editor.
     margin-top:10px;
     margin-bottom:15px;
 }
-.renter-testim-tmp cite p{
+.renter-testim-tmp cite span{
     display: inline-block;
     position:relative;
     margin:10px 0 15px 5px;
     padding-left: 15px;
     font-style: normal;
 }
-.renter-testim-tmp cite p::before {
+.renter-testim-tmp cite span::before {
     content: '/';
     position: absolute;
     left: 0;
 }
-.renter-testim-tmp article{
+.renter-testim-tmp .tm-widget-excerpt{
     padding-bottom:10px;
     border-bottom:2px solid rgba(139, 195, 74, 1);
     color: #e6e6e6;
