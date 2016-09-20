@@ -1,0 +1,324 @@
+// Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+
+/* ==========================================================================
+[Table of contents]
+
+1.  Default theme styles                           - Theme uikit Styles
+2.  Default WordPress styles                       - Default Wordpress Styles                                            
+3.  Special default theme styles for customizer    - Special theme styles
+4.  Header Styles                                  - Theme header
+5.  Search and headerbar section
+6.  Breadcramps
+7.  Theme Logo
+8.  Theme headerbar style
+9.  Contact us: map styles
+10. Contact us: form styles
+11. Main navigation menu
+12. EPL Search, filter of main menu toolbar
+13. Offcanvas section
+14. Mobile logo, offcanvas
+15. Social icons, offcanvas
+16. Mobile menu, offcanvas mode
+17. Main slideshow styles
+18. Main slideshow property filter
+19. Main slideshow content style
+20. Slide style 1, left container
+21. Slide style 2, right container
+22. Slide style 3, right
+23. Slide style 4, left
+24. Slide style 5, center
+25. Slide style 6, center
+26. Slide style 7
+27. Bottom-fullscreen slideshow
+28. Agents slider
+30. Post slideset
+31. Post slider
+32. Property slider
+33. Property slider media
+34. Listing map
+35. Button read more
+36. Testimonials slideshow
+37. Position Aside Search Wigget 
+38. Achievemens text widget with counter
+39. Our features widget
+40. ProgressBar widget
+41. Our history, timeline widget
+42. Guidance, Services, tab widget
+43. Services 2, about us widget
+44. Services 2, our achievements-tree widget
+45. Home page,  our achievements-tree widget,  ver 2
+46. Contact us widget
+47. Search template page
+48. Blog page
+49. Most popular posts widget
+50. Category template _post
+51. Single page template
+52. Single page property
+53. Floor plan
+54. Author-card
+55. Comments template
+56. Single post pagination
+57. Single property pagination
+58. Author archive page
+59. Agent contact form
+60. Agent page
+61. Agent tabs  page
+62. Agent sidebar small
+63. Recent deals, property, sidebar widget
+64. Lightbox styles, navigation
+65. Main gallery, filter styles
+66. Main gallery tabs
+67. Footer styles
+68. Ajax pagination, load more button styles
+69. Theme media style
+70. Plugin Easy Property Listings Styles           - Plugin styles
+71. Single property page
+72. Epl search aside widget                        - Search widget styles
+73. Epl search fields
+74. Epl archive listings style
+75. Epl property icons
+76. Epl property map styles
+77. Epl media styles
+78. Page preloader                                 - Theme preloader styles 
+79. Error page styles                              - Error page styles
+80. Offline page                                   - Offline page styles
+81. Countdown Styles                               - Plugin styles
+82. Animation css styles                           - Theme animation Styles
+83. pgw slideshow styles                           - Single page slider Styles
+84. Testymonials styles                            - Plugin Quick-and-easy-testimonials 
+
+
+========================================================================== */
+
+
+@import "uikit/uikit.less";
+
+/* ========================================================================
+   Warp theme
+ ========================================================================== */
+
+/* Layout
+ ========================================================================== */
+ 
+
+/*
+ * Force vertical scrollbar
+ */
+
+html { overflow-y: scroll; }
+
+/*
+ * Blocks
+ */
+
+.tm-toolbar,
+.tm-headerbar,
+.tm-navbar,
+.tm-footer {
+    margin-top: @global-grid-gutter;
+    margin-bottom: @global-grid-gutter;
+}
+
+/* Only large screens */
+@media (min-width: @breakpoint-xlarge) {
+
+    .tm-headerbar,
+    .tm-navbar,
+    .tm-footer {
+        margin-top: @global-grid-gutter-large;
+        margin-bottom: @global-grid-gutter-large;
+    }
+
+}
+
+/* Only phones */
+@media (max-width: @breakpoint-small-max) { 
+
+    .tm-navbar {
+        margin: 0 -@utility-container-padding-horizontal @global-grid-gutter -@utility-container-padding-horizontal;
+        border-width: 0 0 1px 0;
+    }
+
+    .tm-logo-small:hover { text-decoration: none; };
+
+    .tm-navbar:not(.uk-navbar-attached) { border-radius: 0; }
+
+}
+
+/*
+ * Logo small
+ * Remove whitespace caused by vertical centering to prevent logo wrapping into the next line
+ */
+
+.tm-logo-small { letter-spacing: -0.31em; }
+
+/*
+ * Toolbar
+ */
+
+.tm-toolbar .uk-float-left .uk-panel {
+    margin: 0 @global-grid-gutter 0 0;
+    float: left;
+}
+
+.tm-toolbar .uk-float-right .uk-panel {
+    margin: 0 0 0 @global-grid-gutter;
+    float: right;
+}
+
+/*
+ * Headerbar
+ */
+
+.tm-headerbar .tm-logo { float: left; }
+
+.tm-headerbar .uk-panel {
+    max-width: 300px;
+    margin-right: 0;
+    float: right;
+}
+
+/*
+ * Middle
+ */
+
+.tm-main > :nth-child(n+2) { margin-top: @global-grid-gutter; }
+
+.tm-content > :last-child { margin-bottom: 0; }
+
+/*
+ * Footer
+ */
+
+.tm-footer {
+    position: relative;
+    text-align: center;
+}
+
+.tm-footer .uk-panel + .uk-panel { margin-top: @global-grid-gutter; }
+
+/*
+ * To-top scroller
+ */
+
+.tm-totop-scroller {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: @global-z-index;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: @global-color;
+    text-align: center;
+    -webkit-transition: all linear 0.05s;
+    transition: all linear 0.05s;
+}
+
+.tm-totop-scroller:after {
+    content: "\f077";
+    font-family: "FontAwesome";
+}
+
+/*
+ * Hover
+ * 1. Apply hover style also to focus state
+ * 2. Remove default focus style
+ */
+
+.tm-totop-scroller:hover,
+.tm-totop-scroller:focus { /* 1 */
+    color: lighten(@global-color, 20%);
+    font-size: 16px;
+    outline: none; /* 2 */
+    text-decoration: none;
+}
+
+/* Active */
+.tm-totop-scroller:active {
+    color: darken(@global-color, 20%);
+    font-size: 11px;
+}
+
+
+/* Blog
+ ========================================================================== */
+
+/*
+ * Leading article
+ * Joomla only
+ */
+
+.tm-leading-article .uk-article:last-child {
+    padding-bottom: @article-margin-top;
+    border-bottom: 1px solid @base-hr-border;
+}
+
+
+/* Error
+ ========================================================================== */
+
+.tm-error-icon { font-size: 250px; }
+
+.tm-error-headline { font-size: 100px; }
+
+
+/* Offline
+ ========================================================================== */
+
+.tm-offline { width: 300px; }
+
+
+/* Socialbuttons
+ ========================================================================== */
+
+ .tm-socialbuttons {
+
+     line-height: 1;
+
+     > div {
+         margin-right: 10px;
+         float: left;
+     }
+ }
+
+
+/* WordPress only
+ ========================================================================== */
+
+.alignleft {
+    display: block;
+    margin-right: @utility-align-horizontal;
+    float: left;
+}
+
+.alignright {
+    display: block;
+    margin-left: @utility-align-horizontal;
+    float: right;
+}
+
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ak-offline {
+    overflow-y: inherit; 
+    overflow-x: hidden;
+}
+
+
+@import "ology.less";
+@import "loading-page.less";
+@import "error.less";
+@import "offline-page.less";
+@import "countdown-style.less";
+@import "animation.less";
+@import "pgwslideshow.less";
+@import "quick-and-easy-testimonials-public.less";
+

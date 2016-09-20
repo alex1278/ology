@@ -1,0 +1,333 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 13, 2016, 11:01:44 AM
+    Author     : alex1
+*/
+
+/* default style */
+
+.ang-testimonials-slides .wp-user-avatar{
+    border-radius:50%;
+}
+.ang-testimonials-slides .uk-dotnav {
+    margin-top: 0;
+    margin-left: 0;
+}
+.ang-testimonials-slides .uk-dotnav > li > a {
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    position: relative;
+    box-sizing: border-box;
+    /*border: 3px solid rgba(255, 255, 255, 0.6);*/
+/* Uncomment this if you want gray effect for thumbs */
+/*    filter: gray;  IE6-9 
+    -webkit-filter: grayscale(100%);  Chrome 19+, Safari 6+, Safari 6+ iOS */
+}
+
+
+.ang-testimonials-slides .uk-dotnav > li:hover > a {
+    opacity: 0.9;
+/* Uncomment this if you want gray effect for thumbs */
+/*    filter: none;  IE6-9 
+    -webkit-filter: grayscale(0%);*/
+}
+
+.ang-testimonials-slides .uk-dotnav > li.uk-active > a {
+    opacity: 1;
+    box-shadow: 0px 0px 30px 0px #6AA0F1 inset;
+}
+.ang-testimonials-slides .uk-dotnav.ang-squarenav > * > *,
+.ang-testimonials-slides .uk-dotnav.ang-dashednav > * > *{
+    border-radius: 0;
+}
+.uk-dotnav.ang-dashednav > li > a{
+    width: 35px;
+    height: 4px;
+    border:none;
+    transition: all 0.2s ease 0s; 
+    box-shadow: 0 0 30px 0 #333333 inset;
+}
+.uk-dotnav.ang-dashednav > li:hover > a {
+    border-color: #b32727;
+    box-shadow: 0 0 30px 0 #b32727 inset;
+}
+.uk-dotnav.ang-dashednav > li.uk-active > a {
+    border:none;
+    box-shadow: 0 0 30px 0 #b32727 inset;
+}
+
+/* Esta */
+
+.esta-testim-tmp .tm-widget-descr p.tm-widget-title-content {
+  font-family: 'Open Sans';
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.esta-testim-tmp .tm-widget-excerpt {
+  position: relative;
+  margin-bottom: 25px;
+  padding: 0 18%;
+}
+.esta-testim-tmp .tm-widget-excerpt p {
+  font-family: 'Open Sans';
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26.4px;
+  text-align: center;
+  margin: 0;
+  max-height: 180px;
+  overflow: hidden;
+}
+.esta-testim-tmp .tm-widget-excerpt::before {
+  color: rgba(0, 0, 0, 0.06);
+  content: "\201C";
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 16em;
+  line-height: 0.9em;
+  margin-right: -0.2em;
+  vertical-align: -0.4em;
+  position: absolute;
+  top: -30px;
+  left: 15%;
+}
+.esta-testim-tmp .tm-widget-excerpt::after {
+  color: rgba(0, 0, 0, 0.06);
+  content: "\201C";
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 16em;
+  line-height: 0.9em;
+  vertical-align: -0.4em;
+  position: absolute;
+  top: -30px;
+  right: 15%;
+  margin-left: -0.2em;
+  transform: rotateY(180deg);
+}
+.esta-testim-tmp h5.uk-panel-title {
+  font-family: 'Montserrat';
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 10px 0 15px 0;
+}
+.esta-testim-tmp h5.uk-panel-title a:hover,
+.esta-testim-tmp h5.uk-panel-title a:focus {
+  color: #e6e6e6;
+}
+.esta-testim-tmp p {
+  margin: 0;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.esta-testim-tmp p a {
+  color: rgba(255, 255, 255, 0.7);
+}
+.esta-testim-tmp p a:hover {
+  color: #ffffff;
+}
+.esta-testim-tmp p.tm-wiget-content {
+  font-family: 'Open Sans';
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  text-align: center;
+  margin: 0;
+}
+.esta-testim-tmp .wp-post-image {
+  border: 2px solid #e6e6e6;
+  transition: all 0.3s ease 0s;
+}
+.esta-testim-tmp .wp-post-image:hover {
+  transform: scale(1.1);
+}
+.esta-testim-tmp ul.uk-slideshow {
+  overflow: visible;
+}
+.esta-testim-tmp .uk-dotnav-contrast > * > * {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+.esta-testim-tmp .uk-dotnav > * {
+  padding-left: 20px;
+}
+.esta-testim-tmp .uk-dotnav > *:first-child {
+  padding-left: 0;
+}
+.esta-testim-tmp .uk-dotnav > * > * {
+  width: 8px;
+  height: 8px;
+}
+.esta-testim-tmp .uk-dotnav-contrast > * > :hover,
+.esta-testim-tmp .uk-dotnav-contrast > * > :focus {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+.esta-testim-tmp .uk-dotnav-contrast > .uk-active > * {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  transform: scale(1.5);
+}
+
+
+/* Renter */
+.renter-testim-tmp{
+    margin-top:40px;
+}
+.renter-testim-tmp .uk-slideshow{
+    overflow:visible;
+}
+.renter-testim-tmp  h6{
+    margin-top:10px;
+    margin-bottom:15px;
+}
+.renter-testim-tmp cite p{
+    display: inline-block;
+    position:relative;
+    margin:10px 0 15px 5px;
+    padding-left: 15px;
+    font-style: normal;
+}
+.renter-testim-tmp cite p::before {
+    content: '/';
+    position: absolute;
+    left: 0;
+}
+.renter-testim-tmp article{
+    padding-bottom:10px;
+    border-bottom:2px solid rgba(139, 195, 74, 1);
+    color: #e6e6e6;
+}
+.renter-testim-tmp .tm-widget-excerpt::before {
+  color: rgba(139, 195, 74, 0.8);
+  content: "\201C";
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 13em;
+  line-height: 0.9em;
+  margin-right: -0.2em;
+  vertical-align: -0.4em;
+  position: absolute;
+  top: -25px;
+  left: -35px;
+  z-index:-1;
+}
+.renter-testim-tmp .uk-dotnav > * > * {
+    width: 30px;
+    height: 30px;
+}
+.renter-testim-tmp .uk-dotnav > li > a {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray; /* IE 6-9 */
+}
+.renter-testim-tmp .uk-dotnav > li.uk-active > a {
+    box-shadow: 0px 0px 30px 0px rgba(139, 195, 74, 1) inset;
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    -ms-filter: grayscale(0%);
+    -o-filter: grayscale(0%);
+    filter: grayscale(0%);
+    filter: none; /* IE 6-9 */
+}
+.renter-testim-tmp .uk-slidenav-position .uk-slidenav-previous {
+    left: -40px;
+}
+.renter-testim-tmp .uk-slidenav-position .uk-slidenav-next {
+    right: -40px;
+}
+
+
+/* ibloga */
+
+.ibloga-testim-tmp .ang-testim-ava-wrapp {
+  display: inline-block;
+  padding-right: 30px;
+}
+.ibloga-testim-tmp .tm-widget-excerpt {
+  padding: 0;
+  margin-bottom: 15px;
+}
+.ibloga-testim-tmp .tm-widget-excerpt::before,
+.ibloga-testim-tmp .tm-widget-excerpt::after {
+  content: "";
+}
+.ibloga-testim-tmp .tm-widget-excerpt p {
+  font-weight: 700;
+  line-height: 32px;
+}
+.ibloga-testim-tmp h6.uk-panel-title {
+  margin-top: 0;
+}
+.ibloga-testim-tmp cite p {
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  padding-left: 10px;
+  font-style: normal;
+  position: relative;
+  color: #808080;
+  font-size: 14px;
+  font-weight: 400;
+}
+.ibloga-testim-tmp cite p::before {
+  content: '/';
+  position: absolute;
+  left: 0;
+}
+.ibloga-testim-tmp .uk-dotnav > * {
+  padding-left: 10px;
+}
+.ibloga-testim-tmp .uk-dotnav > *:first-child {
+  padding-left: 0;
+}
+.ibloga-testim-tmp .uk-dotnav > * > * {
+  border-radius: initial;
+  width: 14px;
+  height: 14px;
+}
+.ibloga-testim-tmp .uk-dotnav-contrast > * > * {
+  border: 2px solid #333333;
+}
+.ibloga-testim-tmp .uk-dotnav-contrast > * > :hover,
+.ibloga-testim-tmp .uk-dotnav-contrast > * > :focus {
+  background: #ffffff;
+  border: 2px solid #ffc107;
+}
+.ibloga-testim-tmp .uk-dotnav-contrast > .uk-active > * {
+  background: #ffc107;
+  border: 2px solid #ffc107;
+  transform: scale(1);
+}
+
+.ibloga-testim-tmp .testimonials-icon {
+  text-align: center;
+}
+.ibloga-testim-tmp .testimonials-icon span {
+  font-size: 40px;
+}
+.ibloga-testim-tmp .testimonials-icon span::before {
+  font-family: 'Simple-Line-Icons';
+  content: "\e04a";
+  speak: none;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1.7;
+}

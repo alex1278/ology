@@ -1,0 +1,66 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 19, 2016, 12:13:08 AM
+    Author     : Alex
+*/
+
+/* ========================================================================
+   Component: Block
+ ========================================================================== */
+.uk-block {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+/* Phone landscape and bigger */
+@media (min-width: 768px) {
+  .uk-block {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+/*
+ * Micro clearfix to make blocks more robust
+ */
+.uk-block:before,
+.uk-block:after {
+  content: "";
+  display: table;
+}
+.uk-block:after {
+  clear: both;
+}
+/*
+ * Remove margin from the last-child
+ */
+.uk-block > :last-child {
+  margin-bottom: 0;
+}
+/* Padding Modifier
+ ========================================================================== */
+/*
+ * Large padding
+ */
+.uk-block-large {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+/* Tablets and bigger */
+@media (min-width: 768px) {
+  .uk-block-large {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 960px) {
+  .uk-block-large {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}

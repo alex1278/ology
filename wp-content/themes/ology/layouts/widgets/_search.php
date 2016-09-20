@@ -1,0 +1,4 @@
+<form class="uk-search" id="<?php echo esc_attr($widget->id); ?>" action="<?php echo esc_url(home_url( '/' )); ?>" method="get" role="search"  <?php if($widget->position !== 'offcanvas'):?>data-uk-search="{'source': '<?php echo esc_url(site_url('wp-admin')); ?>/admin-ajax.php?action=warp_search', 'param': 's', 'msgResultsHeader': '<?php esc_html_e("Search Results", 'ology'); ?>', 'msgMoreResults': '<?php esc_html_e("More Results", 'ology'); ?>', 'msgNoResults': '<?php esc_html_e("No results found", 'ology'); ?>', flipDropdown: 1}"<?php endif;?>>
+    <input class="uk-search-field" type="text" value="" name="s" placeholder="<?php esc_html_e('Search', 'ology'); ?>">
+    <input class="uk-button uk-button-primary tm-search-button" type="submit" name="ok" value="<?php esc_html_e('Search', 'ology'); ?>">
+</form>

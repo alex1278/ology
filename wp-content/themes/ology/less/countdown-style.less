@@ -1,0 +1,152 @@
+/* 
+    Created on : Jul 31, 2015, 10:24:26 AM
+    Author     : Alex
+*/
+
+/*
+ * Countdown Styles                               - Plugin styles
+ */
+
+.tm-offline-page{
+    .CountDownTimer{
+        margin-top: 15%;
+        margin-bottom:11%;
+    }
+    .cloud-city-tophtml,
+    .cloud-city-bothtml { 
+
+    }
+    .cloud-city-dashboard {
+            padding: 0;
+            border:none;
+            box-sizing: border-box;
+            background: fade(@global-primary-background, 75%);
+            position:relative;
+            &::before{
+                content: "";
+                width: 1000px;
+                height: 100%;
+                background: fade(@global-primary-background, 75%);
+                position: absolute;
+                left: 100%;
+                top: 0;
+            }
+            &::after{
+                content: "";
+                width: 1000px;
+                height: 100%;
+                background: fade(@global-primary-background, 75%);
+                position: absolute;
+                right: 100%;
+                top: 0;
+            }
+    }
+    .cloud-city-dash {
+            overflow:hidden;
+            padding:55px 0 0 0;
+            width:180px;
+            background: transparent;
+            height: 180px;
+            margin-left:29px;
+            box-sizing:border-box;
+    }
+    .cloud-city-tripdash { 
+            max-width:100%;
+            overflow:hidden;
+            padding:55px 0 0 0;
+            width:180px;
+            background:transparent;
+            height: 180px;
+            margin-left:29px;
+            box-sizing:border-box;
+    }
+    .cloud-city-weeks_trip_dash{ 
+        clear: both; 
+        margin-left: 0; 
+        display: inline-block !important;
+    }
+    .cloud-city-days_dash{
+        background-color: darken(@global-primary-background, 10%);
+    }
+    .cloud-city-seconds_dash,
+    .cloud-city-minutes_dash,
+    .cloud-city-weeks_trip_dash,
+    .cloud-city-hours_dash{
+        .cloud-city-dash_title{
+            visibility: hidden;
+        }
+    }
+    .cloud-city-dash::after,
+    .cloud-city-tripdash::after{
+        content:"";
+        top:5px;
+        bottom:5px;
+        left:5px;
+        right:5px;
+        //border:1px solid fade(@text-primary-color, 30%);
+        position:absolute;
+
+    }
+
+    .cloud-city-dash:first-child{
+        margin-left:0;
+    }
+
+    .cloud-city-digit { 
+       font-family: @base-digits-font-family;
+        color:@global-contrast-color;
+        font-size:@global-font-size * 5;
+        font-weight:bold;
+        line-height:0.9;
+        height:auto;
+        width: 0.7em;
+        margin:0;
+        border-radius:0;
+        background:none;
+        text-shadow: none;
+        border-bottom: none;
+    }
+
+    .cloud-city-tripdash .cloud-city-digit { 
+
+    }
+    .cloud-city-dash_title { 
+        color:@global-contrast-color;
+        font-family: @base-digits-font-family;
+        font-size: @global-font-size + 5;
+        font-weight: @base-body-font-weight;
+        line-height: 75px;
+        text-transform: lowercase;
+        height:auto;
+        bottom:0;
+        left:0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .tm-offline-page .cloud-city-dash {
+        padding:15px 0 0 0;
+        width:72px;
+        height: 72px;
+        margin-left:10px;
+        margin-bottom:15px;
+}
+.tm-offline-page .cloud-city-tripdash { 
+        padding:15px 0 0 0;
+        width:72px;
+        height: 72px;
+        margin-left:10px;
+        margin-bottom:15px;
+}
+.tm-offline-page .cloud-city-digit { 
+    font-size:@global-font-size * 2;
+}
+    .tm-offline-page .cloud-city-dash_title { 
+    font-size: @global-font-size;
+    line-height: 40px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    
+ }

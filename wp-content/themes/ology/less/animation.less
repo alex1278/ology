@@ -1,0 +1,376 @@
+/* 
+    Created on : Aug 27, 2015, 11:50:20 PM
+    Author     : Alex
+*/
+
+/*
+ * Animation css styles                           - Theme animation Styles
+ */
+
+@keyframes ang-pulse-anim{
+50% {
+    transform: scale(1.2);}
+}
+.ang-pulse-anim{
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0px);
+    box-shadow: 0px 0px 1px transparent;
+    backface-visibility: hidden;
+}
+.ang-pulse-anim:hover,
+.ang-pulse-anim:focus,
+.ang-pulse-anim:active {
+    animation-name: ang-pulse-anim;
+    animation-duration: 0.4s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+.ang-pulse-anim-child:hover i,
+.ang-pulse-anim-child:focus i,
+.ang-pulse-anim-child:active i{
+    animation-name: ang-pulse-anim;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+ 
+/********* background animation ***********************/
+
+@-webkit-keyframes backgroundScroll-X {
+from {background-position: 0 0;}
+to {background-position: -1920px 0;}
+} 
+@keyframes backgroundScroll-X{
+from {background-position: 0 0;}
+to {background-position: -1920px 0;}
+}
+.backgroundScroll-X-left {
+ background-repeat: repeat;
+  background-position:left top;
+  background-size: auto 425px;
+-webkit-animation: backgroundScroll-X 60s linear infinite normal;
+animation: backgroundScroll-X 60s linear infinite normal;
+}
+
+
+.backgroundScroll-X-right {
+ background-repeat: repeat;
+ background-position:left top;
+  background-size: auto 425px;
+-webkit-animation: backgroundScroll-X 60s linear infinite reverse;
+animation: backgroundScroll-X 60s linear infinite reverse;
+}
+.backgroundScroll-X-alternate {
+ background-repeat: repeat;
+ background-position:left top;
+  background-size: auto 425px;
+-webkit-animation: backgroundScroll-X 60s linear infinite alternate;
+animation: backgroundScroll-X 60s linear infinite alternate;
+}
+
+@-webkit-keyframes backgroundScroll-Y {
+from {background-position: 0 0;}
+to {background-position: 0 -425px;}
+}
+@keyframes backgroundScroll-Y {
+from {background-position: 0 0;}
+to {background-position: 0 -425px;}
+}
+.backgroundScroll-Y-top {
+ background-repeat: repeat;
+background-position:left top;
+  background-size: 1920px auto;
+-webkit-animation: backgroundScroll-Y 20s linear infinite normal;
+animation: backgroundScroll-Y 20s linear infinite normal;
+}
+
+.backgroundScroll-Y-bottom {
+ background-repeat: repeat;
+ background-position:left top;
+  background-size: 1920px auto;
+-webkit-animation: backgroundScroll-Y 20s linear infinite reverse;
+animation: backgroundScroll-Y 20s linear infinite reverse;
+}
+.backgroundScroll-Y-alternate {
+ background-repeat: repeat;
+background-position:left top;
+  background-size: 1920px auto;
+-webkit-animation: backgroundScroll-Y 20s linear infinite alternate;
+animation: backgroundScroll-Y 20s linear infinite alternate;
+}
+
+@-webkit-keyframes backgroundScroll-YX {
+0% {background-position: 0px 0px;}
+100% { background-position: 1920px 425px; }
+}
+@keyframes backgroundScroll-YX {
+0% {background-position: 0px 0px;}    
+100% {background-position: 1920px 425px;}
+}
+.backgroundScroll-YX-alternate {
+ background-repeat: repeat;
+background-position:left top;
+  background-size: 1920px 425px;
+-webkit-animation: backgroundScroll-YX 60s linear infinite alternate;
+animation: backgroundScroll-YX 60s linear infinite alternate;
+}
+.backgroundScroll-X-left:hover,
+.backgroundScroll-X-right:hover,
+.backgroundScroll-X-alternate:hover,
+.backgroundScroll-Y-top:hover,
+.backgroundScroll-Y-bottom:hover,
+.backgroundScroll-Y-alternate:hover,
+.backgroundScroll-YX-alternate:hover {
+-webkit-animation-play-state:paused;
+-moz-animation-play-state:paused;
+animation-play-state:paused;
+}
+
+/************************ Progress bar animation ***************************/
+
+// not tested, took from epl
+@-webkit-keyframes ang-animate-shine { 
+	0% {opacity: 0; width: 0;}
+	50% {opacity: .5;}
+	100% {opacity: 0; width: 95%;}
+}
+@-moz-keyframes ang-animate-shine {
+	0% {opacity: 0; width: 0;}
+	50% {opacity: .5;}
+	100% {opacity: 0; width: 95%;}
+}
+@keyframes ang-animate-shine {
+	0% {opacity: 0; width: 0;}
+	50% {opacity: .5;}
+	100% {opacity: 0; width: 95%;}
+}
+.ang-animate-shine > span,
+.ang-animate-shine > a{
+	background-color: #e50000;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e50000), to(#cc0000));
+	background-image: -webkit-linear-gradient(top, #e50000, #cc0000);
+	background-image: -moz-linear-gradient(top, #e50000, #cc0000);
+	background-image: -ms-linear-gradient(top, #e50000, #cc0000);
+	background-image: -o-linear-gradient(top, #e50000, #cc0000);
+	background-image: linear-gradient(top, #e50000, #cc0000);
+}
+.ang-animate-shine > span,
+.ang-animate-shine > a{
+	position: relative;
+}
+
+.ang-animate-shine:hover > span::after,
+.ang-animate-shine:focus > span::after,
+.ang-animate-shine:active > span::after,
+.ang-animate-shine:hover > a::after,
+.ang-animate-shine:focus > a::after,
+.ang-animate-shine:active > a::after{
+        content: '';
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: #fff;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;	
+        -webkit-animation: ang-animate-shine 5s ease-out infinite;
+        -moz-animation: ang-animate-shine 5s ease-out infinite;
+        animation: ang-animate-shine 5s ease-out infinite; 
+}
+
+/*
+* buttons next-previous hover aimation
+*/
+
+/* Icon Wobble Horizontal */
+@-webkit-keyframes hvr-icon-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px);
+  }
+
+  33.3% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+  }
+
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+  }
+
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+  }
+
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes hvr-icon-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px);
+  }
+
+  33.3% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+  }
+
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+  }
+
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+  }
+
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+.hvr-icon-wobble-horizontal {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  padding-right: 2.2em;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.hvr-icon-wobble-horizontal:before {
+  content: "\f061";
+  position: absolute;
+  right: 1em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.hvr-icon-wobble-horizontal:hover:before, .hvr-icon-wobble-horizontal:focus:before, .hvr-icon-wobble-horizontal:active:before {
+  -webkit-animation-name: hvr-icon-wobble-horizontal;
+  animation-name: hvr-icon-wobble-horizontal;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+
+/* ICONS */
+/* Icon Back */
+.hvr-icon-back {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  padding-left: 2.2em;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+.hvr-icon-back:before {
+  content: "\f104";
+  position: absolute;
+  left: 1em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  margin-left:-27px;
+  font-size:35px;
+  line-height: 1;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  
+}
+.hvr-icon-back:hover:before, .hvr-icon-back:focus:before, .hvr-icon-back:active:before {
+  -webkit-transform: translateX(-10px);
+  transform: translateX(-10px);
+}
+
+/* Icon Forward */
+.hvr-icon-forward,
+.hvr-read-more-forward{
+  
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  padding-right: 2.2em;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+.hvr-icon-forward:before,
+.hvr-read-more-forward:before{
+  content: "\f105";
+  position: absolute;
+  right: 1em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  margin-right:-27px;
+  font-size:35px;
+  line-height: 1;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-read-more-forward:before{
+  content: "\f18e";
+  line-height: @base-body-line-height;
+  font-size:@global-font-size;
+  margin-right:-10px;
+}
+
+.hvr-icon-forward:hover:before, .hvr-icon-forward:focus:before, .hvr-icon-forward:active:before,
+.hvr-read-more-forward:hover:before, .hvr-read-more-forward:focus:before, .hvr-read-more-forward:active:before{
+  -webkit-transform: translateX(10px);
+  transform: translateX(10px);
+}

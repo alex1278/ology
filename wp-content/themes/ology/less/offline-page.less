@@ -1,0 +1,133 @@
+/* 
+    Created on : Jul 30, 2015, 1:16:41 PM
+    Author     : Alex
+*/
+
+/*
+ * Offline page                                   - Offline page styles
+ */
+
+.tm-offline-page{
+    background-size:cover;
+    font-family: @base-body-font-family;
+    background-attachment: fixed;
+    .uk-container.uk-container-center{
+       width:1200px;
+   }
+   .ang-offline-icons{
+        text-transform:uppercase;
+        text-align: right;
+        line-height: 100%;
+        height:100%;
+        background-color: #393b3c;
+        position:relative;
+        min-height: 90px;
+        &::before{
+            content: "";
+            width: 1000px;
+            height: 100%;
+            background-color: #393b3c;
+            position: absolute;
+            left: 100%;
+            top: 0;
+        }
+        span{
+            text-transform: none;
+            font-family: @base-feature-font-family;
+            font-size: @base-body-font-size + 1;
+            margin-right:8%;
+            line-height: @base-body-line-height * 1.5;
+        }
+        > div{
+            position: absolute;
+            bottom: 50%;
+            left: 0px;
+            right: 0px;
+            margin: auto;
+            transform: translateY(50%);
+       }
+       .widget_ang_add_new_field{
+           display:inline-block;
+       }
+   }
+    .uk-icon-button{
+        border:1px solid fade(@global-contrast-color, 50%);
+        background: none;
+        color: fade(@global-contrast-color, 50%);
+        //line-height: 31px;
+        &:hover,
+        &:focus{
+            background: @global-primary-background;
+            color:@global-contrast-color;
+            border-color:transparent;
+        }
+    }
+    a{
+        transition: none;
+        margin-right:15px;
+        &:last-child {
+            margin-right:0;
+        }
+    }
+    &.offline-social{
+        position: absolute;
+        bottom: 9%;
+        width: 100%;
+        left: 0;
+        text-align:center;
+    } 
+}
+
+.renter-offline-logos{
+    color: @base-heading-color;
+}
+.renter-coming-soon{
+    font-size: @base-body-font-size * 2;
+}
+.ang-maintance-mode-wrapp{
+    background-color:transparent;
+    padding:30px;
+}
+.ang-maintance-mode-wrapp > div{
+    //border: 1px solid fade(@global-border, 20%);
+}
+.ang-maintance-mode-wrapp h1{
+    color:@global-contrast-color;
+    font-size: 50px;
+    margin-bottom:0;
+    padding:25px 0;
+    text-transform:uppercase;
+    text-align: left;
+    background-color: @global-primary-background;
+    position:relative;
+    &::before{
+        content: "";
+        width: 1000px;
+        height: 100%;
+        background-color: @global-primary-background;
+        position: absolute;
+        right: 100%;
+        top: 0;
+    }
+}
+.ang-maintance-mode-wrapp p {
+     color:fade(@global-contrast-color, 50%);
+}
+
+@media screen and (min-width: 900px) and (max-width: 1219px){
+    
+}
+@media (max-width:959px){
+    
+}
+@media (max-width:900px){
+    
+}
+@media (max-width:767px){
+    .ang-maintance-mode-wrapp h1{
+    font-size:@base-h1-font-size / 2 ;
+    }
+}
+@media (max-width:479px){
+    
+}

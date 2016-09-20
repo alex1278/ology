@@ -1,0 +1,117 @@
+/* 
+    Created on : November 26, 2015, 11:26:43 AM
+    Author     : Alex Glovatskyy
+
+    All of the CSS for your public-facing functionality should be
+    included in this file.
+*/
+
+/*
+ * Testymonials styles                            - Plugin Quick-and-easy-testimonials
+ */
+
+
+.ag-page-wrapp{
+    .ang-testimonials-wrapp{
+        .ang-testimonials-grid-wrapp{
+            margin-bottom:30px;
+        }
+        .qe-testimonial-wrapper{
+            border: 1px solid @global-border;
+            border-bottom-width:3px;
+            background-color: @global-background;
+            background-image: none;
+            transition: all 0.8s linear 0s;
+            &:hover{
+                border-color:@text-primary-color;
+            }
+            .qe-testimonial-meta{
+                margin: 1em;     
+            }
+            .qe-testimonial-img{
+                display: inline-block;
+                margin:0;
+                img.avatar{
+                    transition: all 0.3s ease 0s;
+                    box-sizing: content-box;
+                    display: inline-block;
+                    border-radius: 50%;
+                    max-width: 55px;
+                    max-height: 55px;
+                    width: auto;
+                    height: auto;
+                    opacity: 1;
+                    &:hover{
+                       opacity: 0.7;
+                    }
+                }
+            }
+            .qe-testimonial-author{
+                display: inline-block;
+                margin-left:15px;
+                vertical-align: middle;
+                text-align: left;
+            }
+            .qe-testimonial-name{
+                font-size: @global-font-size + 2;
+                padding-bottom:0;
+            }
+            .qe-testimonial-byline{
+                font-size: @global-font-size - 1;
+                font-family: @base-heading-font-family;
+                font-weight: @base-body-font-weight;
+                padding-top:0;
+            }
+            .qe-testimonial-text{
+                p{
+                    font-style: normal;
+                    line-height: @global-line-height - 3;
+                    font-size: @global-font-size;
+                    text-align: left;
+                    color:@global-muted-color;
+                }
+                
+            }
+        }
+    }
+    .qe-testimonial-wrapper{
+  
+        .qe-testimonial-img{
+        
+            img.avatar{
+                display: inline-block;
+                border-radius: 50%;
+                max-width: 150px;
+                max-height: 150px;
+                width: auto;
+                height: auto;
+                border:2px solid fade(@global-border, 30%);
+                transition: all 0.3s ease 0s; 
+                opacity: 1;
+                &:hover{
+                   opacity: 0.8;
+                }
+            }
+        }
+
+      
+      .qe-testimonial-name{
+        //font-size: 1.1em;
+        font-size: @global-font-size + 4;
+        font-family: @base-heading-font-family;
+        font-weight: @base-body-font-weight;
+        color:@base-heading-color;
+        padding-bottom:5px;
+      }
+
+      .qe-testimonial-byline{
+        //font-size: 0.9em;
+        font-size: @global-font-size;
+        font-family: @base-feature-font-family;
+        font-weight: 600;
+        padding-top:5px;
+        
+      }
+
+    }
+}

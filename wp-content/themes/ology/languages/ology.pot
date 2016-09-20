@@ -1,0 +1,592 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: ology\n"
+"POT-Creation-Date: 2016-02-18 11:59+0200\n"
+"PO-Revision-Date: 2016-02-18 11:58+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: 404.php:13
+msgid "Page not found"
+msgstr ""
+
+#: 404.php:13
+msgid "404_page_message"
+msgstr ""
+
+#: easypropertylistings/archive-listing.php:23
+#, php-format
+msgid "Property in %s"
+msgstr ""
+
+#: easypropertylistings/archive-listing.php:26
+msgid "Search Result"
+msgstr ""
+
+#: easypropertylistings/archive-listing.php:34
+msgid "Listing"
+msgstr ""
+
+#: easypropertylistings/archive-listing.php:71
+msgid "Listing not Found"
+msgstr ""
+
+#: easypropertylistings/archive-listing.php:75
+msgid "Listing not found, expand your search criteria and try again."
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:31
+#: easypropertylistings/class-author-meta.php:62
+#: easypropertylistings/content-listing-single-compatibility.php:47
+#: easypropertylistings/content-listing-single.php:47
+#: easypropertylistings/single-content-author-tall.php:50
+#: easypropertylistings/single-content-author-tall.php:55
+#: easypropertylistings/single-content-author-tall.php:83
+#: easypropertylistings/widget-content-author-tall.php:55
+#: easypropertylistings/widget-content-author-tall.php:91
+#: layouts/author.php:120 layouts/author.php:154 layouts/author.php:161
+msgid "Contact"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:31
+#: easypropertylistings/class-author-meta.php:62
+#: easypropertylistings/single-content-author-tall.php:83
+#: easypropertylistings/widget-content-author-tall.php:91
+#: layouts/author.php:120
+msgid "by Email"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:31
+#: easypropertylistings/class-author-meta.php:63
+msgid "Email"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:36
+#: easypropertylistings/author-meta-compat.php:41
+#: easypropertylistings/author-meta-compat.php:46
+#: easypropertylistings/author-meta-compat.php:51
+#: easypropertylistings/author-meta-compat.php:56
+#: easypropertylistings/class-author-meta.php:78
+#: easypropertylistings/class-author-meta.php:94
+#: easypropertylistings/class-author-meta.php:110
+#: easypropertylistings/class-author-meta.php:126
+#: easypropertylistings/class-author-meta.php:142
+msgid "Follow"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:36
+#: easypropertylistings/class-author-meta.php:78
+msgid "on Twitter"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:36
+#: easypropertylistings/class-author-meta.php:79
+msgid "Twitter"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:41
+#: easypropertylistings/class-author-meta.php:94
+msgid "on Google"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:41
+#: easypropertylistings/class-author-meta.php:95
+msgid "Google"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:46
+#: easypropertylistings/class-author-meta.php:110
+msgid "on Facebook"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:46
+#: easypropertylistings/class-author-meta.php:111
+msgid "Facebook"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:51
+#: easypropertylistings/class-author-meta.php:126
+msgid "on Linkedin"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:51
+msgid "Linkedin"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:56
+#: easypropertylistings/class-author-meta.php:142
+msgid "on Skype"
+msgstr ""
+
+#: easypropertylistings/author-meta-compat.php:56
+#: easypropertylistings/class-author-meta.php:143
+msgid "Skype"
+msgstr ""
+
+#: easypropertylistings/class-author-meta.php:127
+msgid "LinkedIn"
+msgstr ""
+
+#: easypropertylistings/class-author-meta.php:175
+msgid "Read More"
+msgstr ""
+
+#: easypropertylistings/content-listing-single-compatibility.php:38
+#: easypropertylistings/content-listing-single.php:38
+msgid "Book Now"
+msgstr ""
+
+#: easypropertylistings/content-listing-single-compatibility.php:55
+#: easypropertylistings/content-listing-single.php:55
+msgid "Go to map"
+msgstr ""
+
+#: easypropertylistings/content-listing-single-compatibility.php:55
+#: easypropertylistings/content-listing-single.php:55
+msgid "View on map"
+msgstr ""
+
+#: easypropertylistings/content-listing-single-compatibility.php:78
+#: easypropertylistings/content-listing-single.php:77 layouts/author.php:130
+msgid "Description"
+msgstr ""
+
+#: easypropertylistings/content-listing-single-compatibility.php:102
+#: easypropertylistings/content-listing-single.php:99
+msgid "Location"
+msgstr ""
+
+#: easypropertylistings/content-listing-single-compatibility.php:132
+#: easypropertylistings/content-listing-single.php:165
+msgid "Pages:"
+msgstr ""
+
+#: easypropertylistings/content-listing-single.php:127 layouts/page.php:20
+#: layouts/property.php:15 layouts/single.php:40
+msgid "Edit this post."
+msgstr ""
+
+#: easypropertylistings/content-listing-single.php:140
+#: easypropertylistings/content-listing-single.php:142 layouts/property.php:28
+#: layouts/property.php:30
+msgid "Previous"
+msgstr ""
+
+#: easypropertylistings/content-listing-single.php:148
+#: easypropertylistings/content-listing-single.php:149 layouts/property.php:36
+#: layouts/property.php:37
+msgid "Next"
+msgstr ""
+
+#: easypropertylistings/single-content-author-tall.php:22
+msgid "Assigned Agent"
+msgstr ""
+
+#: easypropertylistings/single-content-author-tall.php:69
+#: easypropertylistings/widget-content-author-tall.php:124 layouts/_post.php:56
+#: layouts/search.php:65
+msgid "Read more"
+msgstr ""
+
+#: easypropertylistings/widget-content-author-tall.php:53
+#: layouts/author.php:152
+msgid "You can leave the message. I will contact you as soon as possible."
+msgstr ""
+
+#: functions.php:36 functions.php:37 functions.php:49 functions.php:50
+#: functions.php:51 functions.php:52 functions.php:53 functions.php:54
+#: functions.php:55 functions.php:56 functions.php:57 functions.php:58
+#: functions.php:59 functions.php:60 functions.php:61 functions.php:62
+#: functions.php:64 functions.php:65
+msgid ""
+"This is common sidebar. Widgets in this position can be displayed in "
+"different styles with additional icons and badges. Detailed in theme "
+"settings."
+msgstr ""
+
+#: functions.php:38
+msgid "This is special sidebar for Search widget."
+msgstr ""
+
+#: functions.php:39
+msgid "This is special sidebar for extra site information."
+msgstr ""
+
+#: functions.php:40
+msgid ""
+"This is special sidebar for logo widget. In theme settings you can set up "
+"use it or not."
+msgstr ""
+
+#: functions.php:41
+msgid ""
+"This is special sidebar for small logo widget. In theme settings you can set "
+"up use it or not."
+msgstr ""
+
+#: functions.php:42
+msgid ""
+"This is special sidebar for main menu. All widgets in this position will be "
+"dropdown."
+msgstr ""
+
+#: functions.php:43 functions.php:44
+msgid "Widgets in this sidebar don't have title. Use it for side information."
+msgstr ""
+
+#: functions.php:45
+msgid ""
+"This is special sidebar for extra theme information or addition options. "
+"Widgets in this sidebar don't have title."
+msgstr ""
+
+#: functions.php:46
+msgid ""
+"This is special sidebar to display social icons on single blog pages. Use it "
+"for social box."
+msgstr ""
+
+#: functions.php:47
+msgid ""
+"This is special sidebar for Breadcrumbs. Use it for display your site "
+"navigation."
+msgstr ""
+
+#: functions.php:48 functions.php:63
+msgid ""
+"This is special sidebar for slide show. This sidebar have fullwidth layout."
+msgstr ""
+
+#: functions.php:66
+msgid ""
+"Widgets in this position can be displayed in different styles with "
+"additional icons and badges. Detailed in theme settings. Use it for "
+"copyrights."
+msgstr ""
+
+#: functions.php:67
+msgid "This is special sidebar for mobile menu."
+msgstr ""
+
+#: functions.php:68
+msgid "This is special sidebar for debugging your widgets."
+msgstr ""
+
+#: functions.php:69
+msgid "This is special sidebar. Use it with widget-short codes."
+msgstr ""
+
+#: includes/scheme_layouts.php:18
+msgid "Theme comes with a broad range of layout options"
+msgstr ""
+
+#: includes/scheme_layouts.php:19 includes/scheme_layouts.php:31
+msgid "Widgets layout scheme"
+msgstr ""
+
+#: includes/scheme_layouts.php:19
+msgid "Show Widgets layout scheme"
+msgstr ""
+
+#: includes/scheme_layouts.php:22
+msgid "Widget Layouts"
+msgstr ""
+
+#: includes/scheme_layouts.php:23
+msgid ""
+"The blue widget positions allow to choose a widget layout which defines the "
+"widget alignment and proportions: parallel, stacked, first doubled, last "
+"doubled and center doubled. You can easily add your own widget layouts."
+msgstr ""
+
+#: includes/scheme_layouts.php:25
+msgid "Sidebar Layouts"
+msgstr ""
+
+#: includes/scheme_layouts.php:26
+msgid ""
+"The two available sidebars, highlighted in red, can be switched to the left "
+"or right side and their widths can easily be set in the theme administration."
+msgstr ""
+
+#: includes/scheme_layouts.php:28
+msgid "Widget Style"
+msgstr ""
+
+#: includes/scheme_layouts.php:29
+msgid ""
+"For widgets in the blue and red positions you can choose different widget "
+"styles."
+msgstr ""
+
+#: includes/scheme_layouts.php:32
+msgid "Widgets layout scheme-2"
+msgstr ""
+
+#: includes/scheme_layouts.php:33
+msgid "Widgets layout scheme-3"
+msgstr ""
+
+#: includes/vendor/torbara/php/theme_rand.php:362
+msgid "Next page"
+msgstr ""
+
+#: includes/vendor/torbara/php/theme_rand.php:363
+msgid "Previous page"
+msgstr ""
+
+#: layouts/_category.php:32
+#, php-format
+msgid "By %s. Posted in %s"
+msgstr ""
+
+#: layouts/_category.php:47
+msgid "Read more ..."
+msgstr ""
+
+#: layouts/_category.php:49
+msgid "<i class=\"uk-icon-comment\"></i>No Comments"
+msgstr ""
+
+#: layouts/_category.php:49
+msgid "<i class=\"uk-icon-comment\"></i>1 Comment"
+msgstr ""
+
+#: layouts/_category.php:49
+msgid "<i class=\"uk-icon-comment\"></i>% Comments"
+msgstr ""
+
+#: layouts/_category.php:61 layouts/archive.php:73
+#, php-format
+msgid "Sorry, but there aren't any posts in the %s category yet."
+msgstr ""
+
+#: layouts/_post.php:36 layouts/search.php:45 layouts/single.php:22
+msgid "<i class=\"uk-icon-comments\"></i> 0"
+msgstr ""
+
+#: layouts/_post.php:36 layouts/search.php:45 layouts/single.php:22
+msgid "<i class=\"uk-icon-comment\"></i>1"
+msgstr ""
+
+#: layouts/_post.php:36 layouts/search.php:45 layouts/single.php:22
+msgid "<i class=\"uk-icon-comment\"></i>%"
+msgstr ""
+
+#: layouts/archive.php:6
+#, php-format
+msgid "Posts Tagged %s"
+msgstr ""
+
+#: layouts/archive.php:8 layouts/archive.php:10 layouts/archive.php:12
+#, php-format
+msgid "Archive for %s"
+msgstr ""
+
+#: layouts/archive.php:14 layouts/author.php:189
+msgid "Author Archive"
+msgstr ""
+
+#: layouts/archive.php:16
+msgid "Blog Archives"
+msgstr ""
+
+#: layouts/archive.php:34
+msgid "Error while trying to get queried file:"
+msgstr ""
+
+#: layouts/archive.php:75
+msgid "Sorry, but there aren't any posts with this date."
+msgstr ""
+
+#: layouts/archive.php:78
+#, php-format
+msgid "Sorry, but there aren't any posts by %s yet."
+msgstr ""
+
+#: layouts/archive.php:80
+msgid "No posts found."
+msgstr ""
+
+#: layouts/author.php:64
+msgid "Work with"
+msgstr ""
+
+#: layouts/author.php:78
+msgid "Properties"
+msgstr ""
+
+#: layouts/author.php:137
+msgid "Watch my video"
+msgstr ""
+
+#: layouts/author.php:180
+msgid "Agent Properties"
+msgstr ""
+
+#: layouts/comments.php:7
+#, php-format
+msgid "%s Comments"
+msgstr ""
+
+#: layouts/comments.php:54
+msgid "<span class=\"ang-comment-role\">Admin</span>"
+msgstr ""
+
+#: layouts/comments.php:57
+#, php-format
+msgid "%1$s - %2$s"
+msgstr ""
+
+#: layouts/comments.php:58
+msgid "Edit"
+msgstr ""
+
+#: layouts/comments.php:67
+msgid "<i class=\"uk-icon-reply\"></i> Reply"
+msgstr ""
+
+#: layouts/comments.php:71
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: layouts/comments.php:97
+msgid "Leave a reply"
+msgstr ""
+
+#: layouts/comments.php:97
+msgid "Comments are closed"
+msgstr ""
+
+#: layouts/comments.php:100
+msgid "Your email address will not be published. Required fields are marked"
+msgstr ""
+
+#: layouts/comments.php:103
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: layouts/comments.php:113
+#, php-format
+msgid "Logged in as <a href=\"%s\">%s</a>"
+msgstr ""
+
+#: layouts/comments.php:113
+msgid "Log out of this account"
+msgstr ""
+
+#: layouts/comments.php:113
+msgid "Log out &raquo;"
+msgstr ""
+
+#: layouts/comments.php:118 layouts/comments.php:158
+msgid "Comment *"
+msgstr ""
+
+#: layouts/comments.php:143
+msgid "Name"
+msgstr ""
+
+#: layouts/comments.php:147
+msgid "E-mail"
+msgstr ""
+
+#: layouts/comments.php:151
+msgid "Website"
+msgstr ""
+
+#: layouts/comments.php:165
+msgid "Post comment"
+msgstr ""
+
+#: layouts/comments.php:204
+msgid "Cancel"
+msgstr ""
+
+#: layouts/error.php:30
+msgid "Sorry, the page you are looking for does not exist."
+msgstr ""
+
+#: layouts/error.php:33
+msgid "Homepage"
+msgstr ""
+
+#: layouts/index.php:24
+msgid "Not Found"
+msgstr ""
+
+#: layouts/index.php:25
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr ""
+
+#: layouts/search.php:8
+msgid "Search Results for"
+msgstr ""
+
+#: layouts/search.php:95
+msgid "No posts found. Try a different search?"
+msgstr ""
+
+#: layouts/single.php:43
+#, php-format
+msgid "<a href=\"%s\">Trackback</a> from your site."
+msgstr ""
+
+#: layouts/single.php:99 layouts/single.php:101
+msgid "Previous article"
+msgstr ""
+
+#: layouts/single.php:110 layouts/single.php:112
+msgid "Next article"
+msgstr ""
+
+#: layouts/widgets/_search.php:1
+msgid "Search Results"
+msgstr ""
+
+#: layouts/widgets/_search.php:1
+msgid "More Results"
+msgstr ""
+
+#: layouts/widgets/_search.php:1
+msgid "No results found"
+msgstr ""
+
+#: layouts/widgets/_search.php:2 layouts/widgets/_search.php:3
+msgid "Search"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "ology"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "http://themeforest.net/user/torbara/portfolio"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Ology Responsive Wordpress Theme."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Aleksandr Glovatskyy"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://torbara.com"
+msgstr ""

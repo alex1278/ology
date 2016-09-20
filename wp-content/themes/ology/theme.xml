@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * @copyright  Copyright ( C ) 2015 Torbara (http://torbara.com). All rights reserved.
+ * @license    Copyrighted Commercial Software
+ * @support    support@torbara.com
+ * @author     Aleksandr Glovatskyy (aleksandr1278@gmail.com)
+-->
+<theme>
+    <name>Ology</name>
+    <version>1.0.0</version>
+    <creationDate>August 2016</creationDate>
+    <author>Aleksandr Glovatskyy</author>
+    <authorEmail>aleksandr1278@gmail.com</authorEmail>
+    <authorUrl>http://torbara.com/</authorUrl>
+    <copyright>Copyrighted Commercial Software</copyright>
+    <license>support@torbara.com</license>
+    <description>Trannings and Classes Wordpress Theme</description>
+    <positions>
+        <position>sidebar-a</position>
+        <position>sidebar-b</position>
+        <position settings="assignment">search</position>
+        <position settings="assignment">logo</position>
+        <position settings="assignment">extra-toolbar</position>
+        <position settings="assignment">logo-small</position>
+        <position settings="title assignment">menu</position>
+        <position settings="title assignment">toolbar-l</position>
+        <position settings="title assignment">toolbar-r</position>
+        <position settings="title assignment">toolbar-dropdown</position>
+        <position settings="title assignment">toolbar-dropdown-extra</position>
+        <position settings="title assignment class icon badge display">social-sidebar</position>
+        <position settings="assignment">headerbar</position>
+        <position settings="assignment">breadcrumbs</position>
+        <position>fullscreen</position>
+        <position>top-a</position>
+        <position>top-b</position>
+        <position>top-c</position>
+        <position>top-d</position>
+        <position>top-e</position>
+        <position>top-f</position>
+        <position>top-g</position>
+        <position>bottom-a</position>
+        <position>bottom-b</position>
+        <position>bottom-c</position>
+        <position>bottom-d</position>
+        <position>bottom-e</position>
+        <position>bottom-f</position>
+        <position>bottom-fullscreen</position>
+        <position>bottom-g</position>
+        <position>main-top</position>
+        <position>main-bottom</position>
+        <position>footer</position>
+        <position settings="title assignment">offcanvas</position>
+        <position settings="">debug</position>
+        <position settings="">notexist</position>
+    </positions>
+</theme>
