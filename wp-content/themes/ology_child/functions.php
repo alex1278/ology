@@ -8,7 +8,8 @@
  * @support      support@torbara.com
  * 
  */
-function ology_child_scripts() {
+function ology_child_scripts() { 
+    
     wp_enqueue_style( 'ology-style', get_stylesheet_uri() );
 }
 add_action( 'wp_enqueue_scripts', 'ology_child_scripts' );
