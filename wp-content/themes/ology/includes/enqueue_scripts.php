@@ -13,7 +13,7 @@
 function ology_add_scripts() {
     global $warp;
     
-    $current_theme_js_dir_path = WP_PLUGIN_URL .'/tt-warp7330/warp/vendor/uikit/js';
+    $current_theme_js_dir_path = WP_PLUGIN_URL .'/tt-warp7/warp/vendor/uikit/js';
 
     wp_enqueue_script( 'uikit', $current_theme_js_dir_path . '/uikit.js', array(), '', true);
     wp_enqueue_script( 'acordion', $current_theme_js_dir_path . '/components/accordion.js', array(), '', true);
@@ -62,7 +62,7 @@ add_action('wp_enqueue_scripts', 'ology_add_scripts' );
 function ology_add_css() {
     global $warp;
     
-    $current_theme_css_dir_path = WP_PLUGIN_URL .'/tt-warp7330/warp/vendor';
+    $current_theme_css_dir_path = WP_PLUGIN_URL .'/tt-warp7/warp/vendor';
     
     if($warp['config']->get('style') == "default"){
         

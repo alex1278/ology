@@ -95,14 +95,7 @@ $body_classes .= ' '.$config->get('page_class');
 
 $config->set('body_classes', trim($body_classes));
 
-/*
- * Add social buttons
- */
-
 $body_config = array();
-$body_config['twitter']  = (int) $config->get('twitter', 0);
-$body_config['plusone']  = (int) $config->get('plusone', 0);
-$body_config['facebook'] = (int) $config->get('facebook', 0);
 $body_config['style']    = $config->get('style');
 
 $config->set('body_config', json_encode($body_config));

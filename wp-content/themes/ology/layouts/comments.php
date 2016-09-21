@@ -20,7 +20,7 @@
             <?php
 
                 // single comment
-                function mytheme_comment($comment, $args, $depth) {
+                function ology_comment($comment, $args, $depth) {
                     global $user_identity;
 
                     $GLOBALS['comment'] = $comment;
@@ -63,7 +63,7 @@
                     // </li> is rendered by system
                 }
 
-                wp_list_comments('type=all&callback=mytheme_comment');
+                wp_list_comments('type=all&callback=ology_comment');
             ?>
             </ul>
             <?php endif; ?>

@@ -422,11 +422,11 @@ include($this['path']->path('layouts:theme.config.php'));
                 <div class="tm-section-box <?php echo esc_attr($this['config']->get('grid.footer.background-color')); ?>">
                     <div class="uk-container uk-container-center <?php if (@$this['config']->get('grid.footer.fullscreen')) { echo esc_attr("ang-container-fullwidth"); } ?> <?php if (@$this['config']->get('grid.footer.viewport_height')) { echo esc_attr('ang-height-viewport uk-vertical-align'); } ?>">
                         
-                        <footer id="tm-footer" class="<?php echo esc_attr($grid_classes['footer']); echo esc_attr($display_classes['footer']); ?>  <?php echo esc_attr($this['config']->get('grid.footer.pad-top')); ?>  <?php echo esc_attr($this['config']->get('grid.footer.pad-bot')); ?> <?php echo esc_attr($this['config']->get('grid.footer.vertical_alignment')); ?> " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
+                        <footer id="tm-footer" class="uk-position-relative <?php echo esc_attr($grid_classes['footer']); if ( $this['widgets']->count('footer') ) { echo esc_attr($display_classes['footer']); } ?>  <?php echo esc_attr($this['config']->get('grid.footer.pad-top')); ?>  <?php echo esc_attr($this['config']->get('grid.footer.pad-bot')); ?> <?php echo esc_attr($this['config']->get('grid.footer.vertical_alignment')); ?> " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
                                 <?php if ( $this['widgets']->count('footer') ): ?>
                                     <?php echo $this['widgets']->render('footer', array('layout'=>$this['config']->get('grid.footer.layout'))); ?>
                                 <?php else : ?>
-                                    <p><?php $this->output('warp_branding'); ?></p>
+                                    <p class="uk-panel uk-panel-box uk-width-1-1 uk-text-left"><?php $this->output('warp_branding'); ?></p>
                                 <?php endif; ?>
 
                                 <?php if ($this['config']->get('totop_scroller', true)) : ?>

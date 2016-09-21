@@ -3756,7 +3756,7 @@ select.uk-form-width-mini {
  ========================================================================== */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("../../../plugins/tt-warp7330/warp/vendor/uikit/fonts/fontawesome-webfont.woff2") format('woff2'), url("../../../plugins/tt-warp7330/warp/vendor/uikit/fonts/fontawesome-webfont.woff") format("woff"), url("../../../plugins/tt-warp7330/warp/vendor/uikit/fonts/fontawesome-webfont.ttf") format("truetype");
+  src: url("../../../plugins/tt-warp7/warp/vendor/uikit/fonts/fontawesome-webfont.woff2") format('woff2'), url("../../../plugins/tt-warp7/warp/vendor/uikit/fonts/fontawesome-webfont.woff") format("woff"), url("../../../plugins/tt-warp7/warp/vendor/uikit/fonts/fontawesome-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
