@@ -13405,6 +13405,9 @@ body.uk-offcanvas-page {
   border: 1px solid #e6e6e6;
   padding: 10px 0;
 }
+#tribe-bar-form.tribe-bar-collapse {
+  padding: 0;
+}
 #tribe-bar-form label {
   color: #a6a6a6;
   font-size: 13px;
@@ -13458,7 +13461,7 @@ body.uk-offcanvas-page {
 #tribe-bar-form .tribe-bar-submit,
 #tribe-bar-form.tribe-bar-full .tribe-bar-submit,
 #tribe-bar-form.tribe-bar-mini .tribe-bar-submit {
-  margin-top: 32px;
+  margin-top: 25px;
   margin-left: 0;
   position: relative;
 }
@@ -14226,6 +14229,17 @@ aside .widget_search form .search-submit,
 aside .widget_search form .screen-reader-text {
   display: none;
 }
+aside .search-form {
+  position: relative;
+}
+aside .search-form::before {
+  content: "\f002";
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  font-family: FontAwesome;
+}
 aside .search-form::before,
 aside .uk-search::before {
   border-radius: 50px;
@@ -14368,11 +14382,16 @@ aside .uk-search.uk-active .uk-search-field {
 /* 
  *   position Aside Categories Widget 
  */
+.widget_meta ul,
 .widget_categories ul,
+.widget_meta ul.uk-list-line,
 .widget_categories ul.uk-list-line {
   list-style: none;
+  padding: 0;
 }
+.widget_meta ul > li,
 .widget_categories ul > li,
+.widget_meta ul.uk-list-line > li,
 .widget_categories ul.uk-list-line > li {
   border-top: none;
   font-size: 12px;
@@ -14382,7 +14401,9 @@ aside .uk-search.uk-active .uk-search-field {
   clear: both;
   padding-top: 0;
 }
+.widget_meta ul > li a,
 .widget_categories ul > li a,
+.widget_meta ul.uk-list-line > li a,
 .widget_categories ul.uk-list-line > li a {
   position: relative;
   color: #757678;
@@ -14390,7 +14411,9 @@ aside .uk-search.uk-active .uk-search-field {
   padding: 0;
   float: left;
 }
+.widget_meta ul > li a::before,
 .widget_categories ul > li a::before,
+.widget_meta ul.uk-list-line > li a::before,
 .widget_categories ul.uk-list-line > li a::before {
   content: "\f178";
   font-family: FontAwesome;
@@ -14401,26 +14424,38 @@ aside .uk-search.uk-active .uk-search-field {
   font-size: 0;
   transition: all 0.1s ease 0.1s;
 }
+.widget_meta ul > li a:hover,
 .widget_categories ul > li a:hover,
+.widget_meta ul.uk-list-line > li a:hover,
 .widget_categories ul.uk-list-line > li a:hover {
   color: #9f9a70;
   background: none;
   padding: 0 0 0 25px;
 }
+.widget_meta ul > li a:hover::before,
 .widget_categories ul > li a:hover::before,
+.widget_meta ul.uk-list-line > li a:hover::before,
 .widget_categories ul.uk-list-line > li a:hover::before {
   font-size: 16px;
 }
+/**
+* position Aside Meta Widget 
+*/
 /* 
  *   position Aside Recent Comments Widget 
  */
+.widget_recent_comments ul,
 .widget_recent_comments ul.uk-comment-list {
   margin-top: 0;
+  list-style: none;
+  padding: 0;
 }
+.widget_recent_comments ul > li header,
 .widget_recent_comments ul.uk-comment-list > li header {
   padding-bottom: 20px;
   position: relative;
 }
+.widget_recent_comments ul > li header::after,
 .widget_recent_comments ul.uk-comment-list > li header::after {
   content: '';
   height: 1px;
@@ -14430,45 +14465,95 @@ aside .uk-search.uk-active .uk-search-field {
   bottom: 0;
   left: 0;
 }
+.widget_recent_comments ul > li img,
 .widget_recent_comments ul.uk-comment-list > li img {
   display: none;
 }
+.widget_recent_comments ul > li h4,
 .widget_recent_comments ul.uk-comment-list > li h4 {
   font-weight: 600;
 }
+.widget_recent_comments ul > li h4 a,
+.widget_recent_comments ul.uk-comment-list > li h4 a {
+  color: #757678;
+}
+.widget_recent_comments ul > li h4 a:hover,
+.widget_recent_comments ul.uk-comment-list > li h4 a:hover {
+  color: rgba(159, 154, 112, 0.7);
+}
+.widget_recent_comments ul > li time,
 .widget_recent_comments ul.uk-comment-list > li time {
   text-transform: uppercase;
 }
 /* 
- *   position Aside Recent Posts Widget 
+ *   position Aside Recent Posts Widget and RSS
  */
+.widget_rss ul,
+.widget_rss ul.uk-list-line {
+  margin-top: 0;
+  list-style: none;
+  padding: 0;
+}
+.widget_rss ul > li,
+.widget_rss ul.uk-list-line > li {
+  margin-bottom: 10px;
+  border-top: none;
+}
+.widget_rss ul > li a,
+.widget_rss ul.uk-list-line > li a {
+  color: #757678;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  line-height: 1.3;
+  display: inline-block;
+}
+.widget_rss ul > li span,
+.widget_rss ul.uk-list-line > li span {
+  display: block;
+  color: #a7a7a7;
+  font-size: 12px;
+  font-weight: 400;
+}
+.widget_rss ul > li:hover,
+.widget_rss ul.uk-list-line > li:hover {
+  border-color: rgba(159, 154, 112, 0.7);
+}
+.widget_rss ul > li:hover a,
+.widget_rss ul.uk-list-line > li:hover a {
+  color: rgba(159, 154, 112, 0.7);
+}
+.widget_recent_entries ul,
 .widget_recent_entries ul.uk-list-line {
   margin-top: 0;
+  list-style: none;
+  padding: 0;
 }
+.widget_recent_entries ul > li,
 .widget_recent_entries ul.uk-list-line > li {
-  text-transform: uppercase;
-  padding: 5px 5px 5px 8px;
-  margin-bottom: 30px;
-  border-left: 35px solid #e6e6e6;
+  margin-bottom: 10px;
   border-top: none;
-  transition: all 0.3s ease 0s;
 }
+.widget_recent_entries ul > li a,
 .widget_recent_entries ul.uk-list-line > li a {
   color: #757678;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 300;
   line-height: 1.3;
   display: inline-block;
 }
+.widget_recent_entries ul > li span,
 .widget_recent_entries ul.uk-list-line > li span {
   display: block;
   color: #a7a7a7;
   font-size: 12px;
   font-weight: 400;
 }
+.widget_recent_entries ul > li:hover,
 .widget_recent_entries ul.uk-list-line > li:hover {
   border-color: rgba(159, 154, 112, 0.7);
 }
+.widget_recent_entries ul > li:hover a,
 .widget_recent_entries ul.uk-list-line > li:hover a {
   color: rgba(159, 154, 112, 0.7);
 }
@@ -15058,16 +15143,16 @@ main .ang-pagination-wrap {
   padding-bottom: 5px;
   margin-bottom: 30px;
 }
-.uk-comment-list > li > .uk-comment {
+.ang-comment-cover .uk-comment-list > li > .uk-comment {
   background-color: #f2f2f2;
 }
-.uk-comment-list .uk-comment {
+.ang-comment-cover .uk-comment-list .uk-comment {
   padding: 30px;
 }
-.uk-comment-list .uk-comment .uk-comment-title a {
+.ang-comment-cover .uk-comment-list .uk-comment .uk-comment-title a {
   color: #757678;
 }
-.uk-comment-list .uk-comment .uk-comment-title a:hover {
+.ang-comment-cover .uk-comment-list .uk-comment .uk-comment-title a:hover {
   color: rgba(159, 154, 112, 0.7);
 }
 .uk-comment-avatar img {

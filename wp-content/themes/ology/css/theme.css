@@ -7199,7 +7199,7 @@ a.uk-thumbnail:focus {
   /* 3 */
   box-sizing: border-box;
   /* 4 */
-  width: 200px;
+  width: 220px;
 }
 /*
  * Dropdown style
@@ -7290,16 +7290,16 @@ a.uk-thumbnail:focus {
      * Width multiplier for dropdown columns
      */
   .uk-dropdown-width-2:not(.uk-dropdown-stack) {
-    width: 400px;
+    width: 440px;
   }
   .uk-dropdown-width-3:not(.uk-dropdown-stack) {
-    width: 600px;
+    width: 660px;
   }
   .uk-dropdown-width-4:not(.uk-dropdown-stack) {
-    width: 800px;
+    width: 880px;
   }
   .uk-dropdown-width-5:not(.uk-dropdown-stack) {
-    width: 1000px;
+    width: 1100px;
   }
 }
 /* Phone landscape and smaller */
@@ -13407,6 +13407,9 @@ body.uk-offcanvas-page {
   border: 1px solid #dedede;
   padding: 10px 0;
 }
+#tribe-bar-form.tribe-bar-collapse {
+  padding: 0;
+}
 #tribe-bar-form label {
   color: #999797;
   font-size: 13px;
@@ -13460,7 +13463,7 @@ body.uk-offcanvas-page {
 #tribe-bar-form .tribe-bar-submit,
 #tribe-bar-form.tribe-bar-full .tribe-bar-submit,
 #tribe-bar-form.tribe-bar-mini .tribe-bar-submit {
-  margin-top: 32px;
+  margin-top: 25px;
   margin-left: 0;
   position: relative;
 }
@@ -14381,23 +14384,15 @@ aside .uk-search.uk-active .uk-search-field {
 /* 
  *   position Aside Categories Widget 
  */
-.widget_nav_menu ul,
-.widget_pages ul,
 .widget_meta ul,
 .widget_categories ul,
-.widget_nav_menu ul.uk-list-line,
-.widget_pages ul.uk-list-line,
 .widget_meta ul.uk-list-line,
 .widget_categories ul.uk-list-line {
   list-style: none;
   padding: 0;
 }
-.widget_nav_menu ul > li,
-.widget_pages ul > li,
 .widget_meta ul > li,
 .widget_categories ul > li,
-.widget_nav_menu ul.uk-list-line > li,
-.widget_pages ul.uk-list-line > li,
 .widget_meta ul.uk-list-line > li,
 .widget_categories ul.uk-list-line > li {
   border-top: none;
@@ -14408,12 +14403,8 @@ aside .uk-search.uk-active .uk-search-field {
   clear: both;
   padding-top: 0;
 }
-.widget_nav_menu ul > li a,
-.widget_pages ul > li a,
 .widget_meta ul > li a,
 .widget_categories ul > li a,
-.widget_nav_menu ul.uk-list-line > li a,
-.widget_pages ul.uk-list-line > li a,
 .widget_meta ul.uk-list-line > li a,
 .widget_categories ul.uk-list-line > li a {
   position: relative;
@@ -14422,12 +14413,8 @@ aside .uk-search.uk-active .uk-search-field {
   padding: 0;
   float: left;
 }
-.widget_nav_menu ul > li a::before,
-.widget_pages ul > li a::before,
 .widget_meta ul > li a::before,
 .widget_categories ul > li a::before,
-.widget_nav_menu ul.uk-list-line > li a::before,
-.widget_pages ul.uk-list-line > li a::before,
 .widget_meta ul.uk-list-line > li a::before,
 .widget_categories ul.uk-list-line > li a::before {
   content: "\f178";
@@ -14439,24 +14426,16 @@ aside .uk-search.uk-active .uk-search-field {
   font-size: 0;
   transition: all 0.1s ease 0.1s;
 }
-.widget_nav_menu ul > li a:hover,
-.widget_pages ul > li a:hover,
 .widget_meta ul > li a:hover,
 .widget_categories ul > li a:hover,
-.widget_nav_menu ul.uk-list-line > li a:hover,
-.widget_pages ul.uk-list-line > li a:hover,
 .widget_meta ul.uk-list-line > li a:hover,
 .widget_categories ul.uk-list-line > li a:hover {
   color: #54b4e6;
   background: none;
   padding: 0 0 0 25px;
 }
-.widget_nav_menu ul > li a:hover::before,
-.widget_pages ul > li a:hover::before,
 .widget_meta ul > li a:hover::before,
 .widget_categories ul > li a:hover::before,
-.widget_nav_menu ul.uk-list-line > li a:hover::before,
-.widget_pages ul.uk-list-line > li a:hover::before,
 .widget_meta ul.uk-list-line > li a:hover::before,
 .widget_categories ul.uk-list-line > li a:hover::before {
   font-size: 16px;
