@@ -70,9 +70,8 @@
 
                         </div>
                         <div class="ang-arhive-links uk-clearfix">
-                            <?php
-                                printf(wp_kses(__('<span class="uk-float-left"> Author: %s</span>', 'ology'), 'post' ), '<a href="'.get_author_posts_url(get_the_author_meta('ID')).'" title="'.get_the_author().'">'.get_the_author().'</a>');
-                            ?>
+                            
+                            <span class="uk-float-left"><?php esc_html_e('Author: ', 'ology');?> <?php the_author_posts_link(); ?> </span>
                             <?php if(comments_open() || get_comments_number()) : ?>
                             <span class="uk-float-right"><?php esc_html_e('Comments: ', 'ology'); comments_popup_link(esc_html__('0', 'ology'), esc_html__('1', 'ology'), esc_html__('%', 'ology'), "", "");?></span>
                             <?php endif; ?>

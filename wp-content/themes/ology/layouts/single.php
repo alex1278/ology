@@ -6,10 +6,10 @@
         <!-- on loop start check the global post is empty so that template tags don't work before the_content(), it is good if some third-party plugins unset global variable post or change main WP_Query-->
         <?php if (get_the_category_list()) : ?>
             <div class="uk-article-meta uk-margin-bottom">
-                <?php
-                    echo get_avatar(get_the_author_meta('user_email'), $size = '45', null, 'Ava', array('class'=>'uk-border-circle uk-margin-right ang-author-ava'));
-                    printf(wp_kses(__('<p class="uk-display-inline-block">Author: %s </p><p class="uk-float-right">Categories: %s &ensp; <span>|</span> &ensp; Tags: %s</p>', 'ology'), 'post' ), '<span><a href="'.get_author_posts_url(get_the_author_meta('ID')).'" title="'.get_the_author().'">'.get_the_author().'</a></span>', get_the_category_list(',  '), get_the_tag_list('',',  ',''));
-                ?>
+                <?php echo get_avatar(get_the_author_meta('user_email'), $size = '45', null, 'Ava', array('class'=>'uk-border-circle uk-margin-right ang-author-ava'));?>
+                <p class="uk-display-inline-block"><?php esc_html_e('Author: ', 'ology'); ?> <span><?php the_author_posts_link(); ?></span></p>
+                <p class="uk-float-right"><?php esc_html_e('Categories: ', 'ology'); ?> <?php the_category(',  '); ?> &ensp; <span>|</span> &ensp; <?php esc_html_e('Tags: ', 'ology'); ?> <?php the_tags('',',  ',''); ?></p>
+                
             </div>
         <?php endif; ?>
         
@@ -40,7 +40,7 @@
         <?php edit_post_link(esc_html__('Edit this post.', 'ology'), '<p class="uk-clearfix"><i class="uk-icon-pencil"></i> ','</p>'); ?>
 
         <?php if (pings_open()) : ?>
-        <p><?php printf(wp_kses(__('<a href="%s">Trackback</a> from your site.', 'ology'), 'post' ), get_trackback_url()); ?></p>
+        <p><a href="<?php trackback_url(); ?>"><?php esc_html_e('Trackback from your site.', 'ology'); ?></a></p>
         <?php endif; ?>
 
         <?php if(!$this['config']->get('author_box', true) && get_the_author_meta('description')) { ?>

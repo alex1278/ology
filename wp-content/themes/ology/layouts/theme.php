@@ -158,7 +158,6 @@ include($this['path']->path('layouts:theme.config.php'));
     </div>
     </div>
     
-<!--     breadcrumbs section  -->
 
     <?php if ($this['widgets']->count('breadcrumbs')) : ?>
     <div id="tm-breadcrumbs" <?php do_action('ang_breadcrumbs_bg'); ?> class="<?php echo esc_attr($this['config']->get('grid.breadcrumbs.background')).' '; ?> <?php echo esc_attr($this['config']->get('grid.breadcrumbs.background-animation')).' '; ?>">
@@ -178,7 +177,6 @@ include($this['path']->path('layouts:theme.config.php'));
         
         <?php endif; ?>
                  
-        <!--  section with 5 blocks of features -->
         <?php if ($this['widgets']->count('top-a')) : ?>
             <div id="tm-top-a" class="<?php echo esc_attr($this['config']->get('grid.top-a.background')).' ';?> <?php echo esc_attr($this['config']->get('grid.top-a.background-animation') ).' '; ?>">
                 <div class="tm-section-box <?php echo esc_attr($this['config']->get('grid.top-a.background-color')); ?>">
@@ -191,7 +189,6 @@ include($this['path']->path('layouts:theme.config.php'));
             </div>
         <?php endif; ?>
         
-        <!--   section with descr and accordion -->
         <?php if ($this['widgets']->count('top-b')) : ?>        
             <div id="tm-top-b" class="<?php echo esc_attr($this['config']->get('grid.top-b.background')).' '; ?> <?php echo esc_attr($this['config']->get('grid.top-b.background-animation')).' '; ?> " data-uk-parallax="{bg: '-500'}">
                 <div class="tm-section-box <?php echo esc_attr($this['config']->get('grid.top-b.background-color')); ?>">
@@ -202,7 +199,6 @@ include($this['path']->path('layouts:theme.config.php'));
             </div>
         <?php endif; ?>
         
-        <!--  section with galery and search -->
         <?php if ($this['widgets']->count('top-c')) : ?>  
             <div id="tm-top-c" class="<?php echo esc_attr($this['config']->get('grid.top-c.background')).' '; ?> <?php echo esc_attr($this['config']->get('grid.top-c.background-animation')).' '; ?>">
                 <div class="tm-section-box <?php echo esc_attr($this['config']->get('grid.top-c.background-color')); ?>">  
@@ -213,7 +209,6 @@ include($this['path']->path('layouts:theme.config.php'));
             </div>
         <?php endif; ?>
         
-        <!--   section achievements -->
         <?php if ($this['widgets']->count('top-d')) : ?>
             <div id="tm-top-d" class="<?php  echo esc_attr( $this['config']->get('grid.top-d.background')).' '; ?> <?php  echo esc_attr( $this['config']->get('grid.top-d.background-animation')).' '; ?>" data-uk-parallax="{bg: '-300'}">
                 <div class="tm-section-box <?php echo esc_attr($this['config']->get('grid.top-d.background-color')); ?>">
@@ -224,7 +219,6 @@ include($this['path']->path('layouts:theme.config.php'));
             </div>
         <?php endif; ?>     
         
-        <!--   woocomerce items -->
         <?php if ($this['widgets']->count('top-e')) : ?>   
             <div id="tm-top-e" class="<?php echo esc_attr($this['config']->get('grid.top-e.background')).' '; ?> <?php echo esc_attr($this['config']->get('grid.top-e.background-animation')).' '; ?>">
                 <div class="tm-section-box <?php echo esc_attr($this['config']->get('grid.top-e.background-color')); ?>">
@@ -235,7 +229,6 @@ include($this['path']->path('layouts:theme.config.php'));
             </div>
         <?php endif; ?>    
 
-        <!--   pricing section -->
         <?php if ($this['widgets']->count('top-f')) : ?>
             <div id="tm-top-f" class="<?php echo esc_attr( $this['config']->get('grid.top-f.background')).' '; ?> <?php echo esc_attr( $this['config']->get('grid.top-f.background-animation')).' '; ?>" data-uk-parallax="{bg: '-400'}">
                 <div class="tm-section-box <?php echo esc_attr($this['config']->get('grid.top-f.background-color')); ?>">
@@ -246,7 +239,6 @@ include($this['path']->path('layouts:theme.config.php'));
             </div>          
         <?php endif; ?>
         
-         <!--   extended section -->
         <?php if ($this['widgets']->count('top-g')) : ?>
             <div id="tm-top-g" class="<?php echo esc_attr($this['config']->get('grid.top-g.background')).' '; ?> <?php echo esc_attr($this['config']->get('grid.top-g.background-animation')).' '; ?>">
                 <div class="tm-section-box <?php echo esc_attr($this['config']->get('grid.top-g.background-color')); ?>">
@@ -257,7 +249,6 @@ include($this['path']->path('layouts:theme.config.php'));
             </div>          
         <?php endif; ?>
         
-<!--        main content plus aside sections -->
        
     <?php if ($this['widgets']->count('main-top + main-bottom + sidebar-a + sidebar-b') || $this['config']->get('system_output', true)) : ?>
         <div  id="tm-main-section" class="<?php echo esc_attr($this['config']->get('background_color')).' '; ?> ">
@@ -337,7 +328,7 @@ include($this['path']->path('layouts:theme.config.php'));
         </div>
         
     <?php endif; ?>
-        <!--   testimonials -->
+
         <?php if ($this['widgets']->count('bottom-a')) : ?>
             <div id="tm-bottom-a" class="<?php echo esc_attr($this['config']->get('grid.bottom-a.background')).' '; ?> <?php echo esc_attr($this['config']->get('grid.bottom-a.background-animation')).' '; ?>">
                 <div class="tm-section-box <?php echo esc_attr($this['config']->get('grid.bottom-a.background-color')); ?>">
@@ -348,7 +339,7 @@ include($this['path']->path('layouts:theme.config.php'));
             </div>
         <?php endif; ?>
         
-    <!--  get it touch-->
+
         <?php if ($this['widgets']->count('bottom-b')) : ?>
             <div id="tm-bottom-b" class="<?php echo esc_attr($this['config']->get('grid.bottom-b.background')).' '; ?> <?php echo esc_attr($this['config']->get('grid.bottom-b.background-animation')).' '; ?>" data-uk-parallax="{bg: '-500'}">
                 <div class="tm-section-box <?php echo esc_attr($this['config']->get('grid.bottom-b.background-color')); ?>">
@@ -359,7 +350,7 @@ include($this['path']->path('layouts:theme.config.php'));
             </div>
         <?php endif; ?>
 
-<!--  extra sections-->
+
        <?php if ($this['widgets']->count('bottom-c')) : ?>
             <div id="tm-bottom-c" class="<?php echo esc_attr($this['config']->get('grid.bottom-c.background')).' '; ?> <?php echo esc_attr($this['config']->get('grid.bottom-c.background-animation')).' '; ?>">
                 <div class="tm-section-box <?php echo esc_attr($this['config']->get('grid.bottom-c.background-color')); ?>">
@@ -400,7 +391,6 @@ include($this['path']->path('layouts:theme.config.php'));
             </div>
         <?php endif; ?>
 
-<!-- extra fullscreen bottom section-->
 
         <?php if ($this['widgets']->count('bottom-fullscreen')) : ?>
         <section id="tm-bottom-fullscreen" class="tm-bottom-fullscreen uk-position-relative"><?php echo $this['widgets']->render('bottom-fullscreen'); ?></section>
@@ -416,7 +406,6 @@ include($this['path']->path('layouts:theme.config.php'));
             </div>
         <?php endif; ?>
 
-<!--footer section-->
         <?php if ($this['widgets']->count('footer + debug') || $this['config']->get('totop_scroller', true)  || $this['config']->get('warp_branding', true) ) : ?>
             <div class="<?php echo esc_attr($this['config']->get('grid.footer.background')).' '; ?> <?php echo esc_attr($this['config']->get('grid.footer.background-animation')).' '; ?>">
                 <div class="tm-section-box <?php echo esc_attr($this['config']->get('grid.footer.background-color')); ?>">

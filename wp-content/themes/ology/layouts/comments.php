@@ -40,7 +40,7 @@
                                             <p class="uk-comment-meta">
                                                 <a class="permalink ang-comment-date" href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)) ?>"><time datetime="<?php echo get_comment_date('Y-m-d'); ?>"><?php printf(esc_html__('%1$s, %2$s', 'ology'), get_comment_date('j M, Y'), get_comment_time('G:i')) ?></time></a>    
                                                 <?php if (comments_open() && $args['max_depth'] > $depth) : ?>
-                                                    <span class="js-reply">&ensp;|&ensp;<a href="#" rel="<?php comment_ID(); ?>"><?php echo wp_kses(__('<i class="uk-icon-reply"></i> Reply', 'ology'), 'post'); ?></a></span>
+                                                    <span class="js-reply">&ensp;|&ensp;<a href="#" rel="<?php comment_ID(); ?>"><i class="uk-icon-reply"></i><?php esc_html_e('Reply', 'ology'); ?></a></span>
                                                     <?php edit_comment_link(esc_html__('Edit', 'ology'), ' | ', '') ;?>
                                                 <?php endif; ?>
                                             </p>
@@ -82,7 +82,11 @@
                             <p class="ang-comment-note uk-margin-remove"> <?php esc_html_e('Your email address will not be published. Required fields are marked', 'ology'); ?> <span class="tm-comment-required-marker">*</span></p>
 
                             <?php if (get_option('comment_registration') && !is_user_logged_in()) : ?>
-                                <div class="uk-alert uk-alert-warning"><?php printf(wp_kses(__('You must be <a href="%s">logged in</a> to post a comment.', 'ology'), 'post'), wp_login_url(get_permalink())); ?></div>
+                                <div class="uk-alert uk-alert-warning">
+                                    <?php esc_html_e('You must be ', 'ology'); ?>
+                                    <a href="<?php print wp_login_url(get_permalink());?>"><?php esc_html_e('logged in', 'ology'); ?></a>
+                                    <?php esc_html_e(' to post a comment.', 'ology'); ?>
+                                </div>
 
                             <?php else : ?>
 
@@ -93,7 +97,15 @@
 
                                         <div class="uk-grid uk-grid-medium uk-grid-width-1-1" data-uk-grid-margin>
                                             <div class="ang-comment-logout">
-                                                <p><?php printf(wp_kses(__('Logged in as <a href="%s">%s</a>', 'ology'), 'post'), get_option('siteurl') . '/wp-admin/profile.php', $user_identity); ?> <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php esc_html_e('Log out of this account', 'ology'); ?>"><?php esc_html_e('Log out &raquo;', 'ology'); ?></a></p>
+                                                <p>
+                                                <?php
+                                                
+                                                esc_html_e('Logged in as ', 'ology');
+                                                printf('<a href="%s">%s</a>', get_option('siteurl') . '/wp-admin/profile.php', $user_identity);
+                                                
+                                                ?>
+                                                <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php esc_html_e('Log out of this account', 'ology'); ?>"><?php esc_html_e('Log out &raquo;', 'ology'); ?></a>
+                                                </p>
                                             </div>
                                             <div>
                                                 <textarea class="tm-touch-message" name="comment" id="comment" cols="80" rows="5" tabindex="4" required placeholder="<?php esc_html_e('Comment *', 'ology'); ?>"></textarea>

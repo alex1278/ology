@@ -338,7 +338,7 @@ jQuery(function($) {
 
                 respond.find(".comment-cancelReply:first").remove();
 
-                $("<a><?php echo esc_html__('Cancel', 'ology'); ?></a>").addClass('comment-cancelReply').addClass('uk-button uk-button-primary uk-margin-bottom-remove uk-text-bold uk-border-rounded uk-width-1-1 uk-margin-top').attr('href', "#respond").bind("click", function () {
+                $("<a>CANCEL</a>").addClass('comment-cancelReply').addClass('uk-button uk-button-primary uk-margin-bottom-remove uk-text-bold uk-border-rounded uk-width-1-1 uk-margin-top').attr('href', "#respond").bind("click", function () {
                     respond.find(".comment-cancelReply:first").remove();
                     respond.appendTo($('#comments')).find("[name=comment_parent]").val(0);
 

@@ -4047,6 +4047,9 @@ body.uk-offcanvas-page {
     border-radius:5px;
     border: 1px solid @global-border;
     padding:10px 0;
+    &.tribe-bar-collapse{
+        padding:0;
+    }
     label{
         color:@global-muted-color;
         font-size: @base-body-font-size - 3;
@@ -4082,7 +4085,7 @@ body.uk-offcanvas-page {
     &.tribe-bar-full,
     &.tribe-bar-mini{
         .tribe-bar-submit{
-            margin-top:32px;
+            margin-top:25px;
             margin-left:0;
             position: relative;
             input[type="submit"] {
@@ -4893,6 +4896,17 @@ aside{
             display:none;
         }
     }
+    .search-form{
+        position: relative;
+        &::before {
+            content: "\f002";
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            font-family: FontAwesome;
+        }
+    }
     .search-form,
     .uk-search{
         &::before{
@@ -5031,12 +5045,14 @@ aside{
 /* 
  *   position Aside Categories Widget 
  */
-
-
+.widget_nav_menu,
+.widget_pages,
+.widget_meta,
 .widget_categories{
     ul,
     ul.uk-list-line{
             list-style: none;
+            padding: 0;
             > li{
                 border-top:none;
                 font-size:@global-font-size - 2;
@@ -5075,14 +5091,23 @@ aside{
     }
 }
 
+/**
+* position Aside Meta Widget 
+*/
+.widget_meta{
+    
+}
+
 /* 
  *   position Aside Recent Comments Widget 
  */
 
 .widget_recent_comments{
-    ul{
-        &.uk-comment-list{
+    ul,
+    ul.uk-comment-list{
             margin-top:0;
+            list-style:none;
+            padding: 0;
             > li{ 
                 header{
                     padding-bottom:20px;
@@ -5102,6 +5127,13 @@ aside{
                 }
                 h4{
                     font-weight:600;
+                    a{
+                        color:@base-heading-color;
+                        &:hover{
+                            color: @global-link-hover-color;
+                        }
+                    }
+                    
                 }
                 time{
                     text-transform:uppercase;
@@ -5109,26 +5141,65 @@ aside{
             }
         }
     }
-}
+
 
 /* 
- *   position Aside Recent Posts Widget 
+ *   position Aside Recent Posts Widget and RSS
  */
-
-.widget_recent_entries{
-    ul{
-        &.uk-list-line{
+.widget_rss{
+    ul,
+    ul.uk-list-line{
             margin-top:0;
+            list-style:none;
+            padding: 0;
             > li{
-                text-transform:uppercase;
-                padding:5px 5px 5px 8px;
-                margin-bottom:30px;
-                border-left:35px solid @global-border;
+                //text-transform:uppercase;
+                //padding:5px 5px 5px 8px;
+                margin-bottom:10px;
+                //border-left:35px solid @global-border;
                 border-top:none;
-                transition: all 0.3s ease 0s;
+                //transition: all 0.3s ease 0s;
                 a{
                     color:@base-heading-color;
-                    font-size:@global-font-size + 4;
+                    font-size:@global-font-size;
+                    font-weight:600;
+                    margin-bottom:15px;
+                    line-height: 1.3;
+                    display: inline-block;
+                }
+                span{
+                    display:block;
+                    color:@global-color;
+                    font-size:@global-font-size - 2;
+                    font-weight:@base-body-font-weight;
+                }
+                &:hover{
+                    border-color: @global-link-hover-color;
+                    a {
+                        color:@global-link-hover-color;
+                    }
+                }
+            }
+        }
+    }
+    
+    
+.widget_recent_entries{
+    ul,
+    ul.uk-list-line{
+            margin-top:0;
+            list-style:none;
+            padding: 0;
+            > li{
+                //text-transform:uppercase;
+                //padding:5px 5px 5px 8px;
+                margin-bottom:10px;
+                //border-left:35px solid @global-border;
+                border-top:none;
+                //transition: all 0.3s ease 0s;
+                a{
+                    color:@base-heading-color;
+                    font-size:@global-font-size;
                     font-weight:300;
                     line-height: 1.3;
                     display: inline-block;
@@ -5148,7 +5219,7 @@ aside{
             }
         }
     }
-}
+
 
 /* 
  *  Most popular posts widget
@@ -5785,24 +5856,25 @@ main{
         padding-bottom:5px;
         margin-bottom:30px;
     }
-}
-.uk-comment-list{
-    >li{
-        >.uk-comment{
-            background-color: @panel-box-background;
-        }
-    }
-    .uk-comment{
-        padding: 30px;
-        .uk-comment-title{
-            a{
-                color:@base-heading-color;
-                &:hover{
-                    color:@global-link-hover-color;
-                }
+
+    .uk-comment-list{
+        >li{
+            >.uk-comment{
+                background-color: @panel-box-background;
             }
         }
-        
+        .uk-comment{
+            padding: 30px;
+            .uk-comment-title{
+                a{
+                    color:@base-heading-color;
+                    &:hover{
+                        color:@global-link-hover-color;
+                    }
+                }
+            }
+
+        }
     }
 }
 .uk-comment-avatar{

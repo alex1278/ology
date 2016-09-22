@@ -9,8 +9,14 @@
             <h4 class="uk-margin-top-remove uk-article-title"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h4>
             <p class="uk-article-meta">
             <?php
-                printf(__('Categories: %s &ensp; <span>|</span> &ensp; Tags: %s', 'ology'), get_the_category_list(',  '), get_the_tag_list('',',  ','') );
-            ?>
+            if(get_the_category_list()){
+                esc_html_e('Categories: ', 'ology'); the_category(',  ');
+            } ?>
+                &ensp;<span>|</span>&ensp;
+            <?php
+            if(get_the_tag_list()){
+                esc_html_e('Tags: ', 'ology'); the_tags('',',  ','');
+            } ?>
             </p>
         </div>
     <?php endif; ?>
@@ -23,10 +29,7 @@
         
     <?php if(get_post_type() != 'tribe_events') : ?>
         <div class="ang-arhive-links uk-clearfix">
-            <?php
-                printf(wp_kses(__('<span class="uk-float-left">%s</span>', 'ology'), 'post' ), '<a href="'.get_the_permalink().'" title="'.get_the_title().'">'.esc_html__('Read more ', 'ology').'</a>');
-            ?>
-        
+             <span class="uk-float-left"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php esc_html_e('Read more ', 'ology');?></a></span>
             <?php if(comments_open() || get_comments_number()) : ?>
                 <span class="uk-float-right"><?php comments_popup_link(esc_html__('No comments', 'ology'), esc_html__('1 comment', 'ology'), esc_html__('% comments', 'ology'), "", "");?></span>
             <?php endif; ?>

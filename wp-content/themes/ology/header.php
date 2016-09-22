@@ -12,7 +12,7 @@
 // Detect Warp 7 plugin. It is required plugin.
 if ( defined('TT_WARP_PLUGIN_URL') ) {
     // start output buffer to capture content for use in footer.php
-    ob_start();
+
 } else { 
     // Otherwise, we work in legacy mode.
     // Template situated in /lib/templates/structure/header.php
