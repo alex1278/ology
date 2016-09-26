@@ -35,7 +35,6 @@ get_header(); ?>
 
                                     <!--team member skills-->
                                     <?php $team_meta = get_post_custom();
-                //                            ang_debug($team_meta);
                                             $skill_meta = array();
                                             for($i = 1; $i<=3; $i++){
                                                 if(isset($team_meta['_skill_name'.$i]) && !empty($team_meta['_skill_name'.$i][0]) ){
@@ -66,12 +65,12 @@ get_header(); ?>
                                 $thumb_id = get_post_thumbnail_id( get_the_ID() ); //add post thumbnail id;
                                 $img = wp_prepare_attachment_for_js ( $thumb_id ); // get image data array
                                 $image_attributes = wp_get_attachment_image_src( $img["id"], 'full' ); ?>
-                                <div class="ang-post-image-cover" style="background: url(<?php echo esc_url ($image_attributes[0]); ?>) no-repeat center / cover">
-                                    <img src="<?php echo $image_attributes[0] ?>"
-                                         width="<?php echo $image_attributes[1] ?>"
-                                         height="<?php echo $image_attributes[2] ?>"
-                                         alt="<?php echo $img["alt"]; ?>"
-                                         title="<?php echo $img["title"];?>"
+                                <div class="ang-post-image-cover" style ="background: url(<?php echo esc_url ($image_attributes[0]); ?>) no-repeat center / cover">
+                                    <img src="<?php echo esc_url($image_attributes[0]); ?>"
+                                         width="<?php echo esc_attr($image_attributes[1]); ?>"
+                                         height="<?php echo esc_attr($image_attributes[2]); ?>"
+                                         alt="<?php echo esc_attr($img["alt"]); ?>"
+                                         title="<?php echo esc_attr($img["title"]);?>"
                                          class="uk-visible-small">
                                 </div>
                             <?php endif; ?>

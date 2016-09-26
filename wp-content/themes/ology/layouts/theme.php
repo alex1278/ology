@@ -93,16 +93,16 @@ include($this['path']->path('layouts:theme.config.php'));
             <div class="uk-position-z-index <?php 
             
             if(!$this['config']->get('menu_absolute', true)) {
-                echo 'tm-nav-absolute ';
-            }else{ echo 'uk-position-relative ';}
+                echo esc_attr('tm-nav-absolute ');
+            }else{ echo esc_attr('uk-position-relative ');}
             if(!$this['config']->get('menu_top_offset', true)){
-                echo 'tm-nav-top-offset ';
+                echo esc_attr('tm-nav-top-offset ');
             }
             ?>">
                 <div class="tm-menu-box "
                  
             <?php if(!$this['config']->get('menu_fixed', true)){
-                        echo ' data-uk-sticky';
+                        echo esc_attr(' data-uk-sticky');
                 } ?>
              <?php if($this['config']->get('menu_delay')!== 'default'){
                         echo ' data-uk-sticky="{'.$this['config']->get('menu_delay') .$this['config']->get('menu_showup').', '.$this['config']->get('menu_animation').'}"';
@@ -111,18 +111,18 @@ include($this['path']->path('layouts:theme.config.php'));
                 <div class="uk-container uk-container-center">      
                     <!-- The logo you can set up in widget or in theme setting -->
                     <?php if ( $this['widgets']->count('logo') ) : ?>
-                        <a class="uk-float-left uk-navbar-brand uk-hidden-small uk-position-relative <?php if(is_front_page()) echo 'home-active';?>" href="<?php echo esc_url( $this['config']->get('site_url')); ?>"><?php echo $this['widgets']->render('logo'); ?></a>
+                        <a class="uk-float-left uk-navbar-brand uk-hidden-small uk-position-relative <?php if(is_front_page()) echo esc_attr('home-active');?>" href="<?php echo esc_url( $this['config']->get('site_url')); ?>"><?php echo $this['widgets']->render('logo'); ?></a>
                     <?php else : ?>
-                        <a class="uk-float-left uk-navbar-brand uk-hidden-small uk-position-relative <?php if(is_front_page()) echo 'home-active';?>" href="<?php echo esc_url($this['config']->get('site_url')); ?>"><?php echo esc_html($this['config']->get('logo_text')); ?></a>
+                        <a class="uk-float-left uk-navbar-brand uk-hidden-small uk-position-relative <?php if(is_front_page()) echo esc_attr('home-active');?>" href="<?php echo esc_url($this['config']->get('site_url')); ?>"><?php echo esc_html($this['config']->get('logo_text')); ?></a>
                     <?php endif; ?> 
                         
                     <?php if ($this['widgets']->count('logo-small')) : ?>
                         <div class="uk-navbar-content  uk-float-left uk-navbar-center uk-visible-small">
-                            <a class="uk-navbar-brand  ag-logo-small uk-position-relative <?php if(is_front_page()) echo 'home-active';?>" href="<?php echo esc_url($this['config']->get('site_url')); ?>"><?php echo $this['widgets']->render('logo-small'); ?></a>
+                            <a class="uk-navbar-brand  ag-logo-small uk-position-relative <?php if(is_front_page()) echo esc_attr('home-active');?>" href="<?php echo esc_url($this['config']->get('site_url')); ?>"><?php echo $this['widgets']->render('logo-small'); ?></a>
                         </div>
                     <?php else : ?>
                         <div class="uk-navbar-content  uk-float-left uk-navbar-center uk-visible-small">
-                            <a class="uk-navbar-brand  ag-logo-small uk-position-relative <?php if(is_front_page()) echo 'home-active';?>" href="<?php echo esc_url($this['config']->get('site_url')); ?>"><?php echo esc_html($this['config']->get('logo_text')); ?></a>
+                            <a class="uk-navbar-brand  ag-logo-small uk-position-relative <?php if(is_front_page()) echo esc_attr('home-active');?>" href="<?php echo esc_url($this['config']->get('site_url')); ?>"><?php echo esc_html($this['config']->get('logo_text')); ?></a>
                         </div>
                     <?php endif; ?>
                         

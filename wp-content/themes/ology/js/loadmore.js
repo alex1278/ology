@@ -16,12 +16,9 @@ jQuery(function($){
 			success:function(data){
 				if( data ) { 
 					$('#true_loadmore').text('Load More'); // insert text of button
-                                        //.before(data); // insert new posts
                                         $('.loop-content, .ang-search-wrapp, .tm-content > div.uk-grid > div').append(data); // insert new posts
 					current_page++; // increase the number of pages per unit
-                                        
 					if (current_page == max_pages) {$("#true_loadmore").remove(); // if last page - remove a button
-                                           //alert(current_page+ ' - that was the last page');
                                        }
 				} else {
 					$('#true_loadmore').remove(); // if we are in the last page of posts, hide the button
@@ -53,10 +50,7 @@ jQuery(function($){
 				},
 				success:function(data){
 					if( data ) { 
-						//$('#true_loadmore').before(data);
                                                 $('.loop-content, .ang-search-wrapp, .tm-content > div.uk-grid > div').append(data); //insert received data
-                                                //$('body').removeClass('loading');
-						//$("#true_loadmore_inf").hide().remove();
 						current_page_inf++; // increase the number of pages per unit
                                                 if (current_page_inf == max_pages_inf)
                                                     $("#true_loadmore_inf").hide().remove(); // if last page - remove a button

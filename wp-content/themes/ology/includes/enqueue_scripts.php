@@ -1,10 +1,10 @@
 <?php
 /*
-* @encoding   UTF-8
-* @author    Aleksandr Glovatskyy (aleksandr1278@gmail.com)
-* @copyright  Copyright ( C ) 2015 torbara (http://torbara.com/). All rights reserved.
-* @license  Copyrighted Commercial Software
-* @support    support@torbara.com
+* @encoding     UTF-8
+* @author       Aleksandr Glovatskyy (aleksandr1278@gmail.com)
+* @copyright    Copyright ( C ) 2015 torbara (http://torbara.com/). All rights reserved.
+* @license      Copyrighted Commercial Software
+* @support      support@torbara.com
 */
 
 /*
@@ -33,10 +33,7 @@ function ology_add_scripts() {
     wp_enqueue_script( "comment-reply" );
     wp_enqueue_script( 'inview', get_template_directory_uri().'/js/jquery.inview.js', array(), '', true);
     wp_enqueue_script( 'easy-pie-chart', get_template_directory_uri().'/js/jquery.easypiechart.min.js', array(), '', true);
-    //wp_enqueue_script( 'counterup', get_template_directory_uri().'/js/jquery.counterup.js', array(), '', true);
     wp_enqueue_script( 'fancySelect', get_template_directory_uri().'/js/fancySelect.js', array(), '', true);
-   
-    //wp_enqueue_script( 'waypoints', 'http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js', array(), '', true);
     
     if($warp['config']->get('style') == "default"){
         if ( file_exists( get_template_directory().'/js/theme.js' ) ) {

@@ -72,13 +72,13 @@ if($this['config']->get('top_gutter_even') !=''){
 
 // render columns
 if ($count = count($columns)) {
-    echo '<div class="uk-grid ang-posts-archive" data-uk-grid-match data-uk-grid-margin '.$grid_parallax.'>';
+    print '<div class="uk-grid ang-posts-archive" data-uk-grid-match data-uk-grid-margin '.$grid_parallax.'>';
     for ($i = 0; $i < $count; $i++) {
         if($i % 2 == 0){
-            echo '<div class="uk-width-medium-1-'.$count.'"'.$grid_gutter_odd.'>'.$columns[$i].'</div>';
+            print '<div class="uk-width-medium-1-'.$count.'"'.$grid_gutter_odd.'>'.$columns[$i].'</div>';
         }else{
-            echo '<div class="uk-width-medium-1-'.$count.'"'.$grid_gutter_even.'>'.$columns[$i].'</div>';
+            print '<div class="uk-width-medium-1-'.$count.'"'.$grid_gutter_even.'>'.$columns[$i].'</div>';
         }
     }
-    echo '</div>';
+    print '</div>';
 }

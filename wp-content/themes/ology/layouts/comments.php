@@ -67,7 +67,6 @@
             ?>
             </ul>
             <?php endif; ?>
-            <!--        //////-->
             <?php
             if (!function_exists("ology_call_tpl_comment_respond")) {
 
@@ -171,41 +170,10 @@
             ology_call_tpl_comment_respond();
             ?>
 
-            <!--     ///////-->    
-
         <?php echo $this->render("_pagination", array("type" => "comments")); ?>
 
     
     </div>
-
-    <script type="text/javascript">
-
-        jQuery(function ($) {
-
-            var respond = $("#respond");
-
-            $("span.js-reply > a").bind("click", function () {
-
-                var id = $(this).attr('rel');
-
-                respond.find(".comment-cancelReply:first").remove();
-
-                $("<a><?php echo esc_html__('Cancel', 'ology'); ?></a>").addClass('comment-cancelReply').addClass('uk-button uk-button-primary uk-margin-bottom-remove uk-text-bold uk-border-rounded uk-width-1-1 uk-margin-top').attr('href', "#respond").bind("click", function () {
-                    respond.find(".comment-cancelReply:first").remove();
-                    respond.appendTo($('#comments')).find("[name=comment_parent]").val(0);
-
-                    return false;
-                }).appendTo(respond.find(".actions:first"));
-
-                respond.find("[name=comment_parent]").val(id);
-                respond.appendTo($("#comment-" + id));
-
-                return false;
-
-            });
-        });
-
-    </script>
 
     <?php
 

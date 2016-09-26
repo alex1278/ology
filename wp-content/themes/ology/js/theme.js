@@ -24,22 +24,6 @@ jQuery(function($) {
             $(this).remove();
         });
     });
-                
-   // Top menu Search Toggle
-   function mainMenuFilterButt(){
-        $(".tm-top-search-show").hover(function(){
-            //$(".tm-extra-toolbar").slideToggle("normal");
-            $(".ang-megaslideshow-wrapper .ang-slideshow-descr").toggleClass('uk-hidden');
-            //return false;
-        });
-   }
-	
-    //half bg resizing
-    function halhImageBg() {
-        var h = $('.tm-achiev-round').height();
-        var hHeader = $('.tm-achiev-round .uk-panel-title').outerHeight(true);
-        $('.tm-achiev-round:has(.tm-achiev-item)').css('background-position', '100%'+' '+(h/2+hHeader/2)+'px');
-    }                  
         
     // Bottom fullscreen mega slider hover navigation 
     function fullSliderNavHover(){
@@ -83,11 +67,6 @@ jQuery(function($) {
                 nums.unshift(newNum);
             }
             var interval = settings.time / nums.length * 1000;
-            
-            console.log(getProgressVal);
-            console.log("step " +newNum);
-            console.log('interval ' + interval);
-            console.log(nums);
             
             $this.data('ang-nums', nums);
             $this.text('0');
@@ -135,8 +114,6 @@ jQuery(function($) {
             //your options goes here
             
             barColor:'rgba(84, 180, 230, 1)',
-            //trackColor:'red',
-            //scaleColor:'green',
             scaleLength:0,
             lineWidth:5,
             lineCap:'circle',
@@ -281,8 +258,6 @@ jQuery(function($) {
             var data_json = jQuery(this).data('tribejson');
             data_json['imageTooltipSrc'] = data_json['imageTooltipSrc'].replace('-150x150', '');
             jQuery(this).data('tribejson', data_json);
-//            $(selector).data('fooBar', baz).attr('data-foo-bar', baz);
-//                console.log(data_json);
         });
     }
     
@@ -290,7 +265,6 @@ jQuery(function($) {
     // window load
     $(window).on('load', function () {
         sliderScrollableBg();
-        halhImageBg();
         $('.epl-search-btn').addClass('uk-button uk-button-primary'); // add classes for Filter button
     });
     
@@ -302,7 +276,6 @@ jQuery(function($) {
     // window resize
     $(window).on('resize', function () {
         sliderScrollableBg();
-        halhImageBg();
         elmGoogleMapViewportHeight();
     });
     // doc ready
@@ -312,12 +285,10 @@ jQuery(function($) {
         toggleMapButt();
         fullSliderNavHover();
         infiniteBgScroll();
-        //mainMenuFilterButt();
         gridWithSidebar();
         eplSearchWidgetWrapper();
         elmGoogleMapViewportHeight();
         testimonialsPage();
-        //listingEqualHeight();
         themeFancySelect();
         widgetCalendarClass();
         changeTimeTagPosition();

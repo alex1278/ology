@@ -36,7 +36,6 @@
         <field type="checkbox" name="post_nav" value="1" label="Enable navigation in post single view" />
         <field type="checkbox" name="extended_meta" value="0" label="Use extended author meta in post single view" />
         <field type="checkbox" name="post_title" value="0" label="Hide title in post single view" />
-        <!--<field type="checkbox" name="post_thumbnail" value="0" label="Hide featured image in post single view" />-->
         <field type="section" name="WooCommerce"/>
         <field type="select" name="woo_posts_per_page" default="default" description="Enter the number of products per page.">
             <option value="default">default</option> 
@@ -63,10 +62,6 @@
         <field type="checkbox" name="author_box" value="0" label="Show author description on single and archive pages." />
         <field type="section" name="Logo" description="Enter your logo text or use the widget in Logo sidebar. Widget has a higher priority." />
         <field type="text" name="logo_text" default="Ology" label="Logo text" class="uk-form-width-large" />
-<!--        <field type="section" name="Social Buttons" description="Display Tweet, Google+ or Like buttons in your posts to share them in social media." />
-        <field type="checkbox" name="twitter" value="1" label="Show Tweet button." />
-        <field type="checkbox" name="plusone" value="1" label="Show Google+ button." />
-        <field type="checkbox" name="facebook" value="1" label="Show Facebook Like button." />-->
         <field type="section" name="Widgets" description="Choose the default widgets style for each position." />
         <field type="table" name="panel_default">
             <rows label="Position">
@@ -100,8 +95,6 @@
                 <option value="uk-panel uk-panel-space">Space</option>
             </field>
         </field>
-        <!--<field type="section" name="Additional Scripts" description="Insert your Google Analytics tracking code or any other additional scripts here. They will be added before the closing body tag in the theme." />
-        <field type="textarea" name="tracking_code" class="uk-form-width-large" rows="8" />-->
     </fields>
     <fields name="Layouts" icon="uk-icon-columns">
         <field type="layouts" name="layouts">
@@ -113,34 +106,6 @@
             <field type="checkbox" name="content_fullwidth" value="0" label="Enable sistem output fullwidth" />
            <field type="text" name="content_pad_top" default="50px" placeholder="20px" description="Set top padding (use px, em, etc.)" class="uk-form-width-small" />
             <field type="text" name="content_pad_bot" default="50px" placeholder="20px" description="Set bottom padding (use px, em, etc.)" class="uk-form-width-small" />
-<!--            <field type="select" name="content-pad-top" label="Top padding" default="tm-padding-top-medium">
-                <option value="tm-padding-top-none">Disabled</option>
-                <option value="tm-padding-top-xsmall">20px</option>
-                <option value="tm-padding-top-small">40px</option>
-                <option value="tm-padding-top-medium">50px</option>
-                <option value="tm-padding-top-large">60px</option>
-                <option value="tm-padding-top-xlarge">70px</option>
-                <option value="tm-padding-top-xxlarge">100px</option>    
-                <option value="tm-padding-top-xxlarge-130">130px</option>    
-                <option value="tm-padding-top-xxlarge-150">150px</option>    
-                <option value="tm-padding-top-xxlarge-170">170px</option>    
-                <option value="tm-padding-top-xxlarge-200">200px</option>    
-                <option value="tm-padding-top-xxlarge-250">250px</option>    
-            </field>
-            <field type="select" name="content-pad-bot" label="Bottom padding" default="tm-padding-bottom-medium">
-                <option value="tm-padding-bottom-none">Disabled</option>
-                <option value="tm-padding-bottom-xsmall">20px</option>
-                <option value="tm-padding-bottom-small">40px</option>
-                <option value="tm-padding-bottom-medium">50px</option>
-                <option value="tm-padding-bottom-large">60px</option>
-                <option value="tm-padding-bottom-xlarge">70px</option>
-                <option value="tm-padding-bottom-xxlarge">100px</option>
-                <option value="tm-padding-bottom-xxlarge-130">130px</option>
-                <option value="tm-padding-bottom-xxlarge-150">150px</option>
-                <option value="tm-padding-bottom-xxlarge-170">170px</option>
-                <option value="tm-padding-bottom-xxlarge-200">200px</option>
-                <option value="tm-padding-bottom-xxlarge-250">250px</option>
-            </field>-->
             <field type="select" name="background_color" description="Choose the background color for main position.">
                 <option value="">No bg color</option>
                 <option value="tm-block-bg-default">Default</option>
@@ -306,30 +271,6 @@
                     <option value="backgroundScroll-Y-alternate">Y Alternate</option>
                     <option value="backgroundScroll-YX-alternate">YX Alternate</option>
                 </field>
-                <!--<field type="select" name="bg-px-option" label="Parallax option" tooltip="Choose the background parallax option for prefered position. Set the default option in the settings.">
-                    <option value="">None</option>
-                    <option value="x">TranslateX px</option>
-                    <option value="xp">TranslateX %</option>
-                    <option value="y">TranslateY px</option>
-                    <option value="yp">TranslateY %</option>
-                    <option value="bg">Animate a bg-image</option>
-                    <option value="bgp">Animate a bg-image %</option>
-                </field>
-                <field type="text" name="px-option-value" label="Parallax option value" class="uk-form-width-small" placeholder="px or %" tooltip="Enter parallax option value. You can also define a start and stop value. Separate two values by comma"/>
-                <field type="select" name="bg-px-type" label="Parallax type" class="uk-form-width-small" tooltip="Choose the background parallax type for prefered position. Set the default option in the settings.">
-                    <option value="">None</option>
-                    <option value="rotate">Rotation clockwise</option>
-                    <option value="scale">Animate scaling</option>
-                    <option value="opacity">Animate the opacity</option>
-                    <option value="color">Color needs start - stop</option>
-                    <option value="background-color">Bg-color needs start - stop</option>
-                    <option value="border-color">Border-color needs start - stop</option>
-                </field>
-                <field type="text" name="px-type-value" label="Parallax type value" class="uk-form-width-small" placeholder="px, %, color" tooltip="Enter parallax option value. You can also define a start and stop value. Separate two values by comma"/>
-                <field type="text" name="px-target-id" label="Parallax target id" class="uk-form-width-small" placeholder="#" tooltip="To start and stop the animation based on the viewport visibility of another element, use the target option."/>
-                <field type="text" name="px-velocity" default="0.5" label="Parallax velocity" class="uk-form-width-small" placeholder="0.5" tooltip="To adjust the easing of the animation, add the velocity option."/>
-                <field type="text" name="px-viewport" label="Parallax viewport" class="uk-form-width-small" placeholder="0 to 1" tooltip="Animation range depending on the viewport."/>
-                 --> 
                 <field type="checkbox" name="divider" value="1" column="Divider" />              
                 <field type="checkbox" name="fullscreen" value="1" column="Fullscreen" />
                 <field type="checkbox" name="viewport_height" value="1" column="Viewport height" />

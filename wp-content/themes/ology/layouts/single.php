@@ -62,25 +62,25 @@
                 <div class="ang-author-social">
                     <?php $author_id       =  get_the_author_meta('ID'); ?>
                     <?php if ( get_the_author_meta('facebook', $author_id) != '' ) { ?>
-                        <a class="uk-icon-small uk-icon-hover uk-icon-facebook" href="<?php echo get_the_author_meta('facebook', $author_id); ?>"></a>
+                        <a class="uk-icon-small uk-icon-hover uk-icon-facebook" href="<?php echo esc_url(get_the_author_meta('facebook', $author_id)); ?>"></a>
                     <?php } ?>
 
                     <?php if ( get_the_author_meta('twitter', $author_id) != '' ) { ?>
-                        <a class="uk-icon-small uk-icon-hover uk-icon-twitter" href="<?php echo get_the_author_meta('twitter', $author_id); ?>"></a>
+                        <a class="uk-icon-small uk-icon-hover uk-icon-twitter" href="<?php echo esc_url(get_the_author_meta('twitter', $author_id)); ?>"></a>
                     <?php } ?>
 
                     <?php if ( get_the_author_meta('google', $author_id) != '' ) { ?>
-                        <a class="uk-icon-small uk-icon-hover uk-icon-google-plus" href="<?php echo get_the_author_meta('google', $author_id); ?>"></a>
+                        <a class="uk-icon-small uk-icon-hover uk-icon-google-plus" href="<?php echo esc_url(get_the_author_meta('google', $author_id)); ?>"></a>
                     <?php } ?>
 
                     <?php if ( get_the_author_meta('linkedin', $author_id) != '' ) { ?>
-                        <a class="uk-icon-small uk-icon-hover uk-icon-linkedin" href="<?php echo get_the_author_meta('linkedin', $author_id); ?>"></a>
+                        <a class="uk-icon-small uk-icon-hover uk-icon-linkedin" href="<?php echo esc_url(get_the_author_meta('linkedin', $author_id)); ?>"></a>
                     <?php } ?>
                 </div>
             </div>
             <div class="uk-margin-small"><?php echo wp_trim_words(get_the_author_meta('description', get_the_author_meta('ID')), 40, ' ... '); ?>
                 <?php 
-                echo '<a class="tm-link-bio-more " href="'.get_author_posts_url(get_the_author_meta('ID')).'"> Read more</a>';
+                echo '<a class="tm-link-bio-more " href="'.get_author_posts_url(get_the_author_meta('ID')).'">'. esc_html__('Read more', 'ology').'</a>';
                 ?>
             </div>
         </div>
