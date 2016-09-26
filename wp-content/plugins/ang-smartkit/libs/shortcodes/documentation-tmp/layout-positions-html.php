@@ -1,15 +1,14 @@
 <?php ?>
-    <section id="tm-top-fullscreen" class="tm-fullscreen-box">
+    <section class="tm-fullscreen-box">
         <div class="uk-panel uk-panel-space uk-text-center uk-margin-large-top uk-margin-large-bottom widget_text uk-scrollspy-init-inview" data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true, delay:500}">
-            <h1>TOP FULLWIDTH</h1>
-            <h2>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</h2>
+            <h2>TOP FULLWIDTH</h2>
             <h3>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</h3>
             <h4>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</h4>
             <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
         </div>
     </section>
     <!--  section with 5 blocks of features -->
-    <div id="tm-top-a" class="   ">
+    <div>
         <div class="tm-section-box tm-block-bg-muted">
             <div class="uk-container uk-container-center ">
                 <section class="tm-top-a uk-grid tm-padding-top-xxlarge tm-padding-bottom-xxlarge" data-uk-grid-match="{target:'> div > .uk-panel > .uk-grid'}" data-uk-grid-margin="">
@@ -47,7 +46,7 @@
 
     <!--   section with descr and accordion -->
 
-    <div style="background-size: cover; background-repeat: no-repeat; background-position: 50% 0px;" id="tm-top-b" class="" data-uk-parallax="{bg: '-500'}">
+    <div style="background-size: cover; background-repeat: no-repeat; background-position: 50% 0px;" data-uk-parallax="{bg: '-500'}">
         <div class="tm-section-box tm-block-bg-default">
             <div class="uk-container uk-container-center ">               
                 <section class="tm-top-b uk-grid tm-padding-top-xlarge tm-padding-bottom-xlarge " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
@@ -79,7 +78,7 @@
 
     <!--  section with galery and search -->
 
-    <div id="tm-top-c" class="   ">
+    <div>
         <div class="tm-section-box tm-block-bg-primary">  
             <div class="uk-container uk-container-center ">                   
                 <section class="tm-top-c uk-grid tm-padding-top-large tm-padding-bottom-large " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
@@ -110,7 +109,7 @@
     </div>
 
     <!--   section achievements -->
-    <div style="background-size: cover; background-repeat: no-repeat; background-position: 50% 0px;" id="tm-top-d" class="   " data-uk-parallax="{bg: '-300'}">
+    <div style="background-size: cover; background-repeat: no-repeat; background-position: 50% 0px;" data-uk-parallax="{bg: '-300'}">
         <div class="tm-section-box tm-block-bg-custom">
             <div class="uk-container uk-container-center ">
                 <section class="tm-top-d uk-grid  tm-padding-top-medium  tm-padding-bottom-medium " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
@@ -142,7 +141,7 @@
 
     <!--   woocomerce items -->
 
-    <div id="tm-top-e" class="   ">
+    <div>
         <div class="tm-section-box tm-block-bg-darken">
             <div class="uk-container uk-container-center ">                  
                 <section class="tm-top-e uk-grid  tm-padding-top-small  tm-padding-bottom-small " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
@@ -168,7 +167,7 @@
 
 
     <!--   pricing section -->
-    <div style="background-size: cover; background-repeat: no-repeat; background-position: 50% 0px;" id="tm-top-f" class="   " data-uk-parallax="{bg: '-400'}">
+    <div style="background-size: cover; background-repeat: no-repeat; background-position: 50% 0px;" data-uk-parallax="{bg: '-400'}">
         <div class="tm-section-box tm-block-bg-secondary">
             <div class="uk-container uk-container-center ">  
                 <section class="tm-top-f uk-grid  tm-padding-top-xlarge tm-padding-bottom-xlarge " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
@@ -195,7 +194,7 @@
     </div>          
 
     <!--   extended section -->
-    <div id="tm-top-g" class="tm-texture  backgroundScroll-Y-alternate ">
+    <div class="tm-texture  backgroundScroll-Y-alternate ">
         <div class="tm-section-box tm-block-bg-custom">
             <div class="uk-container uk-container-center ">  
                 <section class="tm-top-g uk-grid tm-padding-top-xxlarge  tm-padding-bottom-xxlarge " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
@@ -226,14 +225,14 @@
 
     <!--        main content plus aside sections -->
 
-    <div id="" class="tm-block-bg-main">
+    <div  class="tm-block-bg-main">
         <div class="uk-container uk-container-center  ">
             <div class="tm-middle  tm-padding-top-medium tm-padding-bottom-medium uk-grid " data-uk-grid-match="" data-uk-grid-margin="">
                 <div style="min-height: 1889px;" class="tm-main uk-width-medium-1-2 uk-push-1-4">
 
-                    <div class="   ">
-                        <div class=" ">
-                            <section id="tm-main-top" class="tm-main-top uk-grid tm-padding-top-none tm-padding-bottom-none " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
+                    <div>
+                        <div>
+                            <section  class="tm-main-top uk-grid tm-padding-top-none tm-padding-bottom-none " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
                                 <div class="uk-width-1-1">
                                     <div class="uk-panel widget_text uk-scrollspy-init-inview uk-scrollspy-inview" data-uk-scrollspy="{cls:'', }">
                                         <h3 class="uk-panel-title"><span><i class="uk-icon-check"></i> Main Top</span></h3>
@@ -244,24 +243,24 @@
                         </div>
                     </div>
 
-                    <main id="" class="tm-content">
+                    <div  class="tm-content">
 
                         <article class="uk-article post-1473 page type-page status-publish hentry">
 
-                            <h1 class="uk-article-title">Layout positions</h1>
+                            <h2 class="uk-article-title">Layout positions</h2>
                             <p><?php print "<strong>$theme_name</strong>"; ?> theme comes with a sophisticated layout system to create any kind of sidebar or widget layout based on Warp Framework. You can easily manage the sidebar’s positions and layouts in the theme administration. Layouts can have different styles and be placed in any position offered by this theme.</p>
                             <p>Each position has its own layout. You can align layouts side-by-side, stack them or choose your own grid layout. Show or hide layouts on mobile devices, while the grid adapts perfectly to your layout.</p>
                             <img src="/wp-content/uploads/demo/pages/scheme_layouts.png" alt="theme layouts" class="aligncenter size-full" height="826" width="360">
                             <img src="/wp-content/uploads/demo/pages/sidebar_layouts.png" alt="theme layouts" class="aligncenter size-full" height="220" width="360">
                             <img src="/wp-content/uploads/demo/pages/widget_layouts.png" alt="theme layouts" class="aligncenter size-full" height="215" width="360">
                             
-                        </article
+                        </article>
 
-                    </main>
+                    </div>
 
-                    <div class="   ">
-                        <div class="">
-                            <section id="tm-main-bottom" class="tm-main-bottom uk-grid tm-padding-top-none tm-padding-bottom-none " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
+                    <div>
+                        <div>
+                            <section  class="tm-main-bottom uk-grid tm-padding-top-none tm-padding-bottom-none " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
                                 <div class="uk-width-1-1">
                                     <div class="uk-panel widget_text" data-uk-scrollspy="{cls:'', }">
                                         <h3 class="uk-panel-title"><span><i class="uk-icon-check"></i> Main Bottom</span></h3>
@@ -348,7 +347,7 @@
     </div>
 
     <!--   testimonials -->
-    <div id="tm-bottom-a" class="tm-texture   ">
+    <div class="tm-texture">
         <div class="tm-section-box tm-block-bg-custom">
             <div class="uk-container uk-container-center ">
                 <section class="tm-bottom-a uk-grid tm-padding-top-xlarge  tm-padding-bottom-xlarge " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
@@ -382,7 +381,7 @@
     </div>
 
     <!--  get it touch-->
-    <div style="background-size: cover; background-repeat: no-repeat; background-position: 50% 0px;" id="tm-bottom-b" class="   " data-uk-parallax="{bg: '-500'}">
+    <div style="background-size: cover; background-repeat: no-repeat; background-position: 50% 0px;" data-uk-parallax="{bg: '-500'}">
         <div class="tm-section-box tm-block-bg-secondary">
             <div class="uk-container uk-container-center ">
                 <section class="tm-bottom-b uk-grid tm-padding-top-medium tm-padding-bottom-medium " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
@@ -412,7 +411,7 @@
     </div>
 
     <!--  extra sections-->
-    <div id="tm-bottom-c" class="tm-texture  backgroundScroll-Y-alternate ">
+    <div class="tm-texture  backgroundScroll-Y-alternate ">
         <div class="tm-section-box tm-block-bg-darken">
             <div class="uk-container uk-container-center ">
                 <section class="tm-bottom-c uk-grid tm-padding-top-xxlarge tm-padding-bottom-xxlarge " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
@@ -436,7 +435,7 @@
     </div>
 
 
-    <div id="tm-bottom-d" class="   ">
+    <div>
         <div class="tm-section-box tm-block-bg-primary">
             <div class="uk-container uk-container-center ">
                 <section class="tm-bottom-d uk-grid tm-padding-top-xlarge  tm-padding-bottom-xlarge " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
@@ -463,7 +462,7 @@
         </div>
     </div>
 
-    <div id="tm-bottom-e" class="tm-texture  backgroundScroll-Y-alternate ">
+    <div class="tm-texture  backgroundScroll-Y-alternate ">
         <div class="tm-section-box tm-block-bg-darken">
             <div class="uk-container uk-container-center ">
                 <section class="tm-bottom-e uk-grid tm-padding-top-xxlarge tm-padding-bottom-xxlarge " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
@@ -491,10 +490,10 @@
         </div>
     </div>
 
-    <div id="tm-bottom-f" class="   ">
+    <div>
         <div class="tm-section-box ">
             <div class="uk-container uk-container-center ">
-                <section class="tm-bottom-f uk-grid  tm-padding-top-xlarge  tm-padding-bottom-xlarge " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
+                <section class="tm-bottom-d uk-grid  tm-padding-top-xlarge  tm-padding-bottom-xlarge " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
                     <div class="uk-width-1-1 uk-width-medium-1-4">
                         <div style="min-height: 137px;" class="uk-panel widget_text" data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true, delay:100}">
                             <h3 class="uk-panel-title"><span>Bottom F</span></h3>
@@ -527,7 +526,7 @@
         </div>
     </div>
 
-    <div id="tm-bottom-g" class="   ">
+    <div>
         <div class="tm-section-box tm-block-bg-custom">
             <div class="uk-container uk-container-center ">
                 <section class="tm-bottom-g uk-grid  tm-padding-top-xxlarge  tm-padding-bottom-xxlarge " data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
@@ -568,9 +567,9 @@
 
     <!-- extra fullscreen bottom section-->
 
-    <section id="tm-bottom-fullscreen" class="tm-bottom-fullscreen uk-position-relative">
+    <section class="tm-bottom-fullscreen uk-position-relative">
         <div class="uk-panel uk-panel-space uk-text-center uk-margin-large-top uk-margin-large-bottom widget_text" data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true, delay:500}">
-            <h1>FULLWIDTH BOTTOM</h1>
+            <h2>FULLWIDTH BOTTOM</h2>
             <h3>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</h3>
             <h4>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</h4>
         </div>

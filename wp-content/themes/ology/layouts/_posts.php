@@ -7,7 +7,6 @@
 
 // init vars
 
-//$colcount = is_front_page() ? $this['config']->get('multicolumns', 1) : 1; //ang
 $colcount = $this['config']->get('multicolumns', 1);
 $posts_fp = $this['config']->get('posts_on_frontpage');
 $count    = $this['system']->getPostCount();
