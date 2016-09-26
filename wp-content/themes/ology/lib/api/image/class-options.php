@@ -6,7 +6,7 @@
  *
  * @package API\Image
  */
-final class _ology_Image_Options {
+final class ology_tt_Image_Options {
 
 	/**
 	 * Constructor.
@@ -33,12 +33,12 @@ final class _ology_Image_Options {
 			array(
 				'id' => 'ology_edited_images_directories',
 				'type' => 'flush_edited_images',
-				'description' => __( 'Clear all edited images. New images will be created on page load.', 'ology' )
+				'description' => esc_html__( 'Clear all edited images. New images will be created on page load.', 'ology' )
 			)
 		);
 
 		ology_register_options( $fields, 'ology_settings', 'images_options', array(
-			'title' => __( 'Images options', 'ology' ),
+			'title' => esc_html__( 'Images options', 'ology' ),
 			'context' => ology_get( 'ology_settings', $wp_meta_boxes ) ? 'column' : 'normal' // Check of other beans boxes.
 		) );
 
@@ -66,7 +66,7 @@ final class _ology_Image_Options {
 		if ( !ology_post( 'ology_flush_edited_images' ) )
 			return;
 
-		echo '<div id="message" class="updated"><p>' . __( 'Images flushed successfully!', 'ology' ) . '</p></div>' . "\n";
+		echo '<div id="message" class="updated"><p>' . esc_html__( 'Images flushed successfully!', 'ology' ) . '</p></div>' . "\n";
 
 	}
 
@@ -79,10 +79,10 @@ final class _ology_Image_Options {
 		if ( $field['id'] !== 'ology_edited_images_directories' )
 			return;
 
-		echo '<input type="submit" name="ology_flush_edited_images" value="' . __( 'Flush images', 'ology' ) . '" class="button-secondary" />';
+		echo '<input type="submit" name="ology_flush_edited_images" value="' . esc_html__( 'Flush images', 'ology' ) . '" class="button-secondary" />';
 
 	}
 
 }
 
-new _ology_Image_Options();
+new ology_tt_Image_Options();

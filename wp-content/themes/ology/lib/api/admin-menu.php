@@ -4,7 +4,7 @@
  *
  * @ignore
  */
-final class _ology_Admin {
+final class ology_tt_Admin {
 
 	/**
 	 * Constructor.
@@ -22,7 +22,7 @@ final class _ology_Admin {
 	 */
 	public function admin_menu() {
 
-		add_theme_page( __( 'Settings', 'ology' ), __( 'Settings', 'ology' ), 'manage_options', 'ology_settings', array( $this, 'display_screen' ) );
+		add_theme_page( esc_html__( 'Settings', 'ology' ), esc_html__( 'Settings', 'ology' ), 'manage_options', 'ology_settings', array( $this, 'display_screen' ) );
 
 	}
 
@@ -34,7 +34,7 @@ final class _ology_Admin {
 
 		echo '<div class="wrap">';
 
-			echo '<h2>' . __( 'Beans Settings', 'ology' ) . '<span style="float: right; font-size: 10px; color: #888;">' . __( 'Version ', 'ology' ) . ology_VERSION . '</span></h2>';
+			echo '<h2>' . esc_html__( 'Beans Settings', 'ology' ) . esc_html__( 'Version ', 'ology' ) . ology_VERSION . '</h2>';
 
 			echo ology_options( 'ology_settings' );
 
@@ -53,14 +53,14 @@ final class _ology_Admin {
 		$fields = array(
 			array(
 				'id' => 'ology_dev_mode',
-				'checkbox_label' => __( 'Enable development mode', 'ology' ),
+				'checkbox_label' => esc_html__( 'Enable development mode', 'ology' ),
 				'type' => 'checkbox',
-				'description' => __( 'This option should be enabled while your website is in development.', 'ology' )
+				'description' => esc_html__( 'This option should be enabled while your website is in development.', 'ology' )
 			)
 		);
 
 		ology_register_options( $fields, 'ology_settings', 'mode_options', array(
-			'title' => __( 'Mode options', 'ology' ),
+			'title' => esc_html__( 'Mode options', 'ology' ),
 			'context' => ology_get( 'ology_settings', $wp_meta_boxes ) ? 'column' : 'normal' // Check for other beans boxes.
 		) );
 
@@ -68,4 +68,4 @@ final class _ology_Admin {
 
 }
 
-new _ology_Admin();
+new ology_tt_Admin();

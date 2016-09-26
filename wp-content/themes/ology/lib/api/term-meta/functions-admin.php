@@ -47,7 +47,7 @@ function ology_register_term_meta( array $fields, $taxonomies, $section ) {
 	 *
 	 * @param array $fields An array of term meta fields.
 	 */
-	$fields = apply_filters( "ology_term_meta_fields_{$section}", _ology_pre_standardize_fields( $fields ) );
+	$fields = apply_filters( "ology_term_meta_fields_{$section}", ology_tt_pre_standardize_fields( $fields ) );
 
 	/**
 	 * Filter the taxonomies used to define whether the fields set should be displayed or not.
@@ -61,7 +61,7 @@ function ology_register_term_meta( array $fields, $taxonomies, $section ) {
 	$taxonomies = apply_filters( "ology_term_meta_taxonomies_{$section}", (array) $taxonomies );
 
 	// Stop here if the current page isn't concerned.
-	if ( !_ology_is_admin_term( $taxonomies ) || !is_admin() )
+	if ( !ology_tt_is_admin_term( $taxonomies ) || !is_admin() )
 		return;
 
 	// Stop here if the field can't be registered.
@@ -71,7 +71,7 @@ function ology_register_term_meta( array $fields, $taxonomies, $section ) {
 	// Load the class only if this function is called to prevent unnecessary memory usage.
 	require_once( ology_API_PATH . 'term-meta/class.php' );
 
-	new _ology_Term_Meta( $section );
+	new ology_tt_Term_Meta( $section );
 
 }
 
@@ -81,7 +81,7 @@ function ology_register_term_meta( array $fields, $taxonomies, $section ) {
  *
  * @ignore
  */
-function _ology_is_admin_term( $taxonomies ) {
+function ology_tt_is_admin_term( $taxonomies ) {
 
 	if ( !$taxonomy = ology_get_or_post( 'taxonomy' ) )
 		return false;

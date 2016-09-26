@@ -278,7 +278,7 @@ function ology_get_layouts_for_options( $add_default = false ) {
 
 	if ( $add_default )
 		$layouts = array_merge( array( 'default_fallback' => sprintf(
-			__( 'Use Default Layout (%s)',  'ology' ),
+			esc_html__( 'Use Default Layout (%s)',  'ology' ),
 			'<a href="' . admin_url( 'customize.php?autofocus[control]=ology_layout' ) . '">' . _x( 'Modify', 'Default layout', 'ology' ) . '</a>'
 		) ), $layouts );
 

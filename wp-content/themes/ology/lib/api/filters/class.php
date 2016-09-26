@@ -6,7 +6,7 @@
  *
  * @package API\Filters
  */
-final class _ology_Anonymous_Filters {
+final class ology_tt_Anonymous_Filters {
 
 	/**
 	 * Callback.

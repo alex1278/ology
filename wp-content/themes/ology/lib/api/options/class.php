@@ -6,7 +6,7 @@
  *
  * @package API\Options
  */
-final class _ology_Options {
+final class ology_tt_Options {
 
 	/**
 	 * Metabox arguments.
@@ -36,7 +36,7 @@ final class _ology_Options {
 	public function register( $section, $args ) {
 
 		$defaults = array(
-			'title' => __( 'Undefined', 'ology' ),
+			'title' => esc_html__( 'Undefined', 'ology' ),
 			'context' => 'normal'
 		);
 
@@ -193,9 +193,9 @@ final class _ology_Options {
 	public function save_notices() {
 
 		if ( $this->success )
-			echo '<div id="message" class="updated"><p>' . __( 'Settings saved successfully!', 'ology' ) . '</p></div>';
+			echo '<div id="message" class="updated"><p>' . esc_html__( 'Settings saved successfully!', 'ology' ) . '</p></div>';
 		else
-			echo '<div id="message" class="error"><p>' . __( 'Settings could not be saved, please try again.', 'ology' ) . '</p></div>';
+			echo '<div id="message" class="error"><p>' . esc_html__( 'Settings could not be saved, please try again.', 'ology' ) . '</p></div>';
 
 
 	}
@@ -207,9 +207,9 @@ final class _ology_Options {
 	public function reset_notices() {
 
 		if ( $this->success )
-			echo '<div id="message" class="updated"><p>' . __( 'Settings reset successfully!', 'ology' ) . '</p></div>';
+			echo '<div id="message" class="updated"><p>' . esc_html__( 'Settings reset successfully!', 'ology' ) . '</p></div>';
 		else
-			echo '<div id="message" class="error"><p>' . __( 'Settings could not be reset, please try again.', 'ology' ) . '</p></div>';
+			echo '<div id="message" class="error"><p>' . esc_html__( 'Settings could not be reset, please try again.', 'ology' ) . '</p></div>';
 
 	}
 

@@ -6,7 +6,7 @@
  *
  * @package API\Post_meta
  */
-final class _ology_Post_Meta {
+final class ology_tt_Post_Meta {
 
 	/**
 	 * Metabox arguments.
@@ -29,7 +29,7 @@ final class _ology_Post_Meta {
 	public function __construct( $section, $args ) {
 
 		$defaults = array(
-			'title' => __( 'Undefined', 'ology' ),
+			'title' => esc_html__( 'Undefined', 'ology' ),
 			'context' => 'normal',
 			'priority' => 'high',
 		);

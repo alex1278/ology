@@ -45,16 +45,6 @@ function ology_header_image() {
 
 	if ( !current_theme_supports( 'custom-header' ) || !( $header_image = get_header_image() ) || empty( $header_image ) )
 		return;
-
-	?><style type="text/css">
-		.tm-header {
-			background-image: url(<?php echo esc_url( $header_image ); ?>);
-			background-position: 50% 50%;
-			background-size: cover;
-			background-repeat: no-repeat;
-		}
-	</style><?php
-
 }
 
 
@@ -72,7 +62,7 @@ function ology_site_branding() {
 	) );
 
 		echo ology_open_markup( 'ology_site_title_link', 'a', array(
-			'href' => home_url(), // Automatically escaped.
+			'href' => home_url('/'), // Automatically escaped.
 			'rel' => 'home',
 			'itemprop' => 'headline'
 		) );

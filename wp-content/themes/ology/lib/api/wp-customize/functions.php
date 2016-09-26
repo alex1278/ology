@@ -57,7 +57,7 @@ function ology_register_wp_customize_options( array $fields, $section, $args = a
 	 *
 	 * @param array $fields An array of customizer fields.
 	 */
-	$fields = apply_filters( "ology_wp_customize_fields_{$section}", _ology_pre_standardize_fields( $fields ) );
+	$fields = apply_filters( "ology_wp_customize_fields_{$section}", ology_tt_pre_standardize_fields( $fields ) );
 
 	// Stop here if the current page isn't concerned.
 	if ( !is_customize_preview() )
@@ -70,6 +70,6 @@ function ology_register_wp_customize_options( array $fields, $section, $args = a
 	// Load the class only if this function is called to prevent unnecessary memory usage.
 	require_once( ology_API_PATH . 'wp-customize/class.php' );
 
-	new _ology_WP_Customize( $section, $args );
+	new ology_tt_WP_Customize( $section, $args );
 
 }

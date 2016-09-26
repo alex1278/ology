@@ -21,7 +21,7 @@ function ology_footer_content() {
 		) );
 
 			echo ology_output( 'ology_footer_credit_text', sprintf(
-				__( '&#x000A9; %1$s - %2$s. All rights reserved.', 'ology' ),
+				esc_html__( '&#x000A9; %1$s - %2$s. All rights reserved.', 'ology' ),
 				date( "Y" ),
 				get_bloginfo( 'name' )
 			) );
@@ -41,7 +41,7 @@ function ology_footer_content() {
 		) );
 
 			echo ology_output( 'ology_footer_credit_right_text', sprintf(
-				__( '%1$s theme for WordPress.', 'ology' ),
+				esc_html__( '%1$s theme for WordPress.', 'ology' ),
 				$framework_link
 			) );
 

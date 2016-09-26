@@ -48,7 +48,7 @@
  */
 function ology_register_post_meta( array $fields, $conditions, $section, $args = array() ) {
 
-	global $_ology_post_meta_conditions;
+	global $ology_tt_post_meta_conditions;
 
 	/**
 	 * Filter the post meta fields.
@@ -59,7 +59,7 @@ function ology_register_post_meta( array $fields, $conditions, $section, $args =
 	 *
 	 * @param array $fields An array of post meta fields.
 	 */
-	$fields = apply_filters( "ology_post_meta_fields_{$section}", _ology_pre_standardize_fields( $fields ) );
+	$fields = apply_filters( "ology_post_meta_fields_{$section}", ology_tt_pre_standardize_fields( $fields ) );
 
 	/**
 	 * Filter the conditions used to define whether the fields set should be displayed or not.
@@ -71,10 +71,10 @@ function ology_register_post_meta( array $fields, $conditions, $section, $args =
 	 * @param string|array $conditions Conditions used to define whether the fields set should be displayed or not.
 	 */
 	$conditions = apply_filters( "ology_post_meta_post_types_{$section}", $conditions );
-	$_ology_post_meta_conditions = array_merge( $_ology_post_meta_conditions, (array) $conditions );
+	$ology_tt_post_meta_conditions = array_merge( $ology_tt_post_meta_conditions, (array) $conditions );
 
 	// Stop here if the current page isn't concerned.
-	if ( !_ology_is_post_meta_conditions( $conditions ) || !is_admin() )
+	if ( !ology_tt_is_post_meta_conditions( $conditions ) || !is_admin() )
 		return;
 
 	// Stop here if the field can't be registered.
@@ -84,7 +84,7 @@ function ology_register_post_meta( array $fields, $conditions, $section, $args =
 	// Load the class only if this function is called to prevent unnecessary memory usage.
 	require_once( ology_API_PATH . 'post-meta/class.php' );
 
-	new _ology_Post_Meta( $section, $args );
+	new ology_tt_Post_Meta( $section, $args );
 
 }
 
@@ -94,7 +94,7 @@ function ology_register_post_meta( array $fields, $conditions, $section, $args =
  *
  * @ignore
  */
-function _ology_is_post_meta_conditions( $conditions ) {
+function ology_tt_is_post_meta_conditions( $conditions ) {
 
 	// Check if it is a new post and treat it as such.
 	if ( stripos( $_SERVER['REQUEST_URI'], 'post-new.php' ) !== false ) {
@@ -134,22 +134,22 @@ function _ology_is_post_meta_conditions( $conditions ) {
 }
 
 
-add_action( 'admin_print_footer_scripts', '_ology_post_meta_page_template_reload' );
+add_action( 'admin_print_footer_scripts', 'ology_tt_post_meta_page_template_reload' );
 
 /**
  * Reload post edit screen on page template change.
  *
  * @ignore
  */
-function _ology_post_meta_page_template_reload() {
+function ology_tt_post_meta_page_template_reload() {
 
-	global $_ology_post_meta_conditions, $pagenow;
+	global $ology_tt_post_meta_conditions, $pagenow;
 
 	// Stop here if not editing a post object.
 	if ( !in_array( $pagenow, array( 'post-new.php', 'post.php' ) ) )
 		return;
 
-	$encode = json_encode( $_ology_post_meta_conditions );
+	$encode = json_encode( $ology_tt_post_meta_conditions );
 
 	// Stop here of there isn't any post meta assigned to page templates.
 	if ( stripos( $encode, '.php' ) === false )
@@ -165,7 +165,7 @@ function _ology_post_meta_page_template_reload() {
  *
  * @ignore
  */
-global $_ology_post_meta_conditions;
+global $ology_tt_post_meta_conditions;
 
-if ( !isset( $_ology_post_meta_conditions ) )
-	$_ology_post_meta_conditions = array();
+if ( !isset( $ology_tt_post_meta_conditions ) )
+	$ology_tt_post_meta_conditions = array();

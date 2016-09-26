@@ -6,7 +6,7 @@
  *
  * @package API\Compiler
  */
-final class _ology_Compiler {
+final class ology_tt_Compiler {
 
 	/**
 	 * Compiler arguments.
@@ -131,9 +131,9 @@ final class _ology_Compiler {
 	 */
 	public function set_fragments() {
 
-		global $_ology_compiler_added_fragments;
+		global $ology_tt_compiler_added_fragments;
 
-		if ( $added_fragments = ology_get( $this->compiler['id'], $_ology_compiler_added_fragments[$this->compiler['format']] ) )
+		if ( $added_fragments = ology_get( $this->compiler['id'], $ology_tt_compiler_added_fragments[$this->compiler['format']] ) )
 			$this->compiler['fragments'] = array_merge( $this->compiler['fragments'], $added_fragments );
 
 		/**
@@ -158,7 +158,7 @@ final class _ology_Compiler {
 		$hash = substr( md5( @serialize( $this->compiler ) ), 0, 7 );
 
 		// Stop here and return filename if not in dev mode or if not using filesystem.
-		if ( !_ology_is_compiler_dev_mode() || !@is_dir( $this->dir ) )
+		if ( !ology_tt_is_compiler_dev_mode() || !@is_dir( $this->dir ) )
 			return $this->compiler['filename'] = $hash . '.' . $this->get_extension();
 
 		$fragments_filemtime = array();
@@ -444,12 +444,12 @@ final class _ology_Compiler {
 
 			}
 
-			if ( !_ology_is_compiler_dev_mode() )
+			if ( !ology_tt_is_compiler_dev_mode() )
 				$content = $this->strip_whitespace( $content );
 
 		}
 
-		if ( $this->compiler['type'] == 'script' && !_ology_is_compiler_dev_mode() && $this->compiler['minify_js'] ) {
+		if ( $this->compiler['type'] == 'script' && !ology_tt_is_compiler_dev_mode() && $this->compiler['minify_js'] ) {
 
 			if ( !class_exists( 'JSMin' ) )
 				require_once( ology_API_PATH . 'compiler/vendors/js-minifier.php' );
@@ -568,23 +568,23 @@ final class _ology_Compiler {
 
 		$html = ology_output( 'ology_compiler_error_title_text', sprintf(
 			'<h2>%s</h2>',
-			__( 'Not cool, Beans cannot work its magic :(', 'ology' )
+			esc_html__( 'Not cool, Beans cannot work its magic :(', 'ology' )
 		) );
 
 		$html .= ology_output( 'ology_compiler_error_message_text', sprintf(
 			'<p>%s</p>',
-			__( 'Your current install or file permission prevents Beans from working its magic. Please get in touch with Beans support, we will gladly get you started within 24 - 48 hours (working days).', 'ology' )
+			esc_html__( 'Your current install or file permission prevents Beans from working its magic. Please get in touch with Beans support, we will gladly get you started within 24 - 48 hours (working days).', 'ology' )
 		) );
 
 		$html .= ology_output( 'ology_compiler_error_contact_text', sprintf(
 			'<a class="button" href="http://www.getbeans.io/contact/?compiler_report=1" target="_blanc">%s</a>',
-			__( 'Contact Beans Support', 'ology' )
+			esc_html__( 'Contact Beans Support', 'ology' )
 		) );
 
 		$html .= ology_output( 'ology_compiler_error_report_text', sprintf(
-			'<p style="margin-top: 12px; font-size: 12px;"><a href="' . add_query_arg( 'ology_send_compiler_report', true ) . '">%1$s</a>. %2$s</p>',
-			__( 'Send us an automatic report', 'ology' ),
-			__( 'We respect your time and understand you might not be able to contact us.', 'ology' )
+			'<p style  =  "margin-top: 12px; font-size: 12px;"><a href="' . add_query_arg( 'ology_send_compiler_report', true ) . '">%1$s</a>. %2$s</p>',
+			esc_html__( 'Send us an automatic report', 'ology' ),
+			esc_html__( 'We respect your time and understand you might not be able to contact us.', 'ology' )
 		) );
 
 		wp_die( $html );
@@ -601,7 +601,7 @@ final class _ology_Compiler {
 		$send = wp_mail(
 			'hello@getbeans.io',
 			'Compiler error',
-			'Compiler error reported by ' . home_url(),
+			'Compiler error reported by ' . home_url('/'),
 			array(
 				'MIME-Version: 1.0' . "\r\n",
 				'Content-type: text/html; charset=utf-8' . "\r\n",
@@ -614,7 +614,7 @@ final class _ology_Compiler {
 		// Die and display message.
 		wp_die( ology_output( 'ology_compiler_report_error_text', sprintf(
 			'<p>%s<p>',
-			__( 'Thanks for your contribution by reporting this issue. We hope to hear from you again.', 'ology' )
+			esc_html__( 'Thanks for your contribution by reporting this issue. We hope to hear from you again.', 'ology' )
 		) ) );
 
 	}

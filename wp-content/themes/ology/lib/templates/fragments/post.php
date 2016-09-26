@@ -42,7 +42,7 @@ function ology_post_title() {
 		'itemprop' => 'headline'
 	) );
 
-		echo $title;
+		echo esc_html($title);
 
 	echo ology_close_markup( 'ology_post_title', $title_tag );
 
@@ -63,7 +63,7 @@ function ology_post_search_title() {
 
 	echo ology_open_markup( 'ology_search_title', 'h1', array( 'class' => 'uk-article-title' ) );
 
-		echo ology_output( 'ology_search_title_text', __( 'Search results for: ', 'ology' ) ) . get_search_query();
+		echo ology_output( 'ology_search_title_text', esc_html__( 'Search results for: ', 'ology' ) ) . get_search_query();
 
 	echo ology_close_markup( 'ology_search_title', 'h1' );
 
@@ -282,7 +282,7 @@ function ology_post_more_link() {
 		'class' => 'more-link',
 	) );
 
-		$output .= ology_output( 'ology_post_more_link_text', __( 'Continue reading', 'ology' ) );
+		$output .= ology_output( 'ology_post_more_link_text', esc_html__( 'Continue reading', 'ology' ) );
 
 		$output .= ology_open_markup( 'ology_next_icon[_more_link]', 'i', array(
 					'class' => 'uk-icon-angle-double-right uk-margin-small-left'
@@ -306,7 +306,7 @@ ology_add_smart_action( 'ology_post_body', 'ology_post_content_navigation', 20 )
 function ology_post_content_navigation() {
 
 	echo wp_link_pages( array(
-		'before' => ology_open_markup( 'ology_post_content_navigation', 'p', array( 'class' => 'uk-text-bold' ) ) . ology_output( 'ology_post_content_navigation_text', __( 'Pages:', 'ology' ) ),
+		'before' => ology_open_markup( 'ology_post_content_navigation', 'p', array( 'class' => 'uk-text-bold' ) ) . ology_output( 'ology_post_content_navigation_text', esc_html__( 'Pages:', 'ology' ) ),
 		'after' => ology_close_markup( 'ology_post_content_navigation', 'p' ),
 		'echo' => false
 	) );
@@ -328,7 +328,7 @@ function ology_post_meta_categories() {
 
 	echo ology_open_markup( 'ology_post_meta_categories', 'span', array( 'class' => 'uk-text-small uk-text-muted uk-clearfix' ) );
 
-		echo $categories;
+		echo  $categories;
 
 	echo ology_close_markup( 'ology_post_meta_categories', 'span' );
 
@@ -349,7 +349,7 @@ function ology_post_meta_tags() {
 
 	echo ology_open_markup( 'ology_post_meta_tags', 'span', array( 'class' => 'uk-text-small uk-text-muted uk-clearfix' ) );
 
-		echo $tags;
+		echo  $tags;
 
 	echo ology_close_markup( 'ology_post_meta_tags', 'span' );
 
@@ -463,7 +463,7 @@ function ology_post_navigation() {
 			// Previous.
 			echo ology_open_markup( 'ology_post_navigation_item[_previous]', 'li', array( 'class' => 'uk-pagination-previous' ) );
 
-				echo get_previous_post_link( '%link', __( 'Previous', 'ology' ) );
+				echo get_previous_post_link( '%link', esc_html__( 'Previous', 'ology' ) );
 
 			echo ology_close_markup( 'ology_post_navigation_item[_previous]', 'li' );
 
@@ -474,7 +474,7 @@ function ology_post_navigation() {
 			// Next.
 			echo ology_open_markup( 'ology_post_navigation_item[_next]', 'li', array( 'class' => 'uk-pagination-next' ) );
 
-				echo get_next_post_link( '%link', __( 'Next', 'ology' ) );
+				echo get_next_post_link( '%link', esc_html__( 'Next', 'ology' ) );
 
 			echo ology_close_markup( 'ology_post_navigation_item[_next]', 'li' );
 
@@ -532,7 +532,7 @@ function ology_posts_pagination() {
 
 					echo ology_close_markup( 'ology_previous_icon[_posts_pagination]', 'i' );
 
-					echo ology_output( 'ology_previous_text[_posts_pagination]', __( 'Previous', 'ology' ) );
+					echo ology_output( 'ology_previous_text[_posts_pagination]', esc_html__( 'Previous', 'ology' ) );
 
 				echo ology_close_markup( 'ology_previous_link[_posts_pagination]', 'a' );
 
@@ -614,7 +614,7 @@ function ology_posts_pagination() {
 					'href' => next_posts( $count, false ) // Automatically escaped.
 				), $current );
 
-					echo ology_output( 'ology_next_text[_posts_pagination]', __( 'Next', 'ology' ) );
+					echo ology_output( 'ology_next_text[_posts_pagination]', esc_html__( 'Next', 'ology' ) );
 
 					echo ology_open_markup( 'ology_next_icon[_posts_pagination]', 'i', array(
 						'class' => 'uk-icon-angle-double-right uk-margin-small-left'
@@ -648,7 +648,7 @@ function ology_no_post() {
 
 			echo ology_open_markup( 'ology_post_title', 'h1', array( 'class' => 'uk-article-title' ) );
 
-				echo ology_output( 'ology_no_post_article_title_text', __( 'Whoops, no result found!', 'ology' ) );
+				echo ology_output( 'ology_no_post_article_title_text', esc_html__( 'Whoops, no result found!', 'ology' ) );
 
 			echo ology_close_markup( 'ology_post_title', 'h1' );
 
@@ -660,7 +660,7 @@ function ology_no_post() {
 
 				echo ology_open_markup( 'ology_no_post_article_content', 'p', array( 'class' => 'uk-alert uk-alert-warning' ) );
 
-					echo ology_output( 'ology_no_post_article_content_text', __( 'It looks like nothing was found at this location. Maybe try a search?', 'ology' ) );
+					echo ology_output( 'ology_no_post_article_content_text', esc_html__( 'It looks like nothing was found at this location. Maybe try a search?', 'ology' ) );
 
 				echo ology_close_markup( 'ology_no_post_article_content', 'p' );
 
@@ -694,7 +694,7 @@ function ology_post_password_form() {
 	// Notice.
 	$output = ology_open_markup( 'ology_password_form_notice', 'p', array( 'class' => 'uk-alert uk-alert-warning' ) );
 
-		$output .= ology_output( 'ology_password_form_notice_text', __( 'This post is protected. To view it, enter the password below!', 'ology' ) );
+		$output .= ology_output( 'ology_password_form_notice_text', esc_html__( 'This post is protected. To view it, enter the password below!', 'ology' ) );
 
 	$output .= ology_close_markup( 'ology_password_form_notice', 'p' );
 
@@ -708,7 +708,7 @@ function ology_post_password_form() {
 		$output .= ology_selfclose_markup( 'ology_password_form_input', 'input', array(
 			'class' => 'uk-margin-small-top uk-margin-small-right',
 			'type' => 'password',
-			'placeholder' => apply_filters( 'ology_password_form_input_placeholder', __( 'Password', 'ology' ) ), // Automatically escaped.
+			'placeholder' => apply_filters( 'ology_password_form_input_placeholder', esc_html__( 'Password', 'ology' ) ), // Automatically escaped.
 			'name' => 'post_password'
 		) );
 
@@ -716,7 +716,7 @@ function ology_post_password_form() {
 			'class' => 'uk-button uk-margin-small-top',
 			'type' => 'submit',
 			'name' => 'submit',
-			'value' => esc_attr( apply_filters( 'ology_password_form_submit_text', __( 'Submit', 'ology' ) ) )
+			'value' => esc_attr( apply_filters( 'ology_password_form_submit_text', esc_html__( 'Submit', 'ology' ) ) )
 		) );
 
 	$output .= ology_close_markup( 'ology_password_form', 'form' );

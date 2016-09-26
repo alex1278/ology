@@ -54,7 +54,7 @@ function ology_register_options( array $fields, $menu_slug, $section, $args = ar
 	 *
 	 * @param array $fields An array of options fields.
 	 */
-	$fields = apply_filters( "ology_options_fields_{$section}", _ology_pre_standardize_fields( $fields ) );
+	$fields = apply_filters( "ology_options_fields_{$section}", ology_tt_pre_standardize_fields( $fields ) );
 
 	/**
 	 * Filter the options fields menu slug.
@@ -78,7 +78,7 @@ function ology_register_options( array $fields, $menu_slug, $section, $args = ar
 	// Load the class only if this function is called to prevent unnecessary memory usage.
 	require_once( ology_API_PATH . 'options/class.php' );
 
-	$class = new _ology_Options();
+	$class = new ology_tt_Options();
 	$class->register( $section, $args );
 
 	return true;
@@ -97,23 +97,23 @@ function ology_register_options( array $fields, $menu_slug, $section, $args = ar
  */
 function ology_options( $menu_slug ) {
 
-	if ( !class_exists( '_ology_Options' ) )
+	if ( !class_exists( 'ology_tt_Options' ) )
 		return false;
 
-	$class = new _ology_Options();
+	$class = new ology_tt_Options();
 	$class->page( $menu_slug );
 
 }
 
 
-add_action( 'wp_loaded', '_ology_options_page_actions' );
+add_action( 'wp_loaded', 'ology_tt_options_page_actions' );
 
 /**
  * Fires the options form actions.
  *
  * @ignore
  */
-function _ology_options_page_actions() {
+function ology_tt_options_page_actions() {
 
 	if ( !ology_post( 'ology_options_nonce' ) )
 		return;
@@ -121,7 +121,7 @@ function _ology_options_page_actions() {
 	// Load the class only if this function is called to prevent unnecessary memory usage.
 	require_once( ology_API_PATH . 'options/class.php' );
 
-	$class = new _ology_Options();
+	$class = new ology_tt_Options();
 	$class->actions();
 
 }

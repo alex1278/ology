@@ -49,7 +49,7 @@ function ology_register_fields( array $fields, $context, $section ) {
 	// Load the class only if this function is called to prevent unnecessary memory usage.
 	require_once( ology_API_PATH . 'fields/class.php' );
 
-	$class = new _ology_Fields();
+	$class = new ology_tt_Fields();
 	$class->register( $fields, $context, $section );
 
 	return true;
@@ -75,10 +75,10 @@ function ology_register_fields( array $fields, $context, $section ) {
  */
 function ology_get_fields( $context, $section = false ) {
 
-	if ( !class_exists( '_ology_Fields' ) )
+	if ( !class_exists( 'ology_tt_Fields' ) )
 		return;
 
-	$class = new _ology_Fields();
+	$class = new ology_tt_Fields();
 	return $class->get_fields( $context, $section );
 
 }
@@ -96,10 +96,10 @@ function ology_get_fields( $context, $section = false ) {
  */
 function ology_field( $field ) {
 
-	if ( !class_exists( '_ology_Fields' ) )
+	if ( !class_exists( 'ology_tt_Fields' ) )
 		return;
 
-	$class = new _ology_Fields();
+	$class = new ology_tt_Fields();
 	$class->field_content( $field );
 
 }
@@ -110,7 +110,7 @@ function ology_field( $field ) {
  *
  * @ignore
  */
-function _ology_pre_standardize_fields( $fields ) {
+function ology_tt_pre_standardize_fields( $fields ) {
 
 	$_fields = array();
 
@@ -119,7 +119,7 @@ function _ology_pre_standardize_fields( $fields ) {
 		$_fields[$field['id']] = $field;
 
 		if ( ology_get( 'type', $field ) === 'group' )
-			$_fields[$field['id']]['fields'] = _ology_pre_standardize_fields( $field['fields'] );
+			$_fields[$field['id']]['fields'] = ology_tt_pre_standardize_fields( $field['fields'] );
 
 	}
 

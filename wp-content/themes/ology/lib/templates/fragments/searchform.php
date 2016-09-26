@@ -27,7 +27,7 @@ function ology_search_form() {
 		$output .= ology_selfclose_markup( 'ology_search_form_input', 'input', array(
 			'class' => 'uk-width-1-1',
 			'type' => 'search',
-			'placeholder' => __( 'Search', 'ology' ), // Automatically escaped.
+			'placeholder' => esc_html__( 'Search', 'ology' ), // Automatically escaped.
 			'value' => esc_attr( get_search_query() ),
 			'name' => 's'
 		) );

@@ -33,17 +33,17 @@
  */
 function ology_uikit_enqueue_components( $components, $type = 'core', $autoload = true ) {
 
-	global $_ology_uikit_enqueued_items;
+	global $ology_tt_uikit_enqueued_items;
 
 	// Get all uikit components.
 	if ( $components === true ) {
 
-		$uikit = new _ology_Uikit;
+		$uikit = new ology_tt_Uikit;
 		$components = $uikit->get_all_components( $type );
 
 	} elseif ( $autoload ) {
 
-		$uikit = new _ology_Uikit;
+		$uikit = new ology_tt_Uikit;
 		$autoloads = $uikit->get_autoload_components( (array) $components );
 
 		foreach ( $autoloads as $autotype => $autoload )
@@ -52,7 +52,7 @@ function ology_uikit_enqueue_components( $components, $type = 'core', $autoload 
 	}
 
 	// Add components.
-	$_ology_uikit_enqueued_items['components'][$type] = array_merge( (array) $_ology_uikit_enqueued_items['components'][$type], (array) $components );
+	$ology_tt_uikit_enqueued_items['components'][$type] = array_merge( (array) $ology_tt_uikit_enqueued_items['components'][$type], (array) $components );
 
 }
 
@@ -77,17 +77,17 @@ function ology_uikit_enqueue_components( $components, $type = 'core', $autoload 
  */
 function ology_uikit_dequeue_components( $components, $type = 'core' ) {
 
-	global $_ology_uikit_enqueued_items;
+	global $ology_tt_uikit_enqueued_items;
 
 	if ( $components === true ) {
 
-		$uikit = new _ology_Uikit;
+		$uikit = new ology_tt_Uikit;
 		$components = $uikit->get_all_components( $type );
 
 	}
 
 	// Remove components.
-	$_ology_uikit_enqueued_items['components'][$type] = array_diff( (array) $_ology_uikit_enqueued_items['components'][$type], (array) $components );
+	$ology_tt_uikit_enqueued_items['components'][$type] = array_diff( (array) $ology_tt_uikit_enqueued_items['components'][$type], (array) $components );
 
 }
 
@@ -109,10 +109,10 @@ function ology_uikit_dequeue_components( $components, $type = 'core' ) {
  */
 function ology_uikit_register_theme( $id, $path ) {
 
-	global $_ology_uikit_registered_items;
+	global $ology_tt_uikit_registered_items;
 
 	// Stop here if already registered.
-	if ( ology_get( $id, $_ology_uikit_registered_items['themes'] ) )
+	if ( ology_get( $id, $ology_tt_uikit_registered_items['themes'] ) )
 		return true;
 
 	if ( !$path )
@@ -121,7 +121,7 @@ function ology_uikit_register_theme( $id, $path ) {
 	if ( stripos( $path, 'http' ) !== false )
 		$path = ology_url_to_path( $path );
 
-	$_ology_uikit_registered_items['themes'][$id] = trailingslashit( $path );
+	$ology_tt_uikit_registered_items['themes'][$id] = trailingslashit( $path );
 
 	return true;
 
@@ -149,9 +149,9 @@ function ology_uikit_enqueue_theme( $id, $path = false ) {
 	if ( !ology_uikit_register_theme( $id, $path ) )
 		return false;
 
-	global $_ology_uikit_enqueued_items;
+	global $ology_tt_uikit_enqueued_items;
 
-	$_ology_uikit_enqueued_items['themes'][$id] = _ology_uikit_get_registered_theme( $id );
+	$ology_tt_uikit_enqueued_items['themes'][$id] = ology_tt_uikit_get_registered_theme( $id );
 
 	return true;
 
@@ -171,9 +171,9 @@ function ology_uikit_enqueue_theme( $id, $path = false ) {
  */
 function ology_uikit_dequeue_theme( $id ) {
 
-	global $_ology_uikit_enqueued_items;
+	global $ology_tt_uikit_enqueued_items;
 
-	unset( $_ology_uikit_enqueued_items['themes'][$id] );
+	unset( $ology_tt_uikit_enqueued_items['themes'][$id] );
 
 }
 
@@ -183,10 +183,10 @@ function ology_uikit_dequeue_theme( $id ) {
  *
  * @ignore
  */
-global $_ology_uikit_registered_items;
+global $ology_tt_uikit_registered_items;
 
-if ( !isset( $_ology_uikit_registered_items ) )
-	$_ology_uikit_registered_items = array(
+if ( !isset( $ology_tt_uikit_registered_items ) )
+	$ology_tt_uikit_registered_items = array(
 		'themes' => array(
 			'default' => ology_API_PATH . 'uikit/src/themes/default',
 			'almost-flat' => ology_API_PATH . 'uikit/src/themes/almost-flat',
@@ -201,10 +201,10 @@ if ( !isset( $_ology_uikit_registered_items ) )
  *
  * @ignore
  */
-global $_ology_uikit_enqueued_items;
+global $ology_tt_uikit_enqueued_items;
 
-if ( !isset( $_ology_uikit_enqueued_items ) )
-	$_ology_uikit_enqueued_items = array(
+if ( !isset( $ology_tt_uikit_enqueued_items ) )
+	$ology_tt_uikit_enqueued_items = array(
 		'components' => array(
 			'core' => array(),
 			'add-ons' => array(),
@@ -218,12 +218,12 @@ if ( !isset( $_ology_uikit_enqueued_items ) )
  *
  * @ignore
  */
-function _ology_uikit_get_registered_theme( $id ) {
+function ology_tt_uikit_get_registered_theme( $id ) {
 
-	global $_ology_uikit_registered_items;
+	global $ology_tt_uikit_registered_items;
 
 	// Stop here if is already registered.
-	if ( $theme = ology_get( $id, $_ology_uikit_registered_items['themes'] ) )
+	if ( $theme = ology_get( $id, $ology_tt_uikit_registered_items['themes'] ) )
 		return $theme;
 
 	return false;
@@ -231,14 +231,14 @@ function _ology_uikit_get_registered_theme( $id ) {
 }
 
 
-add_action( 'wp_enqueue_scripts', '_ology_uikit_enqueue_assets', 7 );
+add_action( 'wp_enqueue_scripts', 'ology_tt_uikit_enqueue_assets', 7 );
 
 /**
  * Enqueue UIkit assets.
  *
  * @ignore
  */
-function _ology_uikit_enqueue_assets() {
+function ology_tt_uikit_enqueue_assets() {
 
 	if ( !has_action( 'ology_uikit_enqueue_scripts' ) )
 		return;
@@ -251,21 +251,21 @@ function _ology_uikit_enqueue_assets() {
 	do_action( 'ology_uikit_enqueue_scripts' );
 
 	// Compile everything.
-	$uikit = new _ology_Uikit;
+	$uikit = new ology_tt_Uikit;
 
 	$uikit->compile();
 
 }
 
 
-add_action( 'admin_enqueue_scripts', '_ology_uikit_enqueue_admin_assets', 7 );
+add_action( 'admin_enqueue_scripts', 'ology_tt_uikit_enqueue_admin_assets', 7 );
 
 /**
  * Enqueue UIkit admin assets.
  *
  * @ignore
  */
-function _ology_uikit_enqueue_admin_assets() {
+function ology_tt_uikit_enqueue_admin_assets() {
 
 	if ( !has_action( 'ology_uikit_admin_enqueue_scripts' ) )
 		return;
@@ -278,7 +278,7 @@ function _ology_uikit_enqueue_admin_assets() {
 	do_action( 'ology_uikit_admin_enqueue_scripts' );
 
 	// Compile everything.
-	$uikit = new _ology_Uikit;
+	$uikit = new ology_tt_Uikit;
 
 	$uikit->compile();
 

@@ -17,11 +17,11 @@ function ology_widget_badge() {
 	if ( !ology_get_widget( 'badge' ) )
 		return;
 
-	echo ology_open_markup( 'ology_widget_badge' . _ology_widget_subfilters(), 'div', 'class=uk-panel-badge uk-badge' );
+	echo ology_open_markup( 'ology_widget_badge' . ology_tt_widget_subfilters(), 'div', 'class=uk-panel-badge uk-badge' );
 
 		echo ology_widget_shortcodes( ology_get_widget( 'badge_content' ) );
 
-	echo ology_close_markup( 'ology_widget_badge' . _ology_widget_subfilters(), 'div' );
+	echo ology_close_markup( 'ology_widget_badge' . ology_tt_widget_subfilters(), 'div' );
 
 }
 
@@ -38,11 +38,11 @@ function ology_widget_title() {
 	if ( !( $title = ology_get_widget( 'title' ) ) || !ology_get_widget( 'show_title' ) )
 		return;
 
-	echo ology_open_markup( 'ology_widget_title' . _ology_widget_subfilters(), 'h3', 'class=uk-panel-title' );
+	echo ology_open_markup( 'ology_widget_title' . ology_tt_widget_subfilters(), 'h3', 'class=uk-panel-title' );
 
 		echo ology_output( 'ology_widget_title_text', $title );
 
-	echo ology_close_markup( 'ology_widget_title' . _ology_widget_subfilters(), 'h3' );
+	echo ology_close_markup( 'ology_widget_title' . ology_tt_widget_subfilters(), 'h3' );
 
 }
 
@@ -56,11 +56,11 @@ ology_add_smart_action( 'ology_widget', 'ology_widget_content', 15 );
  */
 function ology_widget_content() {
 
-	echo ology_open_markup( 'ology_widget_content' . _ology_widget_subfilters(), 'div' );
+	echo ology_open_markup( 'ology_widget_content' . ology_tt_widget_subfilters(), 'div' );
 
-		echo ology_output( 'ology_widget_content' . _ology_widget_subfilters(), ology_get_widget( 'content' ) );
+		echo ology_output( 'ology_widget_content' . ology_tt_widget_subfilters(), ology_get_widget( 'content' ) );
 
-	echo ology_close_markup( 'ology_widget_content' . _ology_widget_subfilters(), 'div' );
+	echo ology_close_markup( 'ology_widget_content' . ology_tt_widget_subfilters(), 'div' );
 
 }
 
@@ -80,7 +80,7 @@ function ology_no_widget() {
 
 	echo ology_open_markup( 'ology_no_widget_notice', 'p', array( 'class' => 'uk-alert uk-alert-warning' ) );
 
-		echo ology_output( 'ology_no_widget_notice_text', sprintf( __( '%s does not have any widget assigned!', 'ology' ), ology_get_widget_area( 'name' ) ) );
+		echo ology_output( 'ology_no_widget_notice_text', sprintf( esc_html__( '%s does not have any widget assigned!', 'ology' ), ology_get_widget_area( 'name' ) ) );
 
 	echo ology_close_markup( 'ology_no_widget_notice', 'p' );
 
@@ -100,7 +100,7 @@ function ology_widget_rss_content() {
 
 	$options = ology_get_widget( 'options' );
 
-	return '<p><a class="uk-button" href="' . ology_get( 'url', $options ) . '" target="_blank">' . __( 'Read feed', 'ology' ) . '</a><p>';
+	return '<p><a class="uk-button" href="' . ology_get( 'url', $options ) . '" target="_blank">' . esc_html__( 'Read feed', 'ology' ) . '</a><p>';
 
 }
 

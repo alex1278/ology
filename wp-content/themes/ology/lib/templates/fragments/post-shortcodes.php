@@ -14,7 +14,7 @@ ology_add_smart_action( 'ology_post_meta_date', 'ology_post_meta_date_shortcode'
  */
 function ology_post_meta_date_shortcode() {
 
-	echo ology_output( 'ology_post_meta_date_prefix', __( 'Posted on ', 'ology' ) );
+	echo ology_output( 'ology_post_meta_date_prefix', esc_html__( 'Posted on ', 'ology' ) );
 
 	echo ology_open_markup( 'ology_post_meta_date', 'time', array(
 		'datetime' => get_the_time( 'c' ),
@@ -37,7 +37,7 @@ ology_add_smart_action( 'ology_post_meta_author', 'ology_post_meta_author_shortc
  */
 function ology_post_meta_author_shortcode() {
 
-	ology_output( 'ology_post_meta_author_prefix', __( 'By ', 'ology' ) ) ;
+	ology_output( 'ology_post_meta_author_prefix', esc_html__( 'By ', 'ology' ) ) ;
 
 	echo ology_open_markup( 'ology_post_meta_author', 'a', array(
 		'href' => get_author_posts_url( get_the_author_meta( 'ID' ) ), // Automatically escaped.
@@ -70,11 +70,11 @@ function ology_post_meta_comments_shortcode() {
 	$comments_number = (int) get_comments_number( $post->ID );
 
 	if ( $comments_number < 1 )
-		$comment_text = ology_output( 'ology_post_meta_empty_comment_text', __( 'Leave a comment', 'ology' ) );
+		$comment_text = ology_output( 'ology_post_meta_empty_comment_text', esc_html__( 'Leave a comment', 'ology' ) );
 	else if ( $comments_number === 1 )
-		$comment_text = ology_output( 'ology_post_meta_comments_text_singular', __( '1 comment', 'ology' ) );
+		$comment_text = ology_output( 'ology_post_meta_comments_text_singular', esc_html__( '1 comment', 'ology' ) );
 	else
-		$comment_text = ology_output( 'ology_post_meta_comments_text_plurial', __( '%s comments', 'ology' ) );
+		$comment_text = ology_output( 'ology_post_meta_comments_text_plurial', esc_html__( '%s comments', 'ology' ) );
 
 	echo ology_open_markup( 'ology_post_meta_comments', 'a', array(
 		'href' => get_comments_link() // Automatically escaped.
@@ -101,7 +101,7 @@ function ology_post_meta_tags_shortcode() {
 	if ( !$tags || is_wp_error( $tags ) )
 		return;
 
-	echo ology_output( 'ology_post_meta_tags_prefix', __( 'Tagged with: ', 'ology' ) ) . $tags;
+	echo ology_output( 'ology_post_meta_tags_prefix', esc_html__( 'Tagged with: ', 'ology' ) ) . $tags;
 
 }
 
@@ -120,6 +120,6 @@ function ology_post_meta_categories_shortcode() {
 	if ( !$categories || is_wp_error( $categories ) )
 		return;
 
-	echo ology_output( 'ology_post_meta_categories_prefix', __( 'Filed under: ', 'ology' ) ) . $categories;
+	echo ology_output( 'ology_post_meta_categories_prefix', esc_html__( 'Filed under: ', 'ology' ) ) . $categories;
 
 }

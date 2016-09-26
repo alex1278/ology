@@ -6,7 +6,7 @@
  *
  * @package API\Compiler
  */
-final class _ology_Page_Compiler {
+final class ology_tt_Page_Compiler {
 
 	/**
 	 * Compiler dequeued scripts.
@@ -32,7 +32,7 @@ final class _ology_Page_Compiler {
 	 */
 	public function compile_page_styles() {
 
-		if ( !ology_get_component_support( 'wp_styles_compiler' ) || !get_option( 'ology_compile_all_styles', false ) || _ology_is_compiler_dev_mode() )
+		if ( !ology_get_component_support( 'wp_styles_compiler' ) || !get_option( 'ology_compile_all_styles', false ) || ology_tt_is_compiler_dev_mode() )
 			return;
 
 		if ( $styles = $this->compile_enqueued( 'style' ) )
@@ -46,7 +46,7 @@ final class _ology_Page_Compiler {
 	 */
 	public function compile_page_scripts() {
 
-		if ( !ology_get_component_support( 'wp_scripts_compiler' ) || !get_option( 'ology_compile_all_scripts', false ) || _ology_is_compiler_dev_mode() )
+		if ( !ology_get_component_support( 'wp_scripts_compiler' ) || !get_option( 'ology_compile_all_scripts', false ) || ology_tt_is_compiler_dev_mode() )
 			return;
 
 		if ( $scripts = $this->compile_enqueued( 'script' ) )
@@ -145,12 +145,9 @@ final class _ology_Page_Compiler {
                 }
 
                 // Add localized content since it was removed with dequeue scripts.
-		echo '<sc'.'ript'.' type="te'.'xt/jav'.'ascr'.'ipt">';
-                    echo $localized;
-		echo '</sc'.'ript>';
-
+		echo '<sc'.'ript'.' type="te'.'xt/jav'.'ascr'.'ipt">'.$localized.'</sc'.'ript>';
 	}
 
 }
 
-new _ology_Page_Compiler();
+new ology_tt_Page_Compiler();

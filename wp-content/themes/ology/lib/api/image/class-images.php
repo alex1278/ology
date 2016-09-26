@@ -6,7 +6,7 @@
  *
  * @package API\Image
  */
-final class _ology_Image_Editor {
+final class ology_tt_Image_Editor {
 
 	/**
 	 * Source.

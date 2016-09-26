@@ -31,7 +31,7 @@ function ology_add_filter( $id, $callback, $priority = 10, $args = 1 ) {
 	if ( is_callable( $callback ) )
 		return add_filter( $id, $callback, $priority, $args );
 
-	return _ology_add_anonymous_filter( $id, $callback, $priority, $args );
+	return ology_tt_add_anonymous_filter( $id, $callback, $priority, $args );
 
 }
 
@@ -180,10 +180,10 @@ function ology_has_filters( $id, $callback = false ) {
  *
  * @ignore
  */
-function _ology_add_anonymous_filter( $id, $callback, $priority = 10, $args = 1 ) {
+function ology_tt_add_anonymous_filter( $id, $callback, $priority = 10, $args = 1 ) {
 
 	require_once( ology_API_PATH . 'filters/class.php' );
 
-	new _ology_Anonymous_Filters( $id, $callback, $priority, $args );
+	new ology_tt_Anonymous_Filters( $id, $callback, $priority, $args );
 
 }

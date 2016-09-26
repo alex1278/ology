@@ -42,7 +42,7 @@ function ology_compile_css_fragments( $id, $fragments, $args = array() ) {
 		'fragments' => (array) $fragments
 	);
 
-	new _ology_Compiler( $params + $args );
+	new ology_tt_Compiler( $params + $args );
 
 }
 
@@ -77,7 +77,7 @@ function ology_compile_less_fragments( $id, $fragments, $args = array() ) {
 		'fragments' => (array) $fragments
 	);
 
-	new _ology_Compiler( $params + $args );
+	new ology_tt_Compiler( $params + $args );
 
 }
 
@@ -116,7 +116,7 @@ function ology_compile_js_fragments( $id, $fragments, $args = array() ) {
 		'fragments' => (array) $fragments
 	);
 
-	new _ology_Compiler( $params + $args );
+	new ology_tt_Compiler( $params + $args );
 
 }
 
@@ -139,21 +139,21 @@ function ology_compiler_add_fragment( $id, $fragments, $format ) {
 	if ( empty( $fragments ) )
 		return false;
 
-	global $_ology_compiler_added_fragments;
+	global $ology_tt_compiler_added_fragments;
 
 	foreach ( (array) $fragments as $key => $fragment )
 
 		// Stop here if the format isn't valid.
-		if ( !isset( $_ology_compiler_added_fragments[$format] ) )
+		if ( !isset( $ology_tt_compiler_added_fragments[$format] ) )
 			continue;
 
 		// Register new compiler id if it doesn't exist and add fragment.
-		elseif ( !isset( $_ology_compiler_added_fragments[$format][$id] ) )
-			$_ology_compiler_added_fragments[$format][$id] = array( $fragment );
+		elseif ( !isset( $ology_tt_compiler_added_fragments[$format][$id] ) )
+			$ology_tt_compiler_added_fragments[$format][$id] = array( $fragment );
 
 		// Add fragment to existing compiler.
 		else
-			$_ology_compiler_added_fragments[$format][$id][] = $fragment;
+			$ology_tt_compiler_added_fragments[$format][$id][] = $fragment;
 
 }
 
@@ -280,7 +280,7 @@ function ology_get_compiler_url( $admin = false ) {
  *
  * @ignore
  */
-function _ology_is_compiler_dev_mode() {
+function ology_tt_is_compiler_dev_mode() {
 
 	if ( defined( 'ology_COMPILER_DEV_MODE' ) )
 		return ology_COMPILER_DEV_MODE;
@@ -295,10 +295,10 @@ function _ology_is_compiler_dev_mode() {
  *
  * @ignore
  */
-global $_ology_compiler_added_fragments;
+global $ology_tt_compiler_added_fragments;
 
-if ( !isset( $_ology_compiler_added_fragments ) )
-	$_ology_compiler_added_fragments = array(
+if ( !isset( $ology_tt_compiler_added_fragments ) )
+	$ology_tt_compiler_added_fragments = array(
 		'css' => array(),
 		'less' => array(),
 		'js' => array()

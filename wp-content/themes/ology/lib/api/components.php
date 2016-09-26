@@ -142,7 +142,7 @@ function ology_load_api_components( $components ) {
  */
 function ology_add_api_component_support( $feature ) {
 
-	global $_ology_api_components_support;
+	global $ology_tt_api_components_support;
 
 	$args = func_get_args();
 
@@ -151,7 +151,7 @@ function ology_add_api_component_support( $feature ) {
 	else
 		$args = array_slice( $args, 1 );
 
-	$_ology_api_components_support[$feature] = $args;
+	$ology_tt_api_components_support[$feature] = $args;
 
 	return true;
 
@@ -169,12 +169,12 @@ function ology_add_api_component_support( $feature ) {
  */
 function ology_get_component_support( $feature ) {
 
-	global $_ology_api_components_support;
+	global $ology_tt_api_components_support;
 
-	if ( !isset( $_ology_api_components_support[$feature] ) )
+	if ( !isset( $ology_tt_api_components_support[$feature] ) )
 		return false;
 
-	return $_ology_api_components_support[$feature];
+	return $ology_tt_api_components_support[$feature];
 
 }
 
@@ -190,9 +190,9 @@ function ology_get_component_support( $feature ) {
  */
 function ology_remove_api_component_support( $feature ) {
 
-	global $_ology_api_components_support;
+	global $ology_tt_api_components_support;
 
-	unset( $_ology_api_components_support[$feature] );
+	unset( $ology_tt_api_components_support[$feature] );
 
 	return true;
 
@@ -204,7 +204,7 @@ function ology_remove_api_component_support( $feature ) {
  *
  * @ignore
  */
-global $_ology_api_components_support;
+global $ology_tt_api_components_support;
 
-if ( !isset( $_ology_api_components_support ) )
-	$_ology_api_components_support = array();
+if ( !isset( $ology_tt_api_components_support ) )
+	$ology_tt_api_components_support = array();

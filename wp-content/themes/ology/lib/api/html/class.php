@@ -6,7 +6,7 @@
  *
  * @package API\Html
  */
-final class _ology_Attributes {
+final class ology_tt_Attributes {
 
 	/**
 	 * Markup id.

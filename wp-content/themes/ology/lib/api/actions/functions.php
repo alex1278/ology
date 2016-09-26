@@ -38,17 +38,17 @@ function ology_add_action( $id, $hook, $callback, $priority = 10, $args = 1 ) {
 	);
 
 	// Replace original if set.
-	if ( $replaced = _ology_get_action( $id, 'replaced' ) )
+	if ( $replaced = ology_tt_get_action( $id, 'replaced' ) )
 		$action = array_merge( $action, $replaced );
 
-	$action = _ology_set_action( $id, $action, 'added', true );
+	$action = ology_tt_set_action( $id, $action, 'added', true );
 
 	// Stop here if removed.
-	if ( _ology_get_action( $id, 'removed' ) )
+	if ( ology_tt_get_action( $id, 'removed' ) )
 		return;
 
 	// Merge modified.
-	if ( $modified = _ology_get_action( $id, 'modified' ) )
+	if ( $modified = ology_tt_get_action( $id, 'modified' ) )
 		$action = array_merge( $action, $modified );
 
 	// Validate action arguments.
@@ -111,7 +111,7 @@ function ology_add_smart_action( $hook, $callback, $priority = 10, $args = 1 ) {
 function ology_modify_action( $id, $hook = null, $callback = null, $priority = null, $args = null ) {
 
 	// Remove action.
-	if ( $current = _ology_get_current_action( $id ) )
+	if ( $current = ology_tt_get_current_action( $id ) )
 		remove_action( $current['hook'], $current['callback'], $current['priority'], $current['args'] );
 
 	$action = array_filter( array(
@@ -122,7 +122,7 @@ function ology_modify_action( $id, $hook = null, $callback = null, $priority = n
 	) );
 
 	// Merge modified.
-	$action = _ology_merge_action( $id, $action, 'modified' );
+	$action = ology_tt_merge_action( $id, $action, 'modified' );
 
 	// Replace if needed.
 	if ( $current ) {
@@ -252,10 +252,10 @@ function ology_replace_action( $id, $hook = null, $callback = null, $priority = 
 	);
 
 	// Set and get the latest replaced.
-	$action = _ology_merge_action( $id, array_filter( $action ), 'replaced' );
+	$action = ology_tt_merge_action( $id, array_filter( $action ), 'replaced' );
 
 	// Set and get the latest added.
-	$action = _ology_merge_action( $id, $action, 'added' );
+	$action = ology_tt_merge_action( $id, $action, 'added' );
 
 	return ology_modify_action( $id, $hook, $callback, $priority, $args );
 
@@ -356,11 +356,11 @@ function ology_replace_action_arguments( $id, $args ) {
 function ology_remove_action( $id ) {
 
 	// Remove.
-	if ( $action = _ology_get_current_action( $id ) )
+	if ( $action = ology_tt_get_current_action( $id ) )
 		remove_action( $action['hook'], $action['callback'], $action['priority'], $action['args'] );
 
 	// Register as removed.
-	_ology_set_action( $id, $action, 'removed' );
+	ology_tt_set_action( $id, $action, 'removed' );
 
 	return true;
 
@@ -382,12 +382,12 @@ function ology_remove_action( $id ) {
  */
 function ology_reset_action( $id ) {
 
-	_ology_unset_action( $id, 'modified' );
-	_ology_unset_action( $id, 'removed' );
+	ology_tt_unset_action( $id, 'modified' );
+	ology_tt_unset_action( $id, 'removed' );
 
-	$action = _ology_get_action( $id, 'added' );
+	$action = ology_tt_get_action( $id, 'added' );
 
-	if ( $current = _ology_get_current_action( $id ) ) {
+	if ( $current = ology_tt_get_current_action( $id ) ) {
 
 		remove_action( $current['hook'], $current['callback'], $current['priority'], $current['args'] );
 		add_action( $action['hook'], $action['callback'], $action['priority'], $action['args'] );
@@ -404,10 +404,10 @@ function ology_reset_action( $id ) {
  *
  * @ignore
  */
-global $_ology_registered_actions;
+global $ology_tt_registered_actions;
 
-if ( !isset( $_ology_registered_actions ) )
-	$_ology_registered_actions = array(
+if ( !isset( $ology_tt_registered_actions ) )
+	$ology_tt_registered_actions = array(
 		'added' => array(),
 		'modified' => array(),
 		'removed' => array(),
@@ -420,13 +420,13 @@ if ( !isset( $_ology_registered_actions ) )
  *
  * @ignore
  */
-function _ology_get_action( $id, $status ) {
+function ology_tt_get_action( $id, $status ) {
 
-	global $_ology_registered_actions;
+	global $ology_tt_registered_actions;
 
-	$id = _ology_unique_action_id( $id );
+	$id = ology_tt_unique_action_id( $id );
 
-	if ( !$registered = ology_get( $status, $_ology_registered_actions ) )
+	if ( !$registered = ology_get( $status, $ology_tt_registered_actions ) )
 		return false;
 
 	if ( !$action = ology_get( $id, $registered ) )
@@ -442,17 +442,17 @@ function _ology_get_action( $id, $status ) {
  *
  * @ignore
  */
-function _ology_set_action( $id, $action, $status, $overwrite = false ) {
+function ology_tt_set_action( $id, $action, $status, $overwrite = false ) {
 
-	global $_ology_registered_actions;
+	global $ology_tt_registered_actions;
 
-	$id = _ology_unique_action_id( $id );
+	$id = ology_tt_unique_action_id( $id );
 
 	// Return action which already exist unless overwrite is set to true.
-	if ( !$overwrite && ( $_action = _ology_get_action( $id, $status ) ) )
+	if ( !$overwrite && ( $_action = ology_tt_get_action( $id, $status ) ) )
 		return $_action;
 
-	$_ology_registered_actions[$status][$id] = json_encode( $action );
+	$ology_tt_registered_actions[$status][$id] = json_encode( $action );
 
 	return $action;
 
@@ -464,17 +464,17 @@ function _ology_set_action( $id, $action, $status, $overwrite = false ) {
  *
  * @ignore
  */
-function _ology_unset_action( $id, $status ) {
+function ology_tt_unset_action( $id, $status ) {
 
-	global $_ology_registered_actions;
+	global $ology_tt_registered_actions;
 
-	$id = _ology_unique_action_id( $id );
+	$id = ology_tt_unique_action_id( $id );
 
 	// Stop here if the action doesn't exist.
-	if ( !_ology_get_action( $id, $status ) )
+	if ( !ology_tt_get_action( $id, $status ) )
 		return false;
 
-	unset( $_ology_registered_actions[$status][$id] );
+	unset( $ology_tt_registered_actions[$status][$id] );
 
 	return true;
 
@@ -486,16 +486,16 @@ function _ology_unset_action( $id, $status ) {
  *
  * @ignore
  */
-function _ology_merge_action( $id, $action, $status ) {
+function ology_tt_merge_action( $id, $action, $status ) {
 
-	global $_ology_registered_actions;
+	global $ology_tt_registered_actions;
 
-	$id = _ology_unique_action_id( $id );
+	$id = ology_tt_unique_action_id( $id );
 
-	if ( $_action = _ology_get_action( $id, $status ) )
+	if ( $_action = ology_tt_get_action( $id, $status ) )
 		$action = array_merge( $_action, $action );
 
-	return _ology_set_action( $id, $action, $status, true );
+	return ology_tt_set_action( $id, $action, $status, true );
 
 }
 
@@ -505,17 +505,17 @@ function _ology_merge_action( $id, $action, $status ) {
  *
  * @ignore
  */
-function _ology_get_current_action( $id ) {
+function ology_tt_get_current_action( $id ) {
 
 	$action = array();
 
-	if ( _ology_get_action( $id, 'removed' ) )
+	if ( ology_tt_get_action( $id, 'removed' ) )
 		return false;
 
-	if ( $added = _ology_get_action( $id, 'added' ) )
+	if ( $added = ology_tt_get_action( $id, 'added' ) )
 		$action = $added;
 
-	if ( $modified = _ology_get_action( $id, 'modified' ) )
+	if ( $modified = ology_tt_get_action( $id, 'modified' ) )
 		$action = array_merge( $action, $modified );
 
 	// Stop here if the action is invalid.
@@ -532,11 +532,11 @@ function _ology_get_current_action( $id ) {
  *
  * @ignore
  */
-function _ology_add_anonymous_action( $hook, $callback, $priority = 10, $args = 1 ) {
+function ology_tt_add_anonymous_action( $hook, $callback, $priority = 10, $args = 1 ) {
 
 	require_once( ology_API_PATH . 'actions/class.php' );
 
-	new _ology_Anonymous_Actions( $hook, $callback, $priority, $args );
+	new ology_tt_Anonymous_Actions( $hook, $callback, $priority, $args );
 
 }
 
@@ -546,7 +546,7 @@ function _ology_add_anonymous_action( $hook, $callback, $priority = 10, $args = 
  *
  * @ignore
  */
-function _ology_render_action( $hook ) {
+function ology_tt_render_action( $hook ) {
 
 	$args = func_get_args();
 
@@ -609,7 +609,7 @@ function _ology_render_action( $hook ) {
  *
  * @ignore
  */
-function _ology_unique_action_id( $callback ) {
+function ology_tt_unique_action_id( $callback ) {
 
 	if ( is_string( $callback ) )
 		return $callback;

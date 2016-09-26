@@ -6,7 +6,7 @@
  *
  * @package API\WP_Customize
  */
-final class _ology_WP_Customize {
+final class ology_tt_WP_Customize {
 
 	/**
 	 * Fields section.
@@ -22,7 +22,7 @@ final class _ology_WP_Customize {
 	public function __construct( $section, $args ) {
 
 		$defaults = array(
-			'title' => __( 'Undefined', 'ology' ),
+			'title' => esc_html__( 'Undefined', 'ology' ),
 			'priority' => 30,
 			'description' => false
 		);
@@ -115,7 +115,7 @@ final class _ology_WP_Customize {
 	 */
 	private function add_control( $wp_customize, $field ) {
 
-		$class = '_ology_WP_Customize_Control';
+		$class = 'ology_tt_WP_Customize_Control';
 
 		if ( $field['type'] !== $class && class_exists( $field['type'] ) )
 			$class = $field['type'];
@@ -154,7 +154,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 	 *
 	 * @ignore
 	 */
-	class _ology_WP_Customize_Control extends WP_Customize_Control {
+	class ology_tt_WP_Customize_Control extends WP_Customize_Control {
 
 		/**
 		 * Field data.

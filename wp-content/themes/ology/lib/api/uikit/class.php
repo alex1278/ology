@@ -6,14 +6,14 @@
  *
  * @package API\Uikit
  */
-final class _ology_Uikit {
+final class ology_tt_Uikit {
 
 	/**
 	 * Compile enqueued items.
 	 */
 	function compile() {
 
-		global $_ology_uikit_enqueued_items;
+		global $ology_tt_uikit_enqueued_items;
 
 		/**
 		 * Filter UIkit enqueued style components.
@@ -69,11 +69,11 @@ final class _ology_Uikit {
 	 */
 	function register_less_components() {
 
-		global $_ology_uikit_enqueued_items;
+		global $ology_tt_uikit_enqueued_items;
 
 		$components = array();
 
-		foreach ( $_ology_uikit_enqueued_items['components'] as $type => $items ) {
+		foreach ( $ology_tt_uikit_enqueued_items['components'] as $type => $items ) {
 
 			// Add core before the components.
 			if ( $type == 'core' )
@@ -98,11 +98,11 @@ final class _ology_Uikit {
 	 */
 	function register_js_components() {
 
-		global $_ology_uikit_enqueued_items;
+		global $ology_tt_uikit_enqueued_items;
 
 		$components = array();
 
-		foreach ( $_ology_uikit_enqueued_items['components'] as $type => $items ) {
+		foreach ( $ology_tt_uikit_enqueued_items['components'] as $type => $items ) {
 
 			// Add core before the components.
 			if ( $type == 'core' )
@@ -135,12 +135,12 @@ final class _ology_Uikit {
 		if ( $type == 'add-ons' )
 			$type = 'components';
 
-		global $_ology_uikit_enqueued_items;
+		global $ology_tt_uikit_enqueued_items;
 
 		// Define uikit src directory.
 		$directories = array( ology_API_PATH . 'uikit/src/less/' . $type );
 		// Add the registered theme directories.
-		foreach ( $_ology_uikit_enqueued_items['themes'] as $id => $directory )
+		foreach ( $ology_tt_uikit_enqueued_items['themes'] as $id => $directory )
 			$directories[] = wp_normalize_path( untrailingslashit( $directory ) );
 
 		return $directories;

@@ -23,7 +23,7 @@ function ology_field_label( $field ) {
 
 	echo ology_open_markup( 'ology_field_label[_' . $field['id'] . ']', 'label' );
 
-		echo $field['label'];
+		echo esc_html($field['label']);
 
 	echo ology_close_markup( 'ology_field_label[_' . $field['id'] . ']', 'label' );
 
@@ -54,16 +54,7 @@ function ology_field_description( $field ) {
 		if ( preg_match( '#<!--more-->#', $description, $matches ) )
 			list( $description, $extended ) = explode( $matches[0], $description, 2 );
 
-		echo $description;
-
-		if ( isset( $extended ) ) {
-
-			?>
-			<br /><a class="bs-read-more" href="#"><?php _e( 'More...', 'ology' ); ?></a>
-			<div class="bs-extended-content"><?php echo $extended; ?></div>
-			<?php
-
-		}
+		echo esc_html($description);
 
 	echo ology_close_markup( 'ology_field_description[_' . $field['id'] . ']', 'div' );
 

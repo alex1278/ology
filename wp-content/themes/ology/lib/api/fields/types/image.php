@@ -46,10 +46,10 @@ function ology_field_image( $field ) {
 	$multiple = ology_get( 'multiple', $field );
 
 	// Hide beans if it is a single image and an image already exists
-	$hide = !$multiple && is_numeric( $field['value'] ) ? 'style="display: none"' : '';
+	$hide = !$multiple && is_numeric( $field['value'] ) ? 'style  =  "display: none"' : '';
 
 	?>
-	<a href="#" class="bs-add-image button button-small" <?php echo $hide; ?>><?php echo _n( 'Add Image', 'Add Images', ( $multiple ? 2 : 1 ), 'ology' ); ?></a>
+	<a href="#" class="bs-add-image button button-small" <?php echo esc_attr($hide); ?>><?php echo _n( 'Add Image', 'Add Images', ( $multiple ? 2 : 1 ), 'ology' ); ?></a>
 	<input type="hidden" name="<?php echo esc_attr( $field['name'] ); ?>" value="">
 	<div class="bs-images-wrap" data-multiple="<?php echo esc_attr( $multiple ); ?>">
 		<?php foreach ( $images as $id ) :

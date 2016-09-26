@@ -6,7 +6,7 @@
  *
  * @package API\Actions
  */
-final class _ology_Anonymous_Actions {
+final class ology_tt_Anonymous_Actions {
 
 	/**
 	 * Callback.

@@ -41,7 +41,7 @@ function ology_edit_image( $src, array $args, $output = 'STRING' ) {
 
 	require_once( ology_API_PATH . 'image/class-images.php' );
 
-	$instance = new _ology_Image_Editor( $src, $args, $output );
+	$instance = new ology_tt_Image_Editor( $src, $args, $output );
 
 	return $instance->init();
 

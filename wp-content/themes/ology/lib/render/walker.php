@@ -12,7 +12,7 @@
  *
  * @ignore
  */
-class _ology_Walker_Nav_Menu extends Walker_Nav_Menu {
+class ology_tt_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 	/**
 	 * Extend WordPress start first menu level.

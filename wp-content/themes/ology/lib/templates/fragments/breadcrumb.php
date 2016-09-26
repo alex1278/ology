@@ -23,7 +23,7 @@ function ology_breadcrumb() {
 
 	$post_type = get_post_type();
 	$breadcrumbs = array();
-	$breadcrumbs[home_url()] = __( 'Home', 'ology' );
+	$breadcrumbs[home_url('/')] = esc_html__( 'Home', 'ology' );
 
 	// Custom post type.
 	if ( !in_array( $post_type, array( 'page', 'attachment', 'post' ) ) && !is_404() ) {
@@ -88,7 +88,7 @@ function ology_breadcrumb() {
 	// Searches.
 	else if ( is_search() ) {
 
-		$breadcrumbs[] = __( 'Results:', 'ology' ) . ' ' . get_search_query();
+		$breadcrumbs[] = esc_html__( 'Results:', 'ology' ) . ' ' . get_search_query();
 
 	}
 
@@ -96,28 +96,28 @@ function ology_breadcrumb() {
 	else if ( is_author() ) {
 
 		$author = get_queried_object();
-		$breadcrumbs[] = __( 'Author Archives:', 'ology' ) . ' ' . $author->display_name;
+		$breadcrumbs[] = esc_html__( 'Author Archives:', 'ology' ) . ' ' . $author->display_name;
 
 	}
 
 	// Tag archives.
 	else if ( is_tag() ) {
 
-		$breadcrumbs[] = __( 'Tag Archives:', 'ology' ) . ' ' . single_tag_title( '', false );
+		$breadcrumbs[] = esc_html__( 'Tag Archives:', 'ology' ) . ' ' . single_tag_title( '', false );
 
 	}
 
 	// Date archives.
 	else if ( is_date() ) {
 
-		$breadcrumbs[] = __( 'Archives:', 'ology' ) . ' ' . get_the_time( 'F Y' );
+		$breadcrumbs[] = esc_html__( 'Archives:', 'ology' ) . ' ' . get_the_time( 'F Y' );
 
 	}
 
 	// 404.
 	else if ( is_404() ) {
 
-		$breadcrumbs[] = __( '404', 'ology' );
+		$breadcrumbs[] = esc_html__( '404', 'ology' );
 
 	}
 
@@ -140,7 +140,7 @@ function ology_breadcrumb() {
 						// Used for mobile devices.
 						echo ology_open_markup( 'ology_breadcrumb_item_link_inner', 'span' );
 
-							echo $breadcrumb;
+							echo esc_html($breadcrumb);
 
 						echo ology_close_markup( 'ology_breadcrumb_item_link_inner', 'span' );
 
@@ -154,7 +154,7 @@ function ology_breadcrumb() {
 
 				echo ology_open_markup( 'ology_breadcrumb_item[_active]', 'li', array( 'class' => 'uk-active uk-text-muted' ) );
 
-					echo $breadcrumb;
+					echo esc_html($breadcrumb);
 
 				echo ology_close_markup( 'ology_breadcrumb_item[_active]', 'li' );
 

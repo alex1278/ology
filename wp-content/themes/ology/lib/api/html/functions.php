@@ -34,7 +34,7 @@ function ology_output( $id, $output ) {
 	if ( empty( $output ) )
 		return;
 
-	if ( _ology_is_html_dev_mode() )
+	if ( ology_tt_is_html_dev_mode() )
 		$output = "<!-- open output: $id -->" . $output . "<!-- close output: $id -->";
 
 	return $output;
@@ -90,7 +90,7 @@ function ology_remove_output( $id ) {
  */
 function ology_open_markup( $id, $tag, $attributes = array() ) {
 
-	global $_temp_ology_selfclose_markup;
+	global $_tempology_tt_selfclose_markup;
 
 	$args = func_get_args();
 	$attributes_args = $args;
@@ -114,19 +114,19 @@ function ology_open_markup( $id, $tag, $attributes = array() ) {
 	// Set before action id.
 	$args[0] = $id . '_before_markup';
 
-	$output = call_user_func_array( '_ology_render_action', $args );
+	$output = call_user_func_array( 'ology_tt_render_action', $args );
 
 		// Don't output the tag if empty, the before and after actions still run.
 		if ( $tag )
-			$output .= '<' . $tag . ' ' . call_user_func_array( 'ology_add_attributes', $attributes_args ) . ( _ology_is_html_dev_mode() ? ' data-markup-id="' . $id . '"' : null ) . ( $_temp_ology_selfclose_markup ? '/' : '' ) . '>';
+			$output .= '<' . $tag . ' ' . call_user_func_array( 'ology_add_attributes', $attributes_args ) . ( ology_tt_is_html_dev_mode() ? ' data-markup-id="' . $id . '"' : null ) . ( $_tempology_tt_selfclose_markup ? '/' : '' ) . '>';
 
 	// Set after action id.
-	$args[0] = $id . ( $_temp_ology_selfclose_markup ? '_after_markup' : '_prepend_markup' );
+	$args[0] = $id . ( $_tempology_tt_selfclose_markup ? '_after_markup' : '_prepend_markup' );
 
-	$output .= call_user_func_array( '_ology_render_action', $args );
+	$output .= call_user_func_array( 'ology_tt_render_action', $args );
 
 	// Reset temp selfclose global to reduce memory usage.
-	unset( $GLOBALS['_temp_ology_selfclose_markup'] );
+	unset( $GLOBALS['_tempology_tt_selfclose_markup'] );
 
 	return $output;
 
@@ -157,9 +157,9 @@ function ology_open_markup( $id, $tag, $attributes = array() ) {
  */
 function ology_selfclose_markup( $id, $tag, $attributes = array() ) {
 
-	global $_temp_ology_selfclose_markup;
+	global $_tempology_tt_selfclose_markup;
 
-	$_temp_ology_selfclose_markup = true;
+	$_tempology_tt_selfclose_markup = true;
 	$args = func_get_args();
 
 	return call_user_func_array( 'ology_open_markup', $args );
@@ -195,7 +195,7 @@ function ology_close_markup( $id, $tag ) {
 	// Set before action id.
 	$args[0] = $id . '_append_markup';
 
-	$output = call_user_func_array( '_ology_render_action', $args );
+	$output = call_user_func_array( 'ology_tt_render_action', $args );
 
 		// Don't output the tag if empty, the before and after actions still run.
 		if ( $tag )
@@ -204,7 +204,7 @@ function ology_close_markup( $id, $tag ) {
 	// Set after action id.
 	$args[0] = $id . '_after_markup';
 
-	$output .= call_user_func_array( '_ology_render_action', $args );
+	$output .= call_user_func_array( 'ology_tt_render_action', $args );
 
 	return $output;
 
@@ -317,11 +317,11 @@ function ology_wrap_markup( $id, $new_id, $tag, $attributes = array() ) {
 	$args = func_get_args();
 	unset( $args[0] );
 
-	_ology_add_anonymous_action( $id . '_before_markup', array( 'ology_open_markup', $args ), 9999 );
+	ology_tt_add_anonymous_action( $id . '_before_markup', array( 'ology_open_markup', $args ), 9999 );
 
 	unset( $args[3] );
 
-	_ology_add_anonymous_action( $id . '_after_markup', array( 'ology_close_markup', $args ), 1 );
+	ology_tt_add_anonymous_action( $id . '_after_markup', array( 'ology_close_markup', $args ), 1 );
 
 	return true;
 
@@ -354,11 +354,11 @@ function ology_wrap_inner_markup( $id, $new_id, $tag, $attributes = array() ) {
 	$args = func_get_args();
 	unset( $args[0] );
 
-	_ology_add_anonymous_action( $id . '_prepend_markup', array( 'ology_open_markup', $args ), 1 );
+	ology_tt_add_anonymous_action( $id . '_prepend_markup', array( 'ology_open_markup', $args ), 1 );
 
 	unset( $args[3] );
 
-	_ology_add_anonymous_action( $id . '_append_markup', array( 'ology_close_markup', $args ), 9999 );
+	ology_tt_add_anonymous_action( $id . '_append_markup', array( 'ology_close_markup', $args ), 9999 );
 
 	return true;
 
@@ -446,7 +446,7 @@ function ology_reset_attributes( $id ) {
  */
 function ology_add_attribute( $id, $attribute, $value ) {
 
-	$class = new _ology_Attributes( $id, $attribute, $value );
+	$class = new ology_tt_Attributes( $id, $attribute, $value );
 
 	return $class->init( 'add' );
 
@@ -474,7 +474,7 @@ function ology_add_attribute( $id, $attribute, $value ) {
  */
 function ology_replace_attribute( $id, $attribute, $value, $new_value = null ) {
 
-	$class = new _ology_Attributes( $id, $attribute, $value, $new_value );
+	$class = new ology_tt_Attributes( $id, $attribute, $value, $new_value );
 
 	return $class->init( 'replace' );
 
@@ -499,7 +499,7 @@ function ology_replace_attribute( $id, $attribute, $value, $new_value = null ) {
  */
 function ology_remove_attribute( $id, $attribute, $value = null ) {
 
-	$class = new _ology_Attributes( $id, $attribute, $value );
+	$class = new ology_tt_Attributes( $id, $attribute, $value );
 
 	return $class->init( 'remove' );
 
@@ -511,7 +511,7 @@ function ology_remove_attribute( $id, $attribute, $value = null ) {
  *
  * @ignore
  */
-function _ology_is_html_dev_mode() {
+function ology_tt_is_html_dev_mode() {
 
 	if ( defined( 'ology_HTML_DEV_MODE' ) )
 		return ology_HTML_DEV_MODE;

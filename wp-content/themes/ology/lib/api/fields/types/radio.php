@@ -42,7 +42,10 @@ function ology_field_radio( $field ) {
 					<img src="<?php echo esc_url( $radio ); ?>"/>
 				<?php endif; ?>
 				<input type="radio" name="<?php echo esc_attr( $field['name'] ); ?>" value="<?php echo esc_attr( $id ); ?>" <?php checked( $id, $field['value'], 1 ); ?> <?php echo ology_esc_attributes( $field['attributes'] ); ?>/>
-				<?php if ( !$has_image ) echo $radio; ?>
+				<?php   if (!$has_image) {
+                                            echo esc_url($radio);
+                                        }
+                                        ?>
 			</label>
 
 		<?php $i++; endforeach; ?>

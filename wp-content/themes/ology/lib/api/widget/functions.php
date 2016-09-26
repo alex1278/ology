@@ -54,7 +54,7 @@ function ology_register_widget_area( $args = array(), $widget_control = array() 
         'ology_type' => 'stack',
         'ology_show_widget_title' => true,
         'ology_show_widget_badge' => false,
-        'ology_widget_badge_content' => __( 'Hello', 'ology' )
+        'ology_widget_badge_content' => esc_html__( 'Hello', 'ology' )
     ) );
 
     /**
@@ -147,7 +147,7 @@ function ology_widget_area( $id ) {
     if ( !ology_has_widget_area( $id ) )
         return false;
 
-    _ology_setup_widget_area( $id );
+    ology_tt_setup_widget_area( $id );
 
     /**
      * Fires after a widget area is initialized.
@@ -168,7 +168,7 @@ function ology_widget_area( $id ) {
         $output = ob_get_clean();
 
     // Reset widget area global to reduce memory usage.
-    _ology_reset_widget_area();
+    ology_tt_reset_widget_area();
 
     /**
      * Fires after a widget area is reset.
@@ -193,12 +193,12 @@ function ology_widget_area( $id ) {
  */
 function ology_get_widget_area( $needle = false ) {
 
-    global $_ology_widget_area;
+    global $ology_tt_widget_area;
 
     if ( !$needle )
-        return $_ology_widget_area;
+        return $ology_tt_widget_area;
 
-    return ology_get( $needle, $_ology_widget_area );
+    return ology_get( $needle, $ology_tt_widget_area );
 
 }
 
@@ -222,7 +222,7 @@ function ology_widget_area_shortcodes( $content ) {
     if ( is_array( $content ) )
         $content = build_query( $content );
 
-    return ology_array_shortcodes( $string, $GLOBALS['_ology_widget_area'] );
+    return ology_array_shortcodes( $string, $GLOBALS['ology_tt_widget_area'] );
 
 }
 
@@ -236,18 +236,18 @@ function ology_widget_area_shortcodes( $content ) {
  */
 function ology_have_widgets() {
 
-    global $_ology_widget_area;
+    global $ology_tt_widget_area;
 
-    if ( !ology_get( 'widgets', $_ology_widget_area ) )
+    if ( !ology_get( 'widgets', $ology_tt_widget_area ) )
         return false;
 
-    $widgets = array_keys( $_ology_widget_area['widgets'] );
+    $widgets = array_keys( $ology_tt_widget_area['widgets'] );
 
-    if ( isset( $widgets[$_ology_widget_area['current_widget']] ) )
+    if ( isset( $widgets[$ology_tt_widget_area['current_widget']] ) )
         return true;
 
     // Reset last widget global to reduce memory usage.
-    _ology_reset_widget();
+    ology_tt_reset_widget();
 
     return false;
 
@@ -265,18 +265,18 @@ function ology_have_widgets() {
  */
 function ology_setup_widget() {
 
-    global $_ology_widget_area;
+    global $ology_tt_widget_area;
 
-    $widgets = array_keys( $_ology_widget_area['widgets'] );
+    $widgets = array_keys( $ology_tt_widget_area['widgets'] );
 
     // Retrieve widget id if exists.
-    if ( !$id = ology_get( $_ology_widget_area['current_widget'], $widgets ) )
+    if ( !$id = ology_get( $ology_tt_widget_area['current_widget'], $widgets ) )
          return false;
 
     // Set next current widget integer.
-    $_ology_widget_area['current_widget'] = $_ology_widget_area['current_widget'] + 1;
+    $ology_tt_widget_area['current_widget'] = $ology_tt_widget_area['current_widget'] + 1;
 
-    _ology_setup_widget( $id );
+    ology_tt_setup_widget( $id );
 
     return true;
 
@@ -294,12 +294,12 @@ function ology_setup_widget() {
  */
 function ology_get_widget( $needle = false ) {
 
-    global $_ology_widget;
+    global $ology_tt_widget;
 
     if ( !$needle )
-        return $_ology_widget;
+        return $ology_tt_widget;
 
-    return ology_get( $needle, $_ology_widget );
+    return ology_get( $needle, $ology_tt_widget );
 
 }
 
@@ -323,7 +323,7 @@ function ology_widget_shortcodes( $content ) {
     if ( is_array( $content ) )
         $content = build_query( $content );
 
-    return ology_array_shortcodes( $content, $GLOBALS['_ology_widget'] );
+    return ology_array_shortcodes( $content, $GLOBALS['ology_tt_widget'] );
 
 }
 
@@ -333,9 +333,9 @@ function ology_widget_shortcodes( $content ) {
  *
  * @ignore
  */
-function _ology_setup_widget_area( $id ) {
+function ology_tt_setup_widget_area( $id ) {
 
-    global $_ology_widget_area, $wp_registered_sidebars;
+    global $ology_tt_widget_area, $wp_registered_sidebars;
 
     if ( !isset( $wp_registered_sidebars[$id] ) )
         return false;
@@ -349,7 +349,7 @@ function _ology_setup_widget_area( $id ) {
     ) );
 
     // Start building widget area global before dynamic_sidebar is called.
-    $_ology_widget_area = $wp_registered_sidebars[$id];
+    $ology_tt_widget_area = $wp_registered_sidebars[$id];
 
     // Buffer sidebar, please make it easier for us wp.
     $sidebar = ology_render_function( 'dynamic_sidebar', $id );
@@ -364,15 +364,15 @@ function _ology_setup_widget_area( $id ) {
     preg_match_all( '#<!--widget-end-->#', $sidebar, $counter );
 
     // Continue building widget area global with the splited sidebar elements.
-    $_ology_widget_area['widgets_count'] = count( $counter[0] );
-    $_ology_widget_area['current_widget'] = 0;
+    $ology_tt_widget_area['widgets_count'] = count( $counter[0] );
+    $ology_tt_widget_area['current_widget'] = 0;
 
     // Only add widgets if exists.
     if ( count( $splited_sidebar ) == 3 ) {
 
-        $_ology_widget_area['before_widgets'] = $splited_sidebar[0];
-        $_ology_widget_area['widgets'] = _ology_setup_widgets( $splited_sidebar[1] );
-        $_ology_widget_area['after_widgets'] = $splited_sidebar[2];
+        $ology_tt_widget_area['before_widgets'] = $splited_sidebar[0];
+        $ology_tt_widget_area['widgets'] = ology_tt_setup_widgets( $splited_sidebar[1] );
+        $ology_tt_widget_area['after_widgets'] = $splited_sidebar[2];
 
     }
 
@@ -386,11 +386,11 @@ function _ology_setup_widget_area( $id ) {
  *
  * @ignore
  */
-function _ology_setup_widgets( $widget_area_content ) {
+function ology_tt_setup_widgets( $widget_area_content ) {
 
-    global $wp_registered_widgets, $_ology_widget_area;
+    global $wp_registered_widgets, $ology_tt_widget_area;
 
-    $_ology_widgets = array();
+    $ology_tt_widgets = array();
 
     foreach ( explode( '<!--widget-end-->', $widget_area_content ) as $content ) {
 
@@ -413,7 +413,7 @@ function _ology_setup_widgets( $widget_area_content ) {
         $widget['title'] = '';
 
         // Add total count.
-        $widget['count'] = $_ology_widget_area['widgets_count'];
+        $widget['count'] = $ology_tt_widget_area['widgets_count'];
 
         // Add basic widget arguments.
         foreach ( array( 'id', 'name', 'classname', 'description' ) as $var )
@@ -465,15 +465,15 @@ function _ology_setup_widgets( $widget_area_content ) {
         $widget['content'] = $content;
 
         // Add widget control arguments and register widget.
-        $_ology_widgets[$widget['id']] = array_merge( $widget, array(
-            'show_title' => $_ology_widget_area['ology_show_widget_title'],
-            'badge' => $_ology_widget_area['ology_show_widget_badge'],
-            'badge_content' => $_ology_widget_area['ology_widget_badge_content'],
+        $ology_tt_widgets[$widget['id']] = array_merge( $widget, array(
+            'show_title' => $ology_tt_widget_area['ology_show_widget_title'],
+            'badge' => $ology_tt_widget_area['ology_show_widget_badge'],
+            'badge_content' => $ology_tt_widget_area['ology_widget_badge_content'],
         ) );
 
     }
 
-    return $_ology_widgets;
+    return $ology_tt_widgets;
 
 }
 
@@ -483,13 +483,13 @@ function _ology_setup_widgets( $widget_area_content ) {
  *
  * @ignore
  */
-function _ology_setup_widget( $id ) {
+function ology_tt_setup_widget( $id ) {
 
-    global $_ology_widget;
+    global $ology_tt_widget;
 
     $widgets = ology_get_widget_area( 'widgets' );
 
-    $_ology_widget = $widgets[$id];
+    $ology_tt_widget = $widgets[$id];
 
 }
 
@@ -499,9 +499,9 @@ function _ology_setup_widget( $id ) {
  *
  * @ignore
  */
-function _ology_reset_widget_area() {
+function ology_tt_reset_widget_area() {
 
-    unset( $GLOBALS['_ology_widget_area'] );
+    unset( $GLOBALS['ology_tt_widget_area'] );
 
 }
 
@@ -511,9 +511,9 @@ function _ology_reset_widget_area() {
  *
  * @ignore
  */
-function _ology_reset_widget() {
+function ology_tt_reset_widget() {
 
-    unset( $GLOBALS['_ology_widget'] );
+    unset( $GLOBALS['ology_tt_widget'] );
 
 }
 
@@ -523,12 +523,12 @@ function _ology_reset_widget() {
  *
  * @ignore
  */
-function _ology_widget_area_subfilters() {
+function ology_tt_widget_area_subfilters() {
 
-    global $_ology_widget_area;
+    global $ology_tt_widget_area;
 
     // Add sidebar id.
-    return '[_' . $_ology_widget_area['id'] . ']';
+    return '[_' . $ology_tt_widget_area['id'] . ']';
 
 }
 
@@ -538,14 +538,14 @@ function _ology_widget_area_subfilters() {
  *
  * @ignore
  */
-function _ology_widget_subfilters() {
+function ology_tt_widget_subfilters() {
 
-    global $_ology_widget_area, $_ology_widget;
+    global $ology_tt_widget_area, $ology_tt_widget;
 
     $subfilters = array(
-        $_ology_widget_area['id'], // Add sidebar id.
-        $_ology_widget['type'], // Add widget type.
-        $_ology_widget['id'] // Add widget id.
+        $ology_tt_widget_area['id'], // Add sidebar id.
+        $ology_tt_widget['type'], // Add widget type.
+        $ology_tt_widget['id'] // Add widget id.
     );
 
     return '[_' . implode( '][_', $subfilters ) . ']';
@@ -553,14 +553,14 @@ function _ology_widget_subfilters() {
 }
 
 
-add_action( 'the_widget', '_ology_force_the_widget', 10, 3 );
+add_action( 'the_widget', 'ology_tt_force_the_widget', 10, 3 );
 
 /**
  * Force atypical widget added using the_widget() to have a correctly registered id.
  *
  * @ignore
  */
-function _ology_force_the_widget( $widget, $instance, $args ) {
+function ology_tt_force_the_widget( $widget, $instance, $args ) {
 
     global $wp_widget_factory;
 

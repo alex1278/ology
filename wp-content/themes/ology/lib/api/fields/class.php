@@ -6,7 +6,7 @@
  *
  * @package API\Fields
  */
-final class _ology_Fields {
+final class ology_tt_Fields {
 
 	/**
 	 * Fields.

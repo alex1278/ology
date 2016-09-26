@@ -62,6 +62,6 @@ function ology_do_register_post_meta() {
 		)
 	);
 
-	ology_register_post_meta( $fields, array( 'post', 'page' ), 'ology', array( 'title' => __( 'Post Options', 'ology' ) ) );
+	ology_register_post_meta( $fields, array( 'post', 'page' ), 'ology', array( 'title' => esc_html__( 'Post Options', 'ology' ) ) );
 
 }

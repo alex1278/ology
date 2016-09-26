@@ -20,10 +20,10 @@ function ology_do_register_default_menu() {
 
 	// Set up default menu.
 	wp_update_nav_menu_item(
-		wp_create_nav_menu( __( 'Navigation', 'ology' ) ),
+		wp_create_nav_menu( esc_html__( 'Navigation', 'ology' ) ),
 		0,
 		array(
-			'menu-item-title' =>  __( 'Home', 'ology' ),
+			'menu-item-title' =>  esc_html__( 'Home', 'ology' ),
 			'menu-item-classes' => 'home',
 			'menu-item-url' => home_url( '/' ),
 			'menu-item-status' => 'publish'
@@ -43,7 +43,7 @@ ology_add_smart_action( 'after_setup_theme', 'ology_do_register_nav_menus' );
 function ology_do_register_nav_menus() {
 
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'ology' ),
+		'primary' => esc_html__( 'Primary Menu', 'ology' ),
 	) );
 
 }
@@ -120,7 +120,7 @@ function ology_modify_menu_args( $args ) {
 
 	// Allow walker overwrite.
 	if ( !ology_get( 'walker', $args ) )
-		$args['walker'] = new _ology_Walker_Nav_Menu;
+		$args['walker'] = new ology_tt_Walker_Nav_Menu;
 
 	// Adapt level to walker depth.
 	$force['ology_start_level'] = ( $level = ology_get( 'ology_start_level', $args ) ) ? ( $level - 1 ) : 0;

@@ -6,7 +6,7 @@
  *
  * @package API\Term_meta
  */
-final class _ology_Term_Meta {
+final class ology_tt_Term_Meta {
 
 	/**
 	 * Fields section.
