@@ -8,43 +8,21 @@
  */
 
 
-/// Stroke font-character
-/// @param  {Integer} $stroke - Stroke width
-/// @param  {Color}   $color  - Stroke color
-/// @return {List}            - text-shadow list
-
-
 .tm-error-page{
     background: url(../images/404.jpg) no-repeat top left;
     background-size:cover;
     background-attachment: fixed;
 }
 .tm-error-wrap{
-    // background-color:fade(@global-primary-background,90%);
-   // padding:30px;
    .uk-container.uk-container-center{
        width:1200px;
    }
 }
-.tm-error-wrap > div{
-    //border: 1px solid fade(@global-border, 20%);
-}
-
-/*.tm-border-block::after{
-    content:'';
-    position:absolute;
-    top:30px;
-    bottom:30px;
-    left:30px;
-    right:30px;
-    border: 1px solid fade(@global-border, 20%);
-}*/
 .tm-error-wrap h1{
     color:@global-contrast-color;
     font-size: 100px; // 100px
     line-height:1.3;
     text-align: left;
-    //.stroke(3, @global-contrast-color); // "call" the mixin .stroke
  }
 .tm-error-head h4{
     color:@global-contrast-color;
@@ -71,8 +49,6 @@
         position:relative;
         z-index:2;
         background:none;
-        //margin-bottom:10px;
-        //font-weight:700;
         width:60%;
         background: @global-primary-background;
         font-size: @base-h4-font-size;
@@ -105,29 +81,9 @@
 @media (max-width:479px){
     .tm-error-wrap h1{
       font-size:@base-h1-font-size; 
-      //.stroke(2, @global-contrast-color); // "call" the mixin .stroke 
  }
  .tm-error-head h4{
     font-size:@base-h4-font-size - 2;
     }
     
-}
-.stroke(@stroke, @color) {
-  @maxi: @stroke + 1;
-  .i-loop (@i) when (@i > 0) {
-    @maxj: @stroke + 1;
-    .j-loop (@j) when (@j > 0) {
-      text-shadow+: (@i - 1)*(1px)  (@j - 1)*(1px) 0 @color;
-      text-shadow+: (@i - 1)*(1px)  (@j - 1)*(-1px) 0 @color;
-      text-shadow+: (@i - 1)*(-1px)  (@j - 1)*(-1px) 0 @color;
-      text-shadow+: (@i - 1)*(-1px)  (@j - 1)*(1px) 0 @color;
-      .j-loop(@j - 1);
-    }
-    .j-loop (0) {}
-    .j-loop(@maxj);
-    .i-loop(@i - 1);
-  }
-  .i-loop (0) {}
-  .i-loop(@maxi);
-  text-shadow+: 0 0 0 @color;
 }

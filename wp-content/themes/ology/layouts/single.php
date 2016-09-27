@@ -21,7 +21,7 @@
         <!-- on loop start check the global post is empty so that template tags don't work before the_content(), it is good if some third-party plugins unset global variable post or change main WP_Query-->
         <?php if (the_date('Y-m-d','','', false)) : ?>
             <div class="ang-post-date uk-float-left">
-                <time datetime="<?php the_date('Y-m-d'); ?>"><span class="ang-post-date-day uk-display-block"><?php the_time('j'); ?></span><span class="ang-post-date-month uk-display-block"> <?php the_time('M'); ?></span></time>
+                <time datetime="<?php print get_the_date('Y-m-d');?>"><span class="ang-post-date-day uk-display-block"><?php the_time('j'); ?></span><span class="ang-post-date-month uk-display-block"> <?php the_time('M'); ?></span></time>
             </div>
             <div class="ang-post-title-right uk-margin-bottom">
                  <?php if ($this['config']->get('post_title', true)) : ?>

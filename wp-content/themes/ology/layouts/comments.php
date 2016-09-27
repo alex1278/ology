@@ -74,7 +74,7 @@
 
                     <div id="respond" class="ang-respond-form">
 
-                        <h3 class="uk-h3 uk-panel-title uk-text-bold uk-margin-large-top"><span><?php (comments_open()) ? comment_form_title(esc_html__('ADD COMMENT', 'ology')) : esc_html_e('Comments are closed', 'ology'); ?><span></h3>
+                        <h3 class="uk-h3 uk-panel-title uk-text-bold uk-margin-large-top"><span><?php (comments_open()) ? comment_form_title(esc_html__('ADD COMMENT', 'ology')) : esc_html_e('Comments are closed', 'ology'); ?></span></h3>
 
                         <?php if (comments_open()) : ?>
                         <div>

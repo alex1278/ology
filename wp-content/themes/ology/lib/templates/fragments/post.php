@@ -42,7 +42,7 @@ function ology_post_title() {
 		'itemprop' => 'headline'
 	) );
 
-		echo esc_html($title);
+		echo wp_kses($title, array('a' => array('href' => array(), 'title' => array() )) );
 
 	echo ology_close_markup( 'ology_post_title', $title_tag );
 
