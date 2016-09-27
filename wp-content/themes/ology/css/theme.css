@@ -1995,7 +1995,7 @@ ul.uk-nav-sub {
   color: #54b4e6;
 }
 .uk-nav-navbar ul a:hover {
-  color: #63ab0f;
+  color: #54b4e6;
 }
 /* Modifier `uk-nav-offcanvas`
  ========================================================================== */
@@ -11053,7 +11053,9 @@ ul.uk-nav-sub {
   background: none;
 }
 .uk-nav-navbar > li > a:hover,
-.uk-nav-navbar > li > a:focus {
+.uk-nav-navbar > li > a:focus,
+.uk-nav-navbar li.uk-active > a:hover,
+.uk-nav-navbar li.uk-active > a:focus {
   background: #54b4e6;
   color: #ffffff;
 }
@@ -11081,7 +11083,7 @@ ul.uk-nav-sub {
 .uk-nav-navbar li.uk-active > a,
 .uk-nav-sub li.uk-active,
 .uk-nav-sub li.uk-active > a {
-  color: #63ab0f;
+  color: #54b4e6;
 }
 .uk-nav-navbar ul > li.uk-active > a,
 .uk-nav-navbar ul > li > a:hover {
@@ -14182,7 +14184,6 @@ body.post-type-archive-commando #tm-main-section .uk-container {
 .widget_recent_entries li,
 .widget_rss li,
 .widget_search li,
-.widget_text li,
 .widget_tag_cloud li,
 .widget_nav_menu li,
 .widget_archive p,
@@ -14194,7 +14195,6 @@ body.post-type-archive-commando #tm-main-section .uk-container {
 .widget_recent_entries p,
 .widget_rss p,
 .widget_search p,
-.widget_text p,
 .widget_tag_cloud p,
 .widget_nav_menu p {
   font-size: 14px;

@@ -17,14 +17,7 @@
         <field type="section" name="Responsive" description="The viewport meta tag controls the layout on mobile browsers. If it's not set, the default width on mobile is 980px and the site will look the same like on desktops." />
         <field type="checkbox" name="responsive" value="0" label="Disable the viewport meta tag." />
         <field type="section" name="Posts" description="Create a multi-column blog and format your posts." />
-        <field name="multicolumns" type="select" default="1" description="Set the number of columns on the frontpage.">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </field>
+        
         <field name="multicolumns_order" type="select" default="1" description="Order posts across or down columns.">
             <option value="1">Across</option>
             <option value="0">Down</option>
@@ -101,6 +94,14 @@
             <field type="section" name="Style" description="Select which style the layout should load." />
             <field type="style" name="style" />
             <field type="section" name="Content" description="Display specific content elements in the theme." />
+            <field name="multicolumns" type="select" default="1" description="Set the number of columns on the frontpage.">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </field>
             <field type="checkbox" name="system_output" value="0" label="Hide system output." />
             <field type="checkbox" name="page_title" value="0" label="Hide page title." />
             <field type="checkbox" name="content_fullwidth" value="0" label="Enable sistem output fullwidth" />

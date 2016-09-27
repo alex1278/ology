@@ -11051,7 +11051,9 @@ ul.uk-nav-sub {
   background: none;
 }
 .uk-nav-navbar > li > a:hover,
-.uk-nav-navbar > li > a:focus {
+.uk-nav-navbar > li > a:focus,
+.uk-nav-navbar li.uk-active > a:hover,
+.uk-nav-navbar li.uk-active > a:focus {
   background: rgba(255, 255, 255, 0);
   color: #47cba3;
 }
@@ -14180,7 +14182,6 @@ body.post-type-archive-commando #tm-main-section .uk-container {
 .widget_recent_entries li,
 .widget_rss li,
 .widget_search li,
-.widget_text li,
 .widget_tag_cloud li,
 .widget_nav_menu li,
 .widget_archive p,
@@ -14192,7 +14193,6 @@ body.post-type-archive-commando #tm-main-section .uk-container {
 .widget_recent_entries p,
 .widget_rss p,
 .widget_search p,
-.widget_text p,
 .widget_tag_cloud p,
 .widget_nav_menu p {
   font-size: 12px;

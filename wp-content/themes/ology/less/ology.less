@@ -1389,7 +1389,9 @@ ul.uk-nav-sub{
     background:none;
 }
 .uk-nav-navbar > li > a:hover,
-.uk-nav-navbar > li > a:focus {
+.uk-nav-navbar > li > a:focus,
+.uk-nav-navbar li.uk-active > a:hover,
+.uk-nav-navbar li.uk-active > a:focus{
     background: @nav-navbar-hover-background;
     color: @nav-navbar-hover-color;
 }
@@ -4810,7 +4812,6 @@ aside{
 .widget_recent_entries,
 .widget_rss,
 .widget_search,
-.widget_text,
 .widget_tag_cloud,
 .widget_nav_menu{
     li,p{
