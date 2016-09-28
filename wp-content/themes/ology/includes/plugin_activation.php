@@ -130,8 +130,8 @@ if ( ! function_exists( 'ology_recommended_plugins' ) ) {
                         array(
                             'name'     => esc_html__('TT Warp 7 Framework', 'ology'),
                             'slug'     => 'tt-warp7',
-                            'version'  => '7.3.31',
-                            'source'   => get_template_directory() . '/plugins/tt-warp.7.3.31.zip',
+                            'version'  => '7.3.32',
+                            'source'   => get_template_directory() . '/plugins/tt-warp.7.3.32.zip',
                             'required' => TRUE,
                         )
                 );

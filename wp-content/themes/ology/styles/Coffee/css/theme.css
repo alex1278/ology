@@ -14173,6 +14173,10 @@ body.post-type-archive-commando #tm-main-section .uk-container {
 /**
  *  Widget 
  */
+.widget_nav_menu li,
+.widget_pages li {
+  color: #9f9a70;
+}
 .widget_archive li,
 .widget_calendar li,
 .widget_categories li,
@@ -14196,6 +14200,19 @@ body.post-type-archive-commando #tm-main-section .uk-container {
 .widget_tag_cloud p,
 .widget_nav_menu p {
   font-size: 12px;
+}
+.widget_archive h3.uk-panel-title,
+.widget_calendar h3.uk-panel-title,
+.widget_categories h3.uk-panel-title,
+.widget_pages h3.uk-panel-title,
+.widget_meta h3.uk-panel-title,
+.widget_recent_comments h3.uk-panel-title,
+.widget_recent_entries h3.uk-panel-title,
+.widget_rss h3.uk-panel-title,
+.widget_search h3.uk-panel-title,
+.widget_tag_cloud h3.uk-panel-title,
+.widget_nav_menu h3.uk-panel-title {
+  line-height: 1.1;
 }
 /**
  * position Aside Search Widget 
@@ -14288,18 +14305,18 @@ aside .uk-search.uk-active .uk-search-field {
   line-height: 18px;
   font-weight: 100;
   color: #757678;
-  margin-bottom: 10px;
 }
 .widget_calendar thead th {
   color: #a6a6a6;
-  line-height: 3;
   font-weight: normal;
   font-size: 12px;
   border: none;
+  padding: 8px 10px;
 }
 .widget_calendar tfoot td,
 .widget_calendar tfoot th {
   border: none;
+  padding: 8px 10px;
 }
 .widget_calendar tfoot td a,
 .widget_calendar tfoot th a {
@@ -14317,10 +14334,11 @@ aside .uk-search.uk-active .uk-search-field {
 .widget_calendar tbody td,
 .widget_calendar tbody th {
   border: none;
-  line-height: 1.1;
+  line-height: 1;
   position: relative;
   text-align: center;
   border-radius: 50%;
+  padding: 8px 10px;
 }
 .widget_calendar tbody td a,
 .widget_calendar tbody th a {
@@ -14329,6 +14347,18 @@ aside .uk-search.uk-active .uk-search-field {
 /* 
  *   position Aside Archiv Widget 
  */
+.widget_archive select {
+  width: 100%;
+  max-width: 100%;
+  color: #acacac;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+.widget_archive select option {
+  padding: 13px 20px 14px 11px;
+}
 .widget_archive ul,
 .widget_archive ul.uk-list-line {
   list-style: outside none none;
@@ -14338,7 +14368,7 @@ aside .uk-search.uk-active .uk-search-field {
 }
 .widget_archive ul > li,
 .widget_archive ul.uk-list-line > li {
-  padding: 5px 5px 5px 25px;
+  padding: 5px 5px 5px 15px;
   border-top: none;
   border: none;
   color: #757678;
@@ -14367,6 +14397,41 @@ aside .uk-search.uk-active .uk-search-field {
 /* 
  *   position Aside Categories Widget 
  */
+aside .screen-reader-text {
+  font-size: 14px;
+}
+aside .widget_text select {
+  width: 100%;
+  max-width: 100%;
+  color: #acacac;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+aside .widget_text select option {
+  padding: 13px 20px 14px 11px;
+}
+.widget_text .textwidget p {
+  margin-bottom: 0;
+}
+.widget_text .textwidget p img {
+  margin-bottom: 15px;
+}
+.widget_meta select,
+.widget_categories select {
+  width: 100%;
+  max-width: 100%;
+  color: #acacac;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+.widget_meta select option,
+.widget_categories select option {
+  padding: 13px 20px 14px 11px;
+}
 .widget_meta ul,
 .widget_categories ul,
 .widget_meta ul.uk-list-line,
@@ -14381,7 +14446,7 @@ aside .uk-search.uk-active .uk-search-field {
   border-top: none;
   font-size: 12px;
   font-weight: 500;
-  color: #a6a6a6;
+  color: #889cb3;
   text-align: right;
   clear: both;
   padding-top: 0;
@@ -14435,9 +14500,18 @@ aside .uk-search.uk-active .uk-search-field {
   list-style: none;
   padding: 0;
 }
+.widget_recent_comments ul > li,
+.widget_recent_comments ul.uk-comment-list > li {
+  margin-bottom: 20px;
+}
+.widget_recent_comments ul > li::last-child,
+.widget_recent_comments ul.uk-comment-list > li::last-child {
+  margin-bottom: 0;
+}
 .widget_recent_comments ul > li header,
 .widget_recent_comments ul.uk-comment-list > li header {
-  padding-bottom: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 0 !important;
   position: relative;
 }
 .widget_recent_comments ul > li header::after,
@@ -14450,6 +14524,10 @@ aside .uk-search.uk-active .uk-search-field {
   bottom: 0;
   left: 0;
 }
+.widget_recent_comments ul > li .uk-comment-body,
+.widget_recent_comments ul.uk-comment-list > li .uk-comment-body {
+  margin-top: 0;
+}
 .widget_recent_comments ul > li img,
 .widget_recent_comments ul.uk-comment-list > li img {
   display: none;
@@ -14457,6 +14535,10 @@ aside .uk-search.uk-active .uk-search-field {
 .widget_recent_comments ul > li h4,
 .widget_recent_comments ul.uk-comment-list > li h4 {
   font-weight: 600;
+}
+.widget_recent_comments ul > li h4.uk-comment-title,
+.widget_recent_comments ul.uk-comment-list > li h4.uk-comment-title {
+  margin-bottom: 3px;
 }
 .widget_recent_comments ul > li h4 a,
 .widget_recent_comments ul.uk-comment-list > li h4 a {
@@ -14487,18 +14569,20 @@ aside .uk-search.uk-active .uk-search-field {
 .widget_rss ul > li a,
 .widget_rss ul.uk-list-line > li a {
   color: #757678;
-  font-size: 12px;
-  font-weight: 600;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 700;
   margin-bottom: 15px;
-  line-height: 1.3;
+  line-height: 24px;
   display: inline-block;
 }
 .widget_rss ul > li span,
 .widget_rss ul.uk-list-line > li span {
   display: block;
   color: #a7a7a7;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
+  line-height: 26px;
 }
 .widget_rss ul > li:hover,
 .widget_rss ul.uk-list-line > li:hover {
@@ -14522,9 +14606,10 @@ aside .uk-search.uk-active .uk-search-field {
 .widget_recent_entries ul > li a,
 .widget_recent_entries ul.uk-list-line > li a {
   color: #757678;
-  font-size: 12px;
-  font-weight: 300;
-  line-height: 1.3;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
   display: inline-block;
 }
 .widget_recent_entries ul > li span,
