@@ -26,7 +26,7 @@
  *            					  attribute name and the array value defines the attribute value. Default array.
  *      @type mixed  $default     The default field value. Default false.
  *      @type array  $fields      Must only be used for 'group' field type. The array arguments are similar to the
- *            					  {@see ology_register_fields()} $fields arguments.
+ *            					  {@see torbara_register_fields()} $fields arguments.
  *      @type bool   $db_group    Must only be used for 'group' field types. Defines whether the group of fields
  *            					  registered should be saved as a group in the database or as individual
  *            					  entries. Default false.
@@ -43,7 +43,7 @@
  *
  * @return bool True on success, false on failure.
  */
-function ology_register_options( array $fields, $menu_slug, $section, $args = array() ) {
+function torbara_register_options( array $fields, $menu_slug, $section, $args = array() ) {
 
 	/**
 	 * Filter the options fields.
@@ -54,7 +54,7 @@ function ology_register_options( array $fields, $menu_slug, $section, $args = ar
 	 *
 	 * @param array $fields An array of options fields.
 	 */
-	$fields = apply_filters( "ology_options_fields_{$section}", ology_tt_pre_standardize_fields( $fields ) );
+	$fields = apply_filters( "torbara_options_fields_{$section}", torbara_tt_pre_standardize_fields( $fields ) );
 
 	/**
 	 * Filter the options fields menu slug.
@@ -65,20 +65,20 @@ function ology_register_options( array $fields, $menu_slug, $section, $args = ar
 	 *
 	 * @param array $menu_slug The menu slug.
 	 */
-	$menu_slug = apply_filters( "ology_options_menu_slug_{$section}", $menu_slug );
+	$menu_slug = apply_filters( "torbara_options_menu_slug_{$section}", $menu_slug );
 
 	// Stop here if the page isn't concerned.
-	if ( ( ology_get( 'page' ) !== $menu_slug ) || !is_admin() )
+	if ( ( torbara_get( 'page' ) !== $menu_slug ) || !is_admin() )
 		return;
 
 	// Stop here if the field can't be registered.
-	if ( !ology_register_fields( $fields, 'option', $section ) )
+	if ( !torbara_register_fields( $fields, 'option', $section ) )
 		return false;
 
 	// Load the class only if this function is called to prevent unnecessary memory usage.
-	require_once( ology_API_PATH . 'options/class.php' );
+	require_once( torbara_API_PATH . 'options/class.php' );
 
-	$class = new ology_tt_Options();
+	$class = new torbara_tt_Options();
 	$class->register( $section, $args );
 
 	return true;
@@ -95,33 +95,33 @@ function ology_register_options( array $fields, $menu_slug, $section, $args = ar
  *
  * @param array $menu_slug The menu slug used to register the options.
  */
-function ology_options( $menu_slug ) {
+function torbara_options( $menu_slug ) {
 
-	if ( !class_exists( 'ology_tt_Options' ) )
+	if ( !class_exists( 'torbara_tt_Options' ) )
 		return false;
 
-	$class = new ology_tt_Options();
+	$class = new torbara_tt_Options();
 	$class->page( $menu_slug );
 
 }
 
 
-add_action( 'wp_loaded', 'ology_tt_options_page_actions' );
+add_action( 'wp_loaded', 'torbara_tt_options_page_actions' );
 
 /**
  * Fires the options form actions.
  *
  * @ignore
  */
-function ology_tt_options_page_actions() {
+function torbara_tt_options_page_actions() {
 
-	if ( !ology_post( 'ology_options_nonce' ) )
+	if ( !torbara_post( 'torbara_options_nonce' ) )
 		return;
 
 	// Load the class only if this function is called to prevent unnecessary memory usage.
-	require_once( ology_API_PATH . 'options/class.php' );
+	require_once( torbara_API_PATH . 'options/class.php' );
 
-	$class = new ology_tt_Options();
+	$class = new torbara_tt_Options();
 	$class->actions();
 
 }

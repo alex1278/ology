@@ -21,12 +21,11 @@ $this['asset']->addFile('css', 'css:theme.css');
     <?php remove_action( 'wp_head',  'loading_page_replace_the_header', 99 ); ?>
     <?php remove_action('wp_enqueue_scripts', 'loading_page_enqueue_scripts', 1); ?>
     <?php remove_action( 'init', 'loading_page_init' ); ?>
-    <link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
     <?php echo $this['template']->render('head', compact('error', 'title')); ?>
     <?php wp_head(); ?></head>
-<?php 
-$id = $this['config']->get('maintenance_page', 0); 
-$post = get_post($id); 
+<?php
+$id = $this['config']->get('maintenance_page', 0);
+$post = get_post($id);
 $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
 ?>
 <body class="tm-offline-page uk-height-1-1  uk-text-center" style =   "  background-image: url('<?php echo esc_url($image[0]); ?>')" >
@@ -34,13 +33,13 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'singl
         <div class="uk-height-1-1 uk-vertical-align">
             <div class="ang-maintance-mode uk-vertical-align-middle uk-container uk-container-center">
 
-                <?php 
+                <?php
                 if($post){
-                    $content = apply_filters('the_content', $post->post_content); 
+                    $content = apply_filters('the_content', $post->post_content);
                     echo $content;
                 }
                 ?>
-            </div>        
+            </div>
         </div>
     </div>
     <?php wp_footer(); ?>

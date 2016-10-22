@@ -7,18 +7,18 @@
  * @package Structure\Footer
  */
 
-						echo ology_close_markup( 'ology_primary', 'div' );
+						echo torbara_close_markup( 'torbara_primary', 'div' );
 
-					echo ology_close_markup( 'ology_main_grid', 'div' );
+					echo torbara_close_markup( 'torbara_main_grid', 'div' );
 
-				echo ology_close_markup( 'ology_fixed_wrap[_main]', 'div' );
+				echo torbara_close_markup( 'torbara_fixed_wrap[_main]', 'div' );
 
-			echo ology_close_markup( 'ology_main', 'main' );
+			echo torbara_close_markup( 'torbara_main', 'main' );
 
-		echo ology_close_markup( 'ology_site', 'div' );
+		echo torbara_close_markup( 'torbara_site', 'div' );
 
 		wp_footer();
 
-	echo ology_close_markup( 'ology_body', 'body' );
+	echo torbara_close_markup( 'torbara_body', 'body' );
 
-echo ology_close_markup( 'ology_html', 'html' );
+echo torbara_close_markup( 'torbara_html', 'html' );

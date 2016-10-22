@@ -5,14 +5,14 @@
  * @package Structure\Footer
  */
 
-echo ology_open_markup( 'ology_footer', 'footer', array(
+echo torbara_open_markup( 'torbara_footer', 'footer', array(
 	'class' => 'tm-footer uk-block',
 	'role' => 'contentinfo',
 	'itemscope' => 'itemscope',
 	'itemtype' => 'http://schema.org/WPFooter'
 ) );
 
-	echo ology_open_markup( 'ology_fixed_wrap[_footer]', 'div', 'class=uk-container uk-container-center' );
+	echo torbara_open_markup( 'torbara_fixed_wrap[_footer]', 'div', 'class=uk-container uk-container-center' );
 
 		/**
 		 * Fires in the footer.
@@ -21,8 +21,8 @@ echo ology_open_markup( 'ology_footer', 'footer', array(
 		 *
 		 * @since 1.0.0
 		 */
-		do_action( 'ology_footer' );
+		do_action( 'torbara_footer' );
 
-	echo ology_close_markup( 'ology_fixed_wrap[_footer]', 'div' );
+	echo torbara_close_markup( 'torbara_fixed_wrap[_footer]', 'div' );
 
-echo ology_close_markup( 'ology_footer', 'footer' );
+echo torbara_close_markup( 'torbara_footer', 'footer' );

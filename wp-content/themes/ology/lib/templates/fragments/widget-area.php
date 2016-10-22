@@ -5,46 +5,46 @@
  * @package Fragments\Widget_Area
  */
 
-ology_add_smart_action( 'ology_sidebar_primary', 'ology_widget_area_sidebar_primary' );
+torbara_add_smart_action( 'torbara_sidebar_primary', 'torbara_widget_area_sidebar_primary' );
 
 /**
  * Echo primary sidebar widget area.
  *
  * @since 1.0.0
  */
-function ology_widget_area_sidebar_primary() {
+function torbara_widget_area_sidebar_primary() {
 
-	echo ology_widget_area( 'sidebar-a' );
+	echo torbara_widget_area( 'sidebar-a' );
 
 }
 
 
-ology_add_smart_action( 'ology_sidebar_secondary', 'ology_widget_area_sidebar_secondary' );
+torbara_add_smart_action( 'torbara_sidebar_secondary', 'torbara_widget_area_sidebar_secondary' );
 
 /**
  * Echo secondary sidebar widget area.
  *
  * @since 1.0.0
  */
-function ology_widget_area_sidebar_secondary() {
+function torbara_widget_area_sidebar_secondary() {
 
-	echo ology_widget_area( 'sidebar_secondary' );
+	echo torbara_widget_area( 'sidebar_secondary' );
 
 }
 
 
-ology_add_smart_action( 'ology_site_after_markup', 'ology_widget_area_offcanvas_menu' );
+torbara_add_smart_action( 'torbara_site_after_markup', 'torbara_widget_area_offcanvas_menu' );
 
 /**
  * Echo off-canvas widget area.
  *
  * @since 1.0.0
  */
-function ology_widget_area_offcanvas_menu() {
+function torbara_widget_area_offcanvas_menu() {
 
 	if ( !current_theme_supports( 'offcanvas-menu' ) )
 		return;
 
-	echo ology_widget_area( 'offcanvas_menu' );
+	echo torbara_widget_area( 'offcanvas_menu' );
 
 }

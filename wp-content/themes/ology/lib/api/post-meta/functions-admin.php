@@ -26,7 +26,7 @@
  *            					  attribute name and the array value defines the attribute value. Default array.
  *      @type mixed  $default     The default field value. Default false.
  *      @type array  $fields      Must only be used for 'group' field type. The array arguments are similar to the
- *            					  {@see ology_register_fields()} $fields arguments.
+ *            					  {@see torbara_register_fields()} $fields arguments.
  *      @type bool   $db_group    Must only be used for 'group' field type. Defines whether the group of fields
  *            					  registered should be saved as a group in the database or as individual
  *            					  entries. Default false.
@@ -46,9 +46,9 @@
  *
  * @return bool True on success, false on failure.
  */
-function ology_register_post_meta( array $fields, $conditions, $section, $args = array() ) {
+function torbara_register_post_meta( array $fields, $conditions, $section, $args = array() ) {
 
-	global $ology_tt_post_meta_conditions;
+	global $torbara_tt_post_meta_conditions;
 
 	/**
 	 * Filter the post meta fields.
@@ -59,7 +59,7 @@ function ology_register_post_meta( array $fields, $conditions, $section, $args =
 	 *
 	 * @param array $fields An array of post meta fields.
 	 */
-	$fields = apply_filters( "ology_post_meta_fields_{$section}", ology_tt_pre_standardize_fields( $fields ) );
+	$fields = apply_filters( "torbara_post_meta_fields_{$section}", torbara_tt_pre_standardize_fields( $fields ) );
 
 	/**
 	 * Filter the conditions used to define whether the fields set should be displayed or not.
@@ -70,21 +70,21 @@ function ology_register_post_meta( array $fields, $conditions, $section, $args =
 	 *
 	 * @param string|array $conditions Conditions used to define whether the fields set should be displayed or not.
 	 */
-	$conditions = apply_filters( "ology_post_meta_post_types_{$section}", $conditions );
-	$ology_tt_post_meta_conditions = array_merge( $ology_tt_post_meta_conditions, (array) $conditions );
+	$conditions = apply_filters( "torbara_post_meta_post_types_{$section}", $conditions );
+	$torbara_tt_post_meta_conditions = array_merge( $torbara_tt_post_meta_conditions, (array) $conditions );
 
 	// Stop here if the current page isn't concerned.
-	if ( !ology_tt_is_post_meta_conditions( $conditions ) || !is_admin() )
+	if ( !torbara_tt_is_post_meta_conditions( $conditions ) || !is_admin() )
 		return;
 
 	// Stop here if the field can't be registered.
-	if ( !ology_register_fields( $fields, 'post_meta', $section ) )
+	if ( !torbara_register_fields( $fields, 'post_meta', $section ) )
 		return false;
 
 	// Load the class only if this function is called to prevent unnecessary memory usage.
-	require_once( ology_API_PATH . 'post-meta/class.php' );
+	require_once( torbara_API_PATH . 'post-meta/class.php' );
 
-	new ology_tt_Post_Meta( $section, $args );
+	new torbara_tt_Post_Meta( $section, $args );
 
 }
 
@@ -94,12 +94,12 @@ function ology_register_post_meta( array $fields, $conditions, $section, $args =
  *
  * @ignore
  */
-function ology_tt_is_post_meta_conditions( $conditions ) {
+function torbara_tt_is_post_meta_conditions( $conditions ) {
 
 	// Check if it is a new post and treat it as such.
 	if ( stripos( $_SERVER['REQUEST_URI'], 'post-new.php' ) !== false ) {
 
-		if ( !$current_post_type = ology_get( 'post_type' ) )
+		if ( !$current_post_type = torbara_get( 'post_type' ) )
 			if ( in_array( 'post', (array) $conditions ) )
 				return true;
 			else
@@ -108,10 +108,10 @@ function ology_tt_is_post_meta_conditions( $conditions ) {
 	} else {
 
 		// Try to get id from $_GET.
-		if ( $id = ology_get( 'post' ) )
+		if ( $id = torbara_get( 'post' ) )
 			$post_id = $id;
 		// Try to get id from $_POST.
-		elseif ( $id = ology_post( 'post_ID' ) )
+		elseif ( $id = torbara_post( 'post_ID' ) )
 			$post_id = $id;
 
 		if ( !isset( $post_id ) )
@@ -134,22 +134,22 @@ function ology_tt_is_post_meta_conditions( $conditions ) {
 }
 
 
-add_action( 'admin_print_footer_scripts', 'ology_tt_post_meta_page_template_reload' );
+add_action( 'admin_print_footer_scripts', 'torbara_tt_post_meta_page_template_reload' );
 
 /**
  * Reload post edit screen on page template change.
  *
  * @ignore
  */
-function ology_tt_post_meta_page_template_reload() {
+function torbara_tt_post_meta_page_template_reload() {
 
-	global $ology_tt_post_meta_conditions, $pagenow;
+	global $torbara_tt_post_meta_conditions, $pagenow;
 
 	// Stop here if not editing a post object.
 	if ( !in_array( $pagenow, array( 'post-new.php', 'post.php' ) ) )
 		return;
 
-	$encode = json_encode( $ology_tt_post_meta_conditions );
+	$encode = json_encode( $torbara_tt_post_meta_conditions );
 
 	// Stop here of there isn't any post meta assigned to page templates.
 	if ( stripos( $encode, '.php' ) === false )
@@ -165,7 +165,7 @@ function ology_tt_post_meta_page_template_reload() {
  *
  * @ignore
  */
-global $ology_tt_post_meta_conditions;
+global $torbara_tt_post_meta_conditions;
 
-if ( !isset( $ology_tt_post_meta_conditions ) )
-	$ology_tt_post_meta_conditions = array();
+if ( !isset( $torbara_tt_post_meta_conditions ) )
+	$torbara_tt_post_meta_conditions = array();

@@ -6,7 +6,7 @@
  *
  * @package API\Image
  */
-final class ology_tt_Image_Options {
+final class torbara_tt_Image_Options {
 
 	/**
 	 * Constructor.
@@ -17,7 +17,7 @@ final class ology_tt_Image_Options {
 		add_action( 'admin_init', array( $this, 'register' ), 15 );
 		add_action( 'admin_init', array( $this, 'flush' ) , -1 );
 		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
-		add_action( 'ology_field_flush_edited_images', array( $this, 'option' ) );
+		add_action( 'torbara_field_flush_edited_images', array( $this, 'option' ) );
 
 	}
 
@@ -31,15 +31,15 @@ final class ology_tt_Image_Options {
 
 		$fields = array(
 			array(
-				'id' => 'ology_edited_images_directories',
+				'id' => 'torbara_edited_images_directories',
 				'type' => 'flush_edited_images',
-				'description' => esc_html__( 'Clear all edited images. New images will be created on page load.', 'ology' )
+				'description' => esc_html__( 'Clear all edited images. New images will be created on page load.', 'torbara' )
 			)
 		);
 
-		ology_register_options( $fields, 'ology_settings', 'images_options', array(
-			'title' => esc_html__( 'Images options', 'ology' ),
-			'context' => ology_get( 'ology_settings', $wp_meta_boxes ) ? 'column' : 'normal' // Check of other beans boxes.
+		torbara_register_options( $fields, 'torbara_settings', 'images_options', array(
+			'title' => esc_html__( 'Images options', 'torbara' ),
+			'context' => torbara_get( 'torbara_settings', $wp_meta_boxes ) ? 'column' : 'normal' // Check of other beans boxes.
 		) );
 
 	}
@@ -50,10 +50,10 @@ final class ology_tt_Image_Options {
 	 */
 	public function flush() {
 
-		if ( !ology_post( 'ology_flush_edited_images' ) )
+		if ( !torbara_post( 'torbara_flush_edited_images' ) )
 			return;
 
-		ology_remove_dir( ology_get_images_dir() );
+		torbara_remove_dir( torbara_get_images_dir() );
 
 	}
 
@@ -63,10 +63,10 @@ final class ology_tt_Image_Options {
 	 */
 	public function admin_notice() {
 
-		if ( !ology_post( 'ology_flush_edited_images' ) )
+		if ( !torbara_post( 'torbara_flush_edited_images' ) )
 			return;
 
-		echo '<div id="message" class="updated"><p>' . esc_html__( 'Images flushed successfully!', 'ology' ) . '</p></div>' . "\n";
+		echo '<div id="message" class="updated"><p>' . esc_html__( 'Images flushed successfully!', 'torbara' ) . '</p></div>' . "\n";
 
 	}
 
@@ -76,13 +76,13 @@ final class ology_tt_Image_Options {
 	 */
 	public function option( $field ) {
 
-		if ( $field['id'] !== 'ology_edited_images_directories' )
+		if ( $field['id'] !== 'torbara_edited_images_directories' )
 			return;
 
-		echo '<input type="submit" name="ology_flush_edited_images" value="' . esc_html__( 'Flush images', 'ology' ) . '" class="button-secondary" />';
+		echo '<input type="submit" name="torbara_flush_edited_images" value="' . esc_html__( 'Flush images', 'torbara' ) . '" class="button-secondary" />';
 
 	}
 
 }
 
-new ology_tt_Image_Options();
+new torbara_tt_Image_Options();

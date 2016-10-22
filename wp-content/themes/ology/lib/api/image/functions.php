@@ -37,11 +37,11 @@
  *
  * @return string|array Image source if output set the STRING, image data otherwise.
  */
-function ology_edit_image( $src, array $args, $output = 'STRING' ) {
+function torbara_edit_image( $src, array $args, $output = 'STRING' ) {
 
-	require_once( ology_API_PATH . 'image/class-images.php' );
+	require_once( torbara_API_PATH . 'image/class-images.php' );
 
-	$instance = new ology_tt_Image_Editor( $src, $args, $output );
+	$instance = new torbara_tt_Image_Editor( $src, $args, $output );
 
 	return $instance->init();
 
@@ -61,7 +61,7 @@ function ology_edit_image( $src, array $args, $output = 'STRING' ) {
  *
  * @return object Post attachment data.
  */
-function ology_get_post_attachment( $post_id, $size = 'full' ) {
+function torbara_get_post_attachment( $post_id, $size = 'full' ) {
 
 	$id = get_post_thumbnail_id( $post_id );
 	$post = get_post( $id );
@@ -73,9 +73,9 @@ function ology_get_post_attachment( $post_id, $size = 'full' ) {
 	$obj->width = $src[1];
 	$obj->height = $src[2];
 	$obj->alt = trim( strip_tags( get_post_meta( $id, '_wp_attachment_image_alt', true ) ) );
-	$obj->title = $post->post_title;
-	$obj->caption = $post->post_excerpt;
-	$obj->description = $post->post_content;
+	if(isset($post->post_title)) { $obj->title = $post->post_title; } else { $obj->title = ""; }
+        if(isset($post->post_excerpt)) { $obj->caption = $post->post_excerpt; } else { $obj->post_excerpt = ""; }
+        if(isset($post->post_content)) { $obj->description = $post->post_content; } else { $obj->post_content = ""; }
 
 	return $obj;
 
@@ -85,7 +85,7 @@ function ology_get_post_attachment( $post_id, $size = 'full' ) {
 /**
  * Edit post attachment.
  *
- * This function is shortuct of {@see ology_edit_image()}. It should be used to edit a post attachment.
+ * This function is shortuct of {@see torbara_edit_image()}. It should be used to edit a post attachment.
  *
  * @since 1.0.0
  *
@@ -107,15 +107,15 @@ function ology_get_post_attachment( $post_id, $size = 'full' ) {
  *
  * @return object Edited post attachment data.
  */
-function ology_edit_post_attachment( $post_id, $args = array() ) {
+function torbara_edit_post_attachment( $post_id, $args = array() ) {
 
 	if ( !has_post_thumbnail( $post_id ) )
 		return false;
 
 	// Get full size image.
-	$attachement = ology_get_post_attachment( $post_id, 'full' );
+	$attachement = torbara_get_post_attachment( $post_id, 'full' );
 
-	if ( !$edited = ology_edit_image( $attachement->src, $args, 'ARRAY_A' ) )
+	if ( !$edited = torbara_edit_image( $attachement->src, $args, 'ARRAY_A' ) )
 		return $attachement;
 
 	return (object) array_merge( (array) $attachement, $edited );
@@ -130,7 +130,7 @@ function ology_edit_post_attachment( $post_id, $args = array() ) {
  *
  * @return string Edited images directory.
  */
-function ology_get_images_dir() {
+function torbara_get_images_dir() {
 
 	$wp_upload_dir = wp_upload_dir();
 
@@ -139,7 +139,7 @@ function ology_get_images_dir() {
 	 *
 	 * @since 1.0.0
 	 */
-	$dir = apply_filters( 'ology_images_dir', trailingslashit( $wp_upload_dir['basedir'] ) . 'beans/images/' );
+	$dir = apply_filters( 'torbara_images_dir', trailingslashit( $wp_upload_dir['basedir'] ) . 'beans/images/' );
 
 	return wp_normalize_path( trailingslashit( $dir ) );
 

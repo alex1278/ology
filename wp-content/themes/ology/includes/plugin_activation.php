@@ -1,10 +1,10 @@
 <?php
 /*
-* @encoding   UTF-8
-* @author    Aleksandr Glovatskyy (aleksandr1278@gmail.com)
-* @copyright  Copyright ( C ) 2015 torbar (http://torbara.com/). All rights reserved.
-* @license  Copyrighted Commercial Software
-* @support    support@torbara.com
+* @encoding     UTF-8
+* @author       Aleksandr Glovatskyy (aleksandr1278@gmail.com)
+* @copyright    Copyright ( C ) 2016 Torbara (http://torbara.com/). All rights reserved.
+* @license      Copyrighted Commercial Software
+* @support      support@torbara.com
 */
 
 /*
@@ -42,7 +42,7 @@ if ( ! function_exists( 'ology_recommended_plugins' ) ) {
                             'slug'      => 'widget-shortcode',
                             'required'  => false,
                         ),
-                    
+
                         array(
                             'name'      => esc_html__('Quick and Easy Testimonials', 'ology'),
                             'slug'      => 'quick-and-easy-testimonials',
@@ -68,62 +68,62 @@ if ( ! function_exists( 'ology_recommended_plugins' ) ) {
                             'slug'      => 'the-events-calendar',
                             'required'  => false,
                         ),
-                        
+
 			// Custom Plugins
-                        
+
                         array(
                             'name'      => esc_html__('ANG SmartKit', 'ology'),
                             'slug'      => 'ang-smartkit',
-                            'source'    => get_template_directory() . '/plugins/ang-smartkit.1.0.0.zip',
+                            'source'    => get_template_directory() . '/plugins/ang-smartkit.1.0.0.tar',
                             'version'   => '1.0.0',
                             'required'  => false,
                         ),
                         array(
                             'name'     => esc_html__('ANG Mega Slide', 'ology'),
                             'slug'     => 'ang-megaslide',
-                            'source'   => get_template_directory() . '/plugins/ang-megaslide.1.0.0.zip',
+                            'source'   => get_template_directory() . '/plugins/ang-megaslide.1.0.0.tar',
                             'version'  => '1.0.0',
                             'required' => false,
                         ),
                         array(
                             'name'      => esc_html__('ANG Most Popular Posts', 'ology'),
                             'slug'      => 'ang-most-popular-posts',
-                            'source'    => get_template_directory() . '/plugins/ang-most-popular-posts.1.2.1.zip',
+                            'source'    => get_template_directory() . '/plugins/ang-most-popular-posts.1.2.1.tar',
                             'version'   => '1.2.1',
                             'required'  => false,
                         ),
                         array(
                             'name'      => esc_html__('ANG Breadcrumbs & Title', 'ology'),
                             'slug'      => 'ang-breadcrumbs-plus-title',
-                            'source'    => get_template_directory() . '/plugins/ang-breadcrumbs-plus-title.1.1.5.zip',
+                            'source'    => get_template_directory() . '/plugins/ang-breadcrumbs-plus-title.1.1.5.tar',
                             'version'   => '1.1.5',
                             'required'  => false,
                         ),
                         array(
                             'name'      => esc_html__('ANG Text Field Generator', 'ology'),
                             'slug'      => 'ang-text-field-generator',
-                            'source'    => get_template_directory() . '/plugins/ang-text-field-generator.1.0.0.zip',
+                            'source'    => get_template_directory() . '/plugins/ang-text-field-generator.1.0.0.tar',
                             'version'   => '1.0.0',
                             'required'  => false,
                         ),
                         array(
                             'name'      => esc_html__('ANG Commando Staff Team', 'ology'),
                             'slug'      => 'ang-commando-staff-team',
-                            'source'    => get_template_directory() . '/plugins/ang-commando-staff-team.1.0.0.zip',
+                            'source'    => get_template_directory() . '/plugins/ang-commando-staff-team.1.0.0.tar',
                             'version'   => '1.0.0',
                             'required'  => false,
                         ),
                         array(
                             'name'      => esc_html__('ANG Company Services', 'ology'),
                             'slug'      => 'ang-company-services',
-                            'source'    => get_template_directory() . '/plugins/ang-company-services.1.0.0.zip',
+                            'source'    => get_template_directory() . '/plugins/ang-company-services.1.0.0.tar',
                             'version'   => '1.0.0',
                             'required'  => false,
                         ),
                         array(
                             'name'      => esc_html__('Envato Market', 'ology'),
                             'slug'      => 'envato-market',
-                            'source'    => get_template_directory() . '/plugins/envato-market.1.0.0-RC2.zip',
+                            'source'    => get_template_directory() . '/plugins/envato-market.1.0.0-RC2.tar',
                             'version'   => '1.0.0-RC2',
                             'required'  => false,
                         ),
@@ -131,7 +131,7 @@ if ( ! function_exists( 'ology_recommended_plugins' ) ) {
                             'name'     => esc_html__('TT Warp 7 Framework', 'ology'),
                             'slug'     => 'tt-warp7',
                             'version'  => '7.3.32',
-                            'source'   => get_template_directory() . '/plugins/tt-warp.7.3.32.zip',
+                            'source'   => get_template_directory() . '/plugins/tt-warp.7.3.32.tar',
                             'required' => TRUE,
                         )
                 );

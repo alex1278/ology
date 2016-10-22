@@ -6,14 +6,14 @@
  *
  * @package API\Uikit
  */
-final class ology_tt_Uikit {
+final class torbara_tt_Uikit {
 
 	/**
 	 * Compile enqueued items.
 	 */
 	function compile() {
 
-		global $ology_tt_uikit_enqueued_items;
+		global $torbara_tt_uikit_enqueued_items;
 
 		/**
 		 * Filter UIkit enqueued style components.
@@ -22,7 +22,7 @@ final class ology_tt_Uikit {
 		 *
 		 * @param array $components An array of UIkit style component files.
 		 */
-		$styles = apply_filters( 'ology_uikit_euqueued_styles', $this->register_less_components() );
+		$styles = apply_filters( 'torbara_uikit_euqueued_styles', $this->register_less_components() );
 
 		/**
 		 * Filter UIkit enqueued script components.
@@ -31,7 +31,7 @@ final class ology_tt_Uikit {
 		 *
 		 * @param array $components An array of UIkit script component files.
 		 */
-		$scripts = apply_filters( 'ology_uikit_euqueued_scripts', $this->register_js_components() );
+		$scripts = apply_filters( 'torbara_uikit_euqueued_scripts', $this->register_js_components() );
 
 		/**
 		 * Filter UIkit style compiler arguments.
@@ -40,7 +40,7 @@ final class ology_tt_Uikit {
 		 *
 		 * @param array $components An array of UIkit style compiler arguments.
 		 */
-		$styles_args = apply_filters( 'ology_uikit_euqueued_styles_args', array() );
+		$styles_args = apply_filters( 'torbara_uikit_euqueued_styles_args', array() );
 
 		/**
 		 * Filter UIkit script compiler arguments.
@@ -49,17 +49,17 @@ final class ology_tt_Uikit {
 		 *
 		 * @param array $components An array of UIkit script compiler arguments.
 		 */
-		$scripts_args = apply_filters( 'ology_uikit_euqueued_scripts_args', array(
+		$scripts_args = apply_filters( 'torbara_uikit_euqueued_scripts_args', array(
 			'depedencies' => array( 'jquery' )
 		) );
 
 		// Compile less.
 		if ( $styles )
-			ology_compile_less_fragments( 'uikit', array_unique( $styles ), $styles_args );
+			torbara_compile_less_fragments( 'uikit', array_unique( $styles ), $styles_args );
 
 		// Compile js.
 		if ( $scripts )
-			ology_compile_js_fragments( 'uikit', array_unique( $scripts ), $scripts_args );
+			torbara_compile_js_fragments( 'uikit', array_unique( $scripts ), $scripts_args );
 
 	}
 
@@ -69,11 +69,11 @@ final class ology_tt_Uikit {
 	 */
 	function register_less_components() {
 
-		global $ology_tt_uikit_enqueued_items;
+		global $torbara_tt_uikit_enqueued_items;
 
 		$components = array();
 
-		foreach ( $ology_tt_uikit_enqueued_items['components'] as $type => $items ) {
+		foreach ( $torbara_tt_uikit_enqueued_items['components'] as $type => $items ) {
 
 			// Add core before the components.
 			if ( $type == 'core' )
@@ -86,7 +86,7 @@ final class ology_tt_Uikit {
 
 		// Add fixes.
 		if ( !empty( $components ) )
-			$components = array_merge( $components, array( ology_API_PATH . 'uikit/src/fixes.less' ) );
+			$components = array_merge( $components, array( torbara_API_PATH . 'uikit/src/fixes.less' ) );
 
 		return $components;
 
@@ -98,11 +98,11 @@ final class ology_tt_Uikit {
 	 */
 	function register_js_components() {
 
-		global $ology_tt_uikit_enqueued_items;
+		global $torbara_tt_uikit_enqueued_items;
 
 		$components = array();
 
-		foreach ( $ology_tt_uikit_enqueued_items['components'] as $type => $items ) {
+		foreach ( $torbara_tt_uikit_enqueued_items['components'] as $type => $items ) {
 
 			// Add core before the components.
 			if ( $type == 'core' )
@@ -135,12 +135,12 @@ final class ology_tt_Uikit {
 		if ( $type == 'add-ons' )
 			$type = 'components';
 
-		global $ology_tt_uikit_enqueued_items;
+		global $torbara_tt_uikit_enqueued_items;
 
 		// Define uikit src directory.
-		$directories = array( ology_API_PATH . 'uikit/src/less/' . $type );
+		$directories = array( torbara_API_PATH . 'uikit/src/less/' . $type );
 		// Add the registered theme directories.
-		foreach ( $ology_tt_uikit_enqueued_items['themes'] as $id => $directory )
+		foreach ( $torbara_tt_uikit_enqueued_items['themes'] as $id => $directory )
 			$directories[] = wp_normalize_path( untrailingslashit( $directory ) );
 
 		return $directories;
@@ -157,7 +157,7 @@ final class ology_tt_Uikit {
 			$type = 'components';
 
 		// Define uikit src directory.
-		return array( ology_API_PATH . 'uikit/src/js/' . $type );
+		return array( torbara_API_PATH . 'uikit/src/js/' . $type );
 
 	}
 
@@ -313,11 +313,11 @@ final class ology_tt_Uikit {
 
 		foreach ( (array) $components as $component ) {
 
-			$this_depedencies = ology_get( $component, $depedencies, array() );
+			$this_depedencies = torbara_get( $component, $depedencies, array() );
 
 			foreach ( $this_depedencies as $depedency ) {
-				$autoload['core'] = array_merge( $autoload['core'], array_flip( ology_get( 'core', $this_depedencies, array() ) ) );
-				$autoload['add-ons'] = array_merge( $autoload['add-ons'], array_flip( ology_get( 'add-ons', $this_depedencies, array() ) ) );
+				$autoload['core'] = array_merge( $autoload['core'], array_flip( torbara_get( 'core', $this_depedencies, array() ) ) );
+				$autoload['add-ons'] = array_merge( $autoload['add-ons'], array_flip( torbara_get( 'add-ons', $this_depedencies, array() ) ) );
 			}
 
 		}

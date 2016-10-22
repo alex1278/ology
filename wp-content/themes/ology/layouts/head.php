@@ -108,18 +108,6 @@ else if ($compression = $this['config']['compression'] or $this['config']['direc
 
 }
 
-if(isset($_GET['tt-cfix'])){
-    // add styles
-    if ($styles) {
-        foreach ($styles as $style) {
-            if ($url = $style->getUrl()) {
-                printf("<link %srel=\"stylesheet\" href=\"%s\">\n", isset($style['data-file']) ? 'data-file="'.$style['data-file'].'" ' : '', $url);
-            } else {
-                printf("<style %s>%s</style>\n", $this['field']->attributes($style->getOptions(), array('base_path', 'base_url')), $style->getContent());
-            }
-        }
-    }
-}
 
 
 // add feed link

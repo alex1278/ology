@@ -5,22 +5,22 @@
  * @package Structure\Header
  */
 
-echo ology_open_markup( 'ology_header', 'header', array(
+echo torbara_open_markup( 'torbara_header', 'header', array(
 	'class' => 'tm-header uk-block',
 	'role' => 'banner',
 	'itemscope' => 'itemscope',
 	'itemtype' => 'http://schema.org/WPHeader'
 ) );
 
-	echo ology_open_markup( 'ology_fixed_wrap[_header]', 'div', 'class=uk-container uk-container-center' );
+	echo torbara_open_markup( 'torbara_fixed_wrap[_header]', 'div', 'class=uk-container uk-container-center' );
 
 		/**
 		 * Fires in the header.
 		 *
 		 * @since 1.0.0
 		 */
-		do_action( 'ology_header' );
+		do_action( 'torbara_header' );
 
-	echo ology_close_markup( 'ology_fixed_wrap[_header]', 'div' );
+	echo torbara_close_markup( 'torbara_fixed_wrap[_header]', 'div' );
 
-echo ology_close_markup( 'ology_header', 'header' );
+echo torbara_close_markup( 'torbara_header', 'header' );

@@ -5,8 +5,8 @@
  * @package Structure\Secondary_Sidebar
  */
 
-echo ology_open_markup( 'ology_sidebar_secondary', 'aside', array(
-	'class' => 'tm-tertiary ' . ology_get_layout_class( 'sidebar_secondary' ), // Automatically escaped.
+echo torbara_open_markup( 'torbara_sidebar_secondary', 'aside', array(
+	'class' => 'tm-tertiary ' . torbara_get_layout_class( 'sidebar_secondary' ), // Automatically escaped.
 	'role' => 'complementary',
 	'itemscope' => 'itemscope',
 	'itemtype' => 'http://schema.org/WPSideBar'
@@ -17,6 +17,6 @@ echo ology_open_markup( 'ology_sidebar_secondary', 'aside', array(
 	 *
 	 * @since 1.0.0
 	 */
-	do_action( 'ology_sidebar_secondary' );
+	do_action( 'torbara_sidebar_secondary' );
 
-echo ology_close_markup( 'ology_sidebar_secondary', 'aside' );
+echo torbara_close_markup( 'torbara_sidebar_secondary', 'aside' );

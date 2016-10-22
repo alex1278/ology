@@ -4,7 +4,7 @@
  *
  * @ignore
  */
-final class ology_tt_Admin {
+final class torbara_tt_Admin {
 
 	/**
 	 * Constructor.
@@ -22,7 +22,7 @@ final class ology_tt_Admin {
 	 */
 	public function admin_menu() {
 
-		add_theme_page( esc_html__( 'Settings', 'ology' ), esc_html__( 'Settings', 'ology' ), 'manage_options', 'ology_settings', array( $this, 'display_screen' ) );
+		add_theme_page( esc_html__( 'Settings', 'torbara' ), esc_html__( 'Settings', 'torbara' ), 'manage_options', 'torbara_settings', array( $this, 'display_screen' ) );
 
 	}
 
@@ -34,9 +34,9 @@ final class ology_tt_Admin {
 
 		echo '<div class="wrap">';
 
-			echo '<h2>' . esc_html__( 'Beans Settings', 'ology' ) . esc_html__( 'Version ', 'ology' ) . ology_VERSION . '</h2>';
+			echo '<h2>' . esc_html__( 'Beans Settings', 'torbara' ) . esc_html__( 'Version ', 'torbara' ) . torbara_VERSION . '</h2>';
 
-			echo ology_options( 'ology_settings' );
+			echo torbara_options( 'torbara_settings' );
 
 		echo '</div>';
 
@@ -52,20 +52,20 @@ final class ology_tt_Admin {
 
 		$fields = array(
 			array(
-				'id' => 'ology_dev_mode',
-				'checkbox_label' => esc_html__( 'Enable development mode', 'ology' ),
+				'id' => 'torbara_dev_mode',
+				'checkbox_label' => esc_html__( 'Enable development mode', 'torbara' ),
 				'type' => 'checkbox',
-				'description' => esc_html__( 'This option should be enabled while your website is in development.', 'ology' )
+				'description' => esc_html__( 'This option should be enabled while your website is in development.', 'torbara' )
 			)
 		);
 
-		ology_register_options( $fields, 'ology_settings', 'mode_options', array(
-			'title' => esc_html__( 'Mode options', 'ology' ),
-			'context' => ology_get( 'ology_settings', $wp_meta_boxes ) ? 'column' : 'normal' // Check for other beans boxes.
+		torbara_register_options( $fields, 'torbara_settings', 'mode_options', array(
+			'title' => esc_html__( 'Mode options', 'torbara' ),
+			'context' => torbara_get( 'torbara_settings', $wp_meta_boxes ) ? 'column' : 'normal' // Check for other beans boxes.
 		) );
 
 	}
 
 }
 
-new ology_tt_Admin();
+new torbara_tt_Admin();

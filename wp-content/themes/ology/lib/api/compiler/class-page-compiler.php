@@ -6,7 +6,7 @@
  *
  * @package API\Compiler
  */
-final class ology_tt_Page_Compiler {
+final class torbara_tt_Page_Compiler {
 
 	/**
 	 * Compiler dequeued scripts.
@@ -32,11 +32,11 @@ final class ology_tt_Page_Compiler {
 	 */
 	public function compile_page_styles() {
 
-		if ( !ology_get_component_support( 'wp_styles_compiler' ) || !get_option( 'ology_compile_all_styles', false ) || ology_tt_is_compiler_dev_mode() )
+		if ( !torbara_get_component_support( 'wp_styles_compiler' ) || !get_option( 'torbara_compile_all_styles', false ) || torbara_tt_is_compiler_dev_mode() )
 			return;
 
 		if ( $styles = $this->compile_enqueued( 'style' ) )
-			ology_compile_css_fragments( 'beans', $styles, array( 'version' => null ) );
+			torbara_compile_css_fragments( 'beans', $styles, array( 'version' => null ) );
 
 	}
 
@@ -46,12 +46,12 @@ final class ology_tt_Page_Compiler {
 	 */
 	public function compile_page_scripts() {
 
-		if ( !ology_get_component_support( 'wp_scripts_compiler' ) || !get_option( 'ology_compile_all_scripts', false ) || ology_tt_is_compiler_dev_mode() )
+		if ( !torbara_get_component_support( 'wp_scripts_compiler' ) || !get_option( 'torbara_compile_all_scripts', false ) || torbara_tt_is_compiler_dev_mode() )
 			return;
 
 		if ( $scripts = $this->compile_enqueued( 'script' ) )
-			ology_compile_js_fragments( 'beans', $scripts, array(
-				'in_footer' => ( 'aggressive' === get_option( 'ology_compile_all_scripts_mode', 'aggressive' ) ) ? true : false,
+			torbara_compile_js_fragments( 'beans', $scripts, array(
+				'in_footer' => ( 'aggressive' === get_option( 'torbara_compile_all_scripts_mode', 'aggressive' ) ) ? true : false,
 				'version' => null
 			) );
 
@@ -64,7 +64,7 @@ final class ology_tt_Page_Compiler {
 	private function compile_enqueued( $type, $depedencies = false ) {
 
 		$set_global = 'wp_' . $type . 's';
-		$set_dequeued_global = 'ology_dequeue_' . $type . 's';
+		$set_dequeued_global = 'torbara_dequeue_' . $type . 's';
 
 		global $$set_global;
 
@@ -82,7 +82,7 @@ final class ology_tt_Page_Compiler {
 			if ( in_array( $id, array( 'admin-bar', 'open-sans', 'dashicons' ) ) )
 				continue;
 
-			if ( !$args = ology_get( $id, $$set_global->registered ) )
+			if ( !$args = torbara_get( $id, $$set_global->registered ) )
 				continue;
 
 			if ( $args->deps )
@@ -94,7 +94,7 @@ final class ology_tt_Page_Compiler {
 
 				// Add compiler media query if set.
 				if ( $args->args != 'all' )
-					$args->src = add_query_arg( array( 'ology_compiler_media_query' => $args->args ), $args->src );
+					$args->src = add_query_arg( array( 'torbara_compiler_media_query' => $args->args ), $args->src );
 
 				$$set_global->done[] = $id;
 
@@ -129,7 +129,7 @@ final class ology_tt_Page_Compiler {
 		// Fetch the localized content and dequeue script.
 		foreach ( $this->dequeued_scripts as $id => $src ) {
 
-			if ( !$args = ology_get( $id, $wp_scripts->registered ) )
+			if ( !$args = torbara_get( $id, $wp_scripts->registered ) )
 				continue;
 
 			if ( isset( $args->extra['data'] ) )
@@ -150,4 +150,4 @@ final class ology_tt_Page_Compiler {
 
 }
 
-new ology_tt_Page_Compiler();
+new torbara_tt_Page_Compiler();

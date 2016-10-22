@@ -14,11 +14,11 @@
  *
  * @return mixed Save data if the term meta value exists, otherwise set the default value.
  */
-function ology_get_term_meta( $field_id, $default = false, $term_id = false ) {
+function torbara_get_term_meta( $field_id, $default = false, $term_id = false ) {
 
 	if ( !$term_id )
-		$term_id = ( $_term_id = ology_get( 'term_id', get_queried_object() ) ) ? $_term_id : ology_get( 'tag_ID' );
+		$term_id = ( $_term_id = torbara_get( 'term_id', get_queried_object() ) ) ? $_term_id : torbara_get( 'tag_ID' );
 
-	return get_option( "ology_term_{$term_id}_{$field_id}", $default );
+	return get_option( "torbara_term_{$term_id}_{$field_id}", $default );
 
 }

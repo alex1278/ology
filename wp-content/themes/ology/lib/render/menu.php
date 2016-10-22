@@ -5,14 +5,14 @@
  * @package Render\Menu
  */
 
-ology_add_smart_action( 'after_setup_theme', 'ology_do_register_default_menu' );
+torbara_add_smart_action( 'after_setup_theme', 'torbara_do_register_default_menu' );
 
 /**
  * Register default menu.
  *
  * @since 1.0.0
  */
-function ology_do_register_default_menu() {
+function torbara_do_register_default_menu() {
 
 	// Stop here if a menu already exists.
 	if ( wp_get_nav_menus() )
@@ -20,10 +20,10 @@ function ology_do_register_default_menu() {
 
 	// Set up default menu.
 	wp_update_nav_menu_item(
-		wp_create_nav_menu( esc_html__( 'Navigation', 'ology' ) ),
+		wp_create_nav_menu( esc_html__( 'Navigation', 'torbara' ) ),
 		0,
 		array(
-			'menu-item-title' =>  esc_html__( 'Home', 'ology' ),
+			'menu-item-title' =>  esc_html__( 'Home', 'torbara' ),
 			'menu-item-classes' => 'home',
 			'menu-item-url' => home_url( '/' ),
 			'menu-item-status' => 'publish'
@@ -33,24 +33,24 @@ function ology_do_register_default_menu() {
 }
 
 
-ology_add_smart_action( 'after_setup_theme', 'ology_do_register_nav_menus' );
+torbara_add_smart_action( 'after_setup_theme', 'torbara_do_register_nav_menus' );
 
 /**
  * Register nav menus.
  *
  * @since 1.0.0
  */
-function ology_do_register_nav_menus() {
+function torbara_do_register_nav_menus() {
 
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary Menu', 'ology' ),
+		'primary' => esc_html__( 'Primary Menu', 'torbara' ),
 	) );
 
 }
 
 
 // Filter.
-ology_add_smart_action( 'wp_nav_menu_args', 'ology_modify_menu_args' );
+torbara_add_smart_action( 'wp_nav_menu_args', 'torbara_modify_menu_args' );
 
 /**
  * Modify wp_nav_menu arguments.
@@ -64,13 +64,13 @@ ology_add_smart_action( 'wp_nav_menu_args', 'ology_modify_menu_args' );
  *
  * @return array The modified wp_nav_menu arguments.
  */
-function ology_modify_menu_args( $args ) {
+function torbara_modify_menu_args( $args ) {
 
 	// Get type.
-	$type = ology_get( 'ology_type', $args );
+	$type = torbara_get( 'torbara_type', $args );
 
 	// Check if the menu is in a widget area and set the type accordingly if it is defined.
-	if ( $widget_area_type = ology_get_widget_area( 'ology_type' ) )
+	if ( $widget_area_type = torbara_get_widget_area( 'torbara_type' ) )
 		$type = ( $widget_area_type == 'stack' ) ? 'sidenav' : $widget_area_type;
 
 	// Stop if it isn't a beans menu.
@@ -80,7 +80,7 @@ function ology_modify_menu_args( $args ) {
 	// Default item wrap attributes.
 	$attr = array(
 		'id' => '%1$s',
-		'class' => array( ology_get( 'menu_class', $args ) )
+		'class' => array( torbara_get( 'menu_class', $args ) )
 	);
 
 	// Add UIKit navbar item wrap attributes.
@@ -110,20 +110,20 @@ function ology_modify_menu_args( $args ) {
 	if ( !$attr['class'] )
 		$attr['class'] = null;
 
-	$location_subfilter = ( $location = ology_get( 'theme_location', $args ) ) ? "[_{$location}]" : null;
+	$location_subfilter = ( $location = torbara_get( 'theme_location', $args ) ) ? "[_{$location}]" : null;
 
 	// Force beans menu arguments.
 	$force = array(
-		'ology_type' => $type,
-		'items_wrap' => ology_open_markup( "ology_menu[_{$type}]{$location_subfilter}", 'ul', $attr, $args ) . '%3$s' . ology_close_markup( "ology_menu[_{$type}]{$location_subfilter}", 'ul', $args ),
+		'torbara_type' => $type,
+		'items_wrap' => torbara_open_markup( "torbara_menu[_{$type}]{$location_subfilter}", 'ul', $attr, $args ) . '%3$s' . torbara_close_markup( "torbara_menu[_{$type}]{$location_subfilter}", 'ul', $args ),
 	);
 
 	// Allow walker overwrite.
-	if ( !ology_get( 'walker', $args ) )
-		$args['walker'] = new ology_tt_Walker_Nav_Menu;
+	if ( !torbara_get( 'walker', $args ) )
+		$args['walker'] = new torbara_tt_Walker_Nav_Menu;
 
 	// Adapt level to walker depth.
-	$force['ology_start_level'] = ( $level = ology_get( 'ology_start_level', $args ) ) ? ( $level - 1 ) : 0;
+	$force['torbara_start_level'] = ( $level = torbara_get( 'torbara_start_level', $args ) ) ? ( $level - 1 ) : 0;
 
 	return array_merge( $args, $force );
 

@@ -5,14 +5,14 @@
  * @package Fragments\Breadcrumb
  */
 
-ology_add_smart_action( 'ology_main_grid_before_markup', 'ology_breadcrumb' );
+torbara_add_smart_action( 'torbara_main_grid_before_markup', 'torbara_breadcrumb' );
 
 /**
  * Echo the breadcrumb.
  *
  * @since 1.0.0
  */
-function ology_breadcrumb() {
+function torbara_breadcrumb() {
 
 	if ( is_home() || is_front_page() )
 		return;
@@ -23,7 +23,7 @@ function ology_breadcrumb() {
 
 	$post_type = get_post_type();
 	$breadcrumbs = array();
-	$breadcrumbs[home_url('/')] = esc_html__( 'Home', 'ology' );
+	$breadcrumbs[home_url('/')] = esc_html__( 'Home', 'torbara' );
 
 	// Custom post type.
 	if ( !in_array( $post_type, array( 'page', 'attachment', 'post' ) ) && !is_404() ) {
@@ -88,7 +88,7 @@ function ology_breadcrumb() {
 	// Searches.
 	else if ( is_search() ) {
 
-		$breadcrumbs[] = esc_html__( 'Results:', 'ology' ) . ' ' . get_search_query();
+		$breadcrumbs[] = esc_html__( 'Results:', 'torbara' ) . ' ' . get_search_query();
 
 	}
 
@@ -96,33 +96,33 @@ function ology_breadcrumb() {
 	else if ( is_author() ) {
 
 		$author = get_queried_object();
-		$breadcrumbs[] = esc_html__( 'Author Archives:', 'ology' ) . ' ' . $author->display_name;
+		$breadcrumbs[] = esc_html__( 'Author Archives:', 'torbara' ) . ' ' . $author->display_name;
 
 	}
 
 	// Tag archives.
 	else if ( is_tag() ) {
 
-		$breadcrumbs[] = esc_html__( 'Tag Archives:', 'ology' ) . ' ' . single_tag_title( '', false );
+		$breadcrumbs[] = esc_html__( 'Tag Archives:', 'torbara' ) . ' ' . single_tag_title( '', false );
 
 	}
 
 	// Date archives.
 	else if ( is_date() ) {
 
-		$breadcrumbs[] = esc_html__( 'Archives:', 'ology' ) . ' ' . get_the_time( 'F Y' );
+		$breadcrumbs[] = esc_html__( 'Archives:', 'torbara' ) . ' ' . get_the_time( 'F Y' );
 
 	}
 
 	// 404.
 	else if ( is_404() ) {
 
-		$breadcrumbs[] = esc_html__( '404', 'ology' );
+		$breadcrumbs[] = esc_html__( '404', 'torbara' );
 
 	}
 
 	// Open breadcrumb.
-	echo ology_open_markup( 'ology_breadcrumb', 'ul', array( 'class' => 'uk-breadcrumb uk-width-1-1' ) );
+	echo torbara_open_markup( 'torbara_breadcrumb', 'ul', array( 'class' => 'uk-breadcrumb uk-width-1-1' ) );
 
 		$i = 0;
 
@@ -131,32 +131,32 @@ function ology_breadcrumb() {
 			// Breadcrumb items.
 			if ( $i != count( $breadcrumbs ) - 1 ) {
 
-				echo ology_open_markup( 'ology_breadcrumb_item', 'li' );
+				echo torbara_open_markup( 'torbara_breadcrumb_item', 'li' );
 
-					echo ology_open_markup( 'ology_breadcrumb_item_link', 'a', array(
+					echo torbara_open_markup( 'torbara_breadcrumb_item_link', 'a', array(
 						'href' => $breadcrumb_url // Automatically escaped.
 					) );
 
 						// Used for mobile devices.
-						echo ology_open_markup( 'ology_breadcrumb_item_link_inner', 'span' );
+						echo torbara_open_markup( 'torbara_breadcrumb_item_link_inner', 'span' );
 
 							echo esc_html($breadcrumb);
 
-						echo ology_close_markup( 'ology_breadcrumb_item_link_inner', 'span' );
+						echo torbara_close_markup( 'torbara_breadcrumb_item_link_inner', 'span' );
 
-					echo ology_close_markup( 'ology_breadcrumb_item_link', 'a' );
+					echo torbara_close_markup( 'torbara_breadcrumb_item_link', 'a' );
 
-				echo ology_close_markup( 'ology_breadcrumb_item', 'li' );
+				echo torbara_close_markup( 'torbara_breadcrumb_item', 'li' );
 
 			}
 			// Active.
 			else {
 
-				echo ology_open_markup( 'ology_breadcrumb_item[_active]', 'li', array( 'class' => 'uk-active uk-text-muted' ) );
+				echo torbara_open_markup( 'torbara_breadcrumb_item[_active]', 'li', array( 'class' => 'uk-active uk-text-muted' ) );
 
 					echo esc_html($breadcrumb);
 
-				echo ology_close_markup( 'ology_breadcrumb_item[_active]', 'li' );
+				echo torbara_close_markup( 'torbara_breadcrumb_item[_active]', 'li' );
 
 			}
 
@@ -165,6 +165,6 @@ function ology_breadcrumb() {
 		}
 
 	// Close breadcrumb.
-	echo ology_close_markup( 'ology_breadcrumb', 'ul' );
+	echo torbara_close_markup( 'torbara_breadcrumb', 'ul' );
 
 }

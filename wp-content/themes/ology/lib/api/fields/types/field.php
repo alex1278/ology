@@ -3,7 +3,7 @@
  * @package API\Fields
  */
 
-ology_add_smart_action( 'ology_field_wrap_prepend_markup', 'ology_field_label' );
+torbara_add_smart_action( 'torbara_field_wrap_prepend_markup', 'torbara_field_label' );
 
 /**
  * Echo field label.
@@ -16,21 +16,21 @@ ology_add_smart_action( 'ology_field_wrap_prepend_markup', 'ology_field_label' )
  *      @type string $label The field label. Default false.
  * }
  */
-function ology_field_label( $field ) {
+function torbara_field_label( $field ) {
 
-	if ( !$label = ology_get( 'label', $field ) )
+	if ( !$label = torbara_get( 'label', $field ) )
 		return;
 
-	echo ology_open_markup( 'ology_field_label[_' . $field['id'] . ']', 'label' );
+	echo torbara_open_markup( 'torbara_field_label[_' . $field['id'] . ']', 'label' );
 
 		echo esc_html($field['label']);
 
-	echo ology_close_markup( 'ology_field_label[_' . $field['id'] . ']', 'label' );
+	echo torbara_close_markup( 'torbara_field_label[_' . $field['id'] . ']', 'label' );
 
 }
 
 
-ology_add_smart_action( 'ology_field_wrap_append_markup', 'ology_field_description' );
+torbara_add_smart_action( 'torbara_field_wrap_append_markup', 'torbara_field_description' );
 
 /**
  * Echo field description.
@@ -44,18 +44,18 @@ ology_add_smart_action( 'ology_field_wrap_append_markup', 'ology_field_descripti
  *            					  as a delimiter. Default false.
  * }
  */
-function ology_field_description( $field ) {
+function torbara_field_description( $field ) {
 
-	if ( !$description = ology_get( 'description', $field ) )
+	if ( !$description = torbara_get( 'description', $field ) )
 		return;
 
-	echo ology_open_markup( 'ology_field_description[_' . $field['id'] . ']', 'div', array( 'class' => 'bs-field-description' ) );
+	echo torbara_open_markup( 'torbara_field_description[_' . $field['id'] . ']', 'div', array( 'class' => 'bs-field-description' ) );
 
 		if ( preg_match( '#<!--more-->#', $description, $matches ) )
 			list( $description, $extended ) = explode( $matches[0], $description, 2 );
 
 		echo esc_html($description);
 
-	echo ology_close_markup( 'ology_field_description[_' . $field['id'] . ']', 'div' );
+	echo torbara_close_markup( 'torbara_field_description[_' . $field['id'] . ']', 'div' );
 
 }

@@ -6,7 +6,7 @@
  *
  * @package API\Compiler
  */
-final class ology_tt_Compiler {
+final class torbara_tt_Compiler {
 
 	/**
 	 * Compiler arguments.
@@ -58,8 +58,8 @@ final class ology_tt_Compiler {
 		);
 
 		$this->compiler = array_merge( $defaults, $args );
-		$this->dir = ology_get_compiler_dir( is_admin() ) . $this->compiler['id'];
-		$this->url = ology_get_compiler_url( is_admin() ) . $this->compiler['id'];
+		$this->dir = torbara_get_compiler_dir( is_admin() ) . $this->compiler['id'];
+		$this->url = torbara_get_compiler_url( is_admin() ) . $this->compiler['id'];
 
 		$this->set_fragments();
 		$this->set_filname();
@@ -131,9 +131,9 @@ final class ology_tt_Compiler {
 	 */
 	public function set_fragments() {
 
-		global $ology_tt_compiler_added_fragments;
+		global $torbara_tt_compiler_added_fragments;
 
-		if ( $added_fragments = ology_get( $this->compiler['id'], $ology_tt_compiler_added_fragments[$this->compiler['format']] ) )
+		if ( $added_fragments = torbara_get( $this->compiler['id'], $torbara_tt_compiler_added_fragments[$this->compiler['format']] ) )
 			$this->compiler['fragments'] = array_merge( $this->compiler['fragments'], $added_fragments );
 
 		/**
@@ -145,7 +145,7 @@ final class ology_tt_Compiler {
 		 *
 		 * @param array $fragments An array of fragment files.
 		 */
-		$this->compiler['fragments'] = apply_filters( 'ology_compiler_fragments_' . $this->compiler['id'], $this->compiler['fragments'] );
+		$this->compiler['fragments'] = apply_filters( 'torbara_compiler_fragments_' . $this->compiler['id'], $this->compiler['fragments'] );
 
 	}
 
@@ -158,7 +158,7 @@ final class ology_tt_Compiler {
 		$hash = substr( md5( @serialize( $this->compiler ) ), 0, 7 );
 
 		// Stop here and return filename if not in dev mode or if not using filesystem.
-		if ( !ology_tt_is_compiler_dev_mode() || !@is_dir( $this->dir ) )
+		if ( !torbara_tt_is_compiler_dev_mode() || !@is_dir( $this->dir ) )
 			return $this->compiler['filename'] = $hash . '.' . $this->get_extension();
 
 		$fragments_filemtime = array();
@@ -172,7 +172,7 @@ final class ology_tt_Compiler {
 
 			// Only check file time for internal files.
 			if ( strpos( $fragment, $_SERVER['HTTP_HOST'] ) !== false || preg_match( '#^\/[^\/]#', $fragment ) == true )
-				$fragments_filemtime[$id] = @filemtime( ology_url_to_path( $fragment ) );
+				$fragments_filemtime[$id] = @filemtime( torbara_url_to_path( $fragment ) );
 
 		}
 
@@ -205,7 +205,7 @@ final class ology_tt_Compiler {
 	 */
 	public function cache_file_exist() {
 
-		if ( ( $filname = ology_get( 'filename', $this->compiler ) ) && file_exists( $this->dir . '/' . $filname ) )
+		if ( ( $filname = torbara_get( 'filename', $this->compiler ) ) && file_exists( $this->dir . '/' . $filname ) )
 			return true;
 
 		return false;
@@ -253,7 +253,7 @@ final class ology_tt_Compiler {
 	 */
 	public function get_url() {
 
-		$url = trailingslashit( $this->url ) . ology_get( 'filename', $this->compiler );
+		$url = trailingslashit( $this->url ) . torbara_get( 'filename', $this->compiler );
 
 		if ( is_ssl() )
 			$url = str_replace( 'http://', 'https://', $url );
@@ -342,7 +342,7 @@ final class ology_tt_Compiler {
 		if ( !file_exists( $fragment ) ) {
 
 			// Replace url with path.
-			$fragment = ology_url_to_path( $fragment );
+			$fragment = torbara_url_to_path( $fragment );
 
 			// Stop here if it isn't a valid file.
 			if ( !file_exists( $fragment ) || @filesize( $fragment ) === 0 )
@@ -411,11 +411,11 @@ final class ology_tt_Compiler {
 		$parse_url = parse_url( $this->current_fragment );
 
 		// Return content if it no media query is set.
-		if ( !( $query = ology_get( 'query', $parse_url ) ) || stripos( $query, 'ology_compiler_media_query' ) === false )
+		if ( !( $query = torbara_get( 'query', $parse_url ) ) || stripos( $query, 'torbara_compiler_media_query' ) === false )
 			return $content;
 
 		// Wrap the content in the query.
-		$new_content = '@media ' . ology_get( 'ology_compiler_media_query', wp_parse_args( $query ) ) . ' {' . "\n";
+		$new_content = '@media ' . torbara_get( 'torbara_compiler_media_query', wp_parse_args( $query ) ) . ' {' . "\n";
 
 			$new_content .= $content . "\n";
 
@@ -435,24 +435,24 @@ final class ology_tt_Compiler {
 
 			if ( $this->compiler['format'] == 'less' ) {
 
-				if ( !class_exists( 'ology_Lessc' ) )
-					require_once( ology_API_PATH . 'compiler/vendors/lessc.php' );
+				if ( !class_exists( 'torbara_Lessc' ) )
+					require_once( torbara_API_PATH . 'compiler/vendors/lessc.php' );
 
-				$less = new ology_Lessc();
+				$less = new torbara_Lessc();
 
 				$content = $less->compile( $content );
 
 			}
 
-			if ( !ology_tt_is_compiler_dev_mode() )
+			if ( !torbara_tt_is_compiler_dev_mode() )
 				$content = $this->strip_whitespace( $content );
 
 		}
 
-		if ( $this->compiler['type'] == 'script' && !ology_tt_is_compiler_dev_mode() && $this->compiler['minify_js'] ) {
+		if ( $this->compiler['type'] == 'script' && !torbara_tt_is_compiler_dev_mode() && $this->compiler['minify_js'] ) {
 
 			if ( !class_exists( 'JSMin' ) )
-				require_once( ology_API_PATH . 'compiler/vendors/js-minifier.php' );
+				require_once( torbara_API_PATH . 'compiler/vendors/js-minifier.php' );
 
 			$js_min = new JSMin( $content );
 
@@ -501,8 +501,8 @@ final class ology_tt_Compiler {
 		if ( $base === '.' )
 			$base = '';
 
-		// Rebuild url and make sure it is a valid one using the ology_path_to_url function.
-		$url = ology_path_to_url( trailingslashit( $base ) . $rebuilt_path );
+		// Rebuild url and make sure it is a valid one using the torbara_path_to_url function.
+		$url = torbara_path_to_url( trailingslashit( $base ) . $rebuilt_path );
 
 		// Return the rebuilt path converted to url.
 		return 'url("' . $url . '")';
@@ -563,28 +563,28 @@ final class ology_tt_Compiler {
 	public function kill() {
 
 		// Send report if set.
-		if ( ology_get( 'ology_send_compiler_report' ) )
+		if ( torbara_get( 'torbara_send_compiler_report' ) )
 			$this->report();
 
-		$html = ology_output( 'ology_compiler_error_title_text', sprintf(
+		$html = torbara_output( 'torbara_compiler_error_title_text', sprintf(
 			'<h2>%s</h2>',
-			esc_html__( 'Not cool, Beans cannot work its magic :(', 'ology' )
+			esc_html__( 'Not cool, Beans cannot work its magic :(', 'torbara' )
 		) );
 
-		$html .= ology_output( 'ology_compiler_error_message_text', sprintf(
+		$html .= torbara_output( 'torbara_compiler_error_message_text', sprintf(
 			'<p>%s</p>',
-			esc_html__( 'Your current install or file permission prevents Beans from working its magic. Please get in touch with Beans support, we will gladly get you started within 24 - 48 hours (working days).', 'ology' )
+			esc_html__( 'Your current install or file permission prevents Beans from working its magic. Please get in touch with Beans support, we will gladly get you started within 24 - 48 hours (working days).', 'torbara' )
 		) );
 
-		$html .= ology_output( 'ology_compiler_error_contact_text', sprintf(
+		$html .= torbara_output( 'torbara_compiler_error_contact_text', sprintf(
 			'<a class="button" href="http://www.getbeans.io/contact/?compiler_report=1" target="_blanc">%s</a>',
-			esc_html__( 'Contact Beans Support', 'ology' )
+			esc_html__( 'Contact Beans Support', 'torbara' )
 		) );
 
-		$html .= ology_output( 'ology_compiler_error_report_text', sprintf(
-			'<p style  =  "margin-top: 12px; font-size: 12px;"><a href="' . add_query_arg( 'ology_send_compiler_report', true ) . '">%1$s</a>. %2$s</p>',
-			esc_html__( 'Send us an automatic report', 'ology' ),
-			esc_html__( 'We respect your time and understand you might not be able to contact us.', 'ology' )
+		$html .= torbara_output( 'torbara_compiler_error_report_text', sprintf(
+			'<p style  =  "margin-top: 12px; font-size: 12px;"><a href="' . add_query_arg( 'torbara_send_compiler_report', true ) . '">%1$s</a>. %2$s</p>',
+			esc_html__( 'Send us an automatic report', 'torbara' ),
+			esc_html__( 'We respect your time and understand you might not be able to contact us.', 'torbara' )
 		) );
 
 		wp_die( $html );
@@ -612,9 +612,9 @@ final class ology_tt_Compiler {
 		);
 
 		// Die and display message.
-		wp_die( ology_output( 'ology_compiler_report_error_text', sprintf(
+		wp_die( torbara_output( 'torbara_compiler_report_error_text', sprintf(
 			'<p>%s<p>',
-			esc_html__( 'Thanks for your contribution by reporting this issue. We hope to hear from you again.', 'ology' )
+			esc_html__( 'Thanks for your contribution by reporting this issue. We hope to hear from you again.', 'torbara' )
 		) ) );
 
 	}

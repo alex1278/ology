@@ -6,7 +6,7 @@
  *
  * @package API\WP_Customize
  */
-final class ology_tt_WP_Customize {
+final class torbara_tt_WP_Customize {
 
 	/**
 	 * Fields section.
@@ -22,7 +22,7 @@ final class ology_tt_WP_Customize {
 	public function __construct( $section, $args ) {
 
 		$defaults = array(
-			'title' => esc_html__( 'Undefined', 'ology' ),
+			'title' => esc_html__( 'Undefined', 'torbara' ),
 			'priority' => 30,
 			'description' => false
 		);
@@ -33,7 +33,7 @@ final class ology_tt_WP_Customize {
 		// Add section, settings and controls.
 		$this->add();
 
-		ology_add_attribute( 'ology_field_label', 'class', 'customize-control-title' );
+		torbara_add_attribute( 'torbara_field_label', 'class', 'customize-control-title' );
 
 	}
 
@@ -47,7 +47,7 @@ final class ology_tt_WP_Customize {
 
 		$this->add_section( $wp_customize );
 
-		$fields = ology_get_fields( 'wp_customize', $this->section );
+		$fields = torbara_get_fields( 'wp_customize', $this->section );
 
 		foreach ( $fields as $field ) {
 
@@ -99,7 +99,7 @@ final class ology_tt_WP_Customize {
 		$wp_customize->add_setting(
 			$field['name'],
 			array(
-				'default' => ology_get( 'default', $field ),
+				'default' => torbara_get( 'default', $field ),
 				'type' => $field['db_type'],
 				'capability' => $field['capability'],
 				'transport' => $field['transport'],
@@ -115,7 +115,7 @@ final class ology_tt_WP_Customize {
 	 */
 	private function add_control( $wp_customize, $field ) {
 
-		$class = 'ology_tt_WP_Customize_Control';
+		$class = 'torbara_tt_WP_Customize_Control';
 
 		if ( $field['type'] !== $class && class_exists( $field['type'] ) )
 			$class = $field['type'];
@@ -154,14 +154,14 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 	 *
 	 * @ignore
 	 */
-	class ology_tt_WP_Customize_Control extends WP_Customize_Control {
+	class torbara_tt_WP_Customize_Control extends WP_Customize_Control {
 
 		/**
 		 * Field data.
 		 *
 		 * @type string
 		 */
-		private $ology_field;
+		private $torbara_field;
 
 
 		/**
@@ -173,7 +173,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 
 			call_user_func_array( array( 'parent', '__construct' ), $args );
 
-			$this->ology_field = end( $args );
+			$this->torbara_field = end( $args );
 
 		}
 
@@ -183,7 +183,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 		 */
 		public function render_content() {
 
-			ology_field( $this->ology_field );
+			torbara_field( $this->torbara_field );
 
 		}
 

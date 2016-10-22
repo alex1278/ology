@@ -13,7 +13,7 @@
  *
  * @since 1.0.0
  */
-do_action( 'ology_before_loop' );
+do_action( 'torbara_before_loop' );
 
 	if ( have_posts() && !is_404() ) :
 
@@ -24,7 +24,7 @@ do_action( 'ology_before_loop' );
 		 *
 		 * @since 1.0.0
 		 */
-		do_action( 'ology_before_posts_loop' );
+		do_action( 'torbara_before_posts_loop' );
 
 		while ( have_posts() ) : the_post();
 
@@ -46,31 +46,31 @@ do_action( 'ology_before_loop' );
 
 			}
 
-			echo ology_open_markup( 'ology_post', 'article', $article_attributes );
+			echo torbara_open_markup( 'torbara_post', 'article', $article_attributes );
 
-				echo ology_open_markup( 'ology_post_header', 'header' );
+				echo torbara_open_markup( 'torbara_post_header', 'header' );
 
 					/**
 					 * Fires in the post header.
 					 *
 					 * @since 1.0.0
 					 */
-					do_action( 'ology_post_header' );
+					do_action( 'torbara_post_header' );
 
-				echo ology_close_markup( 'ology_post_header', 'header' );
+				echo torbara_close_markup( 'torbara_post_header', 'header' );
 
-				echo ology_open_markup( 'ology_post_body', 'div' );
+				echo torbara_open_markup( 'torbara_post_body', 'div' );
 
 					/**
 					 * Fires in the post body.
 					 *
 					 * @since 1.0.0
 					 */
-					do_action( 'ology_post_body' );
+					do_action( 'torbara_post_body' );
 
-				echo ology_close_markup( 'ology_post_body', 'div' );
+				echo torbara_close_markup( 'torbara_post_body', 'div' );
 
-			echo ology_close_markup( 'ology_post', 'article' );
+			echo torbara_close_markup( 'torbara_post', 'article' );
 
 		endwhile;
 
@@ -81,7 +81,7 @@ do_action( 'ology_before_loop' );
 		 *
 		 * @since 1.0.0
 		 */
-		do_action( 'ology_after_posts_loop' );
+		do_action( 'torbara_after_posts_loop' );
 
 	else :
 
@@ -90,7 +90,7 @@ do_action( 'ology_before_loop' );
 		 *
 		 * @since 1.0.0
 		 */
-		do_action( 'ology_no_post' );
+		do_action( 'torbara_no_post' );
 
 	endif;
 
@@ -101,4 +101,4 @@ do_action( 'ology_before_loop' );
  *
  * @since 1.0.0
  */
-do_action( 'ology_after_loop' );
+do_action( 'torbara_after_loop' );

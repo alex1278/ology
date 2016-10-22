@@ -9,7 +9,7 @@
 /**
  * Deprecated. Sanitize HTML attributes from array to string.
  *
- * This functions has been replaced with {@see ology_esc_attributes()}.
+ * This functions has been replaced with {@see torbara_esc_attributes()}.
  *
  * @since 1.0.0
  * @deprecated 1.3.1
@@ -19,10 +19,10 @@
  *
  * @return string The sanitized attributes.
  */
-function ology_sanatize_attributes( $attributes ) {
+function torbara_sanatize_attributes( $attributes ) {
 
-	_deprecated_function( __FUNCTION__, '1.3.1', 'ology_esc_attributes()' );
+	_deprecated_function( __FUNCTION__, '1.3.1', 'torbara_esc_attributes()' );
 
-	return ology_esc_attributes( $attributes );
+	return torbara_esc_attributes( $attributes );
 
 }

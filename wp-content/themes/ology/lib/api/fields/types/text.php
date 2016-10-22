@@ -3,7 +3,7 @@
  * @package API\Fields\Types
  */
 
-ology_add_smart_action( 'ology_field_text', 'ology_field_text' );
+torbara_add_smart_action( 'torbara_field_text', 'torbara_field_text' );
 
 /**
  * Echo text field type.
@@ -11,7 +11,7 @@ ology_add_smart_action( 'ology_field_text', 'ology_field_text' );
  * @since 1.0.0
  *
  * @param array $field {
- *      For best practices, pass the array of data obtained using {@see ology_get_fields()}.
+ *      For best practices, pass the array of data obtained using {@see torbara_get_fields()}.
  *
  *      @type mixed  $value      The field value.
  *      @type string $name       The field name value.
@@ -20,10 +20,10 @@ ology_add_smart_action( 'ology_field_text', 'ology_field_text' );
  *      @type mixed  $default    The default value. Default false.
  * }
  */
-function ology_field_text( $field ) {
+function torbara_field_text( $field ) {
 
 	?>
-	<input type="text" name="<?php echo esc_attr( $field['name'] ); ?>" value="<?php echo esc_attr( $field['value'] ); ?>" <?php echo ology_esc_attributes( $field['attributes'] ); ?>>
+	<input type="text" name="<?php echo esc_attr( $field['name'] ); ?>" value="<?php echo esc_attr( $field['value'] ); ?>" <?php echo torbara_esc_attributes( $field['attributes'] ); ?>>
 	<?php
 
 }

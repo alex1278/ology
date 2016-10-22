@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
- * @copyright  Copyright ( C ) 2015 Torbara (http://torbara.com). All rights reserved.
+ * @copyright  Copyright ( C ) 2016 Torbara (http://torbara.com). All rights reserved.
  * @license    Copyrighted Commercial Software
  * @support    support@torbara.com
  * @author     Aleksandr Glovatskyy (aleksandr1278@gmail.com)
@@ -9,12 +9,12 @@
     <name>Ology</name>
     <version>1.0.0</version>
     <creationDate>August 2016</creationDate>
-    <author>Aleksandr Glovatskyy</author>
+    <author>Torbara</author>
     <authorEmail>aleksandr1278@gmail.com</authorEmail>
     <authorUrl>http://torbara.com/</authorUrl>
     <copyright>Copyrighted Commercial Software</copyright>
     <license>support@torbara.com</license>
-    <description>Trannings and Classes Wordpress Theme</description>
+    <description>Training and Classes Wordpress Theme</description>
     <positions>
         <position>sidebar-a</position>
         <position>sidebar-b</position>

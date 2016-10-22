@@ -6,7 +6,7 @@
  *
  * @package API\Post_meta
  */
-final class ology_tt_Post_Meta {
+final class torbara_tt_Post_Meta {
 
 	/**
 	 * Metabox arguments.
@@ -29,7 +29,7 @@ final class ology_tt_Post_Meta {
 	public function __construct( $section, $args ) {
 
 		$defaults = array(
-			'title' => esc_html__( 'Undefined', 'ology' ),
+			'title' => esc_html__( 'Undefined', 'torbara' ),
 			'context' => 'normal',
 			'priority' => 'high',
 		);
@@ -67,7 +67,7 @@ final class ology_tt_Post_Meta {
 	 */
 	public function nonce() {
 
-		echo '<input type="hidden" name="ology_post_meta_nonce" value="' . esc_attr( wp_create_nonce( 'ology_post_meta_nonce' ) ) . '" />';
+		echo '<input type="hidden" name="torbara_post_meta_nonce" value="' . esc_attr( wp_create_nonce( 'torbara_post_meta_nonce' ) ) . '" />';
 
 	}
 
@@ -87,8 +87,8 @@ final class ology_tt_Post_Meta {
 	 */
 	public function metabox_content( $post ) {
 
-		foreach ( ology_get_fields( 'post_meta', $this->section ) as $field )
-			ology_field( $field );
+		foreach ( torbara_get_fields( 'post_meta', $this->section ) as $field )
+			torbara_field( $field );
 
 	}
 
@@ -101,10 +101,10 @@ final class ology_tt_Post_Meta {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
 			return false;
 
-		if ( !wp_verify_nonce( ology_post( 'ology_post_meta_nonce' ), 'ology_post_meta_nonce' ) )
+		if ( !wp_verify_nonce( torbara_post( 'torbara_post_meta_nonce' ), 'torbara_post_meta_nonce' ) )
 			return $post_id;
 
-		if ( !$fields = ology_post( 'ology_fields' ) )
+		if ( !$fields = torbara_post( 'torbara_fields' ) )
 			return $post_id;
 
 		foreach ( $fields as $field => $value )
@@ -118,13 +118,13 @@ final class ology_tt_Post_Meta {
 	 */
 	public function save_attachment( $attachment ) {
 
-		if ( !wp_verify_nonce( ology_post( 'ology_post_meta_nonce' ), 'ology_post_meta_nonce' ) )
+		if ( !wp_verify_nonce( torbara_post( 'torbara_post_meta_nonce' ), 'torbara_post_meta_nonce' ) )
 			return $post_id;
 
 		if ( !current_user_can( 'edit_post', $attachment['ID'] ) )
 			return $attachment;
 
-		if ( !$fields = ology_post( 'ology_fields' ) )
+		if ( !$fields = torbara_post( 'torbara_fields' ) )
 			return $attachment;
 
 		foreach ( $fields as $field => $value )

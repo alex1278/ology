@@ -14,7 +14,7 @@
  * @since 1.0.0
  * @deprecated 1.2.0
  */
-function ology_head_title() {
+function torbara_head_title() {
 
 	_deprecated_function( __FUNCTION__, '1.2.0', 'wp_title()' );
 
@@ -36,7 +36,7 @@ function ology_head_title() {
  *
  * @return string The modified title.
  */
-function ology_wp_title( $title, $sep ) {
+function torbara_wp_title( $title, $sep ) {
 
 	_deprecated_function( __FUNCTION__, '1.2.0', 'wp_title()' );
 
@@ -54,7 +54,7 @@ function ology_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary.
 	if ( $paged >= 2 || $page >= 2 )
-		$title .= " $sep " . sprintf( esc_html__( 'Page %s', 'ology' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( esc_html__( 'Page %s', 'torbara' ), max( $paged, $page ) );
 
 	return $title;
 
@@ -73,9 +73,9 @@ function ology_wp_title( $title, $sep ) {
 global $shortcode_tags;
 
 $shortcode_tags = array_merge( $shortcode_tags, array(
-	'ology_post_meta_date' => 'ology_post_meta_date_shortcode',
-	'ology_post_meta_author' => 'ology_post_meta_author_shortcode',
-	'ology_post_meta_comments' => 'ology_post_meta_comments_shortcode',
-	'ology_post_meta_tags' => 'ology_post_meta_tags_shortcode',
-	'ology_post_meta_categories' => 'ology_post_meta_categories_shortcode'
+	'torbara_post_meta_date' => 'torbara_post_meta_date_shortcode',
+	'torbara_post_meta_author' => 'torbara_post_meta_author_shortcode',
+	'torbara_post_meta_comments' => 'torbara_post_meta_comments_shortcode',
+	'torbara_post_meta_tags' => 'torbara_post_meta_tags_shortcode',
+	'torbara_post_meta_categories' => 'torbara_post_meta_categories_shortcode'
 ) );

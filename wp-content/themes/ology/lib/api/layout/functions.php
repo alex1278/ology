@@ -13,9 +13,9 @@
  *
  * @return string The defautl layout.
  */
-function ology_get_default_layout() {
+function torbara_get_default_layout() {
 
-	$default_layout = ology_has_widget_area( 'sidebar-a' ) ? 'c_sp' : 'c';
+	$default_layout = torbara_has_widget_area( 'sidebar-a' ) ? 'c_sp' : 'c';
 
 	/**
 	 * Filter the default layout id.
@@ -27,7 +27,7 @@ function ology_get_default_layout() {
 	 *
 	 * @param string $layout The default layout id.
 	 */
-	return apply_filters( 'ology_default_layout', $default_layout );
+	return apply_filters( 'torbara_default_layout', $default_layout );
 
 }
 
@@ -41,20 +41,20 @@ function ology_get_default_layout() {
  *
  * @return bool Layout, false if no layout found.
  */
-function ology_get_layout() {
+function torbara_get_layout() {
 
 	if ( is_singular() )
-		$layout = ology_get_post_meta( 'ology_layout' );
+		$layout = torbara_get_post_meta( 'torbara_layout' );
 
 	elseif ( is_home() )
-		$layout = ology_get_post_meta( 'ology_layout', false, get_option( 'page_for_posts' ) );
+		$layout = torbara_get_post_meta( 'torbara_layout', false, get_option( 'page_for_posts' ) );
 
 	elseif ( is_category() || is_tag() || is_tax() )
-		$layout = ology_get_term_meta( 'ology_layout' );
+		$layout = torbara_get_term_meta( 'torbara_layout' );
 
 	// Fallback onto the global theme layout option if value is false or default_fallback.
 	if ( !isset( $layout ) || !$layout || $layout === 'default_fallback' )
-		$layout = get_theme_mod( 'ology_layout', ology_get_default_layout() );
+		$layout = get_theme_mod( 'torbara_layout', torbara_get_default_layout() );
 
 	/**
 	 * Filter the layout id.
@@ -63,7 +63,7 @@ function ology_get_layout() {
 	 *
 	 * @param string $layout The layout id.
 	 */
-	return apply_filters( 'ology_layout', $layout );
+	return apply_filters( 'torbara_layout', $layout );
 
 }
 
@@ -79,7 +79,7 @@ function ology_get_layout() {
  *
  * @return bool Layout class, false if no layout class found.
  */
-function ology_get_layout_class( $id ) {
+function torbara_get_layout_class( $id ) {
 
 	/**
 	 * Filter the arguments used to define the layout grid.
@@ -98,22 +98,22 @@ function ology_get_layout_class( $id ) {
 	 *     @type string $breakpoint        The UIkit grid breakpoint which may be set to 'small', 'medium' or 'large'. Default 'medium'.
 	 * }
 	 */
-	$args = apply_filters( 'ology_layout_grid_settings', array(
+	$args = apply_filters( 'torbara_layout_grid_settings', array(
 		'grid' => 4,
 		'sidebar-a' => 1,
 		'sidebar_secondary' => 1,
 		'breakpoint' => 'medium'
 	) );
 
-	$g = ology_get( 'grid', $args ); // $g stands for grid.
+	$g = torbara_get( 'grid', $args ); // $g stands for grid.
 	$c = $g; // $c stands for content. Same value as grid by default
-	$sp = ology_get( 'sidebar-a', $args ); // $sp stands for sidebar primary.
-	$ss = ology_get( 'sidebar_secondary', $args ); // $ss stands for 'sidebar secondary.
-	$prefix = 'uk-width-' . ology_get( 'breakpoint', $args, 'medium' );
+	$sp = torbara_get( 'sidebar-a', $args ); // $sp stands for sidebar primary.
+	$ss = torbara_get( 'sidebar_secondary', $args ); // $ss stands for 'sidebar secondary.
+	$prefix = 'uk-width-' . torbara_get( 'breakpoint', $args, 'medium' );
 
 	$classes = array();
 
-	switch ( $layout = ology_get_layout() ) {
+	switch ( $layout = torbara_get_layout() ) {
 
 		case 'c':
 
@@ -128,7 +128,7 @@ function ology_get_layout_class( $id ) {
 	}
 
 	// Add sidebar primary layouts if the primary widget area is registered.
-	if ( $has_primary = ology_has_widget_area( 'sidebar-a' ) ) {
+	if ( $has_primary = torbara_has_widget_area( 'sidebar-a' ) ) {
 
 		switch ( $layout ) {
 
@@ -155,7 +155,7 @@ function ology_get_layout_class( $id ) {
 	}
 
 	// Add sidebar secondary layouts if the primary and secondary widget area are registered.
-	if ( $has_primary && ology_has_widget_area( 'sidebar_secondary' ) ) {
+	if ( $has_primary && torbara_has_widget_area( 'sidebar_secondary' ) ) {
 
 		switch ( $layout ) {
 
@@ -221,7 +221,7 @@ function ology_get_layout_class( $id ) {
 	 *
 	 * @param string $layout The layout class.
 	 */
-	return apply_filters( "ology_layout_class_$id", ology_get( $id, $classes ) );
+	return apply_filters( "torbara_layout_class_$id", torbara_get( $id, $classes ) );
 
 }
 
@@ -238,16 +238,16 @@ function ology_get_layout_class( $id ) {
  *
  * @return array Layouts ready for Beans 'imageradio' option type.
  */
-function ology_get_layouts_for_options( $add_default = false ) {
+function torbara_get_layouts_for_options( $add_default = false ) {
 
-	$base = ology_ADMIN_ASSETS_URL . 'images/layouts/';
+	$base = torbara_ADMIN_ASSETS_URL . 'images/layouts/';
 
 	$layouts = array(
 		'c' =>  $base . 'c.png'
 	);
 
 	// Add sidebar primary layouts if the primary widget area is registered.
-	if ( $has_primary = ology_has_widget_area( 'sidebar-a' ) ) {
+	if ( $has_primary = torbara_has_widget_area( 'sidebar-a' ) ) {
 
 		$layouts['c_sp'] = $base . 'cs.png';
 		$layouts['sp_c'] = $base . 'sc.png';
@@ -255,7 +255,7 @@ function ology_get_layouts_for_options( $add_default = false ) {
 	}
 
 	// Add sidebar secondary layouts if the primary and secondary widget area are registered.
-	if ( $has_primary && ology_has_widget_area( 'sidebar_secondary' ) ) {
+	if ( $has_primary && torbara_has_widget_area( 'sidebar_secondary' ) ) {
 
 		$layouts['c_sp_ss'] = $base . 'css.png';
 		$layouts['sp_ss_c'] = $base . 'ssc.png';
@@ -274,12 +274,12 @@ function ology_get_layouts_for_options( $add_default = false ) {
 	 *
 	 * @param array $args An array of layouts.
 	 */
-	$layouts = apply_filters( 'ology_layouts', $layouts );
+	$layouts = apply_filters( 'torbara_layouts', $layouts );
 
 	if ( $add_default )
 		$layouts = array_merge( array( 'default_fallback' => sprintf(
-			esc_html__( 'Use Default Layout (%s)',  'ology' ),
-			'<a href="' . admin_url( 'customize.php?autofocus[control]=ology_layout' ) . '">' . _x( 'Modify', 'Default layout', 'ology' ) . '</a>'
+			esc_html__( 'Use Default Layout (%s)',  'torbara' ),
+			'<a href="' . admin_url( 'customize.php?autofocus[control]=torbara_layout' ) . '">' . esc_attr_x( 'Modify', 'Default layout', 'torbara' ) . '</a>'
 		) ), $layouts );
 
 	return $layouts;

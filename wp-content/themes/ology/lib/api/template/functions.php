@@ -14,14 +14,14 @@
  *
  * @since 1.0.0
  */
-function ology_load_document() {
+function torbara_load_document() {
 
 	/**
 	 * Fires before the document is loaded.
 	 *
 	 * @since 1.0.0
 	 */
-	do_action( 'ology_before_load_document' );
+	do_action( 'torbara_before_load_document' );
 
 		/**
 		 * Fires when the document loads.
@@ -30,14 +30,14 @@ function ology_load_document() {
 		 *
 		 * @since 1.0.0
 		 */
-		do_action( 'ology_load_document' );
+		do_action( 'torbara_load_document' );
 
 	/**
 	 * Fires after the document is loaded.
 	 *
 	 * @since 1.0.0
 	 */
-	do_action( 'ology_after_load_document' );
+	do_action( 'torbara_after_load_document' );
 
 }
 
@@ -58,9 +58,9 @@ function ology_load_document() {
  *
  * @return bool False if file isn't found.
  */
-function ology_load_default_template( $file ) {
+function torbara_load_default_template( $file ) {
 
-	$file = ology_STRUCTURE_PATH . basename( $file );
+	$file = torbara_STRUCTURE_PATH . basename( $file );
 
 	if ( !file_exists( $file ) )
 		return false;
@@ -81,7 +81,7 @@ function ology_load_default_template( $file ) {
  *
  * @return bool True on success, false on failure.
  */
-function ology_load_fragment_file( $slug ) {
+function torbara_load_fragment_file( $slug ) {
 
 	/**
 	 * Filter whether to load a fragment or not.
@@ -93,14 +93,14 @@ function ology_load_fragment_file( $slug ) {
 	 *
 	 * @param bool $pre True to short-circuit, False to let the function run.
 	 */
-	if ( apply_filters( 'ology_pre_load_fragment_' . $slug, false ) )
+	if ( apply_filters( 'torbara_pre_load_fragment_' . $slug, false ) )
 		return false;
 
 	// Stop here if fragment file doesn't exists.
-	if ( !file_exists( ology_FRAGMENTS_PATH . $slug . '.php' ) )
+	if ( !file_exists( torbara_FRAGMENTS_PATH . $slug . '.php' ) )
 		return false;
 
-	require_once( ology_FRAGMENTS_PATH . $slug . '.php' );
+	require_once( torbara_FRAGMENTS_PATH . $slug . '.php' );
 
 	return true;
 
@@ -115,7 +115,7 @@ function ology_load_fragment_file( $slug ) {
  *
  * @since 1.0.0
  */
-function ology_comment_callback( $comment, $args, $depth ) {
+function torbara_comment_callback( $comment, $args, $depth ) {
 
 	global $comment;
 
@@ -131,7 +131,7 @@ function ology_comment_callback( $comment, $args, $depth ) {
 		 *
 		 * @since 1.0.0
 		 */
-		do_action( 'ology_comment' );
+		do_action( 'torbara_comment' );
 
 	// Don't close </li> tag.
 

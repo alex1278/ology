@@ -27,7 +27,7 @@
  *            					  attribute name and the array value defines the attribute value. Default array.
  *      @type mixed  $default     The default field value. Default false.
  *      @type array  $fields      Must only be used for 'group' field type. The array arguments are similary to the
- *            					  {@see ology_register_fields()} $fields arguments.
+ *            					  {@see torbara_register_fields()} $fields arguments.
  *      @type bool   $db_group    Must only be used for 'group' field type. It defines whether the group of fields
  *            					  registered should be saved as a group in the database or as individual
  *            					  entries. Default false.
@@ -46,7 +46,7 @@
  *
  * @return bool True on success, false on failure.
  */
-function ology_register_wp_customize_options( array $fields, $section, $args = array() ) {
+function torbara_register_wp_customize_options( array $fields, $section, $args = array() ) {
 
 	/**
 	 * Filter the customizer fields.
@@ -57,19 +57,19 @@ function ology_register_wp_customize_options( array $fields, $section, $args = a
 	 *
 	 * @param array $fields An array of customizer fields.
 	 */
-	$fields = apply_filters( "ology_wp_customize_fields_{$section}", ology_tt_pre_standardize_fields( $fields ) );
+	$fields = apply_filters( "torbara_wp_customize_fields_{$section}", torbara_tt_pre_standardize_fields( $fields ) );
 
 	// Stop here if the current page isn't concerned.
 	if ( !is_customize_preview() )
 		return;
 
 	// Stop here if the field can't be registered.
-	if ( !ology_register_fields( $fields, 'wp_customize', $section ) )
+	if ( !torbara_register_fields( $fields, 'wp_customize', $section ) )
 		return false;
 
 	// Load the class only if this function is called to prevent unnecessary memory usage.
-	require_once( ology_API_PATH . 'wp-customize/class.php' );
+	require_once( torbara_API_PATH . 'wp-customize/class.php' );
 
-	new ology_tt_WP_Customize( $section, $args );
+	new torbara_tt_WP_Customize( $section, $args );
 
 }

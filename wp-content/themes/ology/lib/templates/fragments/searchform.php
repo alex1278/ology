@@ -6,7 +6,7 @@
  */
 
 // Filter.
-ology_add_smart_action( 'get_search_form', 'ology_search_form' );
+torbara_add_smart_action( 'get_search_form', 'torbara_search_form' );
 
 /**
  * Modify the search form.
@@ -15,28 +15,28 @@ ology_add_smart_action( 'get_search_form', 'ology_search_form' );
  *
  * @return string The form.
  */
-function ology_search_form() {
+function torbara_search_form() {
 
-	$output = ology_open_markup( 'ology_search_form', 'form', array(
+	$output = torbara_open_markup( 'torbara_search_form', 'form', array(
 		'class' => 'uk-form uk-form-icon uk-form-icon-flip uk-width-1-1',
 		'method' => 'get',
 		'action' => esc_url( home_url( '/' ) ),
 		'role' => 'search'
 	) );
 
-		$output .= ology_selfclose_markup( 'ology_search_form_input', 'input', array(
+		$output .= torbara_selfclose_markup( 'torbara_search_form_input', 'input', array(
 			'class' => 'uk-width-1-1',
 			'type' => 'search',
-			'placeholder' => esc_html__( 'Search', 'ology' ), // Automatically escaped.
+			'placeholder' => esc_html__( 'Search', 'torbara' ), // Automatically escaped.
 			'value' => esc_attr( get_search_query() ),
 			'name' => 's'
 		) );
 
-		$output .= ology_open_markup( 'ology_search_form_input_icon', 'i', 'class=uk-icon-search' );
+		$output .= torbara_open_markup( 'torbara_search_form_input_icon', 'i', 'class=uk-icon-search' );
 
-		$output .= ology_close_markup( 'ology_search_form_input_icon', 'i' );
+		$output .= torbara_close_markup( 'torbara_search_form_input_icon', 'i' );
 
-	$output .= ology_close_markup( 'ology_search_form', 'form' );
+	$output .= torbara_close_markup( 'torbara_search_form', 'form' );
 
 	return $output;
 

@@ -3,7 +3,7 @@
  * @package API\Fields\Types
  */
 
-ology_add_smart_action( 'ology_field_select', 'ology_field_select' );
+torbara_add_smart_action( 'torbara_field_select', 'torbara_field_select' );
 
 /**
  * Echo select field type.
@@ -11,7 +11,7 @@ ology_add_smart_action( 'ology_field_select', 'ology_field_select' );
  * @since 1.0.0
  *
  * @param array $field {
- *      For best practices, pass the array of data obtained using {@see ology_get_fields()}.
+ *      For best practices, pass the array of data obtained using {@see torbara_get_fields()}.
  *
  *      @type mixed  $value      The field value.
  *      @type string $name       The field name value.
@@ -22,13 +22,13 @@ ology_add_smart_action( 'ology_field_select', 'ology_field_select' );
  *            					 value and the array value defines the option label.
  * }
  */
-function ology_field_select( $field ) {
+function torbara_field_select( $field ) {
 
 	if ( empty( $field['options'] ) )
 		return;
 
 	?>
-	<select name="<?php echo esc_attr( $field['name'] ); ?>" <?php echo ology_esc_attributes( $field['attributes'] );?>>
+	<select name="<?php echo esc_attr( $field['name'] ); ?>" <?php echo torbara_esc_attributes( $field['attributes'] );?>>
 		<?php foreach ( $field['options'] as $value => $label ) : ?>
 			<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $field['value'] );?>><?php echo esc_html( $label ); ?></option>
 		<?php endforeach; ?>

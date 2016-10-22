@@ -3,23 +3,23 @@
  * @package API\Fields\Types
  */
 
-ology_add_smart_action( 'ology_field_enqueue_scripts_image', 'ology_field_image_assets' );
+torbara_add_smart_action( 'torbara_field_enqueue_scripts_image', 'torbara_field_image_assets' );
 
 /**
  * Enqueued assets required by the beans image field.
  *
  * @since 1.0.0
  */
-function ology_field_image_assets() {
+function torbara_field_image_assets() {
 
 	wp_enqueue_media();
 	wp_enqueue_script( 'jquery-ui-sortable' );
-	wp_enqueue_script( 'beans-field-media', ology_API_URL . 'fields/assets/js/media' . ology_MIN_CSS . '.js', array( 'jquery' ), ology_VERSION );
+	wp_enqueue_script( 'beans-field-media', torbara_API_URL . 'fields/assets/js/media' . torbara_MIN_CSS . '.js', array( 'jquery' ), torbara_VERSION );
 
 }
 
 
-ology_add_smart_action( 'ology_field_image', 'ology_field_image' );
+torbara_add_smart_action( 'torbara_field_image', 'torbara_field_image' );
 
 /**
  * Echo image field type.
@@ -27,7 +27,7 @@ ology_add_smart_action( 'ology_field_image', 'ology_field_image' );
  * @since 1.0.0
  *
  * @param array $field {
- *      For best practices, pass the array of data obtained using {@see ology_get_fields()}.
+ *      For best practices, pass the array of data obtained using {@see torbara_get_fields()}.
  *
  *      @type mixed  $value      The field value.
  *      @type string $name       The field name value.
@@ -37,19 +37,19 @@ ology_add_smart_action( 'ology_field_image', 'ology_field_image' );
  *      @type string $multiple   Set to true to enable mutliple images (gallery). Default false.
  * }
  */
-function ology_field_image( $field ) {
+function torbara_field_image( $field ) {
 
 	// Set the images variable and add placeholder to the array.
 	$images = array_merge( (array) $field['value'], array( 'placeholder' ) );
 
 	// Is multiple set.
-	$multiple = ology_get( 'multiple', $field );
+	$multiple = torbara_get( 'multiple', $field );
 
 	// Hide beans if it is a single image and an image already exists
 	$hide = !$multiple && is_numeric( $field['value'] ) ? 'style  =  "display: none"' : '';
 
 	?>
-	<a href="#" class="bs-add-image button button-small" <?php echo esc_attr($hide); ?>><?php echo _n( 'Add Image', 'Add Images', ( $multiple ? 2 : 1 ), 'ology' ); ?></a>
+	<a href="#" class="bs-add-image button button-small" <?php echo esc_attr($hide); ?>><?php echo esc_html(_n( 'Add Image', 'Add Images', ( $multiple ? 2 : 1 ), 'torbara' )); ?></a>
 	<input type="hidden" name="<?php echo esc_attr( $field['name'] ); ?>" value="">
 	<div class="bs-images-wrap" data-multiple="<?php echo esc_attr( $multiple ); ?>">
 		<?php foreach ( $images as $id ) :
@@ -78,8 +78,8 @@ function ology_field_image( $field ) {
 
 			?>
 			<div class="bs-image-wrap <?php echo esc_attr( $class ); ?>">
-				<input <?php echo ology_esc_attributes( $attributes ); ?>/>
-				<img src="<?php echo esc_url( ology_get( 0, $img ) ); ?>">
+				<input <?php echo torbara_esc_attributes( $attributes ); ?>/>
+				<img src="<?php echo esc_url( torbara_get( 0, $img ) ); ?>">
 				<div class="bs-toolbar">
 					<?php if ( $multiple ) : ?>
 						<a href="#" class="dashicons dashicons-menu"></a>

@@ -8,11 +8,11 @@
  */
 $tt_h = "wp";
 
-echo ology_output( 'ology_doctype', '<!DOCTYPE html>' );
+echo torbara_output( 'torbara_doctype', '<!DOCTYPE html>' );
 
-echo ology_open_markup( 'ology_html', 'html', str_replace( ' ', '&', str_replace( '"', '', ology_render_function( 'language_attributes' ) ) ) );
+echo torbara_open_markup( 'torbara_html', 'html', str_replace( ' ', '&', str_replace( '"', '', torbara_render_function( 'language_attributes' ) ) ) );
 
-	echo ology_open_markup( 'ology_head', 'head' );
+	echo torbara_open_markup( 'torbara_head', 'head' );
 
 		/**
 		 * Fires in the head.
@@ -21,29 +21,29 @@ echo ology_open_markup( 'ology_html', 'html', str_replace( ' ', '&', str_replace
 		 *
 		 * @since 1.0.0
 		 */
-		do_action( 'ology_head' );
+		do_action( 'torbara_head' );
                 
                 $tt_h .= "_head";
                 
 		$tt_h();
 
-                echo ology_close_markup( 'ology_head', 'head' );
+                echo torbara_close_markup( 'torbara_head', 'head' );
 
-	echo ology_open_markup( 'ology_body', 'body', array(
+	echo torbara_open_markup( 'torbara_body', 'body', array(
 		'class' => implode( ' ', get_body_class( 'uk-form no-js' ) ),
 		'itemscope' => 'itemscope',
 		'itemtype' => 'http://schema.org/WebPage'
 
 	) );
 
-		echo ology_open_markup( 'ology_site', 'div', array( 'class' => 'tm-site' ) );
+		echo torbara_open_markup( 'torbara_site', 'div', array( 'class' => 'tm-site' ) );
 
-			echo ology_open_markup( 'ology_main', 'main', array( 'class' => 'tm-main uk-block' ) );
+			echo torbara_open_markup( 'torbara_main', 'main', array( 'class' => 'tm-main uk-block' ) );
 
-				echo ology_open_markup( 'ology_fixed_wrap[_main]', 'div', 'class=uk-container uk-container-center' );
+				echo torbara_open_markup( 'torbara_fixed_wrap[_main]', 'div', 'class=uk-container uk-container-center' );
 
-					echo ology_open_markup( 'ology_main_grid', 'div', array( 'class' => 'uk-grid', 'data-uk-grid-margin' => '' ) );
+					echo torbara_open_markup( 'torbara_main_grid', 'div', array( 'class' => 'uk-grid', 'data-uk-grid-margin' => '' ) );
 
-						echo ology_open_markup( 'ology_primary', 'div', array(
-							'class' => 'tm-primary ' . ology_get_layout_class( 'content' )
+						echo torbara_open_markup( 'torbara_primary', 'div', array(
+							'class' => 'tm-primary ' . torbara_get_layout_class( 'content' )
 						) );

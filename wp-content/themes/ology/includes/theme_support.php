@@ -2,7 +2,7 @@
 /*
 * @encoding   UTF-8
 * @author    Aleksandr Glovatskyy (aleksandr1278@gmail.com)
-* @copyright  Copyright ( C ) 2015 torbar (http://torbara.com/). All rights reserved.
+* @copyright  Copyright ( C ) 2016 Torbara (http://torbara.com/). All rights reserved.
 * @license  Copyrighted Commercial Software
 * @support    support@torbara.com
 */
@@ -11,7 +11,7 @@ if (!isset($content_width)) { $content_width = 1200; }
 
 /*
  * Add theme support
- */    
+ */
 function ology_add_support(){
     add_theme_support( 'automatic-feed-links' );
     add_theme_support( "title-tag" );

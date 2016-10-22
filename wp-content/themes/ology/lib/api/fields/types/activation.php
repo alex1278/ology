@@ -3,7 +3,7 @@
  * @package API\Fields\Types
  */
 
-ology_add_smart_action( 'ology_field_activation', 'ology_field_activation' );
+torbara_add_smart_action( 'torbara_field_activation', 'torbara_field_activation' );
 
 /**
  * Echo activation field type.
@@ -11,7 +11,7 @@ ology_add_smart_action( 'ology_field_activation', 'ology_field_activation' );
  * @since 1.0.0
  *
  * @param array $field {
- *      For best practices, pass the array of data obtained using {@see ology_get_fields()}.
+ *      For best practices, pass the array of data obtained using {@see torbara_get_fields()}.
  *
  *      @type string $description The field description. The description can be truncated using <!--more-->
  *            					  as a delimiter. Default false.
@@ -22,11 +22,11 @@ ology_add_smart_action( 'ology_field_activation', 'ology_field_activation' );
  *      @type mixed  $default     The default value. Default false.
  * }
  */
-function ology_field_activation( $field ) {
+function torbara_field_activation( $field ) {
 
 	?>
 	<input type="hidden" value="0" name="<?php echo esc_attr( $field['name'] ); ?>" />
-	<input type="checkbox" name="<?php echo esc_attr( $field['name'] ); ?>" value="1" <?php checked( $field['value'], 1 ); ?> <?php echo ology_esc_attributes( $field['attributes'] ); ?>/>
+	<input type="checkbox" name="<?php echo esc_attr( $field['name'] ); ?>" value="1" <?php checked( $field['value'], 1 ); ?> <?php echo torbara_esc_attributes( $field['attributes'] ); ?>/>
 	<?php
 
 }

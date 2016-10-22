@@ -6,7 +6,7 @@
  *
  * @package API\Actions
  */
-final class ology_tt_Anonymous_Actions {
+final class torbara_tt_Anonymous_Actions {
 
 	/**
 	 * Callback.
