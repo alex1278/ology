@@ -1,7 +1,7 @@
 <?php
 /**
 * @author    Aleksandr Glovatskyy (aleksandr1278@gmail.com)
-* @copyright Copyright ( C ) 2015 CuteMarket (http://Cute.Market). All rights reserved.
+* @copyright Copyright ( C ) 2016 Torbara (http://torbara.com). All rights reserved.
 * @license  Copyrighted Commercial Software
 */
 

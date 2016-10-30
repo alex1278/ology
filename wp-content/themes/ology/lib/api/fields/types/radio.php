@@ -3,7 +3,7 @@
  * @package API\Fields\Types
  */
 
-torbara_add_smart_action( 'torbara_field_radio', 'torbara_field_radio' );
+ology_add_smart_action( 'ology_field_radio', 'ology_field_radio' );
 
 /**
  * Echo radio field type.
@@ -11,7 +11,7 @@ torbara_add_smart_action( 'torbara_field_radio', 'torbara_field_radio' );
  * @since 1.0.0
  *
  * @param array $field {
- *      For best practices, pass the array of data obtained using {@see torbara_get_fields()}.
+ *      For best practices, pass the array of data obtained using {@see ology_get_fields()}.
  *
  *      @type mixed  $value      The field value.
  *      @type string $name       The field name value.
@@ -22,7 +22,7 @@ torbara_add_smart_action( 'torbara_field_radio', 'torbara_field_radio' );
  *            					 value and the array value defines the radio label or image path.
  * }
  */
-function torbara_field_radio( $field ) {
+function ology_field_radio( $field ) {
 
 	if ( empty( $field['options'] ) )
 		return;
@@ -34,14 +34,14 @@ function torbara_field_radio( $field ) {
 		<?php $i = 0; foreach ( $field['options'] as $id => $radio ) :
 
 			$extensions = array( 'jpg', 'jpeg', 'jpe',  'gif',  'png',  'bmp',   'tif',  'tiff', 'ico' );
-			$has_image = in_array( torbara_get( 'extension', pathinfo( $radio ) ), $extensions ) ? 'bs-has-image' : false;
+			$has_image = in_array( ology_get( 'extension', pathinfo( $radio ) ), $extensions ) ? 'bs-has-image' : false;
 
 			?>
 			<label class="<?php echo esc_attr( $has_image ); ?>">
 				<?php if ( $has_image ) : ?>
 					<img src="<?php echo esc_url( $radio ); ?>"/>
 				<?php endif; ?>
-				<input type="radio" name="<?php echo esc_attr( $field['name'] ); ?>" value="<?php echo esc_attr( $id ); ?>" <?php checked( $id, $field['value'], 1 ); ?> <?php echo torbara_esc_attributes( $field['attributes'] ); ?>/>
+				<input type="radio" name="<?php echo esc_attr( $field['name'] ); ?>" value="<?php echo esc_attr( $id ); ?>" <?php checked( $id, $field['value'], 1 ); ?> <?php echo ology_esc_attributes( $field['attributes'] ); ?>/>
 				<?php   if (!$has_image) {
                                             echo esc_url($radio);
                                         }

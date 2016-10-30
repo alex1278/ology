@@ -21,11 +21,11 @@
  *
  * @return bool Will always return true.
  */
-function torbara_load_api_components( $components ) {
+function ology_load_api_components( $components ) {
 
 	static $loaded = array();
 
-	$root = torbara_API_PATH;
+	$root = ology_API_PATH;
 
 	$common = array(
 		'html' => array(
@@ -98,7 +98,7 @@ function torbara_load_api_components( $components ) {
 
 		// Load dependencies.
 		if ( array_key_exists( $component, $dependencies ) )
-			torbara_load_api_components( $dependencies[$component] );
+			ology_load_api_components( $dependencies[$component] );
 
 		$_components = array();
 
@@ -121,7 +121,7 @@ function torbara_load_api_components( $components ) {
 		 *
 		 * @since 1.0.0
 		 */
-		do_action( 'torbara_loaded_api_component_' . $component );
+		do_action( 'ology_loaded_api_component_' . $component );
 
 	}
 
@@ -140,9 +140,9 @@ function torbara_load_api_components( $components ) {
  *
  * @return bool Will always return true.
  */
-function torbara_add_api_component_support( $feature ) {
+function ology_add_api_component_support( $feature ) {
 
-	global $torbara_tt_api_components_support;
+	global $ology_tt_api_components_support;
 
 	$args = func_get_args();
 
@@ -151,7 +151,7 @@ function torbara_add_api_component_support( $feature ) {
 	else
 		$args = array_slice( $args, 1 );
 
-	$torbara_tt_api_components_support[$feature] = $args;
+	$ology_tt_api_components_support[$feature] = $args;
 
 	return true;
 
@@ -167,14 +167,14 @@ function torbara_add_api_component_support( $feature ) {
  *
  * @return mixed The argument(s) passed.
  */
-function torbara_get_component_support( $feature ) {
+function ology_get_component_support( $feature ) {
 
-	global $torbara_tt_api_components_support;
+	global $ology_tt_api_components_support;
 
-	if ( !isset( $torbara_tt_api_components_support[$feature] ) )
+	if ( !isset( $ology_tt_api_components_support[$feature] ) )
 		return false;
 
-	return $torbara_tt_api_components_support[$feature];
+	return $ology_tt_api_components_support[$feature];
 
 }
 
@@ -188,11 +188,11 @@ function torbara_get_component_support( $feature ) {
  *
  * @return bool Will always return true.
  */
-function torbara_remove_api_component_support( $feature ) {
+function ology_remove_api_component_support( $feature ) {
 
-	global $torbara_tt_api_components_support;
+	global $ology_tt_api_components_support;
 
-	unset( $torbara_tt_api_components_support[$feature] );
+	unset( $ology_tt_api_components_support[$feature] );
 
 	return true;
 
@@ -204,7 +204,7 @@ function torbara_remove_api_component_support( $feature ) {
  *
  * @ignore
  */
-global $torbara_tt_api_components_support;
+global $ology_tt_api_components_support;
 
-if ( !isset( $torbara_tt_api_components_support ) )
-	$torbara_tt_api_components_support = array();
+if ( !isset( $ology_tt_api_components_support ) )
+	$ology_tt_api_components_support = array();

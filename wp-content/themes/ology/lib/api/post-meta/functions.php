@@ -16,10 +16,10 @@
  *
  * @return mixed Saved data if exist, otherwise default value set.
  */
-function torbara_get_post_meta( $field_id, $default = false, $post_id = false ) {
+function ology_get_post_meta( $field_id, $default = false, $post_id = false ) {
 
 	if ( !$post_id )
-		$post_id = !( $id = get_the_id() ) ? torbara_get( 'post' ): $id;
+		$post_id = !( $id = get_the_id() ) ? ology_get( 'post' ): $id;
 
 	$post_meta = get_post_meta( $post_id );
 

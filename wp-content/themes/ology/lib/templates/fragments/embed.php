@@ -6,7 +6,7 @@
  */
 
 // Filter.
-torbara_add_smart_action( 'embed_oembed_html', 'torbara_embed_oembed' );
+ology_add_smart_action( 'embed_oembed_html', 'ology_embed_oembed' );
 
 /**
  * Add markup to embed.
@@ -17,13 +17,13 @@ torbara_add_smart_action( 'embed_oembed_html', 'torbara_embed_oembed' );
  *
  * @return string The modified embed HTML.
  */
-function torbara_embed_oembed( $html ) {
+function ology_embed_oembed( $html ) {
 
-	$output = torbara_open_markup( 'torbara_embed_oembed', 'div', 'class=tm-oembed' );
+	$output = ology_open_markup( 'ology_embed_oembed', 'div', 'class=tm-oembed' );
 
 		$output .= $html;
 
-	$output .= torbara_close_markup( 'torbara_embed_oembed', 'div' );
+	$output .= ology_close_markup( 'ology_embed_oembed', 'div' );
 
 	return $output;
 

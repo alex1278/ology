@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-//add_filter( 'site_transient_update_themes', 'torbara_updater' );
+//add_filter( 'site_transient_update_themes', 'ology_updater' );
 
 /**
  * Retrieve product data from Beans REST API.
@@ -15,13 +15,13 @@
  *
  * @ignore
  */
-function torbara_updater( $value ) {
+function ology_updater( $value ) {
 
 	// Stop here if the current user is not a super admin user.
 	if ( !is_super_admin() )
 		return;
 
-	$data = get_site_transient( 'torbara_updater' );
+	$data = get_site_transient( 'ology_updater' );
 	$theme = wp_get_theme( 'torbara' );
 
 	if ( !$theme->exists() )
@@ -41,18 +41,18 @@ function torbara_updater( $value ) {
 		if ( is_wp_error( $response ) || isset( $data['error'] ) ) {
 
 			// Set temporary transient.
-			set_site_transient( 'torbara_updater', array( 'version' => $current_version ), 30 * MINUTE_IN_SECONDS );
+			set_site_transient( 'ology_updater', array( 'version' => $current_version ), 30 * MINUTE_IN_SECONDS );
 
 			return $value;
 
 		}
 
-		set_site_transient( 'torbara_updater', $data, 24 * HOUR_IN_SECONDS );
+		set_site_transient( 'ology_updater', $data, 24 * HOUR_IN_SECONDS );
 
 	}
 
 	// Return data if Beans is not up to date.
-	if ( version_compare( $current_version, torbara_get( 'version', $data ), '<' ) ) {
+	if ( version_compare( $current_version, ology_get( 'version', $data ), '<' ) ) {
 
 		$value->response[$data['path']] = array(
 			'slug' => $data['slug'],
@@ -73,15 +73,15 @@ function torbara_updater( $value ) {
 }
 
 
-add_action( 'load-update-core.php', 'torbara_updater_clear_transient' );
+add_action( 'load-update-core.php', 'ology_updater_clear_transient' );
 
 /**
  * Clear updater transient.
  *
  * @ignore
  */
-function torbara_updater_clear_transient() {
+function ology_updater_clear_transient() {
 
-	delete_site_transient( 'torbara_updater' );
+	delete_site_transient( 'ology_updater' );
 
 }

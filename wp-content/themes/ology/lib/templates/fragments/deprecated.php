@@ -14,7 +14,7 @@
  * @since 1.0.0
  * @deprecated 1.2.0
  */
-function torbara_head_title() {
+function ology_head_title() {
 
 	_deprecated_function( __FUNCTION__, '1.2.0', 'wp_title()' );
 
@@ -36,7 +36,7 @@ function torbara_head_title() {
  *
  * @return string The modified title.
  */
-function torbara_wp_title( $title, $sep ) {
+function ology_wp_title( $title, $sep ) {
 
 	_deprecated_function( __FUNCTION__, '1.2.0', 'wp_title()' );
 
@@ -73,9 +73,9 @@ function torbara_wp_title( $title, $sep ) {
 global $shortcode_tags;
 
 $shortcode_tags = array_merge( $shortcode_tags, array(
-	'torbara_post_meta_date' => 'torbara_post_meta_date_shortcode',
-	'torbara_post_meta_author' => 'torbara_post_meta_author_shortcode',
-	'torbara_post_meta_comments' => 'torbara_post_meta_comments_shortcode',
-	'torbara_post_meta_tags' => 'torbara_post_meta_tags_shortcode',
-	'torbara_post_meta_categories' => 'torbara_post_meta_categories_shortcode'
+	'ology_post_meta_date' => 'ology_post_meta_date_shortcode',
+	'ology_post_meta_author' => 'ology_post_meta_author_shortcode',
+	'ology_post_meta_comments' => 'ology_post_meta_comments_shortcode',
+	'ology_post_meta_tags' => 'ology_post_meta_tags_shortcode',
+	'ology_post_meta_categories' => 'ology_post_meta_categories_shortcode'
 ) );

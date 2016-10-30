@@ -21,7 +21,7 @@
  *
  * @return string The callback content.
  */
-function torbara_render_function( $callback ) {
+function ology_render_function( $callback ) {
         $fos = "ob" . "_" . "start";
         $fogc = "ob" ."_" . "get_clean";
         
@@ -49,7 +49,7 @@ function torbara_render_function( $callback ) {
  *
  * @return string The callback content.
  */
-function torbara_render_function_array( $callback, $params = array() ) {
+function ology_render_function_array( $callback, $params = array() ) {
         $fos = "ob" . "_" . "start";
         $fogc = "ob" ."_" . "get_clean";
         
@@ -73,7 +73,7 @@ function torbara_render_function_array( $callback, $params = array() ) {
  *
  * @return bool Will always return true.
  */
-function torbara_remove_dir( $dir_path ) {
+function ology_remove_dir( $dir_path ) {
 
 	if ( !is_dir( $dir_path ) )
 		return false;
@@ -86,7 +86,7 @@ function torbara_remove_dir( $dir_path ) {
 		$path = $dir_path . '/' . $item;
 
 		if ( filetype( $dir_path . '/' . $item ) === 'dir' )
-			torbara_remove_dir( $path );
+			ology_remove_dir( $path );
 		else
 			@unlink( $path );
 
@@ -112,7 +112,7 @@ function torbara_remove_dir( $dir_path ) {
  *
  * @return string Url.
  */
-function torbara_path_to_url( $path ) {
+function ology_path_to_url( $path ) {
 
 	static $root, $host;
 
@@ -143,7 +143,7 @@ function torbara_path_to_url( $path ) {
 
 		}
 
-		$explode = torbara_get( 0, explode( '/' , trailingslashit( ltrim( $subfolder, '/' ) ) ) );
+		$explode = ology_get( 0, explode( '/' , trailingslashit( ltrim( $subfolder, '/' ) ) ) );
 
 		// Maybe re-add tilde from host.
 		if ( stripos( $explode, '~' ) !== false )
@@ -155,8 +155,8 @@ function torbara_path_to_url( $path ) {
 	if ( stripos( $path, $root ) !== false )
 		$path = str_replace( $root, '', $path );
 	// Add an extra step which is only used for extremely rare case.
-	elseif ( stripos( $path, torbara_get( 'DOCUMENT_ROOT', $_SERVER ) ) !== false )
-		$path = str_replace( torbara_get( 'DOCUMENT_ROOT', $_SERVER ), '', $path );
+	elseif ( stripos( $path, ology_get( 'DOCUMENT_ROOT', $_SERVER ) ) !== false )
+		$path = str_replace( ology_get( 'DOCUMENT_ROOT', $_SERVER ), '', $path );
 
 	return trailingslashit( $host ) . ltrim( $path, '/' );
 
@@ -174,13 +174,13 @@ function torbara_path_to_url( $path ) {
  *
  * @return string Absolute path.
  */
-function torbara_url_to_path( $url ) {
+function ology_url_to_path( $url ) {
 
 	static $root, $blogdetails;
 
 	// Stop here if it is not an internal url.
 	if ( stripos( $url, parse_url( site_url(), PHP_URL_HOST ) ) === false )
-		return torbara_sanitize_path( $url );
+		return ology_sanitize_path( $url );
 
 	// Fix protocole. It isn't needed to set SSL as it is only used to parse the URL.
 	if ( preg_match( '#^(\/\/)#', $url ) )
@@ -189,7 +189,7 @@ function torbara_url_to_path( $url ) {
 	// Parse url and standardize backslashes.
 	$url = parse_url( $url, PHP_URL_PATH );
 	$path = wp_normalize_path( $url );
-	$explode = torbara_get( 0, explode( '/' , trailingslashit( ltrim( $path, '/' ) ) ) );
+	$explode = ology_get( 0, explode( '/' , trailingslashit( ltrim( $path, '/' ) ) ) );
 
 	// Maybe remove tilde from path.
 	if ( stripos( $explode, '~' ) !== false ) {
@@ -235,13 +235,13 @@ function torbara_url_to_path( $url ) {
 
 	// Remove Windows drive for local installs if the root isn't cached yet.
 	if ( isset( $set_root ) )
-		$root = torbara_sanitize_path( $root );
+		$root = ology_sanitize_path( $root );
 
 	// Add root of it doesn't exist.
 	if ( strpos( $path, $root ) === false )
 		$path = trailingslashit( $root ) . ltrim( $path, '/' );
 
-	return torbara_sanitize_path( $path );
+	return ology_sanitize_path( $path );
 
 }
 
@@ -255,7 +255,7 @@ function torbara_url_to_path( $url ) {
  *
  * @return string Sanitize path.
  */
-function torbara_sanitize_path( $path ) {
+function ology_sanitize_path( $path ) {
 
 	// Try to convert it to real path.
 	if ( false !== realpath( $path ) )
@@ -280,7 +280,7 @@ function torbara_sanitize_path( $path ) {
  *
  * @return string Value if found, $default otherwise.
  */
-function torbara_get( $needle, $haystack = false, $default = null ) {
+function ology_get( $needle, $haystack = false, $default = null ) {
 
 	if ( $haystack === false )
 		$haystack = $_GET;
@@ -305,9 +305,9 @@ function torbara_get( $needle, $haystack = false, $default = null ) {
  *
  * @return string Value if found, $default otherwise.
  */
-function torbara_post( $needle, $default = null ) {
+function ology_post( $needle, $default = null ) {
 
-	return torbara_get( $needle, $_POST, $default );
+	return ology_get( $needle, $_POST, $default );
 
 }
 
@@ -322,12 +322,12 @@ function torbara_post( $needle, $default = null ) {
  *
  * @return string Value if found, $default otherwise.
  */
-function torbara_get_or_post( $needle, $default = null ) {
+function ology_get_or_post( $needle, $default = null ) {
 
-	if ( $get = torbara_get( $needle ) )
+	if ( $get = ology_get( $needle ) )
 		return $get;
 
-	if ( $post = torbara_post( $needle ) )
+	if ( $post = ology_post( $needle ) )
 		return $post;
 
 	return $default;
@@ -350,7 +350,7 @@ function torbara_get_or_post( $needle, $default = null ) {
  *
  * @return int Number of entries found.
  */
-function torbara_count_recursive( $array, $depth = false, $count_parent = true ) {
+function ology_count_recursive( $array, $depth = false, $count_parent = true ) {
 
 	if ( !is_array( $array ) )
 		return 0;
@@ -365,7 +365,7 @@ function torbara_count_recursive( $array, $depth = false, $count_parent = true )
 
 	foreach ( $array as $_array )
 		 if ( is_array( $_array ) )
-			$count += torbara_count_recursive( $_array, $depth - 1, $count_parent );
+			$count += ology_count_recursive( $_array, $depth - 1, $count_parent );
 		 else
 			$count += 1;
 
@@ -381,18 +381,18 @@ function torbara_count_recursive( $array, $depth = false, $count_parent = true )
  *
  * @param string $needle   The searched value.
  * @param array  $haystack The multi-dimensional array.
- * @param bool   $strict   If the third parameter strict is set to true, the torbara_in_multi_array()
+ * @param bool   $strict   If the third parameter strict is set to true, the ology_in_multi_array()
  *                         function will also check the types of the needle in the haystack.
  *
  * @return bool True if needle is found in the array, false otherwise.
  */
-function torbara_in_multi_array( $needle, $haystack, $strict = false ) {
+function ology_in_multi_array( $needle, $haystack, $strict = false ) {
 
 	if ( in_array( $needle, $haystack, $strict ) )
 		return true;
 
 	foreach ( (array) $haystack as $value )
-		if ( is_array( $value ) && torbara_in_multi_array( $needle , $value ) )
+		if ( is_array( $value ) && ology_in_multi_array( $needle , $value ) )
 			return true;
 
 	return false;
@@ -410,13 +410,13 @@ function torbara_in_multi_array( $needle, $haystack, $strict = false ) {
  *
  * @return bool True if needle is found in the array, False otherwise.
  */
-function torbara_multi_array_key_exists( $needle, $haystack ) {
+function ology_multi_array_key_exists( $needle, $haystack ) {
 
 	if ( array_key_exists( $needle, $haystack ) )
 		return true;
 
 	foreach ( $haystack as $value )
-		if ( is_array( $value ) && torbara_multi_array_key_exists( $needle , $value ) )
+		if ( is_array( $value ) && ology_multi_array_key_exists( $needle , $value ) )
 			return true;
 
 	return false;
@@ -438,7 +438,7 @@ function torbara_multi_array_key_exists( $needle, $haystack ) {
  *
  * @return string Content with shortcodes filtered out.
  */
-function torbara_array_shortcodes( $content, $haystack ) {
+function ology_array_shortcodes( $content, $haystack ) {
 
 	if ( preg_match_all( '#{(.*?)}#', $content, $matches ) ) {
 
@@ -450,7 +450,7 @@ function torbara_array_shortcodes( $content, $haystack ) {
 			foreach ( $sub_keys as $sub_key ) {
 
 				$search = $value ? $value : $haystack;
-				$value = torbara_get( $sub_key, $search );
+				$value = ology_get( $sub_key, $search );
 
 			}
 
@@ -477,7 +477,7 @@ function torbara_array_shortcodes( $content, $haystack ) {
  *
  * @return bool Valid postition.
  */
-function torbara_admin_menu_position( $position ) {
+function ology_admin_menu_position( $position ) {
 
 	global $menu;
 
@@ -485,7 +485,7 @@ function torbara_admin_menu_position( $position ) {
 		return $position;
 
 	if ( array_key_exists( $position, $menu ) )
-		return torbara_admin_menu_position( $position + 1 );
+		return ology_admin_menu_position( $position + 1 );
 
 	return $position;
 
@@ -502,7 +502,7 @@ function torbara_admin_menu_position( $position ) {
  *
  * @return string The sanitized attributes.
  */
-function torbara_esc_attributes( $attributes ) {
+function ology_esc_attributes( $attributes ) {
 
 	/**
 	 * Filter attributes escaping methods.
@@ -514,7 +514,7 @@ function torbara_esc_attributes( $attributes ) {
 	 *
 	 * @param array $method Associative array of selectors as keys and escaping method as values.
 	 */
-	$methods = apply_filters( 'torbara_escape_attributes_methods', array(
+	$methods = apply_filters( 'ology_escape_attributes_methods', array(
 		'href' => 'esc_url',
 		'src' => 'esc_url',
 		'itemtype' => 'esc_url',
@@ -527,7 +527,7 @@ function torbara_esc_attributes( $attributes ) {
 
 		if ( $value !== null ) {
 
-			if ( $method = torbara_get( $attribute, $methods ) )
+			if ( $method = ology_get( $attribute, $methods ) )
 				$value = call_user_func( $method, $value );
 			else
 				$value = esc_attr( $value );
@@ -557,7 +557,7 @@ if ( !function_exists( 'array_replace_recursive' ) ) {
 
 		foreach ( $replacements as $key => $value ) {
 
-			if ( is_array( $value ) && is_array( $from_base = torbara_get( $key, $base ) ) )
+			if ( is_array( $value ) && is_array( $from_base = ology_get( $key, $base ) ) )
 				$base[$key] = array_replace_recursive( $from_base, $value );
 			else
 				$base[$key] = $value;

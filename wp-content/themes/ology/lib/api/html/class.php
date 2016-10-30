@@ -6,7 +6,7 @@
  *
  * @package API\Html
  */
-final class torbara_tt_Attributes {
+final class ology_tt_Attributes {
 
 	/**
 	 * Markup id.
@@ -55,7 +55,7 @@ final class torbara_tt_Attributes {
 	 */
 	public function init( $action ) {
 
-		torbara_add_filter( $this->id . '_attributes', array( $this, $action ) );
+		ology_add_filter( $this->id . '_attributes', array( $this, $action ) );
 
 	}
 

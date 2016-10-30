@@ -26,7 +26,7 @@
  *            					  attribute name and the array value defines the attribute value. Default array.
  *      @type mixed  $default     The default field value. Default false.
  *      @type array  $fields      Must only be used for the 'group' field type. The array arguments are similar to the
- *            					  {@see torbara_register_fields()} $fields arguments.
+ *            					  {@see ology_register_fields()} $fields arguments.
  *      @type bool   $db_group    Must only be used for 'group' field type. Defines whether the group of fields
  *            					  registered should be saved as a group in the database or as individual
  *            					  entries. Default false.
@@ -36,7 +36,7 @@
  *
  * @return bool True on success, false on failure.
  */
-function torbara_register_term_meta( array $fields, $taxonomies, $section ) {
+function ology_register_term_meta( array $fields, $taxonomies, $section ) {
 
 	/**
 	 * Filter the term meta fields.
@@ -47,7 +47,7 @@ function torbara_register_term_meta( array $fields, $taxonomies, $section ) {
 	 *
 	 * @param array $fields An array of term meta fields.
 	 */
-	$fields = apply_filters( "torbara_term_meta_fields_{$section}", torbara_tt_pre_standardize_fields( $fields ) );
+	$fields = apply_filters( "ology_term_meta_fields_{$section}", ology_tt_pre_standardize_fields( $fields ) );
 
 	/**
 	 * Filter the taxonomies used to define whether the fields set should be displayed or not.
@@ -58,20 +58,20 @@ function torbara_register_term_meta( array $fields, $taxonomies, $section ) {
 	 *
 	 * @param string|array $taxonomies Taxonomies used to define whether the fields set should be displayed or not.
 	 */
-	$taxonomies = apply_filters( "torbara_term_meta_taxonomies_{$section}", (array) $taxonomies );
+	$taxonomies = apply_filters( "ology_term_meta_taxonomies_{$section}", (array) $taxonomies );
 
 	// Stop here if the current page isn't concerned.
-	if ( !torbara_tt_is_admin_term( $taxonomies ) || !is_admin() )
+	if ( !ology_tt_is_admin_term( $taxonomies ) || !is_admin() )
 		return;
 
 	// Stop here if the field can't be registered.
-	if ( !torbara_register_fields( $fields, 'term_meta', $section ) )
+	if ( !ology_register_fields( $fields, 'term_meta', $section ) )
 		return false;
 
 	// Load the class only if this function is called to prevent unnecessary memory usage.
-	require_once( torbara_API_PATH . 'term-meta/class.php' );
+	require_once( ology_API_PATH . 'term-meta/class.php' );
 
-	new torbara_tt_Term_Meta( $section );
+	new ology_tt_Term_Meta( $section );
 
 }
 
@@ -81,9 +81,9 @@ function torbara_register_term_meta( array $fields, $taxonomies, $section ) {
  *
  * @ignore
  */
-function torbara_tt_is_admin_term( $taxonomies ) {
+function ology_tt_is_admin_term( $taxonomies ) {
 
-	if ( !$taxonomy = torbara_get_or_post( 'taxonomy' ) )
+	if ( !$taxonomy = ology_get_or_post( 'taxonomy' ) )
 		return false;
 
 	if ( $taxonomies === true )

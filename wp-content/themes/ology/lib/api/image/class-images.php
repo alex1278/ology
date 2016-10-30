@@ -6,7 +6,7 @@
  *
  * @package API\Image
  */
-final class torbara_tt_Image_Editor {
+final class ology_tt_Image_Editor {
 
 	/**
 	 * Source.
@@ -47,7 +47,7 @@ final class torbara_tt_Image_Editor {
 		$this->src = $src;
 		$this->args = $args;
 		$this->output = $output;
-		$local_source = torbara_url_to_path( $this->src );
+		$local_source = ology_url_to_path( $this->src );
 
 		// Treat internal files as such if possible.
 		if ( file_exists( $local_source ) )
@@ -95,7 +95,7 @@ final class torbara_tt_Image_Editor {
 
 		}
 
-		$src = torbara_path_to_url( $this->rebuilt_path );
+		$src = ology_path_to_url( $this->rebuilt_path );
 
 		// Simply return the source if dimensions are not requested
 		if ( $this->output == 'STRING' )
@@ -130,7 +130,7 @@ final class torbara_tt_Image_Editor {
 	 */
 	private function setup() {
 
-		$upload_dir = torbara_get_images_dir();
+		$upload_dir = ology_get_images_dir();
 		$info = pathinfo( preg_replace( '#\?.*#', '', $this->src ) );
 		$query = substr( md5( @serialize( $this->args ) ), 0, 7 );
 		$extension = $info['extension'];

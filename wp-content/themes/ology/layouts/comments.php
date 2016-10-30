@@ -38,7 +38,7 @@
                                         <div class="uk-grid-small uk-flex uk-flex-wrap uk-flex-space-between">
                                             <h3 class="uk-comment-title uk-margin-remove"><?php echo get_comment_author_link(); ?></h3>
                                             <p class="uk-comment-meta">
-                                                <a class="permalink ang-comment-date" href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)) ?>"><time datetime="<?php echo get_comment_date('Y-m-d'); ?>"><?php printf(esc_html__('%1$s, %2$s', 'ology'), get_comment_date('j M, Y'), get_comment_time('G:i')) ?></time></a>    
+                                                <a class="permalink ang-comment-date" href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)) ?>"><time datetime="<?php echo get_comment_date('Y-m-d'); ?>"><?php printf(esc_html__('%1$s, %2$s', 'ology'), get_comment_date('j M, Y'), get_comment_time('G:i')) ?></time></a>
                                                 <?php if (comments_open() && $args['max_depth'] > $depth) : ?>
                                                     <span class="js-reply">&ensp;|&ensp;<a href="#" rel="<?php comment_ID(); ?>"><i class="uk-icon-reply"></i><?php esc_html_e('Reply', 'ology'); ?></a></span>
                                                     <?php edit_comment_link(esc_html__('Edit', 'ology'), ' | ', '') ;?>
@@ -60,7 +60,6 @@
                     <?php
                     unset($_GET['replytocom']);
 
-                    // </li> is rendered by system
                 }
 
                 wp_list_comments('type=all&callback=ology_comment');
@@ -98,10 +97,10 @@
                                             <div class="ang-comment-logout">
                                                 <p>
                                                 <?php
-                                                
+
                                                 esc_html_e('Logged in as ', 'ology');
                                                 printf('<a href="%s">%s</a>', get_option('siteurl') . '/wp-admin/profile.php', $user_identity);
-                                                
+
                                                 ?>
                                                 <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php esc_html_e('Log out of this account', 'ology'); ?>"><?php esc_html_e('Log out &raquo;', 'ology'); ?></a>
                                                 </p>
@@ -110,7 +109,7 @@
                                                 <textarea class="tm-touch-message" name="comment" id="comment" cols="80" rows="5" tabindex="4" required placeholder="<?php esc_html_e('Comment *', 'ology'); ?>"></textarea>
                                             </div>
                                          </div>
-                                        
+
                                     <?php else : ?>
 
                                         <?php $req = get_option('require_name_email'); ?>
@@ -129,25 +128,25 @@
                                                 $comment_author_url = "";
                                             }
                                         ?>
-                                        
+
                                         <div class="uk-grid uk-grid-medium uk-grid-width-1-1 uk-grid-width-small-1-2 uk-grid-width-medium-1-2" data-uk-grid-margin>
-                                            
-                                            <div class="uk-form-row1 <?php if ($req) echo "required"; ?>">
-                                                <input class="tm-touch-name" type="text" name="author" placeholder="<?php esc_html_e('YOUR NAME', 'ology'); ?> <?php if ($req) echo "*"; ?>" value="<?php echo esc_attr(@$comment_author); ?>" required <?php if ($req) echo "aria-required='true'"; ?>>
+
+                                            <div class="uk-form-row1 <?php if ($req) echo esc_attr("required"); ?>">
+                                                <input class="tm-touch-name" type="text" name="author" placeholder="<?php esc_html_e('YOUR NAME', 'ology'); ?>" value="<?php echo esc_attr(@$comment_author); ?>" required <?php if ($req) echo "aria-required='true'"; ?>>
                                             </div>
-                                            <div class="uk-form-row1 <?php if ($req) echo "required"; ?>">
-                                                <input class="tm-touch-email" type="email" name="email" placeholder="<?php esc_html_e('YOUR E-MAIL', 'ology'); ?> <?php if ($req) echo "*"; ?>" value="<?php echo esc_attr(@$comment_author_email); ?>" required <?php if ($req) echo "aria-required='true'"; ?>>
+                                            <div class="uk-form-row1 <?php if ($req) echo esc_attr("required"); ?>">
+                                                <input class="tm-touch-email" type="email" name="email" placeholder="<?php esc_html_e('YOUR E-MAIL', 'ology'); ?>" value="<?php echo esc_attr(@$comment_author_email); ?>" required <?php if ($req) echo "aria-required='true'"; ?>>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="uk-grid uk-grid-medium uk-grid-width-1-1" data-uk-grid-margin>
-                                            
+
                                             <div>
-                                                <textarea class="tm-touch-message" name="comment" id="comment" cols="80" rows="5" tabindex="4" required placeholder="<?php esc_html_e('YOUR MESSAGE *', 'ology'); ?>"></textarea>
+                                                <textarea class="tm-touch-message" name="comment" id="comment" cols="80" rows="5" tabindex="4" required placeholder="<?php esc_html_e('YOUR MESSAGE', 'ology'); ?>"></textarea>
                                             </div>
                                          </div>
-                                        
-                                    <?php endif; ?> 
+
+                                    <?php endif; ?>
 
                                         <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
                                             <div class="uk-form-row actions uk-width-1-1">
@@ -155,7 +154,7 @@
                                                 <?php comment_id_fields(); ?>
                                             </div>
                                         </div>
-                                    
+
                                     <?php global $post;
                                         do_action('comment_form', $post->ID);
                                     ?>
@@ -172,7 +171,7 @@
 
         <?php echo $this->render("_pagination", array("type" => "comments")); ?>
 
-    
+
     </div>
 
     <?php

@@ -40,7 +40,7 @@
  *
  * @ignore
  */
-class torbara_Lessc {
+class ology_Lessc {
 	static public $VERSION = "v0.4.0";
 	static protected $TRUE = array("keyword", "true");
 	static protected $FALSE = array("keyword", "false");
@@ -2251,12 +2251,12 @@ class lessc_parser {
 
 		if (!self::$operatorString) {
 			self::$operatorString =
-				'('.implode('|', array_map(array('torbara_Lessc', 'preg_quote'),
+				'('.implode('|', array_map(array('ology_Lessc', 'preg_quote'),
 					array_keys(self::$precedence))).')';
 
-			$commentSingle = torbara_Lessc::preg_quote(self::$commentSingle);
-			$commentMultiLeft = torbara_Lessc::preg_quote(self::$commentMultiLeft);
-			$commentMultiRight = torbara_Lessc::preg_quote(self::$commentMultiRight);
+			$commentSingle = ology_Lessc::preg_quote(self::$commentSingle);
+			$commentMultiLeft = ology_Lessc::preg_quote(self::$commentMultiLeft);
+			$commentMultiRight = ology_Lessc::preg_quote(self::$commentMultiRight);
 
 			self::$commentMulti = $commentMultiLeft.'.*?'.$commentMultiRight;
 			self::$whitePattern = '/'.$commentSingle.'[^\n]*\s*|('.self::$commentMulti.')\s*|\s+/Ais';
@@ -2481,7 +2481,7 @@ class lessc_parser {
 	protected function isDirective($dirname, $directives) {
 		// TODO: cache pattern in parser
 		$pattern = implode("|",
-			array_map(array("torbara_Lessc", "preg_quote"), $directives));
+			array_map(array("ology_Lessc", "preg_quote"), $directives));
 		$pattern = '/^(-[a-z-]+-)?(' . $pattern . ')$/i';
 
 		return preg_match($pattern, $dirname);
@@ -2506,7 +2506,7 @@ class lessc_parser {
 
 		if (count($values) == 0) return false;
 
-		$exps = torbara_Lessc::compressList($values, ' ');
+		$exps = ology_Lessc::compressList($values, ' ');
 		return true;
 	}
 
@@ -2604,7 +2604,7 @@ class lessc_parser {
 
 		if (count($values) == 0) return false;
 
-		$value = torbara_Lessc::compressList($values, ', ');
+		$value = ology_Lessc::compressList($values, ', ');
 		return true;
 	}
 
@@ -2769,7 +2769,7 @@ class lessc_parser {
 		$this->eatWhiteDefault = false;
 
 		$stop = array("'", '"', "@{", $end);
-		$stop = array_map(array("torbara_Lessc", "preg_quote"), $stop);
+		$stop = array_map(array("ology_Lessc", "preg_quote"), $stop);
 		// $stop[] = self::$commentMulti;
 
 		if (!is_null($rejectStrs)) {
@@ -2845,7 +2845,7 @@ class lessc_parser {
 
 		// look for either ending delim , escape, or string interpolation
 		$patt = '([^\n]*?)(@\{|\\\\|' .
-			torbara_Lessc::preg_quote($delim).')';
+			ology_Lessc::preg_quote($delim).')';
 
 		$oldWhite = $this->eatWhiteDefault;
 		$this->eatWhiteDefault = false;
@@ -3362,7 +3362,7 @@ class lessc_parser {
 		}
 
 		if (!isset(self::$literalCache[$what])) {
-			self::$literalCache[$what] = torbara_Lessc::preg_quote($what);
+			self::$literalCache[$what] = ology_Lessc::preg_quote($what);
 		}
 
 		return $this->match(self::$literalCache[$what], $m, $eatWhitespace);
@@ -3402,7 +3402,7 @@ class lessc_parser {
 		} else {
 			$validChars = $allowNewline ? "." : "[^\n]";
 		}
-		if (!$this->match('('.$validChars.'*?)'.torbara_Lessc::preg_quote($what), $m, !$until)) return false;
+		if (!$this->match('('.$validChars.'*?)'.ology_Lessc::preg_quote($what), $m, !$until)) return false;
 		if ($until) $this->count -= strlen($what); // give back $what
 		$out = $m[1];
 		return true;

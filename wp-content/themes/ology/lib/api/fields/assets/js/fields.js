@@ -157,7 +157,7 @@
             });
 
             // Reset confirmation.
-            this.container.on( 'click', '[name="torbara_reset_options"]', function(e) {
+            this.container.on( 'click', '[name="ology_reset_options"]', function(e) {
 
                 return confirm( 'Are you sure you would like to reset?' );
 

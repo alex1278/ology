@@ -6,7 +6,7 @@
  */
 
 // Filter.
-torbara_add_smart_action( 'template_redirect', 'torbara_load_global_fragments', 1 );
+ology_add_smart_action( 'template_redirect', 'ology_load_global_fragments', 1 );
 
 /**
  * Load global fragments and dynamic views.
@@ -17,23 +17,23 @@ torbara_add_smart_action( 'template_redirect', 'torbara_load_global_fragments', 
  *
  * @return string The template filename.
  */
-function torbara_load_global_fragments() {
+function ology_load_global_fragments() {
 
-	torbara_load_fragment_file( 'breadcrumb' );
-	torbara_load_fragment_file( 'footer' );
-	torbara_load_fragment_file( 'header' );
-	torbara_load_fragment_file( 'menu' );
-	torbara_load_fragment_file( 'post-shortcodes' );
-	torbara_load_fragment_file( 'post' );
-	torbara_load_fragment_file( 'widget-area' );
-	torbara_load_fragment_file( 'embed' );
-	torbara_load_fragment_file( 'deprecated' );
+	ology_load_fragment_file( 'breadcrumb' );
+	ology_load_fragment_file( 'footer' );
+	ology_load_fragment_file( 'header' );
+	ology_load_fragment_file( 'menu' );
+	ology_load_fragment_file( 'post-shortcodes' );
+	ology_load_fragment_file( 'post' );
+	ology_load_fragment_file( 'widget-area' );
+	ology_load_fragment_file( 'embed' );
+	ology_load_fragment_file( 'deprecated' );
 
 }
 
 
 // Filter.
-torbara_add_smart_action( 'comments_template', 'torbara_load_comments_fragment' );
+ology_add_smart_action( 'comments_template', 'ology_load_comments_fragment' );
 
 /**
  * Load comments fragments.
@@ -46,19 +46,19 @@ torbara_add_smart_action( 'comments_template', 'torbara_load_comments_fragment' 
  *
  * @return string The template filename.
  */
-function torbara_load_comments_fragment( $template ) {
+function ology_load_comments_fragment( $template ) {
 
 	if ( empty( $template ) )
 		return;
 
-	torbara_load_fragment_file( 'comments' );
+	ology_load_fragment_file( 'comments' );
 
 	return $template;
 
 }
 
 
-torbara_add_smart_action( 'dynamic_sidebar_before', 'torbara_load_widget_fragment', -1 );
+ology_add_smart_action( 'dynamic_sidebar_before', 'ology_load_widget_fragment', -1 );
 
 /**
  * Load widget fragments.
@@ -69,14 +69,14 @@ torbara_add_smart_action( 'dynamic_sidebar_before', 'torbara_load_widget_fragmen
  *
  * @return bool True on success, false on failure.
  */
-function torbara_load_widget_fragment() {
+function ology_load_widget_fragment() {
 
-	return torbara_load_fragment_file( 'widget' );
+	return ology_load_fragment_file( 'widget' );
 
 }
 
 
-torbara_add_smart_action( 'pre_get_search_form', 'torbara_load_search_form_fragment' );
+ology_add_smart_action( 'pre_get_search_form', 'ology_load_search_form_fragment' );
 
 /**
  * Load search form fragments.
@@ -87,8 +87,8 @@ torbara_add_smart_action( 'pre_get_search_form', 'torbara_load_search_form_fragm
  *
  * @return bool True on success, false on failure.
  */
-function torbara_load_search_form_fragment() {
+function ology_load_search_form_fragment() {
 
-	return torbara_load_fragment_file( 'searchform' );
+	return ology_load_fragment_file( 'searchform' );
 
 }

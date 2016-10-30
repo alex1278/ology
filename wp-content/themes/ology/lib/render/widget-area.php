@@ -5,31 +5,31 @@
  * @package Render\Widgets
  */
 
-torbara_add_smart_action( 'widgets_init', 'torbara_do_register_widget_areas', 5 );
+ology_add_smart_action( 'widgets_init', 'ology_do_register_widget_areas', 5 );
 
 /**
  * Register Beans's default widget areas.
  *
  * @since 1.0.0
  */
-function torbara_do_register_widget_areas() {
+function ology_do_register_widget_areas() {
 
 	// Keep primary sidebar first for default widget asignment.
-	torbara_register_widget_area( array(
+	ology_register_widget_area( array(
 		'name' => esc_html__( 'sidebar-a', 'torbara' ),
 		'id' => 'sidebar-a'
 	) );
 
-	torbara_register_widget_area( array(
+	ology_register_widget_area( array(
 		'name' => esc_html__( 'Sidebar Secondary', 'torbara' ),
 		'id' => 'sidebar_secondary'
 	) );
 
 	if ( current_theme_supports( 'offcanvas-menu' ) )
-		torbara_register_widget_area( array(
+		ology_register_widget_area( array(
 			'name' => esc_html__( 'Off-Canvas Menu', 'torbara' ),
 			'id' => 'offcanvas_menu',
-			'torbara_type' => 'offcanvas',
+			'ology_type' => 'offcanvas',
 		) );
 
 }
@@ -45,4 +45,4 @@ function torbara_do_register_widget_areas() {
  *
  * @ignore
  */
-add_action( 'widgets_init', 'torbara_register_widget_area' );
+add_action( 'widgets_init', 'ology_register_widget_area' );

@@ -26,12 +26,12 @@
  *
  * @return bool Will always return true.
  */
-function torbara_add_filter( $id, $callback, $priority = 10, $args = 1 ) {
+function ology_add_filter( $id, $callback, $priority = 10, $args = 1 ) {
 
 	if ( is_callable( $callback ) )
 		return add_filter( $id, $callback, $priority, $args );
 
-	return torbara_tt_add_anonymous_filter( $id, $callback, $priority, $args );
+	return ology_tt_add_anonymous_filter( $id, $callback, $priority, $args );
 
 }
 
@@ -60,7 +60,7 @@ function torbara_add_filter( $id, $callback, $priority = 10, $args = 1 ) {
  *
  * @return mixed The filtered value after all hooked functions are applied to it.
  */
-function torbara_apply_filters( $id, $value ) {
+function ology_apply_filters( $id, $value ) {
 
 	$args = func_get_args();
 
@@ -129,7 +129,7 @@ function torbara_apply_filters( $id, $value ) {
  *                  that evaluates to false (e.g. 0), so use the === operator for testing the
  *                  return value.
  */
-function torbara_has_filters( $id, $callback = false ) {
+function ology_has_filters( $id, $callback = false ) {
 
 	// Check simple filter if no subhook is set.
 	if ( !preg_match_all( '#\[(.*?)\]#', $id, $matches ) )
@@ -180,10 +180,10 @@ function torbara_has_filters( $id, $callback = false ) {
  *
  * @ignore
  */
-function torbara_tt_add_anonymous_filter( $id, $callback, $priority = 10, $args = 1 ) {
+function ology_tt_add_anonymous_filter( $id, $callback, $priority = 10, $args = 1 ) {
 
-	require_once( torbara_API_PATH . 'filters/class.php' );
+	require_once( ology_API_PATH . 'filters/class.php' );
 
-	new torbara_tt_Anonymous_Filters( $id, $callback, $priority, $args );
+	new ology_tt_Anonymous_Filters( $id, $callback, $priority, $args );
 
 }

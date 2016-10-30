@@ -6,7 +6,7 @@
  *
  * @package API\Filters
  */
-final class torbara_tt_Anonymous_Filters {
+final class ology_tt_Anonymous_Filters {
 
 	/**
 	 * Callback.

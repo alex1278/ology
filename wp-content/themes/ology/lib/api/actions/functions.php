@@ -28,7 +28,7 @@
  *
  * @return bool Will always return true.
  */
-function torbara_add_action( $id, $hook, $callback, $priority = 10, $args = 1 ) {
+function ology_add_action( $id, $hook, $callback, $priority = 10, $args = 1 ) {
 
 	$action = array(
 		'hook' => $hook,
@@ -38,17 +38,17 @@ function torbara_add_action( $id, $hook, $callback, $priority = 10, $args = 1 ) 
 	);
 
 	// Replace original if set.
-	if ( $replaced = torbara_tt_get_action( $id, 'replaced' ) )
+	if ( $replaced = ology_tt_get_action( $id, 'replaced' ) )
 		$action = array_merge( $action, $replaced );
 
-	$action = torbara_tt_set_action( $id, $action, 'added', true );
+	$action = ology_tt_set_action( $id, $action, 'added', true );
 
 	// Stop here if removed.
-	if ( torbara_tt_get_action( $id, 'removed' ) )
+	if ( ology_tt_get_action( $id, 'removed' ) )
 		return;
 
 	// Merge modified.
-	if ( $modified = torbara_tt_get_action( $id, 'modified' ) )
+	if ( $modified = ology_tt_get_action( $id, 'modified' ) )
 		$action = array_merge( $action, $modified );
 
 	// Validate action arguments.
@@ -61,9 +61,9 @@ function torbara_add_action( $id, $hook, $callback, $priority = 10, $args = 1 ) 
 
 
 /**
- * Set {@see torbara_add_action()} using the callback argument as the action ID.
+ * Set {@see ology_add_action()} using the callback argument as the action ID.
  *
- * This function is a shortcut of {@see torbara_add_action()}. It does't require an ID
+ * This function is a shortcut of {@see ology_add_action()}. It does't require an ID
  * to be specified and uses the callback argument instead.
  *
  * @since 1.0.0
@@ -79,9 +79,9 @@ function torbara_add_action( $id, $hook, $callback, $priority = 10, $args = 1 ) 
  *
  * @return bool Will always return true.
  */
-function torbara_add_smart_action( $hook, $callback, $priority = 10, $args = 1 ) {
+function ology_add_smart_action( $hook, $callback, $priority = 10, $args = 1 ) {
 
-	return torbara_add_action( $callback, $hook, $callback, $priority, $args );
+	return ology_add_action( $callback, $hook, $callback, $priority, $args );
 
 }
 
@@ -89,10 +89,10 @@ function torbara_add_smart_action( $hook, $callback, $priority = 10, $args = 1 )
 /**
  * Modify an action.
  *
- * This function modifies an action registered using {@see torbara_add_action()} or
- * {@see torbara_add_smart_action()}. Each optional argument must be set to NULL to keep the orginal value.
+ * This function modifies an action registered using {@see ology_add_action()} or
+ * {@see ology_add_smart_action()}. Each optional argument must be set to NULL to keep the orginal value.
  *
- * The original action can be reset using {@see torbara_reset_action()}.
+ * The original action can be reset using {@see ology_reset_action()}.
  *
  * @since 1.0.0
  *
@@ -108,10 +108,10 @@ function torbara_add_smart_action( $hook, $callback, $priority = 10, $args = 1 )
  *
  * @return bool Will always return true.
  */
-function torbara_modify_action( $id, $hook = null, $callback = null, $priority = null, $args = null ) {
+function ology_modify_action( $id, $hook = null, $callback = null, $priority = null, $args = null ) {
 
 	// Remove action.
-	if ( $current = torbara_tt_get_current_action( $id ) )
+	if ( $current = ology_tt_get_current_action( $id ) )
 		remove_action( $current['hook'], $current['callback'], $current['priority'], $current['args'] );
 
 	$action = array_filter( array(
@@ -122,7 +122,7 @@ function torbara_modify_action( $id, $hook = null, $callback = null, $priority =
 	) );
 
 	// Merge modified.
-	$action = torbara_tt_merge_action( $id, $action, 'modified' );
+	$action = ology_tt_merge_action( $id, $action, 'modified' );
 
 	// Replace if needed.
 	if ( $current ) {
@@ -141,7 +141,7 @@ function torbara_modify_action( $id, $hook = null, $callback = null, $priority =
 /**
  * Modify an action hook.
  *
- * This function is a shortcut of {@see torbara_modify_action()}.
+ * This function is a shortcut of {@see ology_modify_action()}.
  *
  * @since 1.0.0
  *
@@ -151,9 +151,9 @@ function torbara_modify_action( $id, $hook = null, $callback = null, $priority =
  *
  * @return bool Will always return true.
  */
-function torbara_modify_action_hook( $id, $hook ) {
+function ology_modify_action_hook( $id, $hook ) {
 
-	return torbara_modify_action( $id, $hook );
+	return ology_modify_action( $id, $hook );
 
 }
 
@@ -161,7 +161,7 @@ function torbara_modify_action_hook( $id, $hook ) {
 /**
  * Modify an action callback.
  *
- * This function is a shortcut of {@see torbara_modify_action()}.
+ * This function is a shortcut of {@see ology_modify_action()}.
  *
  * @since 1.0.0
  *
@@ -171,9 +171,9 @@ function torbara_modify_action_hook( $id, $hook ) {
  *
  * @return bool Will always return true.
  */
-function torbara_modify_action_callback( $id, $callback ) {
+function ology_modify_action_callback( $id, $callback ) {
 
-	return torbara_modify_action( $id, null, $callback );
+	return ology_modify_action( $id, null, $callback );
 
 }
 
@@ -181,7 +181,7 @@ function torbara_modify_action_callback( $id, $callback ) {
 /**
  * Modify an action priority.
  *
- * This function is a shortcut of {@see torbara_modify_action()}.
+ * This function is a shortcut of {@see ology_modify_action()}.
  *
  * @since 1.0.0
  *
@@ -190,9 +190,9 @@ function torbara_modify_action_callback( $id, $callback ) {
  *
  * @return bool Will always return true.
  */
-function torbara_modify_action_priority( $id, $callback ) {
+function ology_modify_action_priority( $id, $callback ) {
 
-	return torbara_modify_action( $id, null, null, $callback );
+	return ology_modify_action( $id, null, null, $callback );
 
 }
 
@@ -200,7 +200,7 @@ function torbara_modify_action_priority( $id, $callback ) {
 /**
  * Modify an action arguments.
  *
- * This function is a shortcut of {@see torbara_modify_action()}.
+ * This function is a shortcut of {@see ology_modify_action()}.
  *
  * @since 1.0.0
  *
@@ -210,9 +210,9 @@ function torbara_modify_action_priority( $id, $callback ) {
  *
  * @return bool Will always return true.
  */
-function torbara_modify_action_arguments( $id, $args ) {
+function ology_modify_action_arguments( $id, $args ) {
 
-	return torbara_modify_action( $id, null, null, null, $args );
+	return ology_modify_action( $id, null, null, null, $args );
 
 }
 
@@ -220,12 +220,12 @@ function torbara_modify_action_arguments( $id, $args ) {
 /**
  * Replace an action.
  *
- * This function replaces an action registered using {@see torbara_add_action()} or
- * {@see torbara_add_smart_action()}. Each optional argument must be set to NULL to keep
+ * This function replaces an action registered using {@see ology_add_action()} or
+ * {@see ology_add_smart_action()}. Each optional argument must be set to NULL to keep
  * the orginal value.
  *
- * While {@see torbara_modify_action()} will keep the original value registered, this function
- * will overwrite the original action. If the action is reset using {@see torbara_reset_action()},
+ * While {@see ology_modify_action()} will keep the original value registered, this function
+ * will overwrite the original action. If the action is reset using {@see ology_reset_action()},
  * the replaced values will be used.
  *
  * @since 1.0.0
@@ -242,7 +242,7 @@ function torbara_modify_action_arguments( $id, $args ) {
  *
  * @return bool Will always return true.
  */
-function torbara_replace_action( $id, $hook = null, $callback = null, $priority = null, $args = null ) {
+function ology_replace_action( $id, $hook = null, $callback = null, $priority = null, $args = null ) {
 
 	$action = array(
 		'hook' => $hook,
@@ -252,12 +252,12 @@ function torbara_replace_action( $id, $hook = null, $callback = null, $priority 
 	);
 
 	// Set and get the latest replaced.
-	$action = torbara_tt_merge_action( $id, array_filter( $action ), 'replaced' );
+	$action = ology_tt_merge_action( $id, array_filter( $action ), 'replaced' );
 
 	// Set and get the latest added.
-	$action = torbara_tt_merge_action( $id, $action, 'added' );
+	$action = ology_tt_merge_action( $id, $action, 'added' );
 
-	return torbara_modify_action( $id, $hook, $callback, $priority, $args );
+	return ology_modify_action( $id, $hook, $callback, $priority, $args );
 
 }
 
@@ -265,7 +265,7 @@ function torbara_replace_action( $id, $hook = null, $callback = null, $priority 
 /**
  * Replace an action hook.
  *
- * This function is a shortcut of {@see torbara_replace_action()}.
+ * This function is a shortcut of {@see ology_replace_action()}.
  *
  * @since 1.0.0
  *
@@ -275,9 +275,9 @@ function torbara_replace_action( $id, $hook = null, $callback = null, $priority 
  *
  * @return bool Will always return true.
  */
-function torbara_replace_action_hook( $id, $hook ) {
+function ology_replace_action_hook( $id, $hook ) {
 
-	return torbara_replace_action( $id, $hook );
+	return ology_replace_action( $id, $hook );
 
 }
 
@@ -285,7 +285,7 @@ function torbara_replace_action_hook( $id, $hook ) {
 /**
  * Replace an action callback.
  *
- * This function is a shortcut of {@see torbara_replace_action()}.
+ * This function is a shortcut of {@see ology_replace_action()}.
  *
  * @since 1.0.0
  *
@@ -295,9 +295,9 @@ function torbara_replace_action_hook( $id, $hook ) {
  *
  * @return bool Will always return true.
  */
-function torbara_replace_action_callback( $id, $callback ) {
+function ology_replace_action_callback( $id, $callback ) {
 
-	return torbara_replace_action( $id, null, $callback );
+	return ology_replace_action( $id, null, $callback );
 
 }
 
@@ -305,7 +305,7 @@ function torbara_replace_action_callback( $id, $callback ) {
 /**
  * Replace an action priority.
  *
- * This function is a shortcut of {@see torbara_replace_action()}.
+ * This function is a shortcut of {@see ology_replace_action()}.
  *
  * @since 1.0.0
  *
@@ -314,9 +314,9 @@ function torbara_replace_action_callback( $id, $callback ) {
  *
  * @return bool Will always return true.
  */
-function torbara_replace_action_priority( $id, $callback ) {
+function ology_replace_action_priority( $id, $callback ) {
 
-	return torbara_replace_action( $id, null, null, $priority );
+	return ology_replace_action( $id, null, null, $priority );
 
 }
 
@@ -324,7 +324,7 @@ function torbara_replace_action_priority( $id, $callback ) {
 /**
  * Replace an action argument.
  *
- * This function is a shortcut of {@see torbara_replace_action()}.
+ * This function is a shortcut of {@see ology_replace_action()}.
  *
  * @since 1.0.0
  *
@@ -334,9 +334,9 @@ function torbara_replace_action_priority( $id, $callback ) {
  *
  * @return bool Will always return true.
  */
-function torbara_replace_action_arguments( $id, $args ) {
+function ology_replace_action_arguments( $id, $args ) {
 
-	return torbara_replace_action( $id, null, null, null, $args );
+	return ology_replace_action( $id, null, null, null, $args );
 
 }
 
@@ -344,8 +344,8 @@ function torbara_replace_action_arguments( $id, $args ) {
 /**
  * Remove an action.
  *
- * This function removes an action registered using {@see torbara_add_action()} or
- * {@see torbara_add_smart_action()}. The original action can be re-added using {@see torbara_reset_action()}.
+ * This function removes an action registered using {@see ology_add_action()} or
+ * {@see ology_add_smart_action()}. The original action can be re-added using {@see ology_reset_action()}.
  *
  * @since 1.0.0
  *
@@ -353,14 +353,14 @@ function torbara_replace_action_arguments( $id, $args ) {
  *
  * @return bool Will always return true.
  */
-function torbara_remove_action( $id ) {
+function ology_remove_action( $id ) {
 
 	// Remove.
-	if ( $action = torbara_tt_get_current_action( $id ) )
+	if ( $action = ology_tt_get_current_action( $id ) )
 		remove_action( $action['hook'], $action['callback'], $action['priority'], $action['args'] );
 
 	// Register as removed.
-	torbara_tt_set_action( $id, $action, 'removed' );
+	ology_tt_set_action( $id, $action, 'removed' );
 
 	return true;
 
@@ -370,9 +370,9 @@ function torbara_remove_action( $id ) {
 /**
  * Reset an action.
  *
- * This function resets an action registered using {@see torbara_add_action()} or
- * {@see torbara_add_smart_action()}. If the original values were replaced using
- * {@see torbara_replace_action()}, these values will be used.
+ * This function resets an action registered using {@see ology_add_action()} or
+ * {@see ology_add_smart_action()}. If the original values were replaced using
+ * {@see ology_replace_action()}, these values will be used.
  *
  * @since 1.0.0
  *
@@ -380,14 +380,14 @@ function torbara_remove_action( $id ) {
  *
  * @return bool Will always return true.
  */
-function torbara_reset_action( $id ) {
+function ology_reset_action( $id ) {
 
-	torbara_tt_unset_action( $id, 'modified' );
-	torbara_tt_unset_action( $id, 'removed' );
+	ology_tt_unset_action( $id, 'modified' );
+	ology_tt_unset_action( $id, 'removed' );
 
-	$action = torbara_tt_get_action( $id, 'added' );
+	$action = ology_tt_get_action( $id, 'added' );
 
-	if ( $current = torbara_tt_get_current_action( $id ) ) {
+	if ( $current = ology_tt_get_current_action( $id ) ) {
 
 		remove_action( $current['hook'], $current['callback'], $current['priority'], $current['args'] );
 		add_action( $action['hook'], $action['callback'], $action['priority'], $action['args'] );
@@ -404,10 +404,10 @@ function torbara_reset_action( $id ) {
  *
  * @ignore
  */
-global $torbara_tt_registered_actions;
+global $ology_tt_registered_actions;
 
-if ( !isset( $torbara_tt_registered_actions ) )
-	$torbara_tt_registered_actions = array(
+if ( !isset( $ology_tt_registered_actions ) )
+	$ology_tt_registered_actions = array(
 		'added' => array(),
 		'modified' => array(),
 		'removed' => array(),
@@ -420,16 +420,16 @@ if ( !isset( $torbara_tt_registered_actions ) )
  *
  * @ignore
  */
-function torbara_tt_get_action( $id, $status ) {
+function ology_tt_get_action( $id, $status ) {
 
-	global $torbara_tt_registered_actions;
+	global $ology_tt_registered_actions;
 
-	$id = torbara_tt_unique_action_id( $id );
+	$id = ology_tt_unique_action_id( $id );
 
-	if ( !$registered = torbara_get( $status, $torbara_tt_registered_actions ) )
+	if ( !$registered = ology_get( $status, $ology_tt_registered_actions ) )
 		return false;
 
-	if ( !$action = torbara_get( $id, $registered ) )
+	if ( !$action = ology_get( $id, $registered ) )
 		return false;
 
 	return (array) json_decode( $action );
@@ -442,17 +442,17 @@ function torbara_tt_get_action( $id, $status ) {
  *
  * @ignore
  */
-function torbara_tt_set_action( $id, $action, $status, $overwrite = false ) {
+function ology_tt_set_action( $id, $action, $status, $overwrite = false ) {
 
-	global $torbara_tt_registered_actions;
+	global $ology_tt_registered_actions;
 
-	$id = torbara_tt_unique_action_id( $id );
+	$id = ology_tt_unique_action_id( $id );
 
 	// Return action which already exist unless overwrite is set to true.
-	if ( !$overwrite && ( $_action = torbara_tt_get_action( $id, $status ) ) )
+	if ( !$overwrite && ( $_action = ology_tt_get_action( $id, $status ) ) )
 		return $_action;
 
-	$torbara_tt_registered_actions[$status][$id] = json_encode( $action );
+	$ology_tt_registered_actions[$status][$id] = json_encode( $action );
 
 	return $action;
 
@@ -464,17 +464,17 @@ function torbara_tt_set_action( $id, $action, $status, $overwrite = false ) {
  *
  * @ignore
  */
-function torbara_tt_unset_action( $id, $status ) {
+function ology_tt_unset_action( $id, $status ) {
 
-	global $torbara_tt_registered_actions;
+	global $ology_tt_registered_actions;
 
-	$id = torbara_tt_unique_action_id( $id );
+	$id = ology_tt_unique_action_id( $id );
 
 	// Stop here if the action doesn't exist.
-	if ( !torbara_tt_get_action( $id, $status ) )
+	if ( !ology_tt_get_action( $id, $status ) )
 		return false;
 
-	unset( $torbara_tt_registered_actions[$status][$id] );
+	unset( $ology_tt_registered_actions[$status][$id] );
 
 	return true;
 
@@ -486,16 +486,16 @@ function torbara_tt_unset_action( $id, $status ) {
  *
  * @ignore
  */
-function torbara_tt_merge_action( $id, $action, $status ) {
+function ology_tt_merge_action( $id, $action, $status ) {
 
-	global $torbara_tt_registered_actions;
+	global $ology_tt_registered_actions;
 
-	$id = torbara_tt_unique_action_id( $id );
+	$id = ology_tt_unique_action_id( $id );
 
-	if ( $_action = torbara_tt_get_action( $id, $status ) )
+	if ( $_action = ology_tt_get_action( $id, $status ) )
 		$action = array_merge( $_action, $action );
 
-	return torbara_tt_set_action( $id, $action, $status, true );
+	return ology_tt_set_action( $id, $action, $status, true );
 
 }
 
@@ -505,17 +505,17 @@ function torbara_tt_merge_action( $id, $action, $status ) {
  *
  * @ignore
  */
-function torbara_tt_get_current_action( $id ) {
+function ology_tt_get_current_action( $id ) {
 
 	$action = array();
 
-	if ( torbara_tt_get_action( $id, 'removed' ) )
+	if ( ology_tt_get_action( $id, 'removed' ) )
 		return false;
 
-	if ( $added = torbara_tt_get_action( $id, 'added' ) )
+	if ( $added = ology_tt_get_action( $id, 'added' ) )
 		$action = $added;
 
-	if ( $modified = torbara_tt_get_action( $id, 'modified' ) )
+	if ( $modified = ology_tt_get_action( $id, 'modified' ) )
 		$action = array_merge( $action, $modified );
 
 	// Stop here if the action is invalid.
@@ -532,11 +532,11 @@ function torbara_tt_get_current_action( $id ) {
  *
  * @ignore
  */
-function torbara_tt_add_anonymous_action( $hook, $callback, $priority = 10, $args = 1 ) {
+function ology_tt_add_anonymous_action( $hook, $callback, $priority = 10, $args = 1 ) {
 
-	require_once( torbara_API_PATH . 'actions/class.php' );
+	require_once( ology_API_PATH . 'actions/class.php' );
 
-	new torbara_tt_Anonymous_Actions( $hook, $callback, $priority, $args );
+	new ology_tt_Anonymous_Actions( $hook, $callback, $priority, $args );
 
 }
 
@@ -546,14 +546,14 @@ function torbara_tt_add_anonymous_action( $hook, $callback, $priority = 10, $arg
  *
  * @ignore
  */
-function torbara_tt_render_action( $hook ) {
+function ology_tt_render_action( $hook ) {
 
 	$args = func_get_args();
 
 	// Return simple action if no sub-hook is set.
 	if ( !preg_match_all( '#\[(.*?)\]#', $args[0], $matches ) )
 		if ( has_filter( $args[0] ) )
-			return call_user_func_array( 'torbara_render_function', array_merge( array( 'do_action' ), $args ) );
+			return call_user_func_array( 'ology_render_function', array_merge( array( 'do_action' ), $args ) );
 		else
 			return false;
 
@@ -566,7 +566,7 @@ function torbara_tt_render_action( $hook ) {
 	$args[0] = $prefix . $suffix;
 
 	if ( has_filter( $args[0] ) )
-		$output .= call_user_func_array( 'torbara_render_function', array_merge( array( 'do_action' ), $args ) );
+		$output .= call_user_func_array( 'ology_render_function', array_merge( array( 'do_action' ), $args ) );
 
 	foreach ( $matches[0] as $i => $subhook ) {
 
@@ -587,13 +587,13 @@ function torbara_tt_render_action( $hook ) {
 			$args[0] = $level;
 
 			if ( has_filter( $args[0] ) )
-				$output .= call_user_func_array( 'torbara_render_function', array_merge( array( 'do_action' ), $args ) );
+				$output .= call_user_func_array( 'ology_render_function', array_merge( array( 'do_action' ), $args ) );
 
 			// Apply filter whithout square brackets for backwards compatibility.
 			$args[0] = preg_replace( '#(\[|\])#', '', $args[0] );
 
 			if ( has_filter( $args[0] ) )
-				$output .= call_user_func_array( 'torbara_render_function', array_merge( array( 'do_action' ), $args ) );
+				$output .= call_user_func_array( 'ology_render_function', array_merge( array( 'do_action' ), $args ) );
 
 		}
 
@@ -609,7 +609,7 @@ function torbara_tt_render_action( $hook ) {
  *
  * @ignore
  */
-function torbara_tt_unique_action_id( $callback ) {
+function ology_tt_unique_action_id( $callback ) {
 
 	if ( is_string( $callback ) )
 		return $callback;

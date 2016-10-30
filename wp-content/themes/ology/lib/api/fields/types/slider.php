@@ -3,21 +3,21 @@
  * @package API\Fields\Types
  */
 
-torbara_add_smart_action( 'torbara_field_enqueue_scripts_slider', 'torbara_field_slider_assets' );
+ology_add_smart_action( 'ology_field_enqueue_scripts_slider', 'ology_field_slider_assets' );
 
 /**
  * Enqueued assets required by the beans slider field.
  *
  * @since 1.0.0
  */
-function torbara_field_slider_assets() {
+function ology_field_slider_assets() {
 
 	wp_enqueue_script( 'jquery-ui-slider' );
 
 }
 
 
-torbara_add_smart_action( 'torbara_field_slider', 'torbara_field_slider' );
+ology_add_smart_action( 'ology_field_slider', 'ology_field_slider' );
 
 /**
  * Echo slider field type.
@@ -25,7 +25,7 @@ torbara_add_smart_action( 'torbara_field_slider', 'torbara_field_slider' );
  * @since 1.0.0
  *
  * @param array $field {
- *      For best practices, pass the array of data obtained using {@see torbara_get_fields()}.
+ *      For best practices, pass the array of data obtained using {@see ology_get_fields()}.
  *
  *      @type mixed  $value      The field value.
  *      @type string $name       The field name value.
@@ -38,7 +38,7 @@ torbara_add_smart_action( 'torbara_field_slider', 'torbara_field_slider' );
  *      @type string $unit       The slider unit. Default null.
  * }
  */
-function torbara_field_slider( $field ) {
+function ology_field_slider( $field ) {
 
 	$defaults = array(
 		'min' => 0,
@@ -53,7 +53,7 @@ function torbara_field_slider( $field ) {
 	<div class="bs-slider-wrap" slider_min="<?php echo (int) $field['min']; ?>" slider_max="<?php echo (int) $field['max']; ?>" slider_interval="<?php echo (int) $field['interval']; ?>">
 
 		<?php // Don't make this a hidden field to prevent triggering issues with wp_customise. ?>
-		<input type="text" value="<?php echo esc_attr( $field['value'] ); ?>" name="<?php echo esc_attr( $field['name'] ); ?>" <?php echo torbara_esc_attributes( $field['attributes'] ); ?> style  =  "display: none;"/>
+		<input type="text" value="<?php echo esc_attr( $field['value'] ); ?>" name="<?php echo esc_attr( $field['name'] ); ?>" <?php echo ology_esc_attributes( $field['attributes'] ); ?> style  =  "display: none;"/>
 
 	</div>
 	<span class="bs-slider-value"><?php echo  esc_attr($field['value']); ?></span><?php

@@ -6,7 +6,7 @@
  *
  * @package API\Fields
  */
-final class torbara_tt_Fields {
+final class ology_tt_Fields {
 
 	/**
 	 * Fields.
@@ -117,7 +117,7 @@ final class torbara_tt_Fields {
 		$field = array_merge( $defaults, $field );
 
 		// Set field name.
-		$field['name'] = $this->context == 'wp_customize' ? $field['id'] :  'torbara_fields[' . $field['id'] . ']';
+		$field['name'] = $this->context == 'wp_customize' ? $field['id'] :  'ology_fields[' . $field['id'] . ']';
 
 		if ( $field['type'] === 'group' ) {
 
@@ -176,7 +176,7 @@ final class torbara_tt_Fields {
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_global_assets' ) );
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_global_assets' ) );
 
-			require_once( torbara_API_PATH . 'fields/types/field.php' );
+			require_once( ology_API_PATH . 'fields/types/field.php' );
 
 			$once = true;
 
@@ -196,7 +196,7 @@ final class torbara_tt_Fields {
 			if ( in_array( $type, self::$field_types_loaded ) )
 				continue;
 
-			$path = torbara_API_PATH . "fields/types/{$type}.php";
+			$path = ology_API_PATH . "fields/types/{$type}.php";
 
 			if ( file_exists( $path ) )
 				require_once( $path );
@@ -220,7 +220,7 @@ final class torbara_tt_Fields {
 			if ( in_array( $type, self::$field_assets_hook_loaded ) )
 				continue;
 
-			do_action( "torbara_field_enqueue_scripts_{$type}" );
+			do_action( "ology_field_enqueue_scripts_{$type}" );
 
 			// Set flag that field is loaded.
 			self::$field_assets_hook_loaded[$type] = $type;
@@ -235,13 +235,13 @@ final class torbara_tt_Fields {
 	 */
 	public function enqueue_global_assets() {
 
-		$css = torbara_API_URL . 'fields/assets/css/fields' . torbara_MIN_CSS . '.css';
-		$js = torbara_API_URL . 'fields/assets/js/fields' . torbara_MIN_CSS . '.js';
+		$css = ology_API_URL . 'fields/assets/css/fields' . ology_MIN_CSS . '.css';
+		$js = ology_API_URL . 'fields/assets/js/fields' . ology_MIN_CSS . '.js';
 
-		wp_enqueue_style( 'beans-fields', $css, false, torbara_VERSION );
-		wp_enqueue_script( 'beans-fields', $js, array( 'jquery' ), torbara_VERSION );
+		wp_enqueue_style( 'beans-fields', $css, false, ology_VERSION );
+		wp_enqueue_script( 'beans-fields', $js, array( 'jquery' ), ology_VERSION );
 
-		do_action( 'torbara_field_enqueue_scripts' );
+		do_action( 'ology_field_enqueue_scripts' );
 
 	}
 
@@ -258,11 +258,11 @@ final class torbara_tt_Fields {
 			break;
 
 			case 'post_meta':
-				return torbara_get_post_meta( $field_id, $default );
+				return ology_get_post_meta( $field_id, $default );
 			break;
 
 			case 'term_meta':
-				return torbara_get_term_meta( $field_id, $default );
+				return ology_get_term_meta( $field_id, $default );
 			break;
 
 			case 'wp_customize':
@@ -279,7 +279,7 @@ final class torbara_tt_Fields {
 	 */
 	public function field_content( $field ) {
 
-		echo torbara_open_markup( 'torbara_field_wrap', 'div', array(
+		echo ology_open_markup( 'ology_field_wrap', 'div', array(
 			'class' => 'bs-field-wrap bs-' . $field['type'] . ' ' . $field['context']
 		), $field );
 
@@ -289,26 +289,26 @@ final class torbara_tt_Fields {
 			else
 				$fields = array( $field );
 
-			echo torbara_open_markup( 'torbara_field_inside', 'div', array(
+			echo ology_open_markup( 'ology_field_inside', 'div', array(
 					'class' => 'bs-field-inside'
 				), $fields );
 
 				// Loop through fields.
 				foreach ( $fields as $single_field ) {
 
-					echo torbara_open_markup( 'torbara_field[_' . $single_field['id'] . ']', 'div', array(
+					echo ology_open_markup( 'ology_field[_' . $single_field['id'] . ']', 'div', array(
 						'class' => 'bs-field bs-' . $single_field['type'],
 					), $single_field );
 
-						do_action( 'torbara_field_' . $single_field['type'], $single_field );
+						do_action( 'ology_field_' . $single_field['type'], $single_field );
 
-					echo torbara_close_markup( 'torbara_field[_' . $single_field['id'] . ']', 'div', $single_field );
+					echo ology_close_markup( 'ology_field[_' . $single_field['id'] . ']', 'div', $single_field );
 
 				}
 
-			echo torbara_close_markup( 'torbara_field_inside', 'div', $fields );
+			echo ology_close_markup( 'ology_field_inside', 'div', $fields );
 
-		echo torbara_close_markup( 'torbara_field_wrap', 'div', $field );
+		echo ology_close_markup( 'ology_field_wrap', 'div', $field );
 
 	}
 
@@ -318,7 +318,7 @@ final class torbara_tt_Fields {
 	 */
 	public function get_fields( $context, $section ) {
 
-		if ( !$fields = torbara_get( $section, self::$registered[$context] ) )
+		if ( !$fields = ology_get( $section, self::$registered[$context] ) )
 			return false;
 
 		return $fields;

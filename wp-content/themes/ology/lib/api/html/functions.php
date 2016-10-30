@@ -14,7 +14,7 @@
  * HTML comments containing the ID are added before and after the output if the development mode is enabled.
  * This makes it very easy to find a content ID when inspecting an element in your web browser.
  *
- * Since this function uses {@see torbara_apply_filters()}, the $id argument may contain sub-hook(s).
+ * Since this function uses {@see ology_apply_filters()}, the $id argument may contain sub-hook(s).
  *
  * @since 1.0.0
  *
@@ -24,17 +24,17 @@
  *
  * @return string The output.
  */
-function torbara_output( $id, $output ) {
+function ology_output( $id, $output ) {
 
 	$args = func_get_args();
 	$args[0] = $id . '_output';
 
-	$output = call_user_func_array( 'torbara_apply_filters', $args );
+	$output = call_user_func_array( 'ology_apply_filters', $args );
 
 	if ( empty( $output ) )
 		return;
 
-	if ( torbara_tt_is_html_dev_mode() )
+	if ( ology_tt_is_html_dev_mode() )
 		$output = "<!-- open output: $id -->" . $output . "<!-- close output: $id -->";
 
 	return $output;
@@ -54,9 +54,9 @@ function torbara_output( $id, $output ) {
  *
  * @return bool Will always return true.
  */
-function torbara_remove_output( $id ) {
+function ology_remove_output( $id ) {
 
-	return torbara_add_filter( $id . '_output', false );
+	return ology_add_filter( $id . '_output', false );
 
 }
 
@@ -70,7 +70,7 @@ function torbara_remove_output( $id ) {
  * The "data-markup-id" is added as a HTML attribute if the development mode is enabled. This makes it very
  * easy to find the content ID when inspecting an element in a web browser.
  *
- * Since this function uses {@see torbara_apply_filters()}, the $id argument may contain sub-hook(s).
+ * Since this function uses {@see ology_apply_filters()}, the $id argument may contain sub-hook(s).
  *
  * @since 1.0.0
  *
@@ -88,9 +88,9 @@ function torbara_remove_output( $id ) {
  *
  * @return string The output.
  */
-function torbara_open_markup( $id, $tag, $attributes = array() ) {
+function ology_open_markup( $id, $tag, $attributes = array() ) {
 
-	global $_temptorbara_tt_selfclose_markup;
+	global $_tempology_tt_selfclose_markup;
 
 	$args = func_get_args();
 	$attributes_args = $args;
@@ -105,7 +105,7 @@ function torbara_open_markup( $id, $tag, $attributes = array() ) {
 	unset( $attributes_args[1] );
 
 	// Stop here if the tag is set to false, the before and after actions won't run in this case.
-	if ( ( $tag = call_user_func_array( 'torbara_apply_filters', $args ) ) === null )
+	if ( ( $tag = call_user_func_array( 'ology_apply_filters', $args ) ) === null )
 		return;
 
 	// Remove function $tag argument.
@@ -114,19 +114,19 @@ function torbara_open_markup( $id, $tag, $attributes = array() ) {
 	// Set before action id.
 	$args[0] = $id . '_before_markup';
 
-	$output = call_user_func_array( 'torbara_tt_render_action', $args );
+	$output = call_user_func_array( 'ology_tt_render_action', $args );
 
 		// Don't output the tag if empty, the before and after actions still run.
 		if ( $tag )
-			$output .= '<' . $tag . ' ' . call_user_func_array( 'torbara_add_attributes', $attributes_args ) . ( torbara_tt_is_html_dev_mode() ? ' data-markup-id="' . $id . '"' : null ) . ( $_temptorbara_tt_selfclose_markup ? '/' : '' ) . '>';
+			$output .= '<' . $tag . ' ' . call_user_func_array( 'ology_add_attributes', $attributes_args ) . ( ology_tt_is_html_dev_mode() ? ' data-markup-id="' . $id . '"' : null ) . ( $_tempology_tt_selfclose_markup ? '/' : '' ) . '>';
 
 	// Set after action id.
-	$args[0] = $id . ( $_temptorbara_tt_selfclose_markup ? '_after_markup' : '_prepend_markup' );
+	$args[0] = $id . ( $_tempology_tt_selfclose_markup ? '_after_markup' : '_prepend_markup' );
 
-	$output .= call_user_func_array( 'torbara_tt_render_action', $args );
+	$output .= call_user_func_array( 'ology_tt_render_action', $args );
 
 	// Reset temp selfclose global to reduce memory usage.
-	unset( $GLOBALS['_temptorbara_tt_selfclose_markup'] );
+	unset( $GLOBALS['_tempology_tt_selfclose_markup'] );
 
 	return $output;
 
@@ -136,7 +136,7 @@ function torbara_open_markup( $id, $tag, $attributes = array() ) {
 /**
  * Register self-close markup and attributes by ID.
  *
- * This function is shortuct of {@see torbara_open_markup()}. It should be used for self-closed HTML markup such as
+ * This function is shortuct of {@see ology_open_markup()}. It should be used for self-closed HTML markup such as
  * images or inputs.
  *
  * @since 1.0.0
@@ -155,14 +155,14 @@ function torbara_open_markup( $id, $tag, $attributes = array() ) {
  *
  * @return string The output.
  */
-function torbara_selfclose_markup( $id, $tag, $attributes = array() ) {
+function ology_selfclose_markup( $id, $tag, $attributes = array() ) {
 
-	global $_temptorbara_tt_selfclose_markup;
+	global $_tempology_tt_selfclose_markup;
 
-	$_temptorbara_tt_selfclose_markup = true;
+	$_tempology_tt_selfclose_markup = true;
 	$args = func_get_args();
 
-	return call_user_func_array( 'torbara_open_markup', $args );
+	return call_user_func_array( 'ology_open_markup', $args );
 
 }
 
@@ -170,7 +170,7 @@ function torbara_selfclose_markup( $id, $tag, $attributes = array() ) {
 /**
  * Register close markup.
  *
- * This function is similar to {@see torbara_open_markup()}, but does not accept HTML attributes. The $id
+ * This function is similar to {@see ology_open_markup()}, but does not accept HTML attributes. The $id
  * argument must be the identical to the opening markup.
  *
  * @since 1.0.0
@@ -181,10 +181,10 @@ function torbara_selfclose_markup( $id, $tag, $attributes = array() ) {
  *
  * @return string The output.
  */
-function torbara_close_markup( $id, $tag ) {
+function ology_close_markup( $id, $tag ) {
 
 	// Stop here if the tag is set to false, the before and after actions won't run in this case.
-	if ( ( $tag = torbara_apply_filters( $id . '_markup', $tag ) ) === null )
+	if ( ( $tag = ology_apply_filters( $id . '_markup', $tag ) ) === null )
 		return;
 
 	$args = func_get_args();
@@ -195,7 +195,7 @@ function torbara_close_markup( $id, $tag ) {
 	// Set before action id.
 	$args[0] = $id . '_append_markup';
 
-	$output = call_user_func_array( 'torbara_tt_render_action', $args );
+	$output = call_user_func_array( 'ology_tt_render_action', $args );
 
 		// Don't output the tag if empty, the before and after actions still run.
 		if ( $tag )
@@ -204,7 +204,7 @@ function torbara_close_markup( $id, $tag ) {
 	// Set after action id.
 	$args[0] = $id . '_after_markup';
 
-	$output .= call_user_func_array( 'torbara_tt_render_action', $args );
+	$output .= call_user_func_array( 'ology_tt_render_action', $args );
 
 	return $output;
 
@@ -234,9 +234,9 @@ function torbara_close_markup( $id, $tag ) {
  *
  * @return bool Will always return true.
  */
-function torbara_modify_markup( $id, $markup, $priority = 10, $args = 1 ) {
+function ology_modify_markup( $id, $markup, $priority = 10, $args = 1 ) {
 
-	return torbara_add_filter( $id . '_markup', $markup, $priority, $args );
+	return ology_add_filter( $id . '_markup', $markup, $priority, $args );
 
 }
 
@@ -258,12 +258,12 @@ function torbara_modify_markup( $id, $markup, $priority = 10, $args = 1 ) {
  *
  * @return bool Will always return true.
  */
-function torbara_remove_markup( $id, $remove_actions = false ) {
+function ology_remove_markup( $id, $remove_actions = false ) {
 
 	if ( $remove_actions )
-		return torbara_add_filter( $id . '_markup', null );
+		return ology_add_filter( $id . '_markup', null );
 
-	return torbara_add_filter( $id . '_markup', false );
+	return ology_add_filter( $id . '_markup', false );
 
 }
 
@@ -283,7 +283,7 @@ function torbara_remove_markup( $id, $remove_actions = false ) {
  *
  * @return bool Will always return true.
  */
-function torbara_reset_markup( $id ) {
+function ology_reset_markup( $id ) {
 
 	remove_all_filters( $id . '_markup' );
 	remove_all_filters( preg_replace( '#(\[|\])#', '', $id ) . '_markup' );
@@ -294,8 +294,8 @@ function torbara_reset_markup( $id ) {
 /**
  * Wrap markup.
  *
- * This function calls {@see torbara_open_markup()} before the opening markup and
- * {@see torbara_close_markup()} after the closing markup.
+ * This function calls {@see ology_open_markup()} before the opening markup and
+ * {@see ology_close_markup()} after the closing markup.
  *
  * @since 1.0.0
  *
@@ -312,16 +312,16 @@ function torbara_reset_markup( $id ) {
  *
  * @return bool Will always return true.
  */
-function torbara_wrap_markup( $id, $new_id, $tag, $attributes = array() ) {
+function ology_wrap_markup( $id, $new_id, $tag, $attributes = array() ) {
 
 	$args = func_get_args();
 	unset( $args[0] );
 
-	torbara_tt_add_anonymous_action( $id . '_before_markup', array( 'torbara_open_markup', $args ), 9999 );
+	ology_tt_add_anonymous_action( $id . '_before_markup', array( 'ology_open_markup', $args ), 9999 );
 
 	unset( $args[3] );
 
-	torbara_tt_add_anonymous_action( $id . '_after_markup', array( 'torbara_close_markup', $args ), 1 );
+	ology_tt_add_anonymous_action( $id . '_after_markup', array( 'ology_close_markup', $args ), 1 );
 
 	return true;
 
@@ -331,8 +331,8 @@ function torbara_wrap_markup( $id, $new_id, $tag, $attributes = array() ) {
 /**
  * Wrap markup inner content.
  *
- * This function calls {@see torbara_open_markup()} after the opening markup and
- * {@see torbara_close_markup()} before the closing markup.
+ * This function calls {@see ology_open_markup()} after the opening markup and
+ * {@see ology_close_markup()} before the closing markup.
  *
  * @since 1.0.0
  *
@@ -349,16 +349,16 @@ function torbara_wrap_markup( $id, $new_id, $tag, $attributes = array() ) {
  *
  * @return bool Will always return true.
  */
-function torbara_wrap_inner_markup( $id, $new_id, $tag, $attributes = array() ) {
+function ology_wrap_inner_markup( $id, $new_id, $tag, $attributes = array() ) {
 
 	$args = func_get_args();
 	unset( $args[0] );
 
-	torbara_tt_add_anonymous_action( $id . '_prepend_markup', array( 'torbara_open_markup', $args ), 1 );
+	ology_tt_add_anonymous_action( $id . '_prepend_markup', array( 'ology_open_markup', $args ), 1 );
 
 	unset( $args[3] );
 
-	torbara_tt_add_anonymous_action( $id . '_append_markup', array( 'torbara_close_markup', $args ), 9999 );
+	ology_tt_add_anonymous_action( $id . '_append_markup', array( 'ology_close_markup', $args ), 9999 );
 
 	return true;
 
@@ -371,7 +371,7 @@ function torbara_wrap_inner_markup( $id, $new_id, $tag, $attributes = array() ) 
  * The Beans HTML "attributes" functions make it really easy to modify, replace, extend,
  * remove or hook into registered attributes.
  *
- * Since this function uses {@see torbara_apply_filters()}, the $id argument may contain sub-hook(s).
+ * Since this function uses {@see ology_apply_filters()}, the $id argument may contain sub-hook(s).
  *
  * @since 1.0.0
  *
@@ -386,7 +386,7 @@ function torbara_wrap_inner_markup( $id, $new_id, $tag, $attributes = array() ) 
  *
  * @return string The HTML attributes.
  */
-function torbara_add_attributes( $id, $attributes = array() ) {
+function ology_add_attributes( $id, $attributes = array() ) {
 
 	$args = func_get_args();
 	$args[0] = $id . '_attributes';
@@ -396,9 +396,9 @@ function torbara_add_attributes( $id, $attributes = array() ) {
 
 	$args[1] = wp_parse_args( $args[1] );
 
-	$attributes = call_user_func_array( 'torbara_apply_filters', $args );
+	$attributes = call_user_func_array( 'ology_apply_filters', $args );
 
-	return torbara_esc_attributes( $attributes );
+	return ology_esc_attributes( $attributes );
 
 }
 
@@ -418,7 +418,7 @@ function torbara_add_attributes( $id, $attributes = array() ) {
  *
  * @return bool Will always return true.
  */
-function torbara_reset_attributes( $id ) {
+function ology_reset_attributes( $id ) {
 
 	remove_all_filters( $id . '_attributes' );
 	remove_all_filters( preg_replace( '#(\[|\])#', '', $id ) . '_attributes' );
@@ -444,9 +444,9 @@ function torbara_reset_attributes( $id ) {
  *
  * @return array All targeted markup attributes.
  */
-function torbara_add_attribute( $id, $attribute, $value ) {
+function ology_add_attribute( $id, $attribute, $value ) {
 
-	$class = new torbara_tt_Attributes( $id, $attribute, $value );
+	$class = new ology_tt_Attributes( $id, $attribute, $value );
 
 	return $class->init( 'add' );
 
@@ -472,9 +472,9 @@ function torbara_add_attribute( $id, $attribute, $value ) {
  *
  * @return array All targeted markup attributes.
  */
-function torbara_replace_attribute( $id, $attribute, $value, $new_value = null ) {
+function ology_replace_attribute( $id, $attribute, $value, $new_value = null ) {
 
-	$class = new torbara_tt_Attributes( $id, $attribute, $value, $new_value );
+	$class = new ology_tt_Attributes( $id, $attribute, $value, $new_value );
 
 	return $class->init( 'replace' );
 
@@ -497,9 +497,9 @@ function torbara_replace_attribute( $id, $attribute, $value, $new_value = null )
  *
  * @return array All targeted markup attributes remaining.
  */
-function torbara_remove_attribute( $id, $attribute, $value = null ) {
+function ology_remove_attribute( $id, $attribute, $value = null ) {
 
-	$class = new torbara_tt_Attributes( $id, $attribute, $value );
+	$class = new ology_tt_Attributes( $id, $attribute, $value );
 
 	return $class->init( 'remove' );
 
@@ -511,11 +511,11 @@ function torbara_remove_attribute( $id, $attribute, $value = null ) {
  *
  * @ignore
  */
-function torbara_tt_is_html_dev_mode() {
+function ology_tt_is_html_dev_mode() {
 
-	if ( defined( 'torbara_HTML_DEV_MODE' ) )
-		return torbara_HTML_DEV_MODE;
+	if ( defined( 'ology_HTML_DEV_MODE' ) )
+		return ology_HTML_DEV_MODE;
 
-	return get_option( 'torbara_dev_mode', false );
+	return get_option( 'ology_dev_mode', false );
 
 }

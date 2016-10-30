@@ -17,7 +17,7 @@
  * This function should be used in a similar fashion to
  * {@link http://codex.wordpress.org/Function_Reference/wp_enqueue_script wp_enqueue_script()}.
  *
- * Fragments can be added to the compiler using {@see torbara_compiler_add_fragment()}.
+ * Fragments can be added to the compiler using {@see ology_compiler_add_fragment()}.
  *
  * @since 1.0.0
  *
@@ -30,7 +30,7 @@
  * 		@type array $depedencies An array of registered handles this script depends on. Default false.
  * }
  */
-function torbara_compile_css_fragments( $id, $fragments, $args = array() ) {
+function ology_compile_css_fragments( $id, $fragments, $args = array() ) {
 
 	if ( empty( $fragments ) )
 		return false;
@@ -42,7 +42,7 @@ function torbara_compile_css_fragments( $id, $fragments, $args = array() ) {
 		'fragments' => (array) $fragments
 	);
 
-	new torbara_tt_Compiler( $params + $args );
+	new ology_tt_Compiler( $params + $args );
 
 }
 
@@ -53,7 +53,7 @@ function torbara_compile_css_fragments( $id, $fragments, $args = array() ) {
  * This function should be used in a similar fashion to
  * {@link http://codex.wordpress.org/Function_Reference/wp_enqueue_script wp_enqueue_script()}.
  *
- * Fragments can be added to the compiler using {@see torbara_compiler_add_fragment()}.
+ * Fragments can be added to the compiler using {@see ology_compiler_add_fragment()}.
  *
  * @since 1.0.0
  *
@@ -65,7 +65,7 @@ function torbara_compile_css_fragments( $id, $fragments, $args = array() ) {
  * 		@type array $depedencies An array of registered handles this script depends on. Default false.
  * }
  */
-function torbara_compile_less_fragments( $id, $fragments, $args = array() ) {
+function ology_compile_less_fragments( $id, $fragments, $args = array() ) {
 
 	if ( empty( $fragments ) )
 		return false;
@@ -77,7 +77,7 @@ function torbara_compile_less_fragments( $id, $fragments, $args = array() ) {
 		'fragments' => (array) $fragments
 	);
 
-	new torbara_tt_Compiler( $params + $args );
+	new ology_tt_Compiler( $params + $args );
 
 }
 
@@ -88,7 +88,7 @@ function torbara_compile_less_fragments( $id, $fragments, $args = array() ) {
  * This function should be used in a similar fashion to
  * {@link http://codex.wordpress.org/Function_Reference/wp_enqueue_script wp_enqueue_script()}.
  *
- * Fragments can be added to the compiler using {@see torbara_compiler_add_fragment()}.
+ * Fragments can be added to the compiler using {@see ology_compiler_add_fragment()}.
  *
  * @since 1.0.0
  *
@@ -104,7 +104,7 @@ function torbara_compile_less_fragments( $id, $fragments, $args = array() ) {
  * 		      					 Default false.
  * }
  */
-function torbara_compile_js_fragments( $id, $fragments, $args = array() ) {
+function ology_compile_js_fragments( $id, $fragments, $args = array() ) {
 
 	if ( empty( $fragments ) )
 		return false;
@@ -116,7 +116,7 @@ function torbara_compile_js_fragments( $id, $fragments, $args = array() ) {
 		'fragments' => (array) $fragments
 	);
 
-	new torbara_tt_Compiler( $params + $args );
+	new ology_tt_Compiler( $params + $args );
 
 }
 
@@ -134,26 +134,26 @@ function torbara_compile_js_fragments( $id, $fragments, $args = array() ) {
  * @param string       $format    Compiler format the fragments should be added to. Accepts 'css',
  *                                'less' or 'js'.
  */
-function torbara_compiler_add_fragment( $id, $fragments, $format ) {
+function ology_compiler_add_fragment( $id, $fragments, $format ) {
 
 	if ( empty( $fragments ) )
 		return false;
 
-	global $torbara_tt_compiler_added_fragments;
+	global $ology_tt_compiler_added_fragments;
 
 	foreach ( (array) $fragments as $key => $fragment )
 
 		// Stop here if the format isn't valid.
-		if ( !isset( $torbara_tt_compiler_added_fragments[$format] ) )
+		if ( !isset( $ology_tt_compiler_added_fragments[$format] ) )
 			continue;
 
 		// Register new compiler id if it doesn't exist and add fragment.
-		elseif ( !isset( $torbara_tt_compiler_added_fragments[$format][$id] ) )
-			$torbara_tt_compiler_added_fragments[$format][$id] = array( $fragment );
+		elseif ( !isset( $ology_tt_compiler_added_fragments[$format][$id] ) )
+			$ology_tt_compiler_added_fragments[$format][$id] = array( $fragment );
 
 		// Add fragment to existing compiler.
 		else
-			$torbara_tt_compiler_added_fragments[$format][$id][] = $fragment;
+			$ology_tt_compiler_added_fragments[$format][$id][] = $fragment;
 
 }
 
@@ -171,18 +171,18 @@ function torbara_compiler_add_fragment( $id, $fragments, $format ) {
  *                                 files will be removed if set to false. Accepts 'false', 'css' or 'js'.
  * @param bool        $admin       Optional. Whether it is an admin compiler or not.
  */
-function torbara_flush_compiler( $id, $file_format = false, $admin = false ) {
+function ology_flush_compiler( $id, $file_format = false, $admin = false ) {
 
-	static $torbara_flushed = false;
+	static $ology_flushed = false;
 
-	$cache_dir = torbara_get_compiler_dir( $admin );
+	$cache_dir = ology_get_compiler_dir( $admin );
 
 	// Always flush beans global chache.
-	if ( !$torbara_flushed ) {
+	if ( !$ology_flushed ) {
 
-		$torbara_flushed = true;
+		$ology_flushed = true;
 
-		torbara_flush_compiler( 'beans', $file_format, $admin );
+		ology_flush_compiler( 'beans', $file_format, $admin );
 
 	}
 
@@ -206,7 +206,7 @@ function torbara_flush_compiler( $id, $file_format = false, $admin = false ) {
 	// Remove all format files.
 	else {
 
-		torbara_remove_dir( $dir );
+		ology_remove_dir( $dir );
 
 	}
 
@@ -216,7 +216,7 @@ function torbara_flush_compiler( $id, $file_format = false, $admin = false ) {
 /**
  * Flush admin cached compiler files.
  *
- * This function is a shortcut of {@see torbara_flush_compiler()}.
+ * This function is a shortcut of {@see ology_flush_compiler()}.
  *
  * @since 1.0.0
  *
@@ -224,9 +224,9 @@ function torbara_flush_compiler( $id, $file_format = false, $admin = false ) {
  * @param string|bool $file_format Optional. Define which files format should be removed. Both CSS and JS
  *                                 files will be removed if set to false. Accepts 'false', 'css' or 'js'.
  */
-function torbara_flush_admin_compiler( $id, $file_format = false ) {
+function ology_flush_admin_compiler( $id, $file_format = false ) {
 
-	torbara_flush_compiler( $id, $file_format, true );
+	ology_flush_compiler( $id, $file_format, true );
 
 }
 
@@ -238,7 +238,7 @@ function torbara_flush_admin_compiler( $id, $file_format = false ) {
  *
  * @return string Compiler directory.
  */
-function torbara_get_compiler_dir( $admin = false ) {
+function ology_get_compiler_dir( $admin = false ) {
 
 	$wp_upload_dir = wp_upload_dir();
 	$suffix = $admin ? 'beans/admin-compiler/' : 'beans/compiler/';
@@ -251,7 +251,7 @@ function torbara_get_compiler_dir( $admin = false ) {
 	 * @since 1.0.0
 	 * @deprecated 1.3.0
 	 */
-	$deprecated = apply_filters( 'torbara_compiler_dir', false, $admin );
+	$deprecated = apply_filters( 'ology_compiler_dir', false, $admin );
 
 	return wp_normalize_path( trailingslashit( $wp_upload_dir['basedir'] ) . $suffix );
 
@@ -265,7 +265,7 @@ function torbara_get_compiler_dir( $admin = false ) {
  *
  * @return string Compiler directory.
  */
-function torbara_get_compiler_url( $admin = false ) {
+function ology_get_compiler_url( $admin = false ) {
 
 	$wp_upload_dir = wp_upload_dir();
 	$suffix = $admin ? 'beans/admin-compiler/' : 'beans/compiler/';
@@ -280,12 +280,12 @@ function torbara_get_compiler_url( $admin = false ) {
  *
  * @ignore
  */
-function torbara_tt_is_compiler_dev_mode() {
+function ology_tt_is_compiler_dev_mode() {
 
-	if ( defined( 'torbara_COMPILER_DEV_MODE' ) )
-		return torbara_COMPILER_DEV_MODE;
+	if ( defined( 'ology_COMPILER_DEV_MODE' ) )
+		return ology_COMPILER_DEV_MODE;
 
-	return get_option( 'torbara_dev_mode', false );
+	return get_option( 'ology_dev_mode', false );
 
 }
 
@@ -295,10 +295,10 @@ function torbara_tt_is_compiler_dev_mode() {
  *
  * @ignore
  */
-global $torbara_tt_compiler_added_fragments;
+global $ology_tt_compiler_added_fragments;
 
-if ( !isset( $torbara_tt_compiler_added_fragments ) )
-	$torbara_tt_compiler_added_fragments = array(
+if ( !isset( $ology_tt_compiler_added_fragments ) )
+	$ology_tt_compiler_added_fragments = array(
 		'css' => array(),
 		'less' => array(),
 		'js' => array()

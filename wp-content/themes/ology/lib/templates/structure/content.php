@@ -27,13 +27,13 @@ if ( is_search() ) {
 
 }
 
-echo torbara_open_markup( 'torbara_content', 'div', $content_attributes );
+echo ology_open_markup( 'ology_content', 'div', $content_attributes );
 
 	/**
 	 * Fires in the main content.
 	 *
 	 * @since 1.0.0
 	 */
-	do_action( 'torbara_content' );
+	do_action( 'ology_content' );
 
-echo torbara_close_markup( 'torbara_content', 'div' );
+echo ology_close_markup( 'ology_content', 'div' );

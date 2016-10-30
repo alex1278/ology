@@ -6,7 +6,7 @@
  *
  * @package API\Term_meta
  */
-final class torbara_tt_Term_Meta {
+final class ology_tt_Term_Meta {
 
 	/**
 	 * Fields section.
@@ -23,7 +23,7 @@ final class torbara_tt_Term_Meta {
 		$this->section = $section;
 		$this->do_once();
 
-		add_action( torbara_get( 'taxonomy' ). '_edit_form_fields', array( $this, 'fields' ) );
+		add_action( ology_get( 'taxonomy' ). '_edit_form_fields', array( $this, 'fields' ) );
 
 	}
 
@@ -37,7 +37,7 @@ final class torbara_tt_Term_Meta {
 
 		if ( !$once ) :
 
-			add_action( torbara_get( 'taxonomy' ). '_edit_form', array( $this, 'nonce' ) );
+			add_action( ology_get( 'taxonomy' ). '_edit_form', array( $this, 'nonce' ) );
 			add_action( 'edit_term', array( $this, 'save' ) );
 			add_action( 'delete_term', array( $this, 'delete' ), 10, 3 );
 
@@ -53,7 +53,7 @@ final class torbara_tt_Term_Meta {
 	 */
 	public function nonce( $tag ) {
 
-		echo '<input type="hidden" name="torbara_term_meta_nonce" value="' . esc_attr( wp_create_nonce( 'torbara_term_meta_nonce' ) ) . '" />';
+		echo '<input type="hidden" name="ology_term_meta_nonce" value="' . esc_attr( wp_create_nonce( 'ology_term_meta_nonce' ) ) . '" />';
 
 	}
 
@@ -63,19 +63,19 @@ final class torbara_tt_Term_Meta {
 	 */
 	public function fields( $tag ) {
 
-		torbara_remove_action( 'torbara_field_label' );
-		torbara_modify_action_hook( 'torbara_field_description', 'torbara_field_wrap_after_markup' );
-		torbara_modify_markup( 'torbara_field_description', 'p' );
-		torbara_add_attribute( 'torbara_field_description', 'class', 'description' );
+		ology_remove_action( 'ology_field_label' );
+		ology_modify_action_hook( 'ology_field_description', 'ology_field_wrap_after_markup' );
+		ology_modify_markup( 'ology_field_description', 'p' );
+		ology_add_attribute( 'ology_field_description', 'class', 'description' );
 
-		foreach ( torbara_get_fields( 'term_meta', $this->section ) as $field ) {
+		foreach ( ology_get_fields( 'term_meta', $this->section ) as $field ) {
 
 			echo '<tr class="form-field">';
 				echo '<th scope="row">';
-					torbara_field_label( $field );
+					ology_field_label( $field );
 				echo '</th>';
 				echo '<td>';
-					torbara_field( $field );
+					ology_field( $field );
 				echo '</td>';
 			echo '</tr>';
 
@@ -92,14 +92,14 @@ final class torbara_tt_Term_Meta {
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
 			return $term_id;
 
-		if ( !wp_verify_nonce( torbara_post( 'torbara_term_meta_nonce' ), 'torbara_term_meta_nonce' ) )
+		if ( !wp_verify_nonce( ology_post( 'ology_term_meta_nonce' ), 'ology_term_meta_nonce' ) )
 			return $term_id;
 
-		if ( !$fields = torbara_post( 'torbara_fields' ) )
+		if ( !$fields = ology_post( 'ology_fields' ) )
 			return $term_id;
 
 		foreach ( $fields as $field => $value )
-			update_option( "torbara_term_{$term_id}_{$field}", stripslashes_deep( $value ) );
+			update_option( "ology_term_{$term_id}_{$field}", stripslashes_deep( $value ) );
 
 	}
 
@@ -113,7 +113,7 @@ final class torbara_tt_Term_Meta {
 
 		$wpdb->query( $wpdb->prepare(
 			"DELETE FROM $wpdb->options WHERE option_name LIKE %s",
-			"torbara_term_{$term_id}_%"
+			"ology_term_{$term_id}_%"
 		) );
 
 	}

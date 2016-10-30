@@ -6,7 +6,7 @@
  *
  * @package API\WP_Customize
  */
-final class torbara_tt_WP_Customize {
+final class ology_tt_WP_Customize {
 
 	/**
 	 * Fields section.
@@ -33,7 +33,7 @@ final class torbara_tt_WP_Customize {
 		// Add section, settings and controls.
 		$this->add();
 
-		torbara_add_attribute( 'torbara_field_label', 'class', 'customize-control-title' );
+		ology_add_attribute( 'ology_field_label', 'class', 'customize-control-title' );
 
 	}
 
@@ -47,7 +47,7 @@ final class torbara_tt_WP_Customize {
 
 		$this->add_section( $wp_customize );
 
-		$fields = torbara_get_fields( 'wp_customize', $this->section );
+		$fields = ology_get_fields( 'wp_customize', $this->section );
 
 		foreach ( $fields as $field ) {
 
@@ -99,7 +99,7 @@ final class torbara_tt_WP_Customize {
 		$wp_customize->add_setting(
 			$field['name'],
 			array(
-				'default' => torbara_get( 'default', $field ),
+				'default' => ology_get( 'default', $field ),
 				'type' => $field['db_type'],
 				'capability' => $field['capability'],
 				'transport' => $field['transport'],
@@ -115,7 +115,7 @@ final class torbara_tt_WP_Customize {
 	 */
 	private function add_control( $wp_customize, $field ) {
 
-		$class = 'torbara_tt_WP_Customize_Control';
+		$class = 'ology_tt_WP_Customize_Control';
 
 		if ( $field['type'] !== $class && class_exists( $field['type'] ) )
 			$class = $field['type'];
@@ -154,14 +154,14 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 	 *
 	 * @ignore
 	 */
-	class torbara_tt_WP_Customize_Control extends WP_Customize_Control {
+	class ology_tt_WP_Customize_Control extends WP_Customize_Control {
 
 		/**
 		 * Field data.
 		 *
 		 * @type string
 		 */
-		private $torbara_field;
+		private $ology_field;
 
 
 		/**
@@ -173,7 +173,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 
 			call_user_func_array( array( 'parent', '__construct' ), $args );
 
-			$this->torbara_field = end( $args );
+			$this->ology_field = end( $args );
 
 		}
 
@@ -183,7 +183,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 		 */
 		public function render_content() {
 
-			torbara_field( $this->torbara_field );
+			ology_field( $this->ology_field );
 
 		}
 

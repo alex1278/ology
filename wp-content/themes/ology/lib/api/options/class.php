@@ -6,7 +6,7 @@
  *
  * @package API\Options
  */
-final class torbara_tt_Options {
+final class ology_tt_Options {
 
 	/**
 	 * Metabox arguments.
@@ -69,7 +69,7 @@ final class torbara_tt_Options {
 			$this->section,
 			$this->args['title'],
 			array( $this, 'metabox_content' ),
-			torbara_get( 'page' ),
+			ology_get( 'page' ),
 			$this->args['context'],
 			'default'
 		);
@@ -82,8 +82,8 @@ final class torbara_tt_Options {
 	 */
 	public function metabox_content() {
 
-		foreach ( torbara_get_fields( 'option', $this->section ) as $field )
-			torbara_field( $field );
+		foreach ( ology_get_fields( 'option', $this->section ) as $field )
+			ology_field( $field );
 
 	}
 
@@ -95,18 +95,18 @@ final class torbara_tt_Options {
 
 		global $wp_meta_boxes;
 
-		if ( !$boxes = torbara_get( $page, $wp_meta_boxes ) )
+		if ( !$boxes = ology_get( $page, $wp_meta_boxes ) )
 			return;
 
 		// Only add column class if there is more than 1 metaboxes.
-		$column_class = torbara_get( 'column', $boxes, array() ) ? ' column' : false;
+		$column_class = ology_get( 'column', $boxes, array() ) ? ' column' : false;
 
 		// Set page data which will be used by the postbox.
-		echo '<form action="" method="post" class="bs-options" data-page="' . torbara_get( 'page' ) . '">';
+		echo '<form action="" method="post" class="bs-options" data-page="' . ology_get( 'page' ) . '">';
 
 			wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
 			wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
-			echo '<input type="hidden" name="torbara_options_nonce" value="' . esc_attr( wp_create_nonce( 'torbara_options_nonce' ) ) . '" />';
+			echo '<input type="hidden" name="ology_options_nonce" value="' . esc_attr( wp_create_nonce( 'ology_options_nonce' ) ) . '" />';
 
 			echo '<div class="metabox-holder' . $column_class . '">';
 
@@ -118,8 +118,8 @@ final class torbara_tt_Options {
 			echo '</div>';
 
 			echo '<p class="bs-options-form-actions">
-				<input type="submit" name="torbara_save_options" value="' . esc_attr__( 'Save', 'torbara' ) . '" class="button-primary">
-				<input type="submit" name="torbara_reset_options" value="' . esc_attr__( 'Reset', 'torbara' ) . '" class="button-secondary">
+				<input type="submit" name="ology_save_options" value="' . esc_attr__( 'Save', 'torbara' ) . '" class="button-primary">
+				<input type="submit" name="ology_reset_options" value="' . esc_attr__( 'Reset', 'torbara' ) . '" class="button-secondary">
 			</p>';
 
 		echo '</form>';
@@ -132,14 +132,14 @@ final class torbara_tt_Options {
 	 */
 	public function actions() {
 
-		if ( torbara_post( 'torbara_save_options' ) ) {
+		if ( ology_post( 'ology_save_options' ) ) {
 
 			$this->save();
 			add_action( 'admin_notices', array( $this, 'save_notices' ) );
 
 		}
 
-		if ( torbara_post( 'torbara_reset_options' ) ) {
+		if ( ology_post( 'ology_reset_options' ) ) {
 
 			$this->reset();
 			add_action( 'admin_notices', array( $this, 'reset_notices' ) );
@@ -154,10 +154,10 @@ final class torbara_tt_Options {
 	 */
 	private function save() {
 
-		if ( !wp_verify_nonce( torbara_post( 'torbara_options_nonce' ), 'torbara_options_nonce' ) )
+		if ( !wp_verify_nonce( ology_post( 'ology_options_nonce' ), 'ology_options_nonce' ) )
 			return false;
 
-		if ( !( $fields = torbara_post( 'torbara_fields' ) ) )
+		if ( !( $fields = ology_post( 'ology_fields' ) ) )
 			return false;
 
 		foreach ( $fields as $field => $value )
@@ -173,10 +173,10 @@ final class torbara_tt_Options {
 	 */
 	private function reset() {
 
-		if ( !wp_verify_nonce( torbara_post( 'torbara_options_nonce' ), 'torbara_options_nonce' ) )
+		if ( !wp_verify_nonce( ology_post( 'ology_options_nonce' ), 'ology_options_nonce' ) )
 			return false;
 
-		if ( !( $fields = torbara_post( 'torbara_fields' ) ) )
+		if ( !( $fields = ology_post( 'ology_fields' ) ) )
 			return false;
 
 		foreach ( $fields as $field => $value )

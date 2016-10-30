@@ -29,7 +29,7 @@
  *            					  attribute name and the array value defines the attribute value. Default array.
  *      @type mixed  $default     The default field value. Default false.
  *      @type array  $fields      Must only be used for 'group' field type. The array arguments are similar to the
- *            					  {@see torbara_register_fields()} $fields arguments.
+ *            					  {@see ology_register_fields()} $fields arguments.
  *      @type bool   $db_group    Must only be used for 'group' field type. It defines whether the group of fields
  *            					  registered should be saved as a group in the database or as individual
  *            					  entries. Default false.
@@ -41,15 +41,15 @@
  *
  * @return bool True on success, false on failure.
  */
-function torbara_register_fields( array $fields, $context, $section ) {
+function ology_register_fields( array $fields, $context, $section ) {
 
 	if ( empty( $fields ) )
 		return false;
 
 	// Load the class only if this function is called to prevent unnecessary memory usage.
-	require_once( torbara_API_PATH . 'fields/class.php' );
+	require_once( ology_API_PATH . 'fields/class.php' );
 
-	$class = new torbara_tt_Fields();
+	$class = new ology_tt_Fields();
 	$class->register( $fields, $context, $section );
 
 	return true;
@@ -61,7 +61,7 @@ function torbara_register_fields( array $fields, $context, $section ) {
  * Get registered fields.
  *
  * This function is used to get the previously registered fields in order to display them using
- * {@see torbara_field()}.
+ * {@see ology_field()}.
  *
  * @since 1.0.0
  *
@@ -73,12 +73,12 @@ function torbara_register_fields( array $fields, $context, $section ) {
  *
  * @return array|bool Array of register fields on success, false on failure.
  */
-function torbara_get_fields( $context, $section = false ) {
+function ology_get_fields( $context, $section = false ) {
 
-	if ( !class_exists( 'torbara_tt_Fields' ) )
+	if ( !class_exists( 'ology_tt_Fields' ) )
 		return;
 
-	$class = new torbara_tt_Fields();
+	$class = new ology_tt_Fields();
 	return $class->get_fields( $context, $section );
 
 }
@@ -88,18 +88,18 @@ function torbara_get_fields( $context, $section = false ) {
  * Echo a field.
  *
  * This function echos the field content. Must be used in the loop of fields obtained using
- * {@see torbara_get_fields()}.
+ * {@see ology_get_fields()}.
  *
  * @since 1.0.0
  *
- * @param array $field Array of data obtained using {@see torbara_get_fields()}.
+ * @param array $field Array of data obtained using {@see ology_get_fields()}.
  */
-function torbara_field( $field ) {
+function ology_field( $field ) {
 
-	if ( !class_exists( 'torbara_tt_Fields' ) )
+	if ( !class_exists( 'ology_tt_Fields' ) )
 		return;
 
-	$class = new torbara_tt_Fields();
+	$class = new ology_tt_Fields();
 	$class->field_content( $field );
 
 }
@@ -110,7 +110,7 @@ function torbara_field( $field ) {
  *
  * @ignore
  */
-function torbara_tt_pre_standardize_fields( $fields ) {
+function ology_tt_pre_standardize_fields( $fields ) {
 
 	$_fields = array();
 
@@ -118,8 +118,8 @@ function torbara_tt_pre_standardize_fields( $fields ) {
 
 		$_fields[$field['id']] = $field;
 
-		if ( torbara_get( 'type', $field ) === 'group' )
-			$_fields[$field['id']]['fields'] = torbara_tt_pre_standardize_fields( $field['fields'] );
+		if ( ology_get( 'type', $field ) === 'group' )
+			$_fields[$field['id']]['fields'] = ology_tt_pre_standardize_fields( $field['fields'] );
 
 	}
 

@@ -21,7 +21,7 @@
  * When development mode is enabled, files changes will automatically be detected. This makes it very easy
  * to style UIkit themes using LESS.
  *
- * This function must be called in the 'torbara_uikit_enqueue_scripts' action hook.
+ * This function must be called in the 'ology_uikit_enqueue_scripts' action hook.
  *
  * @since 1.0.0
  *
@@ -31,28 +31,28 @@
  * @param string       $type       Optional. Type of UIkit components ('core' or 'add-ons').
  * @param bool         $autoload   Optional. Automatically include components dependencies.
  */
-function torbara_uikit_enqueue_components( $components, $type = 'core', $autoload = true ) {
+function ology_uikit_enqueue_components( $components, $type = 'core', $autoload = true ) {
 
-	global $torbara_tt_uikit_enqueued_items;
+	global $ology_tt_uikit_enqueued_items;
 
 	// Get all uikit components.
 	if ( $components === true ) {
 
-		$uikit = new torbara_tt_Uikit;
+		$uikit = new ology_tt_Uikit;
 		$components = $uikit->get_all_components( $type );
 
 	} elseif ( $autoload ) {
 
-		$uikit = new torbara_tt_Uikit;
+		$uikit = new ology_tt_Uikit;
 		$autoloads = $uikit->get_autoload_components( (array) $components );
 
 		foreach ( $autoloads as $autotype => $autoload )
-			torbara_uikit_enqueue_components( $autoload, $autotype, false );
+			ology_uikit_enqueue_components( $autoload, $autotype, false );
 
 	}
 
 	// Add components.
-	$torbara_tt_uikit_enqueued_items['components'][$type] = array_merge( (array) $torbara_tt_uikit_enqueued_items['components'][$type], (array) $components );
+	$ology_tt_uikit_enqueued_items['components'][$type] = array_merge( (array) $ology_tt_uikit_enqueued_items['components'][$type], (array) $components );
 
 }
 
@@ -66,7 +66,7 @@ function torbara_uikit_enqueue_components( $components, $type = 'core', $autoloa
  * When development mode is enabled, files changes will automatically be detected. This makes it very easy
  * to style UIkit themes using LESS.
  *
- * This function must be called in the 'torbara_uikit_enqueue_scripts' action hook.
+ * This function must be called in the 'ology_uikit_enqueue_scripts' action hook.
  *
  * @since 1.0.0
  *
@@ -75,19 +75,19 @@ function torbara_uikit_enqueue_components( $components, $type = 'core', $autoloa
  *                                 exclude all components.
  * @param string       $type       Optional. Type of UIkit components ('core' or 'add-ons').
  */
-function torbara_uikit_dequeue_components( $components, $type = 'core' ) {
+function ology_uikit_dequeue_components( $components, $type = 'core' ) {
 
-	global $torbara_tt_uikit_enqueued_items;
+	global $ology_tt_uikit_enqueued_items;
 
 	if ( $components === true ) {
 
-		$uikit = new torbara_tt_Uikit;
+		$uikit = new ology_tt_Uikit;
 		$components = $uikit->get_all_components( $type );
 
 	}
 
 	// Remove components.
-	$torbara_tt_uikit_enqueued_items['components'][$type] = array_diff( (array) $torbara_tt_uikit_enqueued_items['components'][$type], (array) $components );
+	$ology_tt_uikit_enqueued_items['components'][$type] = array_diff( (array) $ology_tt_uikit_enqueued_items['components'][$type], (array) $components );
 
 }
 
@@ -98,7 +98,7 @@ function torbara_uikit_dequeue_components( $components, $type = 'core' ) {
  * The theme must not contain sub-folders. Component files in the theme will be automatically combined to
  * the UIkit compiler if that component is used.
  *
- * This function must be called in the 'torbara_uikit_enqueue_scripts' action hook.
+ * This function must be called in the 'ology_uikit_enqueue_scripts' action hook.
  *
  * @since 1.0.0
  *
@@ -107,21 +107,21 @@ function torbara_uikit_dequeue_components( $components, $type = 'core' ) {
  *
  * @return bool False on error or if already exists, true on success.
  */
-function torbara_uikit_register_theme( $id, $path ) {
+function ology_uikit_register_theme( $id, $path ) {
 
-	global $torbara_tt_uikit_registered_items;
+	global $ology_tt_uikit_registered_items;
 
 	// Stop here if already registered.
-	if ( torbara_get( $id, $torbara_tt_uikit_registered_items['themes'] ) )
+	if ( ology_get( $id, $ology_tt_uikit_registered_items['themes'] ) )
 		return true;
 
 	if ( !$path )
 		return false;
 
 	if ( stripos( $path, 'http' ) !== false )
-		$path = torbara_url_to_path( $path );
+		$path = ology_url_to_path( $path );
 
-	$torbara_tt_uikit_registered_items['themes'][$id] = trailingslashit( $path );
+	$ology_tt_uikit_registered_items['themes'][$id] = trailingslashit( $path );
 
 	return true;
 
@@ -134,7 +134,7 @@ function torbara_uikit_register_theme( $id, $path ) {
  * The theme must not contain sub-folders. Component files in the theme will be automatically combined to
  * the UIkit compiler if that component is used.
  *
- * This function must be called in the 'torbara_uikit_enqueue_scripts' action hook.
+ * This function must be called in the 'ology_uikit_enqueue_scripts' action hook.
  *
  * @since 1.0.0
  *
@@ -143,15 +143,15 @@ function torbara_uikit_register_theme( $id, $path ) {
  *
  * @return bool False on error, true on success.
  */
-function torbara_uikit_enqueue_theme( $id, $path = false ) {
+function ology_uikit_enqueue_theme( $id, $path = false ) {
 
 	// Make sure it is registered, if not, try to do so.
-	if ( !torbara_uikit_register_theme( $id, $path ) )
+	if ( !ology_uikit_register_theme( $id, $path ) )
 		return false;
 
-	global $torbara_tt_uikit_enqueued_items;
+	global $ology_tt_uikit_enqueued_items;
 
-	$torbara_tt_uikit_enqueued_items['themes'][$id] = torbara_tt_uikit_get_registered_theme( $id );
+	$ology_tt_uikit_enqueued_items['themes'][$id] = ology_tt_uikit_get_registered_theme( $id );
 
 	return true;
 
@@ -161,7 +161,7 @@ function torbara_uikit_enqueue_theme( $id, $path = false ) {
 /**
  * Dequeue a UIkit theme.
  *
- * This function must be called in the 'torbara_uikit_enqueue_scripts' action hook.
+ * This function must be called in the 'ology_uikit_enqueue_scripts' action hook.
  *
  * @since 1.0.0
  *
@@ -169,11 +169,11 @@ function torbara_uikit_enqueue_theme( $id, $path = false ) {
  *
  * @return bool Will always return true.
  */
-function torbara_uikit_dequeue_theme( $id ) {
+function ology_uikit_dequeue_theme( $id ) {
 
-	global $torbara_tt_uikit_enqueued_items;
+	global $ology_tt_uikit_enqueued_items;
 
-	unset( $torbara_tt_uikit_enqueued_items['themes'][$id] );
+	unset( $ology_tt_uikit_enqueued_items['themes'][$id] );
 
 }
 
@@ -183,15 +183,15 @@ function torbara_uikit_dequeue_theme( $id ) {
  *
  * @ignore
  */
-global $torbara_tt_uikit_registered_items;
+global $ology_tt_uikit_registered_items;
 
-if ( !isset( $torbara_tt_uikit_registered_items ) )
-	$torbara_tt_uikit_registered_items = array(
+if ( !isset( $ology_tt_uikit_registered_items ) )
+	$ology_tt_uikit_registered_items = array(
 		'themes' => array(
-			'default' => torbara_API_PATH . 'uikit/src/themes/default',
-			'almost-flat' => torbara_API_PATH . 'uikit/src/themes/almost-flat',
-			'gradient' => torbara_API_PATH . 'uikit/src/themes/gradient',
-			'wordpress-admin' => torbara_API_PATH . 'uikit/themes/wordpress-admin'
+			'default' => ology_API_PATH . 'uikit/src/themes/default',
+			'almost-flat' => ology_API_PATH . 'uikit/src/themes/almost-flat',
+			'gradient' => ology_API_PATH . 'uikit/src/themes/gradient',
+			'wordpress-admin' => ology_API_PATH . 'uikit/themes/wordpress-admin'
 		)
 	);
 
@@ -201,10 +201,10 @@ if ( !isset( $torbara_tt_uikit_registered_items ) )
  *
  * @ignore
  */
-global $torbara_tt_uikit_enqueued_items;
+global $ology_tt_uikit_enqueued_items;
 
-if ( !isset( $torbara_tt_uikit_enqueued_items ) )
-	$torbara_tt_uikit_enqueued_items = array(
+if ( !isset( $ology_tt_uikit_enqueued_items ) )
+	$ology_tt_uikit_enqueued_items = array(
 		'components' => array(
 			'core' => array(),
 			'add-ons' => array(),
@@ -218,12 +218,12 @@ if ( !isset( $torbara_tt_uikit_enqueued_items ) )
  *
  * @ignore
  */
-function torbara_tt_uikit_get_registered_theme( $id ) {
+function ology_tt_uikit_get_registered_theme( $id ) {
 
-	global $torbara_tt_uikit_registered_items;
+	global $ology_tt_uikit_registered_items;
 
 	// Stop here if is already registered.
-	if ( $theme = torbara_get( $id, $torbara_tt_uikit_registered_items['themes'] ) )
+	if ( $theme = ology_get( $id, $ology_tt_uikit_registered_items['themes'] ) )
 		return $theme;
 
 	return false;
@@ -231,16 +231,16 @@ function torbara_tt_uikit_get_registered_theme( $id ) {
 }
 
 
-add_action( 'wp_enqueue_scripts', 'torbara_tt_uikit_enqueue_assets', 7 );
+add_action( 'wp_enqueue_scripts', 'ology_tt_uikit_enqueue_assets', 7 );
 
 /**
  * Enqueue UIkit assets.
  *
  * @ignore
  */
-function torbara_tt_uikit_enqueue_assets() {
+function ology_tt_uikit_enqueue_assets() {
 
-	if ( !has_action( 'torbara_uikit_enqueue_scripts' ) )
+	if ( !has_action( 'ology_uikit_enqueue_scripts' ) )
 		return;
 
 	/**
@@ -248,26 +248,26 @@ function torbara_tt_uikit_enqueue_assets() {
 	 *
 	 * @since 1.0.0
 	 */
-	do_action( 'torbara_uikit_enqueue_scripts' );
+	do_action( 'ology_uikit_enqueue_scripts' );
 
 	// Compile everything.
-	$uikit = new torbara_tt_Uikit;
+	$uikit = new ology_tt_Uikit;
 
 	$uikit->compile();
 
 }
 
 
-add_action( 'admin_enqueue_scripts', 'torbara_tt_uikit_enqueue_admin_assets', 7 );
+add_action( 'admin_enqueue_scripts', 'ology_tt_uikit_enqueue_admin_assets', 7 );
 
 /**
  * Enqueue UIkit admin assets.
  *
  * @ignore
  */
-function torbara_tt_uikit_enqueue_admin_assets() {
+function ology_tt_uikit_enqueue_admin_assets() {
 
-	if ( !has_action( 'torbara_uikit_admin_enqueue_scripts' ) )
+	if ( !has_action( 'ology_uikit_admin_enqueue_scripts' ) )
 		return;
 
 	/**
@@ -275,10 +275,10 @@ function torbara_tt_uikit_enqueue_admin_assets() {
 	 *
 	 * @since 1.0.0
 	 */
-	do_action( 'torbara_uikit_admin_enqueue_scripts' );
+	do_action( 'ology_uikit_admin_enqueue_scripts' );
 
 	// Compile everything.
-	$uikit = new torbara_tt_Uikit;
+	$uikit = new ology_tt_Uikit;
 
 	$uikit->compile();
 

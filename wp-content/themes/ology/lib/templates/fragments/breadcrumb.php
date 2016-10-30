@@ -5,14 +5,14 @@
  * @package Fragments\Breadcrumb
  */
 
-torbara_add_smart_action( 'torbara_main_grid_before_markup', 'torbara_breadcrumb' );
+ology_add_smart_action( 'ology_main_grid_before_markup', 'ology_breadcrumb' );
 
 /**
  * Echo the breadcrumb.
  *
  * @since 1.0.0
  */
-function torbara_breadcrumb() {
+function ology_breadcrumb() {
 
 	if ( is_home() || is_front_page() )
 		return;
@@ -122,7 +122,7 @@ function torbara_breadcrumb() {
 	}
 
 	// Open breadcrumb.
-	echo torbara_open_markup( 'torbara_breadcrumb', 'ul', array( 'class' => 'uk-breadcrumb uk-width-1-1' ) );
+	echo ology_open_markup( 'ology_breadcrumb', 'ul', array( 'class' => 'uk-breadcrumb uk-width-1-1' ) );
 
 		$i = 0;
 
@@ -131,32 +131,32 @@ function torbara_breadcrumb() {
 			// Breadcrumb items.
 			if ( $i != count( $breadcrumbs ) - 1 ) {
 
-				echo torbara_open_markup( 'torbara_breadcrumb_item', 'li' );
+				echo ology_open_markup( 'ology_breadcrumb_item', 'li' );
 
-					echo torbara_open_markup( 'torbara_breadcrumb_item_link', 'a', array(
+					echo ology_open_markup( 'ology_breadcrumb_item_link', 'a', array(
 						'href' => $breadcrumb_url // Automatically escaped.
 					) );
 
 						// Used for mobile devices.
-						echo torbara_open_markup( 'torbara_breadcrumb_item_link_inner', 'span' );
+						echo ology_open_markup( 'ology_breadcrumb_item_link_inner', 'span' );
 
 							echo esc_html($breadcrumb);
 
-						echo torbara_close_markup( 'torbara_breadcrumb_item_link_inner', 'span' );
+						echo ology_close_markup( 'ology_breadcrumb_item_link_inner', 'span' );
 
-					echo torbara_close_markup( 'torbara_breadcrumb_item_link', 'a' );
+					echo ology_close_markup( 'ology_breadcrumb_item_link', 'a' );
 
-				echo torbara_close_markup( 'torbara_breadcrumb_item', 'li' );
+				echo ology_close_markup( 'ology_breadcrumb_item', 'li' );
 
 			}
 			// Active.
 			else {
 
-				echo torbara_open_markup( 'torbara_breadcrumb_item[_active]', 'li', array( 'class' => 'uk-active uk-text-muted' ) );
+				echo ology_open_markup( 'ology_breadcrumb_item[_active]', 'li', array( 'class' => 'uk-active uk-text-muted' ) );
 
 					echo esc_html($breadcrumb);
 
-				echo torbara_close_markup( 'torbara_breadcrumb_item[_active]', 'li' );
+				echo ology_close_markup( 'ology_breadcrumb_item[_active]', 'li' );
 
 			}
 
@@ -165,6 +165,6 @@ function torbara_breadcrumb() {
 		}
 
 	// Close breadcrumb.
-	echo torbara_close_markup( 'torbara_breadcrumb', 'ul' );
+	echo ology_close_markup( 'ology_breadcrumb', 'ul' );
 
 }
