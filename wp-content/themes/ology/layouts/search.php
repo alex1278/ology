@@ -1,5 +1,5 @@
 <?php if (have_posts()) : ?>
-            <div class="uk-margin-large-bottom uk-text-bold uk-text-left ang-search-form"><?php // get_search_form(); ?></div>
+            <div class="uk-margin-large-bottom uk-text-bold uk-text-left ang-search-form"></div>
             <h2 class="uk-article-title uk-margin-large-top uk-margin-large-bottom uk-text-bold"><?php esc_html_e('Search Results for', 'ology'); ?> &#8216;<?php echo stripslashes(strip_tags(get_search_query())); ?>&#8217;</h2>
             <div class="ang-search-wrapp">
                 <?php
@@ -17,7 +17,7 @@
                             <h4 class="uk-margin-top-remove"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h4>
                     <?php } ?>
 
-                    <?php if (has_post_thumbnail()) : ?>        
+                    <?php if (has_post_thumbnail()) : ?>
                         <div class="uk-position-relative">
                             <div class="uk-position-relative">
 
@@ -29,7 +29,7 @@
 
 
                             </div>
-                            
+
                             <div class="ang-stickers-wrapper">
                                 <span class="uk-float-left">
                                     <span class="ang-status-sticker">
@@ -52,7 +52,7 @@
                                 }
                                 ology_default_image ();
                                 ?>
-                                
+
 
                         <?php endif; ?>
                     <div class="">
@@ -70,7 +70,7 @@
 
                         </div>
                         <div class="ang-arhive-links uk-clearfix">
-                            
+
                             <span class="uk-float-left"><?php esc_html_e('Author: ', 'ology');?> <?php the_author_posts_link(); ?> </span>
                             <?php if(comments_open() || get_comments_number()) : ?>
                             <span class="uk-float-right"><?php esc_html_e('Comments: ', 'ology'); comments_popup_link(esc_html__('0', 'ology'), esc_html__('1', 'ology'), esc_html__('%', 'ology'), "", "");?></span>

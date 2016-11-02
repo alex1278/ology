@@ -22,5 +22,5 @@ if ( defined('TT_WARP_PLUGIN_URL') ) {
 } else {
     // Otherwise, we work in legacy mode.
     // Template situated in /lib/templates/structure/footer.php
-    require_once get_template_part().'/lib/templates/structure/footer.php';
+    get_template_part('lib/templates/structure/footer');
 }

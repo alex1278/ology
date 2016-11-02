@@ -10,4 +10,4 @@
  */
 
 // Template situated in /lib/templates/structure/sidebar-a.php
-require_once get_template_part().'/lib/templates/structure/sidebar-a.php';
+get_template_part('lib/templates/structure/sidebar-a');

@@ -9,9 +9,9 @@ ceeaf22cc659c264faef38061133b1ea config.xml
 79cfb6394afc4bb602794fb3d97d0366 css/editor-style.css
 20795ce8c2004c313825bb6abb6a71df css/theme.css
 c87223c83e60f73f82ab11b660ba9d59 css/woocommerce.css
-f2f9496256d827ade41aa0d4905e929b footer.php
+e5c4cb27b96e12a2b320c6ecbd2ed73f footer.php
 d2e7b886f642e0a08fc52480527169a9 functions.php
-9a7197f0945420fde768177d4f4f66ad header.php
+cfa82ad31923906ce2eac1388a852ebe header.php
 9c9a576dcb9a8611a125aab7c90ce71b images/404.jpg
 f4c8dcf5528f69b39ff03d5a2d7cd4e2 images/bg-texture.png
 9f7e97730010b2ef1eafc364aea6ff9a images/blockquote.png
@@ -21,7 +21,7 @@ f3f299e72bc840e06e77b3cf4c2e3c41 images/breadcrumbs-2.jpg
 3b13f56fdf30f8abdde94bc92bb2d382 images/icon.png
 cb40b1384c2c7d3ac68f032d67be7ba9 images/login-bg.jpg
 3dbbf77ff2807d296394b8d6cb3f227d images/logo.png
-57fa2898bf9db64523f16595400d0da8 images/scheme_layouts.png
+889152227f1a6d1bed0677ff94a27fe4 images/scheme_layouts.png
 c737813382f497cfef5352fdd7acf03b images/sidebar_layouts.png
 d7c1201f5efb3737892e990203d090d6 images/svg/agenda.svg
 eb8bb6359509520a609c7b68756c7e64 images/svg/briefcase.svg
@@ -65,7 +65,7 @@ b1db3378bb280d6f813b7994e9bda6ea js/theme.js
 a675a34da9f36e0de95b00380413e558 layouts/head.php
 6be1b5cfdf345a92031b241247e28567 layouts/offline.php
 5c436e5664a52223aa7b554de6fee093 layouts/page.php
-5ad2dade7e5e1fcf5d9f0ee9fff5730b layouts/search.php
+f637f394540bb3ef488b4148174e0d9f layouts/search.php
 daff76b2242363f9360b7e089d4f1818 layouts/single.php
 45b177f3767b4b4ca5c73d11a9fae38b layouts/theme.config.php
 6526b2c14f905470c82983c4489e3e7b layouts/theme.php
@@ -508,8 +508,8 @@ ee09a423948689e37472a9de768a5abb plugins/ang-commando-staff-team.1.0.0.tar
 cf98071f2a8f8195978f08cbd9b10437 plugins/tt-warp.7.3.32.tar
 c65da60d9a97495bb9398a159c95eb88 readme.txt
 c3abd3e927eb80a1717587ec9dd0b8b2 screenshot.png
-8881e9263188430911b271e290b2569a sidebar-a.php
-9cf520911b38fccd7b1b1e4f7252d3c2 sidebar-secondary.php
+5a352fba60538604d8559cfbeb47fd8e sidebar-a.php
+2c7a15506859faec134eafc5a6bd623f sidebar-secondary.php
 7469c487667cebe612dc4864ec5319fd sidebar.php
 969bd4fcc2b30d578b0a11fb47a0ddcf single-commando.php
 0b6d4883d91d25debde3692a9a93f7fd style.css
