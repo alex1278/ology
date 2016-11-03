@@ -6,7 +6,7 @@
 /**
  * Get the current post meta value.
  *
- * This function is a shortcut of {@link http://codex.wordpress.org/Function_Reference/get_post_meta get_post_meta()}.
+ * This function is a shortcut of {@link http://codex.WordPress.org/Function_Reference/get_post_meta get_post_meta()}.
  *
  * @since 1.0.0
  *

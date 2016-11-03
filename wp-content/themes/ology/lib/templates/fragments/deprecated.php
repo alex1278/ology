@@ -54,7 +54,7 @@ function ology_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary.
 	if ( $paged >= 2 || $page >= 2 )
-		$title .= " $sep " . sprintf( esc_html__( 'Page %s', 'torbara' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( esc_html__( 'Page %s', 'ology' ), max( $paged, $page ) );
 
 	return $title;
 

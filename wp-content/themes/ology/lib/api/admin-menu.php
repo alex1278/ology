@@ -22,7 +22,7 @@ final class ology_tt_Admin {
 	 */
 	public function admin_menu() {
 
-		add_theme_page( esc_html__( 'Settings', 'torbara' ), esc_html__( 'Settings', 'torbara' ), 'manage_options', 'ology_settings', array( $this, 'display_screen' ) );
+		add_theme_page( esc_html__( 'Settings', 'ology' ), esc_html__( 'Settings', 'ology' ), 'manage_options', 'ology_settings', array( $this, 'display_screen' ) );
 
 	}
 
@@ -34,7 +34,7 @@ final class ology_tt_Admin {
 
 		echo '<div class="wrap">';
 
-			echo '<h2>' . esc_html__( 'Beans Settings', 'torbara' ) . esc_html__( 'Version ', 'torbara' ) . ology_VERSION . '</h2>';
+			echo '<h2>' . esc_html__( 'Beans Settings', 'ology' ) . esc_html__( 'Version ', 'ology' ) . ology_VERSION . '</h2>';
 
 			echo ology_options( 'ology_settings' );
 
@@ -53,14 +53,14 @@ final class ology_tt_Admin {
 		$fields = array(
 			array(
 				'id' => 'ology_dev_mode',
-				'checkbox_label' => esc_html__( 'Enable development mode', 'torbara' ),
+				'checkbox_label' => esc_html__( 'Enable development mode', 'ology' ),
 				'type' => 'checkbox',
-				'description' => esc_html__( 'This option should be enabled while your website is in development.', 'torbara' )
+				'description' => esc_html__( 'This option should be enabled while your website is in development.', 'ology' )
 			)
 		);
 
 		ology_register_options( $fields, 'ology_settings', 'mode_options', array(
-			'title' => esc_html__( 'Mode options', 'torbara' ),
+			'title' => esc_html__( 'Mode options', 'ology' ),
 			'context' => ology_get( 'ology_settings', $wp_meta_boxes ) ? 'column' : 'normal' // Check for other beans boxes.
 		) );
 

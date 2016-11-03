@@ -31,13 +31,13 @@ function ology_do_register_wp_customize_options() {
 	$fields = array(
 		array(
 			'id' => 'ology_logo_image',
-			'label' => esc_html__( 'Logo Image', 'torbara' ),
+			'label' => esc_html__( 'Logo Image', 'ology' ),
 			'type' => 'WP_Customize_Image_Control',
 			'transport' => 'refresh'
 		)
 	);
 
-	ology_register_wp_customize_options( $fields, 'title_tagline', array( 'title' => esc_html__( 'Branding', 'torbara' ) ) );
+	ology_register_wp_customize_options( $fields, 'title_tagline', array( 'title' => esc_html__( 'Branding', 'ology' ) ) );
 
 	// Get layout option without default for the count.
 	$options = ology_get_layouts_for_options();
@@ -48,7 +48,7 @@ function ology_do_register_wp_customize_options() {
 		$fields = array(
 			array(
 				'id' => 'ology_layout',
-				'label' => esc_html__( 'Default Layout', 'torbara' ),
+				'label' => esc_html__( 'Default Layout', 'ology' ),
 				'type' => 'radio',
 				'default' => ology_get_default_layout(),
 				'options' => $options,
@@ -56,14 +56,14 @@ function ology_do_register_wp_customize_options() {
 			)
 		);
 
-		ology_register_wp_customize_options( $fields, 'ology_layout', array( 'title' => esc_html__( 'Default Layout', 'torbara' ), 'priority' => 1000 ) );
+		ology_register_wp_customize_options( $fields, 'ology_layout', array( 'title' => esc_html__( 'Default Layout', 'ology' ), 'priority' => 1000 ) );
 
 	}
 
 	$fields = array(
 		array(
 			'id' => 'ology_viewport_width_group',
-			'label' => esc_html__( 'Viewport Width', 'torbara' ),
+			'label' => esc_html__( 'Viewport Width', 'ology' ),
 			'type' => 'group',
 			'fields' => array(
 				array(
@@ -84,7 +84,7 @@ function ology_do_register_wp_customize_options() {
 		),
 		array(
 			'id' => 'ology_viewport_height_group',
-			'label' => esc_html__( 'Viewport Height', 'torbara' ),
+			'label' => esc_html__( 'Viewport Height', 'ology' ),
 			'type' => 'group',
 			'fields' => array(
 				array(
@@ -105,6 +105,6 @@ function ology_do_register_wp_customize_options() {
 		)
 	);
 
-	ology_register_wp_customize_options( $fields, 'ology_preview', array( 'title' => esc_html__( 'Preview Tools', 'torbara' ), 'priority' => 1010 ) );
+	ology_register_wp_customize_options( $fields, 'ology_preview', array( 'title' => esc_html__( 'Preview Tools', 'ology' ), 'priority' => 1010 ) );
 
 }

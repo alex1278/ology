@@ -481,31 +481,34 @@ final class ology_tt_Compiler {
 	 */
 	public function css_path_to_url( $matches, $base_is_path = false ) {
 
-		$base = $this->current_fragment;
+            $base = $this->current_fragment;
 
-		// Stop here if it isn't a internal file or not a valid format.
-		if ( preg_match( '#^(http|https|\/\/|data)#', $matches[1] ) == true )
-			return $matches[0];
+            // Stop here if it isn't a internal file or not a valid format.
+            if (preg_match('#^(http|https|\/\/|data)#', $matches[1]) == true) {
+                return $matches[0];
+            }
 
-		$explode_path = explode( '../', $matches[1] );
+            $explode_path = explode( '../', $matches[1] );
+            
+            // Replace the base part according to the path "../".
+            foreach ($explode_path as $value) {
+                $base = get_template_directory()."/lib/api/uikit/src/less/core";
+            }
 
-		// Replace the base part according to the path "../".
-		foreach ( $explode_path as $value )
-			$base = dirname( $base );
+            // Rebuild path.
+            $replace = preg_replace( '#^\/#', '', $explode_path );
+            $rebuilt_path = end( $replace );
 
-		// Rebuild path.
-		$replace = preg_replace( '#^\/#', '', $explode_path );
-		$rebuilt_path = end( $replace );
+            // Make sure it is a valid base.
+            if ($base === '.') {
+                $base = '';
+            }
 
-		// Make sure it is a valid base.
-		if ( $base === '.' )
-			$base = '';
+            // Rebuild url and make sure it is a valid one using the ology_path_to_url function.
+            $url = ology_path_to_url( trailingslashit( $base ) . $rebuilt_path );
 
-		// Rebuild url and make sure it is a valid one using the ology_path_to_url function.
-		$url = ology_path_to_url( trailingslashit( $base ) . $rebuilt_path );
-
-		// Return the rebuilt path converted to url.
-		return 'url("' . $url . '")';
+            // Return the rebuilt path converted to url.
+            return 'url("' . $url . '")';
 
 	}
 
@@ -568,23 +571,23 @@ final class ology_tt_Compiler {
 
 		$html = ology_output( 'ology_compiler_error_title_text', sprintf(
 			'<h2>%s</h2>',
-			esc_html__( 'Not cool, Beans cannot work its magic :(', 'torbara' )
+			esc_html__( 'Not cool, Beans cannot work its magic :(', 'ology' )
 		) );
 
 		$html .= ology_output( 'ology_compiler_error_message_text', sprintf(
 			'<p>%s</p>',
-			esc_html__( 'Your current install or file permission prevents Beans from working its magic. Please get in touch with Beans support, we will gladly get you started within 24 - 48 hours (working days).', 'torbara' )
+			esc_html__( 'Your current install or file permission prevents Beans from working its magic. Please get in touch with Beans support, we will gladly get you started within 24 - 48 hours (working days).', 'ology' )
 		) );
 
 		$html .= ology_output( 'ology_compiler_error_contact_text', sprintf(
 			'<a class="button" href="http://www.getbeans.io/contact/?compiler_report=1" target="_blanc">%s</a>',
-			esc_html__( 'Contact Beans Support', 'torbara' )
+			esc_html__( 'Contact Beans Support', 'ology' )
 		) );
 
 		$html .= ology_output( 'ology_compiler_error_report_text', sprintf(
 			'<p style  =  "margin-top: 12px; font-size: 12px;"><a href="' . add_query_arg( 'ology_send_compiler_report', true ) . '">%1$s</a>. %2$s</p>',
-			esc_html__( 'Send us an automatic report', 'torbara' ),
-			esc_html__( 'We respect your time and understand you might not be able to contact us.', 'torbara' )
+			esc_html__( 'Send us an automatic report', 'ology' ),
+			esc_html__( 'We respect your time and understand you might not be able to contact us.', 'ology' )
 		) );
 
 		wp_die( $html );
@@ -601,7 +604,7 @@ final class ology_tt_Compiler {
 		$send = wp_mail(
 			'hello@getbeans.io',
 			'Compiler error',
-			'Compiler error reported by ' . home_url('/'),
+			'Compiler error reported by ' . esc_url(home_url('/')),
 			array(
 				'MIME-Version: 1.0' . "\r\n",
 				'Content-type: text/html; charset=utf-8' . "\r\n",
@@ -614,7 +617,7 @@ final class ology_tt_Compiler {
 		// Die and display message.
 		wp_die( ology_output( 'ology_compiler_report_error_text', sprintf(
 			'<p>%s<p>',
-			esc_html__( 'Thanks for your contribution by reporting this issue. We hope to hear from you again.', 'torbara' )
+			esc_html__( 'Thanks for your contribution by reporting this issue. We hope to hear from you again.', 'ology' )
 		) ) );
 
 	}

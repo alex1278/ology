@@ -20,12 +20,12 @@ function ology_do_register_default_menu() {
 
 	// Set up default menu.
 	wp_update_nav_menu_item(
-		wp_create_nav_menu( esc_html__( 'Navigation', 'torbara' ) ),
+		wp_create_nav_menu( esc_html__( 'Navigation', 'ology' ) ),
 		0,
 		array(
-			'menu-item-title' =>  esc_html__( 'Home', 'torbara' ),
+			'menu-item-title' =>  esc_html__( 'Home', 'ology' ),
 			'menu-item-classes' => 'home',
-			'menu-item-url' => home_url( '/' ),
+			'menu-item-url' => esc_url(home_url( '/' )),
 			'menu-item-status' => 'publish'
 		)
 	);
@@ -43,7 +43,7 @@ ology_add_smart_action( 'after_setup_theme', 'ology_do_register_nav_menus' );
 function ology_do_register_nav_menus() {
 
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary Menu', 'torbara' ),
+		'primary' => esc_html__( 'Primary Menu', 'ology' ),
 	) );
 
 }

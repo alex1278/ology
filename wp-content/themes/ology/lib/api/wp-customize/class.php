@@ -22,7 +22,7 @@ final class ology_tt_WP_Customize {
 	public function __construct( $section, $args ) {
 
 		$defaults = array(
-			'title' => esc_html__( 'Undefined', 'torbara' ),
+			'title' => esc_html__( 'Undefined', 'ology' ),
 			'priority' => 30,
 			'description' => false
 		);

@@ -22,7 +22,7 @@ function ology_updater( $value ) {
 		return;
 
 	$data = get_site_transient( 'ology_updater' );
-	$theme = wp_get_theme( 'torbara' );
+	$theme = wp_get_theme( 'ology' );
 
 	if ( !$theme->exists() )
 		return $value;

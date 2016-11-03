@@ -21,7 +21,7 @@ function ology_footer_content() {
 		) );
 
 			echo ology_output( 'ology_footer_credit_text', sprintf(
-				esc_html__( '&#x000A9; %1$s - %2$s. All rights reserved.', 'torbara' ),
+				esc_html__( '&#x000A9; %1$s - %2$s. All rights reserved.', 'ology' ),
 				date( "Y" ),
 				get_bloginfo( 'name' )
 			) );
@@ -32,7 +32,7 @@ function ology_footer_content() {
 			'href' => 'http://torbara.com', // Automatically escaped.
 		) );
 
-			$framework_link .= ology_output( 'ology_footer_credit_framework_link_text', 'torbara' );
+			$framework_link .= ology_output( 'ology_footer_credit_framework_link_text', 'ology' );
 
 		$framework_link .= ology_close_markup( 'ology_footer_credit_framework_link', 'a' );
 
@@ -41,7 +41,7 @@ function ology_footer_content() {
 		) );
 
 			echo ology_output( 'ology_footer_credit_right_text', sprintf(
-				esc_html__( '%1$s theme for WordPress.', 'torbara' ),
+				esc_html__( '%1$s theme for WordPress.', 'ology' ),
 				$framework_link
 			) );
 

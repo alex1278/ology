@@ -32,7 +32,7 @@ final class ology_tt_Compiler_Options {
 			array(
 				'id' => 'ology_compiler_items',
 				'type' => 'flush_cache',
-				'description' => esc_html__( 'Clear CSS and Javascript cached files. New cached versions will be compiled on page load.', 'torbara' )
+				'description' => esc_html__( 'Clear CSS and Javascript cached files. New cached versions will be compiled on page load.', 'ology' )
 			)
 		);
 
@@ -42,10 +42,10 @@ final class ology_tt_Compiler_Options {
 				array(
 					'id' => 'ology_compile_all_styles',
 					'label' => false,
-					'checkbox_label' => esc_html__( 'Compile all WordPress styles', 'torbara' ),
+					'checkbox_label' => esc_html__( 'Compile all WordPress styles', 'ology' ),
 					'type' => 'checkbox',
 					'default' => false,
-					'description' => esc_html__( 'Compile and cache all the CSS files that have been enqueued to the WordPress head.', 'torbara' )
+					'description' => esc_html__( 'Compile and cache all the CSS files that have been enqueued to the WordPress head.', 'ology' )
 				)
 			) );
 
@@ -54,7 +54,7 @@ final class ology_tt_Compiler_Options {
 			$fields = array_merge( $fields, array(
 				array(
 					'id' => 'ology_compile_all_scripts_group',
-					'label' => esc_html__( 'Compile all WordPress scripts', 'torbara' ),
+					'label' => esc_html__( 'Compile all WordPress scripts', 'ology' ),
 					'type' => 'group',
 					'fields' => array(
 						array(
@@ -68,17 +68,17 @@ final class ology_tt_Compiler_Options {
 							'default' => array( 'aggressive' ),
 							'attributes' => array( 'style' => 'margin: -3px 0 0 -8px;' ),
 							'options' => array(
-								'aggressive' => esc_html__( 'Aggressive', 'torbara' ),
-								'standard' => esc_html__( 'Standard', 'torbara' )
+								'aggressive' => esc_html__( 'Aggressive', 'ology' ),
+								'standard' => esc_html__( 'Standard', 'ology' )
 							)
 						),
 					),
-					'description' => esc_html__( 'Compile and cache all the Javascript files that have been enqueued to the WordPress head.<!--more-->JavaSript is outputted in the footer if the level is set to <strong>Aggressive</strong> and might conflict with some third party plugins which are not following WordPress standards.', 'torbara' )
+					'description' => esc_html__( 'Compile and cache all the Javascript files that have been enqueued to the WordPress head.<!--more-->JavaSript is outputted in the footer if the level is set to <strong>Aggressive</strong> and might conflict with some third party plugins which are not following WordPress standards.', 'ology' )
 				)
 			) );
 
 		ology_register_options( $fields, 'ology_settings', 'compiler_options', array(
-			'title' => esc_html__( 'Compiler options', 'torbara' ),
+			'title' => esc_html__( 'Compiler options', 'ology' ),
 			'context' => 'normal'
 		) );
 
@@ -106,7 +106,7 @@ final class ology_tt_Compiler_Options {
 		if ( !ology_post( 'ology_flush_compiler_cache' ) )
 			return;
 
-		echo '<div id="message" class="updated"><p>' . esc_html__( 'Cache flushed successfully!', 'torbara' ) . '</p></div>' . "\n";
+		echo '<div id="message" class="updated"><p>' . esc_html__( 'Cache flushed successfully!', 'ology' ) . '</p></div>' . "\n";
 
 	}
 
@@ -119,7 +119,7 @@ final class ology_tt_Compiler_Options {
 		if ( $field['id'] !== 'ology_compiler_items' )
 			return;
 
-		echo '<input type="submit" name="ology_flush_compiler_cache" value="' . esc_html__( 'Flush assets cache', 'torbara' ) . '" class="button-secondary" />';
+		echo '<input type="submit" name="ology_flush_compiler_cache" value="' . esc_html__( 'Flush assets cache', 'ology' ) . '" class="button-secondary" />';
 
 	}
 
@@ -130,7 +130,7 @@ final class ology_tt_Compiler_Options {
 	public function maybe_disable_style_notice() {
 
 		if ( get_option( 'ology_compile_all_styles' ) && ology_tt_is_compiler_dev_mode() )
-			echo '<br /><span>' . esc_html__( 'Styles are not compiled in development mode.', 'torbara' ) . '</span>';
+			echo '<br /><span>' . esc_html__( 'Styles are not compiled in development mode.', 'ology' ) . '</span>';
 
 	}
 
@@ -140,7 +140,7 @@ final class ology_tt_Compiler_Options {
 	public function maybe_disable_scripts_notice() {
 
 		if ( get_option( 'ology_compile_all_scripts' ) && ology_tt_is_compiler_dev_mode() )
-			echo '<br /><span>' . esc_html__( 'Scripts are not compiled in development mode.', 'torbara' ) . '</span>';
+			echo '<br /><span>' . esc_html__( 'Scripts are not compiled in development mode.', 'ology' ) . '</span>';
 
 	}
 

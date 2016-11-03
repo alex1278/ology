@@ -278,8 +278,8 @@ function ology_get_layouts_for_options( $add_default = false ) {
 
 	if ( $add_default )
 		$layouts = array_merge( array( 'default_fallback' => sprintf(
-			esc_html__( 'Use Default Layout (%s)',  'torbara' ),
-			'<a href="' . admin_url( 'customize.php?autofocus[control]=ology_layout' ) . '">' . esc_attr_x( 'Modify', 'Default layout', 'torbara' ) . '</a>'
+			esc_html__( 'Use Default Layout (%s)',  'ology' ),
+			'<a href="' . admin_url( 'customize.php?autofocus[control]=ology_layout' ) . '">' . esc_attr_x( 'Modify', 'Default layout', 'ology' ) . '</a>'
 		) ), $layouts );
 
 	return $layouts;

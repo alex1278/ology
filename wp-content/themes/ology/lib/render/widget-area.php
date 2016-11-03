@@ -16,18 +16,18 @@ function ology_do_register_widget_areas() {
 
 	// Keep primary sidebar first for default widget asignment.
 	ology_register_widget_area( array(
-		'name' => esc_html__( 'sidebar-a', 'torbara' ),
+		'name' => esc_html__( 'sidebar-a', 'ology' ),
 		'id' => 'sidebar-a'
 	) );
 
 	ology_register_widget_area( array(
-		'name' => esc_html__( 'Sidebar Secondary', 'torbara' ),
+		'name' => esc_html__( 'Sidebar Secondary', 'ology' ),
 		'id' => 'sidebar_secondary'
 	) );
 
 	if ( current_theme_supports( 'offcanvas-menu' ) )
 		ology_register_widget_area( array(
-			'name' => esc_html__( 'Off-Canvas Menu', 'torbara' ),
+			'name' => esc_html__( 'Off-Canvas Menu', 'ology' ),
 			'id' => 'offcanvas_menu',
 			'ology_type' => 'offcanvas',
 		) );

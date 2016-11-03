@@ -191,7 +191,7 @@ if ( !isset( $ology_tt_uikit_registered_items ) )
 			'default' => ology_API_PATH . 'uikit/src/themes/default',
 			'almost-flat' => ology_API_PATH . 'uikit/src/themes/almost-flat',
 			'gradient' => ology_API_PATH . 'uikit/src/themes/gradient',
-			'wordpress-admin' => ology_API_PATH . 'uikit/themes/wordpress-admin'
+			'WordPress-admin' => ology_API_PATH . 'uikit/themes/WordPress-admin'
 		)
 	);
 

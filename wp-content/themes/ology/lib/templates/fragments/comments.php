@@ -17,7 +17,7 @@ function ology_comments_title() {
 	echo ology_open_markup( 'ology_comments_title', 'h2' );
 
 		echo ology_output( 'ology_comments_title_text', sprintf(
-			esc_html(_n( '%s Comment', '%s Comments', get_comments_number(), 'torbara' )),
+			esc_html(_n( '%s Comment', '%s Comments', get_comments_number(), 'ology' )),
 			number_format_i18n( get_comments_number() )
 		) );
 
@@ -89,7 +89,7 @@ function ology_comment_badges() {
 
 		echo ology_open_markup( 'ology_trackback_badge', 'span', array( 'class' => 'uk-badge uk-margin-small-left' ) );
 
-			echo ology_output( 'ology_trackback_text', esc_html__( 'Trackback', 'torbara' ) );
+			echo ology_output( 'ology_trackback_text', esc_html__( 'Trackback', 'ology' ) );
 
 		echo ology_close_markup( 'ology_trackback_badge', 'span' );
 
@@ -100,7 +100,7 @@ function ology_comment_badges() {
 
 		echo ology_open_markup( 'ology_pingback_badge', 'span', array( 'class' => 'uk-badge uk-margin-small-left' ) );
 
-			echo ology_output( 'ology_pingback_text', esc_html__( 'Pingback', 'torbara' ) );
+			echo ology_output( 'ology_pingback_text', esc_html__( 'Pingback', 'ology' ) );
 
 		echo ology_close_markup( 'ology_pingback_badge', 'span' );
 
@@ -112,7 +112,7 @@ function ology_comment_badges() {
 
 		echo ology_open_markup( 'ology_moderation_badge', 'span', array( 'class' => 'uk-badge uk-margin-small-left uk-badge-warning' ) );
 
-			echo ology_output( 'ology_moderation_text', esc_html__( 'Awaiting Moderation', 'torbara' ) );
+			echo ology_output( 'ology_moderation_text', esc_html__( 'Awaiting Moderation', 'ology' ) );
 
 		echo ology_close_markup( 'ology_moderation_badge', 'span' );
 
@@ -124,7 +124,7 @@ function ology_comment_badges() {
 
 		echo ology_open_markup( 'ology_moderator_badge', 'span', array( 'class' => 'uk-badge uk-margin-small-left' ) );
 
-			echo ology_output( 'ology_moderator_text', esc_html__( 'Moderator', 'torbara' ) );
+			echo ology_output( 'ology_moderator_text', esc_html__( 'Moderator', 'ology' ) );
 
 		echo ology_close_markup( 'ology_moderator_badge', 'span' );
 
@@ -151,7 +151,7 @@ function ology_comment_metadata() {
 		) );
 
 			echo ology_output( 'ology_comment_time_text', sprintf(
-				esc_attr_x( '%1$s at %2$s', '1: date, 2: time', 'torbara' ),
+				esc_attr_x( '%1$s at %2$s', '1: date, 2: time', 'ology' ),
 				get_comment_date(),
 				get_comment_time()
 			) );
@@ -208,7 +208,7 @@ function ology_comment_links() {
 					'href' => get_edit_comment_link( $comment->comment_ID ) // Automatically escaped.
 				) );
 
-					echo ology_output( 'ology_comment_edit_text', esc_html__( 'Edit', 'torbara' ) );
+					echo ology_output( 'ology_comment_edit_text', esc_html__( 'Edit', 'ology' ) );
 
 				echo ology_close_markup( 'ology_comment_item_link[_edit]', 'a' );
 
@@ -223,7 +223,7 @@ function ology_comment_links() {
 				'href' => get_comment_link( $comment->comment_ID ) // Automatically escaped.
 			) );
 
-				echo ology_output( 'ology_comment_link_text', esc_html__( 'Link', 'torbara' ) );
+				echo ology_output( 'ology_comment_link_text', esc_html__( 'Link', 'ology' ) );
 
 			echo ology_close_markup( 'ology_comment_item_link[_link]', 'a' );
 
@@ -245,7 +245,7 @@ function ology_no_comment() {
 
 	echo ology_open_markup( 'ology_no_comment', 'p', 'class=uk-text-muted' );
 
-		echo ology_output( 'ology_no_comment_text', esc_html__( 'No comment yet, add your voice below!', 'torbara' ) );
+		echo ology_output( 'ology_no_comment_text', esc_html__( 'No comment yet, add your voice below!', 'ology' ) );
 
 	echo ology_close_markup( 'ology_no_comment', 'p' );
 
@@ -263,7 +263,7 @@ function ology_comments_closed() {
 
 	echo ology_open_markup( 'ology_comments_closed', 'p', array( 'class' => 'uk-alert uk-alert-warning uk-margin-bottom-remove' ) );
 
-		echo ology_output( 'ology_comments_closed_text', esc_html__( 'Comments are closed for this article!', 'torbara' ) );
+		echo ology_output( 'ology_comments_closed_text', esc_html__( 'Comments are closed for this article!', 'ology' ) );
 
 	echo ology_close_markup( 'ology_comments_closed', 'p' );
 
@@ -298,7 +298,7 @@ function ology_comments_navigation() {
 				$previous_icon .= ology_close_markup( 'ology_previous_icon[_comments_navigation]', 'i' );
 
 				echo get_previous_comments_link(
-					$previous_icon . ology_output( 'ology_previous_text[_comments_navigation]', esc_html__( 'Previous', 'torbara' ) )
+					$previous_icon . ology_output( 'ology_previous_text[_comments_navigation]', esc_html__( 'Previous', 'ology' ) )
 				);
 
 			echo ology_close_markup( 'ology_comments_navigation_item[_previous]', 'li' );
@@ -316,7 +316,7 @@ function ology_comments_navigation() {
 				$next_icon .= ology_close_markup( 'ology_previous_icon[_comments_navigation]', 'i' );
 
 				echo get_next_comments_link(
-					ology_output( 'ology_next_text[_comments_navigation]', esc_html__( 'Next', 'torbara' ) ) . $next_icon
+					ology_output( 'ology_next_text[_comments_navigation]', esc_html__( 'Next', 'ology' ) ) . $next_icon
 				);
 
 			echo ology_close_markup( 'ology_comments_navigation_item_[_next]', 'li' );
@@ -354,14 +354,14 @@ function ology_comment_form() {
 	$output = ology_open_markup( 'ology_comment_form_wrap', 'div', array( 'class' => 'uk-form tm-comment-form-wrap' ) );
 
 		$output .= ology_render_function( 'comment_form', array(
-			'title_reply' => ology_output( 'ology_comment_form_title_text', esc_html__( 'Add a Comment', 'torbara' ) )
+			'title_reply' => ology_output( 'ology_comment_form_title_text', esc_html__( 'Add a Comment', 'ology' ) )
 		) );
 
 	$output .= ology_close_markup( 'ology_comment_form_wrap', 'div' );
 
 	$submit = ology_open_markup( 'ology_comment_form_submit', 'button', array( 'class' => 'uk-button uk-button-primary', 'type' => 'submit' ) );
 
-		$submit .= ology_output( 'ology_comment_form_submit_text', esc_html__( 'Post Comment', 'torbara' ) );
+		$submit .= ology_output( 'ology_comment_form_submit_text', esc_html__( 'Post Comment', 'ology' ) );
 
 	$submit .= ology_close_markup( 'ology_comment_form_submit', 'button' );
 
@@ -421,7 +421,7 @@ function ology_comment_form_comment() {
 
 			$output .= ology_open_markup( 'ology_comment_form_legend[_comment]', 'legend' );
 
-				$output .= ology_output( 'ology_comment_form_legend_text[_comment]', esc_html__( 'Comment *', 'torbara' ) );
+				$output .= ology_output( 'ology_comment_form_legend_text[_comment]', esc_html__( 'Comment *', 'ology' ) );
 
 			$output .= ology_close_markup( 'ology_comment_form_legend[_comment]', 'legend' );
 
@@ -499,7 +499,7 @@ function ology_comment_form_fields( $fields ) {
 
 				$author .= ology_open_markup( 'ology_comment_form_legend[_name]', 'legend' );
 
-					$author .= ology_output( 'ology_comment_form_legend_text[_name]', esc_html__( 'Name', 'torbara' ) );
+					$author .= ology_output( 'ology_comment_form_legend_text[_name]', esc_html__( 'Name', 'ology' ) );
 
 				$author .= ology_close_markup( 'ology_comment_form_legend[_name]', 'legend' );
 
@@ -533,7 +533,7 @@ function ology_comment_form_fields( $fields ) {
 
 				$email .= ology_open_markup( 'ology_comment_form_legend[_email]', 'legend' );
 
-					$email .= ology_output( 'ology_comment_form_legend_text[_email]', sprintf( esc_html__( 'Email %s', 'torbara' ), ( get_option( 'require_name_email' ) ? ' *' : '' ) ) );
+					$email .= ology_output( 'ology_comment_form_legend_text[_email]', sprintf( esc_html__( 'Email %s', 'ology' ), ( get_option( 'require_name_email' ) ? ' *' : '' ) ) );
 
 				$email .= ology_close_markup( 'ology_comment_form_legend[_email]', 'legend' );
 
@@ -568,7 +568,7 @@ function ology_comment_form_fields( $fields ) {
 
 				$url .= ology_open_markup( 'ology_comment_form_legend', 'legend' );
 
-					$url .= ology_output( 'ology_comment_form_legend_text[_url]', esc_html__( 'Website', 'torbara' ) );
+					$url .= ology_output( 'ology_comment_form_legend_text[_url]', esc_html__( 'Website', 'ology' ) );
 
 				$url .= ology_close_markup( 'ology_comment_form_legend[_url]', 'legend' );
 

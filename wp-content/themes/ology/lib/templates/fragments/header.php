@@ -62,7 +62,7 @@ function ology_site_branding() {
 	) );
 
 		echo ology_open_markup( 'ology_site_title_link', 'a', array(
-			'href' => home_url('/'), // Automatically escaped.
+			'href' => esc_url(home_url('/')), // Automatically escaped.
 			'rel' => 'home',
 			'itemprop' => 'headline'
 		) );

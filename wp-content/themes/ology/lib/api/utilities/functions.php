@@ -508,7 +508,7 @@ function ology_esc_attributes( $attributes ) {
 	 * Filter attributes escaping methods.
 	 *
 	 * For all unspecified selectors, values are automatically escaped using
-	 * {@link http://codex.wordpress.org/Function_Reference/esc_attr esc_attr()}.
+	 * {@link http://codex.WordPress.org/Function_Reference/esc_attr esc_attr()}.
 	 *
 	 * @since 1.3.1
 	 *

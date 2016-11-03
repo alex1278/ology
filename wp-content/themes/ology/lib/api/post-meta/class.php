@@ -29,7 +29,7 @@ final class ology_tt_Post_Meta {
 	public function __construct( $section, $args ) {
 
 		$defaults = array(
-			'title' => esc_html__( 'Undefined', 'torbara' ),
+			'title' => esc_html__( 'Undefined', 'ology' ),
 			'context' => 'normal',
 			'priority' => 'high',
 		);

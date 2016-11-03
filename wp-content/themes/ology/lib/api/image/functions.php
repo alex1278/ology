@@ -21,15 +21,15 @@
  * @param array  $args {
  *      Associative array of arguments used by the image editor.
  *
- * 		@type array $resize 	 Numeric array matching the {@link http://codex.wordpress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} resize
+ * 		@type array $resize 	 Numeric array matching the {@link http://codex.WordPress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} resize
  * 		      					 function arguments.
- * 		@type array $crop  	     Numeric array matching the {@link http://codex.wordpress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} crop
+ * 		@type array $crop  	     Numeric array matching the {@link http://codex.WordPress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} crop
  * 		      					 function arguments.
- * 		@type array $rotate      Numeric array matching the {@link http://codex.wordpress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} rotate
+ * 		@type array $rotate      Numeric array matching the {@link http://codex.WordPress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} rotate
  * 		      				     function arguments.
- * 		@type array $flip        Numeric array matching the {@link http://codex.wordpress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} flip
+ * 		@type array $flip        Numeric array matching the {@link http://codex.WordPress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} flip
  * 		      				     function arguments.
- * 		@type array $set_quality Numeric array matching the {@link http://codex.wordpress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} set_quality
+ * 		@type array $set_quality Numeric array matching the {@link http://codex.WordPress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} set_quality
  * 		      					 function arguments.
  * }
  * @param string $output Optional. Returned format. Accepts STRING, OBJECT, ARRAY_A, or ARRAY_N.
@@ -93,15 +93,15 @@ function ology_get_post_attachment( $post_id, $size = 'full' ) {
  * @param array  $args {
  *      Array of arguments used by the image editor.
  *
- * 		@type array $resize 	 Numeric array matching the {@link http://codex.wordpress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} resize
+ * 		@type array $resize 	 Numeric array matching the {@link http://codex.WordPress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} resize
  * 		      					 function arguments.
- * 		@type array $crop  	     Numeric array matching the {@link http://codex.wordpress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} crop
+ * 		@type array $crop  	     Numeric array matching the {@link http://codex.WordPress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} crop
  * 		      					 function arguments.
- * 		@type array $rotate      Numeric array matching the {@link http://codex.wordpress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} rotate
+ * 		@type array $rotate      Numeric array matching the {@link http://codex.WordPress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} rotate
  * 		      				     function arguments.
- * 		@type array $flip        Numeric array matching the {@link http://codex.wordpress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} flip
+ * 		@type array $flip        Numeric array matching the {@link http://codex.WordPress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} flip
  * 		      				     function arguments.
- * 		@type array $set_quality Numeric array matching the {@link http://codex.wordpress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} set_quality
+ * 		@type array $set_quality Numeric array matching the {@link http://codex.WordPress.org/Class_Reference/WP_Image_Editor WP_Image_Editor} set_quality
  * 		      					 function arguments. Default 100.
  * }
  *

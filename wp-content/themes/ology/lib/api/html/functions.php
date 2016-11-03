@@ -184,10 +184,11 @@ function ology_selfclose_markup( $id, $tag, $attributes = array() ) {
 function ology_close_markup( $id, $tag ) {
 
 	// Stop here if the tag is set to false, the before and after actions won't run in this case.
-	if ( ( $tag = ology_apply_filters( $id . '_markup', $tag ) ) === null )
-		return;
+	if (( $tag = ology_apply_filters($id . '_markup', $tag) ) === null) {
+            return;
+        }
 
-	$args = func_get_args();
+        $args = func_get_args();
 
 	// Remove function $tag argument.
 	unset( $args[1] );
@@ -197,11 +198,12 @@ function ology_close_markup( $id, $tag ) {
 
 	$output = call_user_func_array( 'ology_tt_render_action', $args );
 
-		// Don't output the tag if empty, the before and after actions still run.
-		if ( $tag )
-			$output .= '</' . $tag . '>';
+        // Don't output the tag if empty, the before and after actions still run.
+        if ($tag) {
+            $output .= '</' . $tag . '>';
+        }
 
-	// Set after action id.
+        // Set after action id.
 	$args[0] = $id . '_after_markup';
 
 	$output .= call_user_func_array( 'ology_tt_render_action', $args );

@@ -23,7 +23,7 @@ function ology_breadcrumb() {
 
 	$post_type = get_post_type();
 	$breadcrumbs = array();
-	$breadcrumbs[home_url('/')] = esc_html__( 'Home', 'torbara' );
+	$breadcrumbs[esc_url(home_url('/'))] = esc_html__( 'Home', 'ology' );
 
 	// Custom post type.
 	if ( !in_array( $post_type, array( 'page', 'attachment', 'post' ) ) && !is_404() ) {
@@ -88,7 +88,7 @@ function ology_breadcrumb() {
 	// Searches.
 	else if ( is_search() ) {
 
-		$breadcrumbs[] = esc_html__( 'Results:', 'torbara' ) . ' ' . get_search_query();
+		$breadcrumbs[] = esc_html__( 'Results:', 'ology' ) . ' ' . get_search_query();
 
 	}
 
@@ -96,28 +96,28 @@ function ology_breadcrumb() {
 	else if ( is_author() ) {
 
 		$author = get_queried_object();
-		$breadcrumbs[] = esc_html__( 'Author Archives:', 'torbara' ) . ' ' . $author->display_name;
+		$breadcrumbs[] = esc_html__( 'Author Archives:', 'ology' ) . ' ' . $author->display_name;
 
 	}
 
 	// Tag archives.
 	else if ( is_tag() ) {
 
-		$breadcrumbs[] = esc_html__( 'Tag Archives:', 'torbara' ) . ' ' . single_tag_title( '', false );
+		$breadcrumbs[] = esc_html__( 'Tag Archives:', 'ology' ) . ' ' . single_tag_title( '', false );
 
 	}
 
 	// Date archives.
 	else if ( is_date() ) {
 
-		$breadcrumbs[] = esc_html__( 'Archives:', 'torbara' ) . ' ' . get_the_time( 'F Y' );
+		$breadcrumbs[] = esc_html__( 'Archives:', 'ology' ) . ' ' . get_the_time( 'F Y' );
 
 	}
 
 	// 404.
 	else if ( is_404() ) {
 
-		$breadcrumbs[] = esc_html__( '404', 'torbara' );
+		$breadcrumbs[] = esc_html__( '404', 'ology' );
 
 	}
 

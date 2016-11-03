@@ -71,7 +71,7 @@ function ology_primary_menu_offcanvas_button() {
 
 		echo ology_close_markup( 'ology_primary_menu_offcanvas_button_icon', 'i' );
 
-		echo ology_output( 'ology_offcanvas_menu_button', esc_html__( 'Menu', 'torbara' ) );
+		echo ology_output( 'ology_offcanvas_menu_button', esc_html__( 'Menu', 'ology' ) );
 
 	echo ology_close_markup( 'ology_primary_menu_offcanvas_button', 'a' );
 
@@ -126,7 +126,7 @@ function ology_no_menu_notice() {
 
 	echo ology_open_markup( 'ology_no_menu_notice', 'p', array( 'class' => 'uk-alert uk-alert-warning' ) );
 
-		echo ology_output( 'ology_no_menu_notice_text', esc_html__( 'Whoops, your site does not have a menu!', 'torbara' ) );
+		echo ology_output( 'ology_no_menu_notice_text', esc_html__( 'Whoops, your site does not have a menu!', 'ology' ) );
 
 	echo ology_close_markup( 'ology_no_menu_notice', 'p' );
 

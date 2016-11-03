@@ -15,7 +15,7 @@
  * Compile CSS fragments and enqueue compiled file.
  *
  * This function should be used in a similar fashion to
- * {@link http://codex.wordpress.org/Function_Reference/wp_enqueue_script wp_enqueue_script()}.
+ * {@link http://codex.WordPress.org/Function_Reference/wp_enqueue_script wp_enqueue_script()}.
  *
  * Fragments can be added to the compiler using {@see ology_compiler_add_fragment()}.
  *
@@ -51,7 +51,7 @@ function ology_compile_css_fragments( $id, $fragments, $args = array() ) {
  * Compile LESS fragments, convert to CSS and enqueue compiled file.
  *
  * This function should be used in a similar fashion to
- * {@link http://codex.wordpress.org/Function_Reference/wp_enqueue_script wp_enqueue_script()}.
+ * {@link http://codex.WordPress.org/Function_Reference/wp_enqueue_script wp_enqueue_script()}.
  *
  * Fragments can be added to the compiler using {@see ology_compiler_add_fragment()}.
  *
@@ -86,7 +86,7 @@ function ology_compile_less_fragments( $id, $fragments, $args = array() ) {
  * Compile JS fragments and enqueue compiled file.
  *
  * This function should be used in a similar fashion to
- * {@link http://codex.wordpress.org/Function_Reference/wp_enqueue_script wp_enqueue_script()}.
+ * {@link http://codex.WordPress.org/Function_Reference/wp_enqueue_script wp_enqueue_script()}.
  *
  * Fragments can be added to the compiler using {@see ology_compiler_add_fragment()}.
  *
@@ -125,7 +125,7 @@ function ology_compile_js_fragments( $id, $fragments, $args = array() ) {
  * Add CSS, LESS or JS fragments to a compiler.
  *
  * This function should be used in a similar fashion to
- * {@link http://codex.wordpress.org/Function_Reference/wp_enqueue_script wp_enqueue_script()}.
+ * {@link http://codex.WordPress.org/Function_Reference/wp_enqueue_script wp_enqueue_script()}.
  *
  * @since 1.0.0
  *

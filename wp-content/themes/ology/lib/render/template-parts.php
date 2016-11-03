@@ -30,11 +30,7 @@ ology_add_smart_action( 'ology_site_prepend_markup', 'ology_header_partial_templ
  */
 function ology_header_partial_template() {
 
-	// Allow overwrite.
-	if ( locate_template( 'header-partial.php', true, false ) != '' )
-		return;
-
-	require( ology_STRUCTURE_PATH . 'header-partial.php' );
+    require( ology_STRUCTURE_PATH . 'header-partial.php' );
 
 }
 
@@ -47,10 +43,6 @@ ology_add_smart_action( 'ology_load_document', 'ology_content_template' );
  * @since 1.0.0
  */
 function ology_content_template() {
-
-	// Allow overwrite.
-	if ( locate_template( 'content.php', true ) != '' )
-		return;
 
 	require_once( ology_STRUCTURE_PATH . 'content.php' );
 
@@ -87,9 +79,7 @@ function ology_loop_template( $id = false ) {
 
 	}
 
-	// Allow overwrite. Require the default loop.php if not overwrite is found.
-	if ( locate_template( 'loop.php', true, false ) == '' )
-		require( ology_STRUCTURE_PATH . 'loop.php' );
+        require( ology_STRUCTURE_PATH . 'loop.php' );
 
 	// Only reset the query if a filter is set.
 	if ( $_has_filter )
@@ -128,10 +118,6 @@ ology_add_smart_action( 'ology_comment', 'ology_comment_template' );
  */
 function ology_comment_template() {
 
-	// Allow overwrite.
-	if ( locate_template( 'comment.php', true, false ) != '' )
-		return;
-
 	require( ology_STRUCTURE_PATH . 'comment.php' );
 
 }
@@ -145,10 +131,6 @@ ology_add_smart_action( 'ology_widget_area', 'ology_widget_area_template' );
  * @since 1.0.0
  */
 function ology_widget_area_template() {
-
-	// Allow overwrite.
-	if ( locate_template( 'widget-area.php', true, false ) != '' )
-		return;
 
 	require( ology_STRUCTURE_PATH . 'widget-area.php' );
 
@@ -201,10 +183,6 @@ ology_add_smart_action( 'ology_site_append_markup', 'ology_footer_partial_templa
  * @since 1.3.0
  */
 function ology_footer_partial_template() {
-
-	// Allow overwrite.
-	if ( locate_template( 'footer-partial.php', true, false ) != '' )
-		return;
 
 	require( ology_STRUCTURE_PATH . 'footer-partial.php' );
 

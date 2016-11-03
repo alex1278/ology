@@ -80,7 +80,7 @@ function ology_no_widget() {
 
 	echo ology_open_markup( 'ology_no_widget_notice', 'p', array( 'class' => 'uk-alert uk-alert-warning' ) );
 
-		echo ology_output( 'ology_no_widget_notice_text', sprintf( esc_html__( '%s does not have any widget assigned!', 'torbara' ), ology_get_widget_area( 'name' ) ) );
+		echo ology_output( 'ology_no_widget_notice_text', sprintf( esc_html__( '%s does not have any widget assigned!', 'ology' ), ology_get_widget_area( 'name' ) ) );
 
 	echo ology_close_markup( 'ology_no_widget_notice', 'p' );
 
@@ -100,7 +100,7 @@ function ology_widget_rss_content() {
 
 	$options = ology_get_widget( 'options' );
 
-	return '<p><a class="uk-button" href="' . ology_get( 'url', $options ) . '" target="_blank">' . esc_html__( 'Read feed', 'torbara' ) . '</a><p>';
+	return '<p><a class="uk-button" href="' . ology_get( 'url', $options ) . '" target="_blank">' . esc_html__( 'Read feed', 'ology' ) . '</a><p>';
 
 }
 

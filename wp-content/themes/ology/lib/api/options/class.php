@@ -36,7 +36,7 @@ final class ology_tt_Options {
 	public function register( $section, $args ) {
 
 		$defaults = array(
-			'title' => esc_html__( 'Undefined', 'torbara' ),
+			'title' => esc_html__( 'Undefined', 'ology' ),
 			'context' => 'normal'
 		);
 
@@ -118,8 +118,8 @@ final class ology_tt_Options {
 			echo '</div>';
 
 			echo '<p class="bs-options-form-actions">
-				<input type="submit" name="ology_save_options" value="' . esc_attr__( 'Save', 'torbara' ) . '" class="button-primary">
-				<input type="submit" name="ology_reset_options" value="' . esc_attr__( 'Reset', 'torbara' ) . '" class="button-secondary">
+				<input type="submit" name="ology_save_options" value="' . esc_attr__( 'Save', 'ology' ) . '" class="button-primary">
+				<input type="submit" name="ology_reset_options" value="' . esc_attr__( 'Reset', 'ology' ) . '" class="button-secondary">
 			</p>';
 
 		echo '</form>';
@@ -193,9 +193,9 @@ final class ology_tt_Options {
 	public function save_notices() {
 
 		if ( $this->success )
-			echo '<div id="message" class="updated"><p>' . esc_html__( 'Settings saved successfully!', 'torbara' ) . '</p></div>';
+			echo '<div id="message" class="updated"><p>' . esc_html__( 'Settings saved successfully!', 'ology' ) . '</p></div>';
 		else
-			echo '<div id="message" class="error"><p>' . esc_html__( 'Settings could not be saved, please try again.', 'torbara' ) . '</p></div>';
+			echo '<div id="message" class="error"><p>' . esc_html__( 'Settings could not be saved, please try again.', 'ology' ) . '</p></div>';
 
 
 	}
@@ -207,9 +207,9 @@ final class ology_tt_Options {
 	public function reset_notices() {
 
 		if ( $this->success )
-			echo '<div id="message" class="updated"><p>' . esc_html__( 'Settings reset successfully!', 'torbara' ) . '</p></div>';
+			echo '<div id="message" class="updated"><p>' . esc_html__( 'Settings reset successfully!', 'ology' ) . '</p></div>';
 		else
-			echo '<div id="message" class="error"><p>' . esc_html__( 'Settings could not be reset, please try again.', 'torbara' ) . '</p></div>';
+			echo '<div id="message" class="error"><p>' . esc_html__( 'Settings could not be reset, please try again.', 'ology' ) . '</p></div>';
 
 	}
 

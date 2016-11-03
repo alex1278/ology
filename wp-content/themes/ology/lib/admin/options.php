@@ -24,14 +24,14 @@ function ology_do_register_term_meta() {
 	$fields = array(
 		array(
 			'id' => 'ology_layout',
-			'label' => esc_attr_x( 'Layout', 'term meta', 'torbara' ),
+			'label' => esc_attr_x( 'Layout', 'term meta', 'ology' ),
 			'type' => 'radio',
 			'default' => 'default_fallback',
 			'options' => ology_get_layouts_for_options( true )
 		)
 	);
 
-	ology_register_term_meta( $fields, array( 'category', 'post_tag' ), 'torbara' );
+	ology_register_term_meta( $fields, array( 'category', 'post_tag' ), 'ology' );
 
 }
 
@@ -55,13 +55,13 @@ function ology_do_register_post_meta() {
 	$fields = array(
 		array(
 			'id' => 'ology_layout',
-			'label' => esc_attr_x( 'Layout', 'post meta', 'torbara' ),
+			'label' => esc_attr_x( 'Layout', 'post meta', 'ology' ),
 			'type' => 'radio',
 			'default' => 'default_fallback',
 			'options' => ology_get_layouts_for_options( true )
 		)
 	);
 
-	ology_register_post_meta( $fields, array( 'post', 'page' ), 'torbara', array( 'title' => esc_html__( 'Post Options', 'torbara' ) ) );
+	ology_register_post_meta( $fields, array( 'post', 'page' ), 'ology', array( 'title' => esc_html__( 'Post Options', 'ology' ) ) );
 
 }

@@ -11,7 +11,7 @@
 /**
  * Hooks a function on to a specific action.
  *
- * This function is similar to {@link http://codex.wordpress.org/Function_Reference/add_action add_action()}
+ * This function is similar to {@link http://codex.WordPress.org/Function_Reference/add_action add_action()}
  * with the exception of being registered by ID in order to be manipulated by the other Beans Actions functions.
  *
  * @since 1.0.0
