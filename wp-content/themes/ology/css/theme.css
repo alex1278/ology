@@ -14364,11 +14364,11 @@ aside .uk-search.uk-active .uk-search-field {
   color: #acacac;
   font-size: 13px;
   text-transform: uppercase;
-  padding-left: 15px;
+  padding: 15px 20px 13px 11px;
   margin-top: 5px;
 }
 .widget_archive select option {
-  padding: 13px 20px 14px 11px;
+  padding: 0 13px;
 }
 .widget_archive ul,
 .widget_archive ul.uk-list-line {
@@ -14417,11 +14417,11 @@ aside .widget_text select {
   color: #acacac;
   font-size: 13px;
   text-transform: uppercase;
-  padding-left: 15px;
+  padding: 15px 20px 13px 11px;
   margin-top: 5px;
 }
 aside .widget_text select option {
-  padding: 13px 20px 14px 11px;
+  padding: 0 13px;
 }
 .widget_text .textwidget p {
   margin-bottom: 0;
@@ -14436,12 +14436,12 @@ aside .widget_text select option {
   color: #acacac;
   font-size: 13px;
   text-transform: uppercase;
-  padding-left: 15px;
+  padding: 15px 20px 13px 11px;
   margin-top: 5px;
 }
 .widget_meta select option,
 .widget_categories select option {
-  padding: 13px 20px 14px 11px;
+  padding: 0 13px;
 }
 .widget_meta ul,
 .widget_categories ul,
