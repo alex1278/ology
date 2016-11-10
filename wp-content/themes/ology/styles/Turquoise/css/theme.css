@@ -12545,6 +12545,7 @@ body.uk-offcanvas-page {
   padding-bottom: 0;
   text-transform: uppercase;
   font-family: 'Montserrat';
+  font-size: 18px;
 }
 .template-classes .ang-classes-teacher {
   padding: 0 30px;
@@ -14175,6 +14176,14 @@ body.post-type-archive-commando #tm-main-section .uk-container {
  */
 .widget_nav_menu li,
 .widget_pages li {
+  color: #a7a7a7;
+}
+.widget_nav_menu li a,
+.widget_pages li a {
+  color: #a7a7a7;
+}
+.widget_nav_menu li a:hover,
+.widget_pages li a:hover {
   color: #47cba3;
 }
 .widget_archive li,
@@ -14338,7 +14347,7 @@ aside .uk-search.uk-active .uk-search-field {
   position: relative;
   text-align: center;
   border-radius: 50%;
-  padding: 8px 10px;
+  padding: 10px 10px;
 }
 .widget_calendar tbody td a,
 .widget_calendar tbody th a {
@@ -14502,11 +14511,23 @@ aside .widget_text select option {
 }
 .widget_recent_comments ul > li,
 .widget_recent_comments ul.uk-comment-list > li {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  padding-left: 23px;
+  position: relative;
+  line-height: 1.4;
 }
 .widget_recent_comments ul > li::last-child,
 .widget_recent_comments ul.uk-comment-list > li::last-child {
   margin-bottom: 0;
+}
+.widget_recent_comments ul > li::before,
+.widget_recent_comments ul.uk-comment-list > li::before {
+  content: "\f24a";
+  font-family: FontAwesome;
+  font-weight: 400;
+  font-style: normal;
+  position: absolute;
+  left: 0;
 }
 .widget_recent_comments ul > li header,
 .widget_recent_comments ul.uk-comment-list > li header {
@@ -16070,10 +16091,13 @@ article .effect img {
   background-color: transparent;
   color: #ffffff;
 }
+.ang-main-gallery-item .art-style .ang-gallery-item-overlay a i::before {
+  font-size: 170%;
+}
 .ang-main-gallery-item .art-style .ang-gallery-item-overlay a i:hover {
   color: #47cba3;
-  background-color: #ffffff;
-  border-color: #ffffff;
+  background-color: transparent;
+  border-color: transparent;
 }
 .ang-main-gallery-item .ang-prop-link {
   color: #757678;
@@ -16242,6 +16266,7 @@ article .effect img {
 .tm-bottom-f .widget_ang-most-popular-posts h3,
 .tm-bottom-f .widget_nav_menu h3 {
   margin-top: 68px;
+  line-height: 1.5;
 }
 .tm-bottom-f .widget_ang-most-popular-posts ul li:not(:first-child) > div {
   padding-top: 0;
@@ -16251,6 +16276,9 @@ article .effect img {
   color: #ffffff !important;
   line-height: 1;
   font-family: 'Montserrat';
+}
+.tm-bottom-f .widget_ang-most-popular-posts a:hover {
+  color: #47cba3 !important;
 }
 .tm-bottom-f .widget_ang-most-popular-posts time {
   text-transform: uppercase;
