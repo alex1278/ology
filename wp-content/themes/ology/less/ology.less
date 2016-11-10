@@ -3061,6 +3061,7 @@ body.uk-offcanvas-page {
         padding-bottom:0;
         text-transform: uppercase;
         font-family: @base-body-font-family;
+        font-size: @base-h5-font-size + 2;
     }
     .ang-classes-teacher{
         padding:0 30px;
@@ -4806,7 +4807,13 @@ aside{
 .widget_nav_menu,
 .widget_pages{
     li{
-        color: @global-link-color;
+        color:@global-color;
+        a{
+            color:@global-color;
+            &:hover{
+                color: @global-link-color;
+            }
+        }
     }
 }
 .widget_archive,
@@ -4928,7 +4935,7 @@ aside{
     tfoot{
         td, th{
             border:none;
-            padding: 8px 10px;
+            padding: 10px 10px;
             a{
                 text-transform: uppercase;
             }
@@ -5116,11 +5123,22 @@ aside{
     ul.uk-comment-list{
             margin-top:0;
             list-style:none;
-            padding: 0;
+            padding:0;
             > li{
-                margin-bottom:20px;
+                margin-bottom:10px;
+                padding-left:23px;
+                position:relative;
+                line-height:1.4;
                 &::last-child{
                     margin-bottom:0;
+                }
+                &::before{
+                    content: "\f24a";
+                    font-family: FontAwesome;
+                    font-weight: 400;
+                    font-style: normal;
+                    position:absolute;
+                    left:0;
                 }
                 header{
                     padding-bottom:15px;
@@ -6802,10 +6820,13 @@ article .effect img {
                     border:1px solid transparent;
                     background-color:transparent;
                     color:@global-contrast-color;
+                    &::before{
+                        font-size:170%;
+                    }
                     &:hover{
                         color: @text-primary-color;
-                        background-color:@global-background;
-                        border-color:@global-contrast-color;
+                        background-color:transparent;
+                        border-color:transparent;
                     }
                 }
             }
@@ -6955,6 +6976,7 @@ article .effect img {
     .widget_nav_menu{
         h3{
             margin-top:68px;
+            line-height: 1.5;
         }
     }
     .widget_ang-most-popular-posts{
@@ -6968,6 +6990,9 @@ article .effect img {
             color: @global-contrast-color !important;
             line-height:1;
             font-family: @base-body-font-family;
+            &:hover{
+                color: @global-link-color !important;
+            }
         }
         time{
             text-transform: uppercase;
